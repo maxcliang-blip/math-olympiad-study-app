@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Math Olympiad Study App</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<style>
+:root {
+  --bg: #f5f6fa;
+  --card: #fff;
+  --text: #1a1a2e;
+  --muted: #6c757d;
+  --blue: #4361ee;
+  --blue-bg: #eef0ff;
+  --green: #2d9f5e;
+  --green-bg: #e8f5e9;
+  --border: #e0e0e0;
+  --radius: 12px;
+  --shadow: 0 2px 12px rgba(0,0,0,0.06);
+  --font: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: var(--font);
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+  display: flex;
+  min-height: 100vh;
+}
+
+/* Sidebar */
+.sidebar {
+  width: 260px;
+  background: var(--card);
+  border-right: 1px solid var(--border);
+  position: fixed;
+  top: 0; left: 0;
+  height: 100vh;
+  overflow-y: auto;
+  z-index: 100;
+}
+.sidebar-header {
+  padding: 24px 20px 16px;
+  border-bottom: 1px solid var(--border);
+}
+.sidebar-header h1 { font-size: 18px; font-weight: 700; color: var(--blue); }
+.sidebar-header p { font-size: 12px; color: var(--muted); }
+.nav-group { padding: 12px 0; border-bottom: 1px solid var(--border); }
+.nav-label {
+  font-size: 11px; font-weight: 700; text-transform: uppercase;
+  letter-spacing: .05em; color: var(--muted); padding: 0 20px 8px;
+}
+.nav-item {
+  display: flex; align-items: center; justify-content: space-between;
+  width: 100%; padding: 10px 20px; font-size: 14px;
+  background: none; border: none; text-align: left; cursor: pointer;
+  color: var(--text); transition: .15s; border-left: 3px solid transparent;
+  font-family: var(--font);
+}
+.nav-item:hover { background: var(--blue-bg); }
+.nav-item.active { background: var(--blue-bg); border-left-color: var(--blue); color: var(--blue); font-weight: 600; }
+.nav-item .count { font-size: 12px; color: var(--muted); font-weight: 400; }
+
+/* Main */
+.main {
+  margin-left: 260px;
+  flex: 1;
+  padding: 40px 48px;
+  max-width: 960px;
+}
+.main h2 { font-size: 28px; font-weight: 700; }
+.subtitle { color: var(--muted); font-size: 15px; margin-bottom: 8px; }
+.progress {
+  height: 6px; background: var(--border); border-radius: 3px;
+  margin: 16px 0 24px; overflow: hidden;
+}
+.progress-fill { height: 100%; background: var(--green); border-radius: 3px; transition: width .4s; }
+
+/* Cards */
+.card {
+  background: var(--card);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  margin-bottom: 12px;
+  border: 1px solid var(--border);
+  overflow: hidden;
+}
+.card-top {
+  display: flex; align-items: flex-start; gap: 12px;
+  padding: 16px 20px; cursor: pointer; user-select: none;
+}
+.num {
+  width: 32px; height: 32px; min-width: 32px;
+  border-radius: 50%;
+  background: var(--blue-bg); color: var(--blue);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 13px; font-weight: 700;
+}
+.num.done { background: var(--green-bg); color: var(--green); }
+.card-body { flex: 1; }
+.card-body p { margin: 0; }
+.tag {
+  display: inline-block; font-size: 11px; font-weight: 600;
+  padding: 2px 10px; border-radius: 20px; margin-top: 4px;
+  background: var(--blue-bg); color: var(--blue);
+}
+.tag.done { background: var(--green-bg); color: var(--green); }
+.acts { display: flex; gap: 6px; align-items: center; white-space: nowrap; }
+.btn {
+  font-family: var(--font); font-size: 13px; font-weight: 600;
+  padding: 6px 14px; border-radius: 8px;
+  border: 1px solid var(--border); background: var(--card);
+  cursor: pointer; transition: .15s; color: var(--text);
+}
+.btn:hover { background: var(--bg); }
+.btn-primary { background: var(--blue); color: #fff; border-color: var(--blue); }
+.btn-primary:hover { opacity: .85; }
+.btn-green { background: var(--green); color: #fff; border-color: var(--green); }
+.btn-green:hover { opacity: .85; }
+
+/* Solution */
+.sol {
+  padding: 0 20px 16px; border-top: 1px solid var(--border); padding-top: 14px;
+}
+.sol-label {
+  font-size: 11px; font-weight: 700; text-transform: uppercase;
+  letter-spacing: .05em; color: var(--muted); margin-bottom: 6px;
+}
+
+/* Lesson */
+.lesson {
+  background: var(--card); border-radius: var(--radius);
+  box-shadow: var(--shadow); padding: 24px 32px; margin-bottom: 24px;
+  border: 1px solid var(--border);
+}
+.lesson h3 { font-size: 20px; font-weight: 700; margin-bottom: 12px; color: var(--blue); }
+.lesson h4 { font-size: 16px; font-weight: 600; margin: 20px 0 8px; }
+.lesson p { margin-bottom: 10px; }
+.lesson .ex {
+  background: var(--blue-bg); border-radius: 8px;
+  padding: 16px 20px; margin: 12px 0;
+}
+.lesson .ex-title { font-weight: 700; font-size: 13px; margin-bottom: 6px; color: var(--blue); }
+.lesson table { width: 100%; border-collapse: collapse; margin: 12px 0; font-size: 14px; }
+.lesson th { text-align: left; padding: 8px 12px; border-bottom: 2px solid var(--blue); font-weight: 600; }
+.lesson td { padding: 8px 12px; border-bottom: 1px solid var(--border); }
+.lesson ul { padding-left: 20px; margin-bottom: 10px; }
+.lesson li { margin-bottom: 4px; }
+.lesson .katex-display { margin: 8px 0; }
+
+/* Level heading */
+.lvl { font-size: 20px; font-weight: 700; margin: 32px 0 16px; }
+
+@media (max-width: 768px) {
+  .sidebar { display: none; }
+  .main { margin-left: 0; padding: 20px 16px; }
+  .card-top { flex-direction: column; gap: 8px; }
+  .acts { align-self: flex-end; }
+}
+</style>
+</head>
+<body>
+
+<div class="sidebar" id="sidebar"></div>
+<div class="main" id="main"></div>
+
+<script>
+const K = window.katex;
+const opts = { throwOnError: false };
+const inline = tex => K.renderToString(tex, opts);
+const display = tex => K.renderToString(tex, Object.assign({}, opts, { displayMode: true }));
+
+// Replace \(...\) with rendered KaTeX, and \[...\] with display KaTeX
+function R(s) {
+  // display math first
+  s = s.replace(/\\\[(.*?)\\\]/gs, (_, t) => display(t));
+  // inline math
+  s = s.replace(/\\\((.*?)\\\)/g, (_, t) => inline(t));
+  return s;
+}
+
+const SECTIONS = [
+  {
+    id: "sym-practice",
+    title: "Symmetric Polynomials",
+    sub: "40 practice problems across 6 levels",
+    type: "prac",
+    levels: [
+      {
+        n: "Level 1: Basic Rewriting",
+        probs: [
+          [1, "Express \\(x^2 + y^2\\) in terms of \\(s\\) and \\(p\\), where \\(s = x+y,\\; p = xy\\).", "\\(x^2 + y^2 = (x+y)^2 - 2xy = s^2 - 2p\\)"],
+          [2, "Express \\(x^3 + y^3\\) in terms of \\(s\\) and \\(p\\).", "\\(x^3 + y^3 = (x+y)(x^2 - xy + y^2) = s(s^2 - 2p - p) = s^3 - 3ps\\)"],
+          [3, "Express \\(x^4 + y^4\\) in terms of \\(s\\) and \\(p\\).", "\\(x^4 + y^4 = (x^2+y^2)^2 - 2x^2y^2 = (s^2-2p)^2 - 2p^2\\)"],
+          [4, "Express \\(x^5 + y^5\\) in terms of \\(s\\) and \\(p\\).", "\\(x^5 + y^5 = s^5 - 5ps^3 + 5p^2s\\)"],
+          [5, "Express \\(x^2y + xy^2\\) in terms of \\(s\\) and \\(p\\).", "\\(x^2y + xy^2 = xy(x+y) = sp\\)"],
+          [6, "Express \\(x^3y + xy^3\\) in terms of \\(s\\) and \\(p\\).", "\\(x^3y + xy^3 = xy(x^2+y^2) = p(s^2-2p)\\)"],
+          [7, "Express \\(x^3y^2 + x^2y^3\\) in terms of \\(s\\) and \\(p\\).", "\\(x^3y^2 + x^2y^3 = x^2y^2(x+y) = p^2s\\)"],
+          [8, "Express \\((x-y)^2\\) in terms of \\(s\\) and \\(p\\).", "\\((x-y)^2 = x^2 - 2xy + y^2 = (s^2-2p)-2p = s^2-4p\\)"],
+        ]
+      },
+      {
+        n: "Level 2: Substitution & Evaluation",
+        probs: [
+          [9, "Given \\(x+y=5,\\; xy=6\\), find \\(x^2+y^2\\).", "\\(s^2-2p = 25-12 = 13\\)"],
+          [10, "Given \\(x+y=5,\\; xy=6\\), find \\(x^3+y^3\\).", "\\(s^3-3ps = 125-90 = 35\\)"],
+          [11, "Given \\(x+y=5,\\; xy=6\\), find \\(x^4+y^4\\).", "\\((s^2-2p)^2-2p^2 = 13^2-72 = 97\\)"],
+          [12, "Given \\(x+y=5,\\; xy=6\\), find \\(x^5+y^5\\).", "\\(s^5-5ps^3+5p^2s = 3125-3750+900 = 275\\)"],
+          [13, "Given \\(x+y=5,\\; xy=6\\), find \\(\\frac1x+\\frac1y\\).", "\\(\\frac{x+y}{xy} = \\frac{s}{p} = \\frac56\\)"],
+          [14, "Given \\(x+y=5,\\; xy=6\\), find \\(\\frac1{x^2}+\\frac1{y^2}\\).", "\\(\\frac{x^2+y^2}{x^2y^2} = \\frac{13}{36}\\)"],
+          [15, "Given \\(x+y=5,\\; xy=6\\), find \\(x^2y+xy^2\\).", "\\(sp = 5\\cdot6 = 30\\)"],
+          [16, "Given \\(x+y=5,\\; xy=6\\), find \\((x-y)^2\\).", "\\(s^2-4p = 25-24 = 1\\)"],
+        ]
+      },
+      {
+        n: "Level 3: System Solving",
+        probs: [
+          [17, "Solve: \\(x+y=4,\\; x^2+y^2=10\\).", "\\(S_2 = s^2-2p \\Rightarrow 10=16-2p \\Rightarrow p=3\\). Quadratic \\(t^2-4t+3=0\\). Solutions: \\((1,3)\\) or \\((3,1)\\)."],
+          [18, "Solve: \\(x+y=3,\\; x^3+y^3=18\\).", "\\(S_3 = s^3-3ps \\Rightarrow 18=27-9p \\Rightarrow p=1\\). Quadratic \\(t^2-3t+1=0\\). Solutions: \\(\\left(\\frac{3+\\sqrt5}{2},\\frac{3-\\sqrt5}{2}\\right)\\) or swapped."],
+          [19, "Solve: \\(x+y=2,\\; x^4+y^4=34\\).", "\\(S_4 = (4-2p)^2-2p^2 = 34 \\Rightarrow p=-1\\). Quadratic \\(t^2-2t-1=0\\). Solutions: \\((1+\\sqrt2,\\;1-\\sqrt2)\\) or swapped."],
+          [20, "Solve: \\(x+y=1,\\; x^3+y^3=19\\).", "\\(S_3 = s^3-3ps \\Rightarrow 19=1-3p \\Rightarrow p=-6\\). Quadratic \\(t^2-t-6=0\\). Solutions: \\((3,-2)\\) or \\((-2,3)\\)."],
+        ]
+      },
+      {
+        n: "Level 4: AIME-Style",
+        probs: [
+          [21, "Let \\(x,y\\) be real with \\(x+y=3,\\; x^2+y^2=7\\). Find \\(x^5+y^5\\).", "\\(S_2 = s^2-2p \\Rightarrow 7=9-2p \\Rightarrow p=1\\). Recurrence: \\(S_3=18,\\; S_4=47,\\; S_5=123\\)."],
+          [22, "Suppose \\(x+y=2,\\; x^3+y^3=14\\). Find \\(x^2+y^2\\).", "\\(S_3 = s^3-3ps \\Rightarrow 14=8-6p \\Rightarrow p=-1\\). \\(S_2 = s^2-2p = 4-2(-1)=6\\)."],
+          [23, "If \\(x+y=5,\\; x^2+y^2=13\\), find \\(x^2y+xy^2\\).", "\\(S_2 = s^2-2p \\Rightarrow 13=25-2p \\Rightarrow p=6\\). \\(x^2y+xy^2 = sp = 30\\)."],
+          [24, "Let \\(r,s\\) be roots of \\(x^2-7x+10=0\\). Compute \\(r^3+s^3\\) without solving.", "\\(s=7,\\; p=10\\). \\(r^3+s^3 = s^3-3ps = 343-210 = 133\\)."],
+          [25, "Suppose \\(x+y=a,\\; xy=b\\). Express \\(x^4+y^4\\) in \\(a,b\\). Evaluate for \\(a=2,\\; b=-1\\).", "\\(x^4+y^4 = (a^2-2b)^2-2b^2 = a^4-4a^2b+2b^2\\). For \\(a=2,\\; b=-1\\): \\(16+16+2=34\\)."],
+        ]
+      },
+      {
+        n: "Level 5: Challenge",
+        probs: [
+          [26, "Find real pairs \\((x,y)\\): \\(x+y=6,\\; x^4+y^4=272\\).", "\\(S_4=(36-2p)^2-2p^2=272 \\Rightarrow p=8\\). \\(t^2-6t+8=0\\). Solutions: \\((2,4)\\) or \\((4,2)\\)."],
+          [27, "If \\(x+y=1,\\; x^2+y^2=2\\), find \\(x^7+y^7\\).", "\\(p=-\\frac12\\). Recurrence: \\(S_7=\\frac{71}{8}\\)."],
+          [28, "Let \\(x,y\\) be roots of \\(t^2-3t+1=0\\). Compute \\(x^5+y^5 + \\frac1{x^5y^5}\\).", "\\(S_5=123,\\; \\frac1{p^5}=1\\). Sum = \\(124\\)."],
+          [29, "For real \\(x,y\\) with \\(x+y=2\\), find minimum \\(m\\) of \\(x^4+y^4\\).", "\\(S_4 = 2(p-4)^2-16\\). Real condition: \\(p\\le1\\). Minimum at \\(p=1\\): \\(m=2\\)."],
+          [30, "Given \\(x+y=4,\\; xy=2\\), compute \\(x^3y^2+x^2y^3\\).", "\\(x^3y^2+x^2y^3 = p^2s = 4\\cdot4 = 16\\)."],
+        ]
+      },
+      {
+        n: "Level 6: Extra Challenge",
+        probs: [
+          [31, "Given \\(x^2+y^2=7,\\; x^3+y^3=10\\), find \\(x+y\\) and \\(xy\\).", "Only \\(s=1,\\; p=-3\\) yields real solutions."],
+          [32, "Given \\(x+y=3,\\; x^4+y^4=17\\), find \\(x^3+y^3\\).", "\\(p=2\\) (since \\(p=16\\) not real). \\(S_3 = 27-18 = 9\\)."],
+          [33, "If \\(x+y=5,\\; xy=3\\), compute \\(x^6+y^6\\).", "\\(S_6 = 5\\cdot1475 - 3\\cdot343 = 6346\\)."],
+          [34, "Let \\(x,y\\) be roots of \\(t^2-4t+1=0\\). Find \\((x^2+1)(y^2+1)\\).", "\\((x^2+1)(y^2+1) = p^2+S_2+1 = 1+14+1 = 16\\)."],
+          [35, "Given \\(x+y=2,\\; xy=-1\\), compute \\(x^6+y^6 + x^4y^2 + x^2y^4\\).", "\\(S_6 + p^2S_2 = 198+6 = 204\\)."],
+          [36, "Let \\(a,b\\) be real with \\(a+b=4,\\; a^3+b^3=28\\). Find quadratic with roots \\(a,b\\).", "\\(p=3\\). Quadratic: \\(t^2-4t+3=0\\)."],
+          [37, "If \\(x+y=6,\\; x^2+y^2=20\\), find max possible \\(xy\\).", "\\(S_2 = s^2-2p \\Rightarrow 20=36-2p \\Rightarrow p=8\\)."],
+          [38, "For nonzero \\(x,y\\) with \\(x+y=2,\\; \\frac1x+\\frac1y=1\\), find \\(|x-y|\\).", "\\(p=2\\). \\((x-y)^2 = 4-8=-4\\), so \\(|x-y|\\) = magnitude \\(=2\\)."],
+          [39, "Given \\(x+y+z=0,\\; x^2+y^2+z^2=2\\), find \\(x^4+y^4+z^4\\).", "\\(\\sigma_2=-1\\). \\(\\sum x^4 = (\\sum x^2)^2 - 2\\sum x^2y^2 = 4-2(1) = 2\\)."],
+          [40, "For real \\(x,y\\) with \\(x^2+xy+y^2=3\\), find max of \\(x-y\\).", "Let \\(u=x+y,\\; v=x-y\\). Then \\(3u^2+v^2=12\\). Max \\(v^2\\) at \\(u=0\\): \\(v=2\\sqrt3\\)."],
+        ]
+      }
+    ]
+  },
+  {
+    id: "aime-sym",
+    title: "AIME Symmetric Polynomials",
+    sub: "10 real AIME & AIME-style problems",
+    type: "prac",
+    levels: [
+      {
+        n: "AIME Problems",
+        probs: [
+          [1, "(1996 AIME #5) Roots of \\(x^3+3x^2+4x-11=0\\) are \\(a,b,c\\). Roots of \\(x^3+rx^2+sx+t=0\\) are \\(a+b,\\;b+c,\\;c+a\\). Find \\(t\\).", "By Vieta: \\(a+b+c=-3,\\;ab+bc+ca=4,\\;abc=11\\). \\((a+b)(b+c)(c+a) = (a+b+c)(ab+bc+ca)-abc = -23\\). Since constant term \\(= -(a+b)(b+c)(c+a) = t\\), we get \\(t=23\\)."],
+          [2, "(2008 AIME II #7) Let \\(r,s,t\\) be roots of \\(8x^3+1001x+2008=0\\). Find \\((r+s)^3+(s+t)^3+(t+r)^3\\).", "\\(r+s+t=0\\) (no \\(x^2\\) term) \\(\\Rightarrow r+s=-t\\). Expression \\(= -(r^3+s^3+t^3)\\). Summing original: \\(8\\sum r^3 + 1001\\sum r + 3\\cdot2008 = 0 \\Rightarrow \\sum r^3 = -753\\). Answer \\(=753\\)."],
+          [3, "(2003 AIME II #9) Given \\(P(x)=x^6-x^5-x^3-x^2-x\\), \\(Q(x)=x^4-x^3-x^2-1\\), and \\(z_1,\\dots,z_4\\) are roots of \\(Q\\), find \\(\\sum P(z_i)\\).", "From \\(Q(z)=0\\), \\(z^4 = z^3+z^2+1\\). Reduce \\(P(z) = z^2 - z + 1\\). Then \\(\\sum P(z_i) = \\sum z^2 - \\sum z + 4 = 3 - 1 + 4 = 6\\)."],
+          [4, "(2005 AIME I #8) Equation \\(2^{333x-2}+2^{111x+2}=2^{222x+1}+1\\) has three real roots with sum \\(m/n\\). Find \\(m+n\\).", "Let \\(y=2^{111x}\\). Then \\(y^3/4+4y=2y^2+1 \\Rightarrow y^3-8y^2+16y-4=0\\). By Vieta, \\(y_1y_2y_3=4\\). Sum of \\(x\\)-roots \\(= \\frac{\\log_2(y_1y_2y_3)}{111} = \\frac{2}{111}\\). \\(m+n=113\\)."],
+          [5, "(2001 AIME I #3) Find sum of all roots of \\((x^2-7x+11)^{x^2-13x+42}=1\\).", "Cases: (i) base=1: \\(x=2,5\\). (ii) base=-1, exp even: \\(x=3,4\\) (exp \\(12,6\\) even). (iii) exp=0, base\\neq0: \\(x=6,7\\). Roots: \\(2,3,4,5,6,7\\). Sum = \\(27\\)."],
+          [6, "(1995 AIME #5) Equation \\(x^4+ax^3+bx^2+cx+d=0\\) has four non-real roots. Product of two is \\(13+i\\), sum of other two is \\(3+4i\\). Find \\(b\\).", "Roots \\(p,\\bar p,q,\\bar q\\). Given \\(pq=13+i,\\; \\bar p+\\bar q=3+4i\\). Then \\(b = |p|^2+|q|^2 + (pq+\\bar p\\bar q) + (p\\bar q+\\bar p q) = 26+25 = 51\\)."],
+          [7, "Let \\(x,y\\) be real with \\(x+y=4,\\; x^3+y^3=28\\). Find \\(x^5+y^5\\).", "\\(p=3\\). Recurrence: \\(S_2=10,\\;S_3=28,\\;S_4=82,\\;S_5=244\\)."],
+          [8, "Let \\(r,s\\) be roots of \\(t^2-5t+2=0\\). Compute \\(r^4+s^4+(r^2+s^2)rs\\).", "\\(r^2+s^2=21,\\;r^4+s^4=433,\\;(r^2+s^2)rs=42\\). Sum=\\(475\\)."],
+          [9, "Let \\(a,b\\) be roots of \\(x^2-6x+2=0\\). Find \\(a^3+b^3+a^2b+ab^2\\).", "\\(a^3+b^3=180,\\;a^2b+ab^2=12\\). Sum=\\(192\\)."],
+          [10, "Let \\(p,q\\) be roots of \\(x^2-4x+1=0\\). Find \\(p^7+q^7\\).", "Recurrence: \\(S_7=10084\\)."],
+        ]
+      }
+    ]
+  },
+  {
+    id: "ineq-lesson",
+    title: "Inequalities I \u2014 Lesson",
+    sub: "AM-GM, Cauchy-Schwarz, Engel Form",
+    type: "lesson",
+    sections: [
+      {
+        h: "1. AM-GM (Arithmetic Mean \u2265 Geometric Mean)",
+        c: [
+          { t: "p", v: "For nonnegative \\(a_1,\\dots,a_n\\):" },
+          { t: "d", v: "\\frac{a_1 + a_2 + \\cdots + a_n}{n} \\ge (a_1 a_2 \\cdots a_n)^{1/n}" },
+          { t: "p", v: "Equality iff \\(a_1 = a_2 = \\cdots = a_n\\)." },
+          { t: "h4", v: "Two-variable case" },
+          { t: "d", v: "\\frac{a+b}{2} \\ge \\sqrt{ab} \\quad\\Longleftrightarrow\\quad a+b \\ge 2\\sqrt{ab}" },
+          { t: "h4", v: "Three-variable case" },
+          { t: "d", v: "\\frac{a+b+c}{3} \\ge \\sqrt[3]{abc} \\quad\\Longleftrightarrow\\quad a+b+c \\ge 3\\sqrt[3]{abc}" },
+          { t: "h4", v: "How to use it" },
+          { t: "p", v: "If the product is constant, AM-GM gives the minimum sum. If the sum is constant, it gives the maximum product." },
+          { t: "ex", title: "Example 1", v: "Minimize \\(x + \\frac{4}{x}\\) for \\(x > 0\\).<br><br>By AM-GM: \\(\\frac{x + 4/x}{2} \\ge \\sqrt{x \\cdot 4/x} = 2 \\Rightarrow x + \\frac{4}{x} \\ge 4\\).<br>Equality at \\(x = \\frac{4}{x} \\Rightarrow x=2\\)." },
+          { t: "ex", title: "Example 2", v: "Minimize \\(3x + \\frac{12}{x^2}\\) for \\(x > 0\\).<br><br>Split \\(3x\\) as \\(\\frac{3x}{2}+\\frac{3x}{2}\\) and apply AM-GM to three terms:<br>\\(\\frac{3x/2 + 3x/2 + 12/x^2}{3} \\ge \\left(\\frac{3x}{2}\\cdot\\frac{3x}{2}\\cdot\\frac{12}{x^2}\\right)^{1/3} = 27^{1/3}=3\\)<br>So \\(3x + \\frac{12}{x^2} \\ge 9\\). Equality at \\(x=2\\)." },
+          { t: "h4", v: "Key technique: splitting terms" },
+          { t: "p", v: "When a term like \\(kx\\) appears, split it into \\(k\\) copies of \\(x\\) (or equal parts) so variables cancel when multiplied." },
+        ]
+      },
+      {
+        h: "2. Cauchy-Schwarz Inequality",
+        c: [
+          { t: "p", v: "For any real \\(a_1,\\dots,a_n,\\; b_1,\\dots,b_n\\):" },
+          { t: "d", v: "(a_1^2 + \\cdots + a_n^2)(b_1^2 + \\cdots + b_n^2) \\ge (a_1b_1 + \\cdots + a_nb_n)^2" },
+          { t: "p", v: "Equality when \\((a_1,\\dots,a_n)\\) is proportional to \\((b_1,\\dots,b_n)\\)." },
+          { t: "h4", v: "Two-variable form" },
+          { t: "d", v: "(a^2+b^2)(x^2+y^2) \\ge (ax+by)^2" },
+          { t: "h4", v: "Three-variable form" },
+          { t: "d", v: "(a^2+b^2+c^2)(x^2+y^2+z^2) \\ge (ax+by+cz)^2" },
+          { t: "ex", title: "Example 3", v: "For \\(x,y>0\\) with \\(x+2y=6\\), minimize \\(x^2+y^2\\).<br><br>By Cauchy: \\((x^2+y^2)(1^2+2^2) \\ge (x+2y)^2 = 36 \\Rightarrow x^2+y^2 \\ge \\frac{36}{5}\\).<br>Equality: \\(\\frac{x}{1} = \\frac{y}{2} \\Rightarrow y=2x,\\; x+4x=6 \\Rightarrow x=\\frac65,\\; y=\\frac{12}{5}\\)." },
+          { t: "ex", title: "Example 4", v: "For \\(a,b,c>0\\) with \\(a+b+c=1\\), minimize \\(a^2+b^2+c^2\\).<br><br>\\((a^2+b^2+c^2)(1+1+1) \\ge (a+b+c)^2 = 1 \\Rightarrow a^2+b^2+c^2 \\ge \\frac13\\).<br>Equality at \\(a=b=c=\\frac13\\)." },
+        ]
+      },
+      {
+        h: "3. Engel Form (Titu\u2019s Lemma)",
+        c: [
+          { t: "p", v: "For \\(b_1,\\dots,b_n > 0\\):" },
+          { t: "d", v: "\\frac{a_1^2}{b_1} + \\cdots + \\frac{a_n^2}{b_n} \\ge \\frac{(a_1+\\cdots+a_n)^2}{b_1+\\cdots+b_n}" },
+          { t: "p", v: "Equality when \\(\\frac{a_1}{b_1} = \\cdots = \\frac{a_n}{b_n}\\)." },
+          { t: "ex", title: "Example 5", v: "For \\(x,y>0\\) with \\(x+y=1\\), minimize \\(\\frac1x + \\frac1y\\).<br><br>Rewrite: \\(\\frac{1^2}{x} + \\frac{1^2}{y} \\ge \\frac{(1+1)^2}{x+y} = \\frac{4}{1} = 4\\).<br>Equality at \\(x=y=\\frac12\\)." },
+          { t: "ex", title: "Example 6", v: "Prove \\((a+b+c)(\\frac1a+\\frac1b+\\frac1c) \\ge 9\\) for \\(a,b,c>0\\).<br><br>\\(\\frac1a+\\frac1b+\\frac1c = \\frac{1^2}{a}+\\frac{1^2}{b}+\\frac{1^2}{c} \\ge \\frac{(1+1+1)^2}{a+b+c} = \\frac{9}{a+b+c}\\).<br>Multiply by \\(a+b+c\\) to get the result. Equality at \\(a=b=c\\)." },
+        ]
+      },
+      {
+        h: "4. Strategy Guide",
+        c: [
+          { t: "table", headers: ["Problem looks like", "Try"], rows: [
+            ["Sum of terms, product constant", "AM-GM"],
+            ["Sum of squares \\(\\times\\) sum of squares", "Cauchy-Schwarz"],
+            ["Sum of fractions with squares on top", "Engel Form"],
+            ["Sum of reciprocals with fixed sum", "Engel or AM-GM"],
+            ["Minimize sum given fixed sum of squares", "Cauchy (or QM-AM)"],
+            ["Product of sums", "AM-GM or Cauchy"],
+          ]},
+        ]
+      },
+      {
+        h: "5. Checking Equality Conditions",
+        c: [
+          { t: "p", v: "A proof is incomplete without verifying equality is attainable.<br><br>Example: To show min of \\(x+\\frac{4}{x}\\) is \\(4\\) for \\(x>0\\), we need \\(x = \\frac{4}{x}\\) and \\(x>0\\) \\(\\Rightarrow x=2\\), which is valid. The bound is tight.<br><br>If equality leads to a contradiction (e.g., negative value when variables must be positive), your application is wrong." },
+        ]
+      },
+      {
+        h: "6. Common Mistakes Checklist",
+        c: [
+          { t: "ul", v: [
+            "Variables nonnegative when using AM-GM?",
+            "Equality case achievable with given constraints?",
+            "Inequality direction correct? (AM \\(\\ge\\) GM, not GM \\(\\ge\\) AM)",
+            "Applied to the right expression? (e.g., Engel requires squares in numerator)",
+            "All terms accounted for after splitting?",
+            "Multiplying both sides by something that could be negative?",
+          ]},
+        ]
+      }
+    ]
+  },
+  {
+    id: "ineq-practice",
+    title: "Inequalities I \u2014 Practice",
+    sub: "20 problems covering AM-GM, Cauchy, Engel",
+    type: "prac",
+    levels: [
+      {
+        n: "Level 1: Direct AM-GM",
+        probs: [
+          [1, "For \\(x > 0\\), find the minimum of \\(x + \\frac{4}{x}\\).", "AM-GM: \\(x + \\frac{4}{x} \\ge 2\\sqrt{x \\cdot \\frac{4}{x}} = 4\\), equality at \\(x = 2\\)."],
+          [2, "For \\(x > 0\\), find the minimum of \\(2x + \\frac{3}{x}\\).", "AM-GM: \\(2x + \\frac{3}{x} \\ge 2\\sqrt{2x \\cdot \\frac{3}{x}} = 2\\sqrt{6}\\), equality at \\(x = \\sqrt{3/2}\\)."],
+          [3, "For positive \\(a,b\\) with \\(a+b=10\\), find the maximum of \\(ab\\).", "AM-GM: \\(\\frac{a+b}{2} \\ge \\sqrt{ab} \\Rightarrow 5 \\ge \\sqrt{ab} \\Rightarrow ab \\le 25\\), equality at \\(a=b=5\\)."],
+          [4, "For positive \\(x,y\\) with \\(xy=16\\), find the minimum of \\(x+y\\).", "AM-GM: \\(\\frac{x+y}{2} \\ge \\sqrt{xy} = 4 \\Rightarrow x+y \\ge 8\\), equality at \\(x=y=4\\)."],
+          [5, "For \\(a,b > 0\\), prove \\(\\frac{a}{b} + \\frac{b}{a} \\ge 2\\).", "AM-GM: \\(\\frac{a}{b}+\\frac{b}{a} \\ge 2\\sqrt{\\frac{a}{b}\\cdot\\frac{b}{a}} = 2\\), equality at \\(a=b\\)."],
+          [6, "For \\(x > 0\\), find the minimum of \\(9x^2 + \\frac{1}{x^2}\\).", "AM-GM: \\(9x^2+\\frac{1}{x^2} \\ge 2\\sqrt{9x^2\\cdot\\frac{1}{x^2}} = 6\\), equality at \\(9x^2=\\frac1{x^2} \\Rightarrow x=\\frac1{\\sqrt3}\\)."],
+        ]
+      },
+      {
+        n: "Level 2: AM-GM with 3+ Terms",
+        probs: [
+          [7, "For \\(x > 0\\), find the minimum of \\(x^2 + \\frac{2}{x}\\).", "Split as \\(x^2,\\; \\frac1x,\\; \\frac1x\\): \\(\\frac{x^2+1/x+1/x}{3} \\ge (x^2\\cdot\\frac1x\\cdot\\frac1x)^{1/3}=1 \\Rightarrow x^2+\\frac2x \\ge 3\\). Equality at \\(x=1\\)."],
+          [8, "For positive \\(a,b,c\\) with \\(abc=8\\), find the minimum of \\(a+b+c\\).", "AM-GM: \\(\\frac{a+b+c}{3} \\ge \\sqrt[3]{abc}=2 \\Rightarrow a+b+c \\ge 6\\), equality at \\(a=b=c=2\\)."],
+          [9, "For \\(x > 0\\), find the minimum of \\(x + \\frac{1}{x^2}\\).", "Split as \\(\\frac{x}{2},\\; \\frac{x}{2},\\; \\frac{1}{x^2}\\): \\(\\frac{x/2+x/2+1/x^2}{3} \\ge (\\frac{x}{2}\\cdot\\frac{x}{2}\\cdot\\frac{1}{x^2})^{1/3} = (\\frac14)^{1/3}\\). So \\(x+\\frac{1}{x^2} \\ge 3\\sqrt[3]{\\frac14}\\)."],
+          [10, "For positive \\(a,b,c\\) with \\(a+b+c=6\\), find max of \\(abc\\).", "AM-GM: \\(2 \\ge \\sqrt[3]{abc} \\Rightarrow abc \\le 8\\), equality at \\(a=b=c=2\\)."],
+        ]
+      },
+      {
+        n: "Level 3: Cauchy-Schwarz",
+        probs: [
+          [11, "Find min of \\(\\frac1a+\\frac1b\\) given \\(a,b>0,\\; a+b=1\\).", "Engel: \\(\\frac{1^2}{a}+\\frac{1^2}{b} \\ge \\frac{(1+1)^2}{a+b} = 4\\). Equality at \\(a=b=\\frac12\\)."],
+          [12, "For positive \\(x,y\\) with \\(x+2y=6\\), find min of \\(x^2+y^2\\).", "Cauchy: \\((x^2+y^2)(1+4) \\ge (x+2y)^2=36 \\Rightarrow x^2+y^2 \\ge \\frac{36}{5}\\)."],
+          [13, "For real \\(a,b,c\\) with \\(a+b+c=1\\), find min of \\(a^2+b^2+c^2\\).", "Cauchy: \\((a^2+b^2+c^2)(3) \\ge 1 \\Rightarrow a^2+b^2+c^2 \\ge \\frac13\\)."],
+          [14, "For positive \\(x,y,z\\) with \\(x+y+z=3\\), find min of \\(\\frac1x+\\frac1y+\\frac1z\\).", "Engel: \\(\\frac{1^2}{x}+\\frac{1^2}{y}+\\frac{1^2}{z} \\ge \\frac{9}{3}=3\\). Equality at \\(x=y=z=1\\)."],
+        ]
+      },
+      {
+        n: "Level 4: Choosing the Right Tool",
+        probs: [
+          [15, "Find min of \\(x^2+\\frac{1}{x^2}\\) for \\(x \\neq 0\\).", "AM-GM: \\(x^2+\\frac{1}{x^2} \\ge 2\\). Equality at \\(x=\\pm1\\)."],
+          [16, "For \\(a,b,c>0\\), prove \\((a+b+c)(\\frac1a+\\frac1b+\\frac1c) \\ge 9\\).", "By Engel: \\(\\frac1a+\\frac1b+\\frac1c \\ge \\frac{9}{a+b+c}\\). Multiply both sides. Equality at \\(a=b=c\\)."],
+          [17, "For real \\(x,y\\) with \\(x^2+y^2=4\\), find max of \\(|x+y|\\).", "Cauchy: \\((x^2+y^2)(1+1) \\ge (x+y)^2 \\Rightarrow |x+y| \\le 2\\sqrt2\\)."],
+          [18, "For positive \\(x,y\\), find min of \\((x+y)(\\frac1x+\\frac1y)\\).", "Expand: \\(2+\\frac{x}{y}+\\frac{y}{x} \\ge 2+2 = 4\\). Equality at \\(x=y\\)."],
+          [19, "For \\(a,b>0\\) with \\(a+b=2\\), find min of \\(a^2+b^2\\).", "Cauchy: \\((a^2+b^2)(2) \\ge 4 \\Rightarrow a^2+b^2 \\ge 2\\). Equality at \\(a=b=1\\)."],
+          [20, "For positive \\(a,b,c\\) with \\(a^2+b^2+c^2=12\\), find max of \\(a+b+c\\).", "Cauchy: \\((a+b+c)^2 \\le 3\\cdot12 = 36 \\Rightarrow a+b+c \\le 6\\)."],
+        ]
+      }
+    ]
+  }
+];
+
+// State
+let cur = "sym-practice";
+let sols = JSON.parse(localStorage.getItem("msol") || "{}");
+let openSols = {};
+
+function key(s, p) { return s + "-" + p; }
+function done(s, p) { return !!sols[key(s, p)]; }
+function toggle(s, p) {
+  const k = key(s, p);
+  sols[k] = !sols[k];
+  localStorage.setItem("msol", JSON.stringify(sols));
+  render();
+}
+
+function render() {
+  // Sidebar
+  let side = '<div class="sidebar-header"><h1>Math Olympiad</h1><p>Study App</p></div>';
+  SECTIONS.forEach(sec => {
+    side += '<div class="nav-group"><div class="nav-label">' + (sec.type === "lesson" ? "Lesson" : "Practice") + '</div>';
+    side += '<div class="nav-item' + (cur === sec.id ? " active" : "") + '" onclick="go(\'' + sec.id + '\')">' + sec.title;
+    if (sec.type === "prac") {
+      let t = 0, d = 0;
+      sec.levels.forEach(l => l.probs.forEach(p => { t++; if (done(sec.id, p[0])) d++; }));
+      side += ' <span class="count">' + d + '/' + t + '</span>';
+    }
+    side += '</div></div>';
+  });
+  document.getElementById("sidebar").innerHTML = side;
+
+  // Main content
+  const sec = SECTIONS.find(s => s.id === cur);
+  const main = document.getElementById("main");
+  if (sec.type === "lesson") renderLesson(main, sec);
+  else renderPrac(main, sec);
+}
+
+function renderPrac(main, sec) {
+  let t = 0, d = 0;
+  sec.levels.forEach(l => l.probs.forEach(p => { t++; if (done(sec.id, p[0])) d++; }));
+  let html = '<h2>' + sec.title + '</h2><p class="subtitle">' + sec.sub + '</p>';
+  html += '<div class="progress"><div class="progress-fill" style="width:' + (t ? (d/t*100) : 0) + '%"></div></div>';
+  sec.levels.forEach(l => {
+    html += '<div class="lvl">' + l.n + '</div>';
+    l.probs.forEach(p => {
+      const sid = sec.id, pid = p[0], solved = done(sid, pid), open = !!openSols[key(sid, pid)];
+      html += '<div class="card"><div class="card-top" onclick="toggleSol(\'' + sid + '\',' + pid + ')">';
+      html += '<div class="num' + (solved ? ' done' : '') + '">' + (solved ? '&#10003;' : pid) + '</div>';
+      html += '<div class="card-body"><p>' + R(p[1]) + '</p>';
+      html += '<span class="tag' + (solved ? ' done' : '') + '">' + (solved ? 'Solved' : 'Unsolved') + '</span>';
+      html += '</div><div class="acts" onclick="event.stopPropagation()">';
+      html += '<button class="btn ' + (solved ? 'btn-green' : 'btn-primary') + '" onclick="toggle(\'' + sid + '\',' + pid + ')">' + (solved ? 'Solved' : 'Mark Solved') + '</button>';
+      html += '<button class="btn" onclick="toggleSol(\'' + sid + '\',' + pid + ')">' + (open ? 'Hide' : 'Show') + ' Solution</button>';
+      html += '</div></div>';
+      if (open) html += '<div class="sol"><div class="sol-label">Solution</div>' + R(p[2]) + '</div>';
+      html += '</div>';
+    });
+  });
+  main.innerHTML = html;
+}
+
+function renderLesson(main, sec) {
+  let html = '<h2>' + sec.title + '</h2><p class="subtitle">' + sec.sub + '</p>';
+  sec.sections.forEach(s => {
+    html += '<div class="lesson"><h3>' + R(s.h) + '</h3>';
+    s.c.forEach(item => {
+      if (item.t === "p") html += '<p>' + R(item.v) + '</p>';
+      else if (item.t === "d") html += K.renderToString(item.v, Object.assign({}, opts, { displayMode: true }));
+      else if (item.t === "h4") html += '<h4>' + R(item.v) + '</h4>';
+      else if (item.t === "ex") html += '<div class="ex"><div class="ex-title">' + item.title + '</div>' + R(item.v) + '</div>';
+      else if (item.t === "table") {
+        html += '<table><thead><tr>';
+        item.headers.forEach(h => html += '<th>' + h + '</th>');
+        html += '</tr></thead><tbody>';
+        item.rows.forEach(r => html += '<tr><td>' + R(r[0]) + '</td><td>' + r[1] + '</td></tr>');
+        html += '</tbody></table>';
+      }
+      else if (item.t === "ul") {
+        html += '<ul>';
+        item.v.forEach(x => html += '<li>' + R(x) + '</li>');
+        html += '</ul>';
+      }
+    });
+    html += '</div>';
+  });
+  main.innerHTML = html;
+}
+
+function toggleSol(s, p) {
+  const k = key(s, p);
+  openSols[k] = !openSols[k];
+  render();
+}
+
+function go(id) { cur = id; openSols = {}; render(); }
+
+render();
+</script>
+</body>
+</html>
