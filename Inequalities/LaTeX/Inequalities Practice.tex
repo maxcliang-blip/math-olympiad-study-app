@@ -1,0 +1,94 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage[margin=1in]{geometry}
+
+\title{Inequalities I — Practice Problems}
+\author{}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\section*{Key Formulas}
+
+\textbf{AM-GM:} $\dfrac{a + b}{2} \geq \sqrt{ab}$ for $a,b \geq 0$, equality iff $a = b$.
+For $n$ numbers:
+\[
+\frac{a_1 + \cdots + a_n}{n} \geq \sqrt[n]{a_1 \cdots a_n}
+\]
+
+\textbf{Cauchy-Schwarz:}
+\[
+(a_1^2 + \cdots + a_n^2)(b_1^2 + \cdots + b_n^2) \geq (a_1b_1 + \cdots + a_nb_n)^2
+\]
+Equality when $(a_1,\dots,a_n)$ is proportional to $(b_1,\dots,b_n)$.
+
+\textbf{Engel Form (Titu's Lemma):}
+\[
+\frac{a_1^2}{b_1} + \cdots + \frac{a_n^2}{b_n} \geq \frac{(a_1 + \cdots + a_n)^2}{b_1 + \cdots + b_n}
+\]
+for $b_i > 0$.
+
+\bigskip
+\hrule
+
+\section{Level 1: Direct AM-GM}
+
+\begin{enumerate}
+  \item For $x > 0$, find the minimum of $x + \dfrac{4}{x}$.
+
+  \item For $x > 0$, find the minimum of $2x + \dfrac{3}{x}$.
+
+  \item For positive $a,b$ with $a + b = 10$, find the maximum of $ab$.
+
+  \item For positive $x,y$ with $xy = 16$, find the minimum of $x + y$.
+
+  \item For $a,b > 0$, prove $\dfrac{a}{b} + \dfrac{b}{a} \geq 2$.
+
+  \item For $x > 0$, find the minimum of $9x^2 + \dfrac{1}{x^2}$.
+\end{enumerate}
+
+\section{Level 2: AM-GM with 3+ Terms}
+
+\begin{enumerate}[resume]
+  \item For $x > 0$, find the minimum of $x^2 + \dfrac{2}{x}$.
+
+  \item For positive $a,b,c$ with $abc = 8$, find the minimum of $a + b + c$.
+
+  \item For $x > 0$, find the minimum of $x + \dfrac{1}{x^2}$.
+
+  \item For positive $a,b,c$ with $a + b + c = 6$, find the maximum of $abc$.
+\end{enumerate}
+
+\section{Level 3: Cauchy-Schwarz}
+
+\begin{enumerate}[resume]
+  \item Find the minimum of $\dfrac{1}{a} + \dfrac{1}{b}$ given $a,b > 0$ and $a + b = 1$.
+
+  \item For positive $x,y$ with $x + 2y = 6$, find the minimum of $x^2 + y^2$.
+
+  \item For real numbers $a,b,c$ with $a + b + c = 1$, find the minimum of $a^2 + b^2 + c^2$.
+
+  \item For positive $x,y,z$ with $x + y + z = 3$, find the minimum of $\dfrac{1}{x} + \dfrac{1}{y} + \dfrac{1}{z}$.
+\end{enumerate}
+
+\section{Level 4: Choosing the Right Tool}
+
+\begin{enumerate}[resume]
+  \item Find the minimum of $x^2 + \dfrac{1}{x^2}$ for $x \neq 0$.
+
+  \item For positive $a,b,c$, prove $(a + b + c)\left(\dfrac{1}{a} + \dfrac{1}{b} + \dfrac{1}{c}\right) \geq 9$.
+
+  \item For real numbers $x,y$ with $x^2 + y^2 = 4$, find the maximum of $|x + y|$.
+
+  \item For positive $x,y$, find the minimum of $(x + y)\left(\dfrac{1}{x} + \dfrac{1}{y}\right)$.
+
+  \item For $a,b > 0$ with $a + b = 2$, find the minimum of $a^2 + b^2$.
+
+  \item For positive $a,b,c$ with $a^2 + b^2 + c^2 = 12$, find the maximum of $a + b + c$.
+\end{enumerate}
+
+\end{document}

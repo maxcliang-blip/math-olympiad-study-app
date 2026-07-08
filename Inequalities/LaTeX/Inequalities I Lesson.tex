@@ -1,0 +1,171 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage[margin=1in]{geometry}
+
+\title{Inequalities I — Detailed Lesson}
+\author{}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\section{AM-GM (Arithmetic Mean $\geq$ Geometric Mean)}
+
+\subsection{Statement}
+
+For nonnegative real numbers $a_1, a_2, \dots, a_n$:
+\[
+\frac{a_1 + a_2 + \cdots + a_n}{n} \geq \sqrt[n]{a_1 a_2 \cdots a_n}
+\]
+Equality holds iff $a_1 = a_2 = \cdots = a_n$.
+
+\subsection{Two-variable case}
+\[
+\frac{a + b}{2} \geq \sqrt{ab} \quad\Longleftrightarrow\quad a + b \geq 2\sqrt{ab}
+\]
+
+\subsection{Three-variable case}
+\[
+\frac{a + b + c}{3} \geq \sqrt[3]{abc} \quad\Longleftrightarrow\quad a + b + c \geq 3\sqrt[3]{abc}
+\]
+
+\subsection{Key idea}
+If the product of your terms is constant, AM-GM gives the minimum of their sum. If the sum is constant, it gives the maximum of their product.
+
+\subsection{Worked Example 1}
+Find the minimum of $x + \dfrac{4}{x}$ for $x > 0$.
+
+Apply AM-GM to $x$ and $\dfrac{4}{x}$:
+\[
+\frac{x + \frac{4}{x}}{2} \geq \sqrt{x \cdot \frac{4}{x}} = \sqrt{4} = 2
+\]
+So $x + \dfrac{4}{x} \geq 4$. Equality when $x = \dfrac{4}{x} \Rightarrow x^2 = 4 \Rightarrow x = 2$.
+
+\subsection{Worked Example 2}
+Find the minimum of $3x + \dfrac{12}{x^2}$ for $x > 0$.
+
+Split $3x$ as $\dfrac{3x}{2} + \dfrac{3x}{2}$ and apply AM-GM:
+\[
+\frac{\frac{3x}{2} + \frac{3x}{2} + \frac{12}{x^2}}{3} \geq \sqrt[3]{\frac{3x}{2} \cdot \frac{3x}{2} \cdot \frac{12}{x^2}} = \sqrt[3]{\frac{9x^2}{4} \cdot \frac{12}{x^2}} = \sqrt[3]{27} = 3
+\]
+So $3x + \dfrac{12}{x^2} \geq 9$. Equality when $\dfrac{3x}{2} = \dfrac{12}{x^2} \Rightarrow x^3 = 8 \Rightarrow x = 2$.
+
+\subsection{Splitting technique}
+When you have $kx$, split it into $k$ copies of $x$ (or equal parts) so the variable cancels when multiplied with other terms.
+
+\newpage
+
+\section{Cauchy-Schwarz Inequality}
+
+\subsection{Statement}
+For any real numbers $a_1, \dots, a_n$, $b_1, \dots, b_n$:
+\[
+(a_1^2 + a_2^2 + \cdots + a_n^2)(b_1^2 + b_2^2 + \cdots + b_n^2) \geq (a_1 b_1 + a_2 b_2 + \cdots + a_n b_n)^2
+\]
+Equality when $(a_1, \dots, a_n)$ is proportional to $(b_1, \dots, b_n)$, i.e.
+\[
+\frac{a_1}{b_1} = \frac{a_2}{b_2} = \cdots = \frac{a_n}{b_n}.
+\]
+
+\subsection{Two-variable form}
+\[
+(a^2 + b^2)(x^2 + y^2) \geq (ax + by)^2
+\]
+
+\subsection{Three-variable form}
+\[
+(a^2 + b^2 + c^2)(x^2 + y^2 + z^2) \geq (ax + by + cz)^2
+\]
+
+\subsection{Worked Example 3}
+For positive $x, y$ with $x + 2y = 6$, find the minimum of $x^2 + y^2$.
+
+\[
+(x^2 + y^2)(1^2 + 2^2) \geq (x \cdot 1 + y \cdot 2)^2 = (x + 2y)^2 = 36
+\]
+So $(x^2 + y^2)(5) \geq 36 \Rightarrow x^2 + y^2 \geq \dfrac{36}{5}$.
+Equality when $\dfrac{x}{1} = \dfrac{y}{2} \Rightarrow y = 2x$. Then $x + 4x = 6 \Rightarrow x = \dfrac{6}{5},\; y = \dfrac{12}{5}$.
+
+\subsection{Worked Example 4}
+For $a, b, c > 0$ with $a + b + c = 1$, find the minimum of $a^2 + b^2 + c^2$.
+\[
+(a^2 + b^2 + c^2)(1^2 + 1^2 + 1^2) \geq (a + b + c)^2 = 1
+\]
+So $3(a^2 + b^2 + c^2) \geq 1 \Rightarrow a^2 + b^2 + c^2 \geq \dfrac{1}{3}$.
+Equality when $a = b = c = \dfrac{1}{3}$.
+
+\newpage
+
+\section{Engel Form (Titu's Lemma)}
+
+\subsection{Statement}
+For $b_1, b_2, \dots, b_n > 0$:
+\[
+\frac{a_1^2}{b_1} + \frac{a_2^2}{b_2} + \cdots + \frac{a_n^2}{b_n} \geq \frac{(a_1 + a_2 + \cdots + a_n)^2}{b_1 + b_2 + \cdots + b_n}
+\]
+Equality when $\dfrac{a_1}{b_1} = \dfrac{a_2}{b_2} = \cdots = \dfrac{a_n}{b_n}$.
+
+This is a direct corollary of Cauchy-Schwarz (take $\frac{a_i}{\sqrt{b_i}}$ and $\sqrt{b_i}$).
+
+\subsection{Worked Example 5}
+For $x, y > 0$ with $x + y = 1$, find the minimum of $\dfrac{1}{x} + \dfrac{1}{y}$.
+\[
+\frac{1^2}{x} + \frac{1^2}{y} \geq \frac{(1 + 1)^2}{x + y} = \frac{4}{1} = 4
+\]
+So $\dfrac{1}{x} + \dfrac{1}{y} \geq 4$. Equality when $x = y = \dfrac{1}{2}$.
+
+\subsection{Worked Example 6}
+For $a, b, c > 0$, prove $(a + b + c)\left(\dfrac{1}{a} + \dfrac{1}{b} + \dfrac{1}{c}\right) \geq 9$.
+\[
+\frac{1}{a} + \frac{1}{b} + \frac{1}{c} = \frac{1^2}{a} + \frac{1^2}{b} + \frac{1^2}{c} \geq \frac{(1+1+1)^2}{a+b+c} = \frac{9}{a+b+c}
+\]
+So $(a+b+c)\left(\frac{1}{a} + \frac{1}{b} + \frac{1}{c}\right) \geq 9$.
+Equality when $a = b = c$.
+
+\newpage
+
+\section{Strategy Guide}
+
+\begin{center}
+\begin{tabular}{|l|l|}
+\hline
+\textbf{Problem looks like} & \textbf{Try} \\
+\hline
+Sum of terms, product is constant & AM-GM \\
+\hline
+Sum of squares $\times$ sum of squares & Cauchy-Schwarz \\
+\hline
+Sum of fractions $\frac{\square^2}{\square}$ & Engel Form \\
+\hline
+Sum of reciprocals with fixed sum & Engel or AM-GM \\
+\hline
+Minimize sum given fixed sum of squares & Cauchy (or QM-AM) \\
+\hline
+Product of sums & AM-GM or Cauchy \\
+\hline
+\end{tabular}
+\end{center}
+
+\section{Checking Equality Conditions}
+
+A proof is incomplete without verifying equality is attainable.
+
+Example: To show $\min\!\left(x + \frac{4}{x}\right) = 4$ for $x > 0$, we must find $x$ such that $x = \frac{4}{x}$ and $x > 0$. This gives $x = 2$, which is valid. The bound is tight.
+
+If equality leads to a contradiction (e.g., negative value when variables must be positive), your application is wrong.
+
+\section{Common Mistakes Checklist}
+
+\begin{itemize}
+  \item[\ ] Variables nonnegative when using AM-GM?
+  \item[\ ] Equality case achievable (with given constraints)?
+  \item[\ ] Inequality direction correct? (AM $\geq$ GM, not GM $\geq$ AM)
+  \item[\ ] Applied to the right expression? (e.g., Engel requires squares in numerator)
+  \item[\ ] All terms accounted for after splitting?
+  \item[\ ] Multiplying both sides by something that could be negative?
+\end{itemize}
+
+\end{document}
