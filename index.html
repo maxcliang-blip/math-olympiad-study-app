@@ -620,7 +620,7 @@ function importProgress(input) {
       if (data.sols) { sols = data.sols; localStorage.setItem("msol", JSON.stringify(sols)); }
       if (data.checkStates) { checkStates = data.checkStates; localStorage.setItem("mcheck", JSON.stringify(checkStates)); }
       syncSave();
-      render();
+syncLoad().then(() => render());
     } catch(err) {
       alert("Invalid progress file.");
     }
