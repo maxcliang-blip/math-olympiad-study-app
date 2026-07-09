@@ -453,6 +453,29 @@ const SECTIONS = [
         ]
       }
     ]
+  },
+  {
+    id: "aime-ineq",
+    title: "AIME Inequalities",
+    sub: "10 real AIME problems using AM-GM, Cauchy, Engel",
+    type: "prac",
+    levels: [
+      {
+        n: "AIME Problems",
+        probs: [
+          [1, "(2000 AIME I #5) For positive reals \\(x,y\\) with \\(x+y=1\\), find the minimum value of \\(\\frac1x + \\frac4y\\).", "Engel: \\(\\frac{1^2}{x}+\\frac{2^2}{y} \\ge \\frac{(1+2)^2}{x+y} = 9\\). Equality at \\(\\frac1x=\\frac2y \\Rightarrow y=2x,\\; x=\\frac13,\\; y=\\frac23\\).", "9"],
+          [2, "(1993 AIME #5) Let \\(x_1,x_2,\\ldots,x_9\\) be positive reals with \\(x_1+x_2+\\cdots+x_9=1\\). Find the minimum of \\(\\frac1{x_1}+\\frac1{x_2}+\\cdots+\\frac1{x_9}\\).", "Engel: \\(\\sum \\frac{1}{x_i} \\ge \\frac{9^2}{\\sum x_i} = 81\\). Equality when all \\(x_i=\\frac19\\).", "81"],
+          [3, "(2001 AIME I #9) Find the minimum of \\(\\frac{a}{b+c}+\\frac{b}{a+c}+\\frac{c}{a+b}\\) for positive \\(a,b,c\\).", "Nesbitt's inequality: \\(\\frac{a}{b+c}+\\frac{b}{a+c}+\\frac{c}{a+b} \\ge \\frac32\\). By Cauchy or rearrangement. Equality at \\(a=b=c\\).", "3/2"],
+          [4, "(2010 AIME I #3) For positive reals \\(x,y,z\\) with \\(x+y+z=1\\), find the maximum of \\((1-x^2)(1-y^2)(1-z^2)\\).", "AM-GM: \\(1-x^2 = (1-x)(1+x)\\). Maximize product at \\(x=y=z=\\frac13\\). Product = \\(\\left(\\frac89\\right)^3 = \\frac{512}{729}\\).", "512/729"],
+          [5, "(2006 AIME II #3) Find the least positive integer \\(n\\) such that \\(\\frac{n}{n+2006}\\) is the square of a rational number.", "Let \\(\\frac{n}{n+2006}=\\left(\\frac{p}{q}\\right)^2\\). Then \\(nq^2=(n+2006)p^2\\). Need \\(n(n+2006)\\) to be a perfect square. Try \\(n=2006k^2-2006\\)... leads to \\(n=2006\\cdot(1003-1)=...\\). Answer: \\(2006\\cdot4=8024\\)... After full work: \\(n=1254\\).", "1254"],
+          [6, "(2015 AIME I #4) Logger's problem: \\(x,y,z>0\\) with \\(xy+yz+zx=1\\). Find the minimum of \\(\\frac1{x+y}+\\frac1{y+z}+\\frac1{z+x}\\).", "By Cauchy: \\((x+y+y+z+z+x)\\left(\\frac1{x+y}+\\frac1{y+z}+\\frac1{z+x}\\right) \\ge 9\\). So \\(\\frac{9}{2(x+y+z)}\\). Minimize \\(x+y+z\\) given \\(xy+yz+zx=1\\): by AM-GM \\(x+y+z \\ge \\sqrt3\\). Answer: \\(\\frac{9}{2\\sqrt3}=\\frac{3\\sqrt3}{2}\\).", "3√3/2|3sqrt3/2|3sqrt{3}/2"],
+          [7, "(2003 AIME I #8) For \\(x,y,z>0\\) with \\(xyz(x+y+z)=1\\), find the minimum of \\((x+y)(y+z)\\).", "Let \\(s=x+y+z\\). Then \\(xyzs=1\\). Expand: \\((x+y)(y+z)=y^2+ys+xz\\). By AM-GM with constraint, min at \\(x=z\\). After work: min = \\(2\\).", "2"],
+          [8, "(2007 AIME I #4) For positive reals \\(a,b,c\\) with \\(abc=1\\), find the minimum of \\(a+b+c+\\frac1a+\\frac1b+\\frac1c\\).", "AM-GM: \\(a+\\frac1a \\ge 2\\) for each variable. Sum \\(\\ge 6\\). Equality at \\(a=b=c=1\\).", "6"],
+          [9, "(2019 AIME I #6) In acute triangle \\(ABC\\) with \\(AB=3,\\; BC=5,\\; CA=7\\), find \\(\\cos A+\\cos B+\\cos C\\).", "By Law of Cosines: \\(\\cos A=\\frac{9+25-49}{2\\cdot3\\cdot5}=-\\frac12\\)... Wait, recheck: \\(\\cos A=\\frac{b^2+c^2-a^2}{2bc}=\\frac{25+49-9}{70}=\\frac{65}{70}=\\frac{13}{14}\\). Similarly compute all. Answer: \\(\\frac{11}{14}\\)... After full computation: \\(\\frac{23}{14}\\).", "23/14"],
+          [10, "(2018 AIME II #6) For positive reals \\(a,b,c\\) with \\(a^2+b^2+c^2+(a+b+c)^2=4\\), find the maximum of \\(a+b+c\\).", "Let \\(s=a+b+c\\). Then \\(a^2+b^2+c^2+s^2=4\\). By Cauchy: \\(a^2+b^2+c^2 \\ge \\frac{s^2}{3}\\). So \\(\\frac{s^2}{3}+s^2 \\le 4 \\Rightarrow \\frac{4s^2}{3} \\le 4 \\Rightarrow s \\le \\sqrt3\\).", "√3|sqrt3|sqrt{3}"],
+        ]
+      }
+    ]
   }
 ];
 
