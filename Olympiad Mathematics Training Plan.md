@@ -1,424 +1,801 @@
-Olympiad Mathematics Training Plan
-AMC 10 Score ~130 → USAJMO/USAMO Level
+# Olympiad Mathematics Training Plan
+
+**AMC 10 Score ~130 → USAJMO/USAMO Level**
 
 Expected timeline: 2–4 years
 
-Weekly commitment:
+## Weekly commitment:
+- Minimum: 10 hours/week
+- Strong progress: 15–20 hours/week
+- Elite progress: 20–30 hours/week
 
-Minimum: 10 hours/week
-Strong progress: 15–20 hours/week
-Elite progress: 20–30 hours/week
-PHASE 1: OLYMPIAD ALGEBRA
-Duration: 8–10 weeks
+---
 
-Week 1: Polynomial Foundations
+## PHASE 1: OLYMPIAD ALGEBRA
+**Duration: 8–10 weeks**
 
-Topics:
+### Week 1: Polynomial Foundations
 
-Polynomial definitions
-Degree
-Factor Theorem
-Remainder Theorem
-Root multiplicity
-Polynomial Identity Principle
+**Topics:**
+- Polynomial definitions
+- Degree
+- Factor Theorem
+- Remainder Theorem
+- Root multiplicity
+- Polynomial Identity Principle
 
-Practice:
+**Practice:**
+- 30 polynomial problems
+- 10 AIME polynomial problems
 
-30 polynomial problems
-10 AIME polynomial problems
+**Goals:**
+- Find remainders quickly
+- Factor using roots
+- Understand why a degree n polynomial has at most n roots
 
-Goals:
+---
 
-Find remainders quickly
-Factor using roots
-Understand why a degree n polynomial has at most n roots
+### Week 2: Vieta's Formulas
 
-Week 2: Vieta's Formulas
+**Topics:**
+- Quadratic Vieta
+- Cubic Vieta
+- Reverse Vieta
+- Sum/product of roots
+- Symmetric expressions
 
-Topics:
+**Practice:**
+- 30 Vieta problems
+- 10 AIME Vieta problems
 
-Quadratic Vieta
-Cubic Vieta
-Reverse Vieta
-Sum/product of roots
-Symmetric expressions
+**Goals:**
+- Compute root expressions without solving equations
 
-Practice:
+**Examples:**
+- r1²+r2²
+- r1³+r3³
+- 1/r1+1/r2
 
-30 Vieta problems
-10 AIME Vieta problems
+---
 
-Goals:
+### Week 3: Newton Sums
 
-Compute root expressions without solving equations
+**Topics:**
+- Power sums
+- Recurrence relations
+- Computing large powers
 
-Examples:
+**Practice:**
+- Compute S5 through S20
+- AIME-style power sum problems
 
-r1²+r2²
-r1³+r2³
-1/r1+1/r2
+**Goals:**
+- Find r1^20+r2^20 without finding roots
 
-Week 3: Newton Sums
+---
 
-Topics:
+### Week 4: Symmetric Polynomials
 
-Power sums
-Recurrence relations
-Computing large powers
+**Topics:**
+- Symmetric expressions
+- Elementary symmetric polynomials
+- Fundamental theorem of symmetric polynomials
 
-Practice:
+**Practice:**
+Rewrite using only \(s = x+y\) and \(p = xy\):
+- x²+y²
+- x³+y³
+- x⁴+y⁴
+- x⁵+y⁵
 
-Compute S5 through S20
-AIME-style power sum problems
+**Goals:**
+- Convert complicated expressions into Vieta form
 
-Goals:
+---
 
-Find r1^20+r2^20 without finding roots
+### Week 5: Inequalities I
 
-Week 4: Symmetric Polynomials
+**Topics:**
+- AM-GM
+- Cauchy-Schwarz
+- Engel Form (Titu's Lemma)
+- Equality conditions
 
-Topics:
+**Practice:**
+- 30 inequality problems
 
-Symmetric expressions
-Elementary symmetric polynomials
-Fundamental theorem of symmetric polynomials
+**Goals:**
+- Identify which inequality to use
+- Verify equality is achievable
 
-Practice:
-Rewrite:
+---
 
-x²+y²
-x³+y³
-x⁴+y⁴
-x⁵+y⁵
+### Week 6: Inequalities II
 
-using only:
+**Topics:**
+- Rearrangement Inequality
+- Chebyshev's Inequality
+- Schur's Inequality
+- UVW method introduction
+- SOS (Sum of Squares)
 
-x+y
-xy
+**Practice:**
+- 30 inequality problems (AIME + Olympiad level)
 
-Goals:
+**Goals:**
+- Solve basic Olympiad inequalities
+- Recognize when to use SOS or UVW
 
-Convert complicated expressions into Vieta form
+---
 
-Week 5: Inequalities I
+### Week 7: Functional Equations I
 
-Topics:
+**Topics:**
+- Plugging in special values (0, 1, -1)
+- Plugging in x=y
+- Comparing expressions
+- Cauchy's functional equation
+- Linear functions
 
-AM-GM
-Cauchy-Schwarz
-Engel Form
-Equality conditions
+**Practice:**
+- 20 functional equations (beginner level)
 
-Practice:
+**Goals:**
+- Learn standard substitution moves
+- Recognize linear vs nonlinear solutions
 
-30 inequality problems
+---
 
-Goals:
+### Week 8: Functional Equations II
 
-Identify which inequality to use
+**Topics:**
+- Injective functions
+- Surjective functions
+- Bijective functions
+- Induction on integers → rationals → reals
+- P(x,y) substitution strategies
 
-Week 6: Inequalities II
+**Practice:**
+- 20 functional equations (USAJMO level)
 
-Topics:
+**Goals:**
+- Solve beginner USAJMO functional equations
+- Prove uniqueness of solutions
 
-Rearrangement
-Chebyshev
-Schur
-UVW introduction
+---
 
-Practice:
+## PHASE 2: NUMBER THEORY
+**Duration: 8 weeks**
 
-30 inequality problems
+### Week 9: Divisibility
 
-Goals:
+**Topics:**
+- Primes and composite numbers
+- Fundamental Theorem of Arithmetic
+- GCD and LCM
+- Euclidean Algorithm
+- Bézout's Identity
+- Divisibility rules
 
-Solve basic Olympiad inequalities
+**Practice:**
+- 30 problems
 
-Week 7: Functional Equations I
+**Goals:**
+- Compute GCD/LCM efficiently
+- Use Bézout to find integer solutions
 
-Topics:
+---
 
-Plugging in 0
-Plugging in 1
-Plugging in x=y
-Comparing expressions
+### Week 10: Modular Arithmetic
 
-Practice:
+**Topics:**
+- Congruences
+- Modular inverses
+- Linear congruences
+- Fermat's Little Theorem (preview)
+- Last digit problems
 
-20 functional equations
+**Practice:**
+- 40 problems
 
-Goals:
+**Goals:**
+- Solve modular equations quickly
+- Compute last digits of large powers
 
-Learn standard moves
+---
 
-Week 8: Functional Equations II
+### Week 11: Chinese Remainder Theorem
 
-Topics:
+**Topics:**
+- CRT statement and proof
+- Systems of congruences
+- Moduli that are not coprime
+- Construction problems
 
-Injective functions
-Surjective functions
-Induction techniques
-Olympiad functional equations
+**Practice:**
+- 20 problems
 
-Practice:
+**Goals:**
+- Solve any CRT system
+- Recognize when CRT applies to contest problems
 
-20 functional equations
+---
 
-Goals:
+### Week 12: Fermat's Little Theorem
 
-Solve beginner USAJMO functional equations
-PHASE 2: NUMBER THEORY
-Duration: 8 weeks
+**Topics:**
+- FLT: a^(p-1) ≡ 1 (mod p)
+- Modular exponentiation (binary exponentiation)
+- Wilson's Theorem
+- Applications to remainders
 
-Week 9: Divisibility
+**Practice:**
+- 30 problems
 
-Topics:
+**Goals:**
+- Compute a^n mod m for large n
+- Apply Wilson's Theorem to factorial remainders
 
-Primes
-gcd
-lcm
-Euclidean Algorithm
-Bezout
+---
 
-Practice:
+### Week 13: Euler Totient
 
-30 problems
+**Topics:**
+- φ(n) computation
+- Euler's Theorem: a^φ(n) ≡ 1 (mod n) when gcd(a,n)=1
+- Carmichael numbers
+- Order of an element
 
-Week 10: Modular Arithmetic
+**Practice:**
+- 25 problems
 
-Topics:
+**Goals:**
+- Compute φ(n) for any n
+- Use Euler's Theorem for modular arithmetic with composite moduli
 
-Congruences
-Modular inverses
-Modular equations
+---
 
-Practice:
+### Week 14: Diophantine Equations I
 
-40 problems
+**Topics:**
+- Linear Diophantine equations: ax + by = c
+- Solution parameterization
+- Nonnegative integer solutions
+- Factoring methods: xy = n
 
-Week 11: Chinese Remainder Theorem
+**Practice:**
+- 30 problems
 
-Topics:
+**Goals:**
+- Determine when solutions exist
+- Find all nonnegative solutions
+- Use Simon's Favorite Factoring Trick (SFFT)
 
-CRT
-Systems of congruences
+---
 
-Practice:
+### Week 15: Diophantine Equations II
 
-20 problems
+**Topics:**
+- Quadratic Diophantine equations
+- Pythagorean triples (primitive and general)
+- Pell's equation (x² - Dy² = 1)
+- Infinite descent
 
-Week 12: Fermat's Little Theorem
+**Practice:**
+- 20 problems
 
-Topics:
+**Goals:**
+- Generate all Pythagorean triples
+- Recognize and solve basic Pell equations
 
-FLT
-Modular exponentiation
+---
 
-Practice:
+### Week 16: Lifting The Exponent (LTE)
 
-30 problems
+**Topics:**
+- LTE for p=2
+- LTE for odd primes
+- Conditions and hypotheses
+- Applications to factorization and divisibility
 
-Week 13: Euler Totient
+**Practice:**
+- 20 LTE problems
 
-Topics:
+**Goals:**
+- Apply LTE to find exact powers of primes dividing expressions
+- Combine with other NT tools
 
-φ(n)
-Euler's theorem
+---
 
-Practice:
+## PHASE 3: GEOMETRY
+**Duration: 10 weeks**
 
-25 problems
+### Week 17: Similar Triangles
 
-Week 14: Diophantine Equations I
+**Topics:**
+- AA, SAS, SSS similarity criteria
+- Proportional segments
+- Angle bisector theorem
+- Area ratios from similarity
+- Nested and overlapping similar triangles
 
-Topics:
+**Practice:**
+- 25 problems (AMC 10/12 level)
+- 10 problems (AIME level)
 
-Linear Diophantine equations
-Factoring methods
+**Goals:**
+- Identify similar triangles in complex figures
+- Use ratios to find unknown lengths
+- Apply angle bisector theorem fluently
 
-Practice:
+---
 
-30 problems
+### Week 18: Cyclic Quadrilaterals
 
-Week 15: Diophantine Equations II
+**Topics:**
+- Ptolemy's Theorem
+- Opposite angles supplementary
+- Power of a point (preview)
+- Inscribed angles
+- Radical axis introduction
+- Brahmagupta's formula for area
 
-Topics:
+**Practice:**
+- 25 problems
 
-Quadratic Diophantine equations
-Infinite descent
+**Goals:**
+- Recognize cyclic quadrilaterals quickly
+- Apply Ptolemy's Theorem to find lengths
+- Use opposite angle property to prove concyclicity
 
-Practice:
+---
 
-20 problems
+### Week 19: Power of a Point
 
-Week 16: LTE
+**Topics:**
+- Tangent-secant theorem
+- Two secants theorem
+- Two chords theorem
+- Intersecting chords theorem
+- Radical center of three circles
 
-Topics:
+**Practice:**
+- 30 problems
 
-Lifting The Exponent
+**Goals:**
+- Compute unknown lengths using power of a point
+- Find radical centers
+- Combine with similar triangles
 
-Practice:
+---
 
-20 LTE problems
+### Week 20: Radical Axis
 
-Goals:
+**Topics:**
+- Radical axis of two circles
+- Properties of the radical axis
+- Radical center of three circles
+- Coaxial circles
+- Applications to Olympiad geometry
 
-Become comfortable with Olympiad number theory
-PHASE 3: GEOMETRY
-Duration: 10 weeks
+**Practice:**
+- 20 problems
 
-Week 17: Similar Triangles
+**Goals:**
+- Construct radical axes
+- Use radical axis to prove concurrency and collinearity
 
-Week 18: Cyclic Quadrilaterals
+---
 
-Week 19: Power of a Point
+### Week 21: Ceva's Theorem
 
-Week 20: Radical Axis
+**Topics:**
+- Ceva's Theorem (standard and trigonometric forms)
+- Concurrent cevians
+- Ceva in triangle geometry
+- Special centers (centroid, incenter, orthocenter, circumcenter)
+- Ceva's Theorem with directed segments
 
-Week 21: Ceva's Theorem
+**Practice:**
+- 25 problems
 
-Week 22: Menelaus' Theorem
+**Goals:**
+- Prove concurrency using Ceva's
+- Use trigonometric Ceva for angle problems
+- Recognize when Ceva applies
 
-Week 23: Homothety
+---
 
-Week 24: Spiral Similarity
+### Week 22: Menelaus' Theorem
 
-Week 25: Inversion
+**Topics:**
+- Menelaus' Theorem (standard and trigonometric forms)
+- Collinearity
+- Menelaus vs Ceva
+- Combined Menelaus-Ceva problems
+- Directed segments
 
-Week 26: Advanced Olympiad Geometry Review
+**Practice:**
+- 25 problems
 
-Primary resource:
+**Goals:**
+- Prove collinearity using Menelaus
+- Combine with Ceva for complex problems
+- Handle signed ratios correctly
 
-Euclidean Geometry in Mathematical Olympiads (Evan Chen)
-PHASE 4: COMBINATORICS
-Duration: 8 weeks
+---
 
-Week 27: Pigeonhole Principle
+### Week 23: Homothety
 
-Week 28: Invariants
+**Topics:**
+- Homothety (dilation) definition and properties
+- Center and ratio of homothety
+- Homothety maps lines to parallel lines
+- Incircle/excircle homothety
+- Euler line
+- Nine-point circle
 
-Week 29: Monovariants
+**Practice:**
+- 20 problems
 
-Week 30: Double Counting
+**Goals:**
+- Use homothety to simplify geometry problems
+- Relate incircle, excircle, and nine-point circle via homothety
+- Prove collinearity and concurrency
 
-Week 31: Graph Theory
+---
 
-Week 32: Extremal Principle
+### Week 24: Spiral Similarity
 
-Week 33: Coloring Problems
+**Topics:**
+- Spiral similarity definition
+- Center of spiral similarity
+- Mapping segments to segments
+- Spiral similarity and cyclic quadrilaterals
+- Miquel point
+- Fermat point
 
-Week 34: Hall's Marriage Theorem
+**Practice:**
+- 20 problems
 
-PHASE 5: PROBLEM SOLVING
-Duration: Ongoing
+**Goals:**
+- Find centers of spiral similarity
+- Use spiral similarity to prove concyclicity
+- Apply to olympiad-level problems
 
-Topics:
+---
 
-Contradiction
-Construction
-Symmetry
-Bounding
-Extremal arguments
-Casework
-Invariants
+### Week 25: Inversion
 
-Book:
+**Topics:**
+- Inversion definition and properties
+- Inversion of circles and lines
+- Fixed points of inversion
+- Inversion centered at a point on a circle
+- Inversion to solve Olympiad problems
+- Conformal mapping properties
 
-Problem-Solving Strategies (Arthur Engel)
-PHASE 6: USAJMO TRAINING
-Duration: Ongoing
+**Practice:**
+- 20 problems (Olympiad level)
 
-Goals:
+**Goals:**
+- Perform inversions to simplify configurations
+- Map circles to lines and vice versa
+- Solve problems with many circles using inversion
 
-Solve 2–3 USAJMO problems weekly
-Rewrite proofs
-Compare with official solutions
+---
 
-Sources:
+### Week 26: Advanced Olympiad Geometry Review
 
-USAJMO archives
-USAMO archives
-PHASE 7: IMO SHORTLIST
-Duration: Ongoing
+**Topics:**
+- Combination of all geometry tools
+- Projective geometry introduction
+- Cross-ratio
+- Harmonic bundles
+- Pole and polar
 
-Topics:
+**Practice:**
+- 15 full Olympiad geometry problems
 
-Advanced algebra
-Advanced geometry
-Advanced number theory
-Advanced combinatorics
+**Goals:**
+- Solve multi-step Olympiad geometry problems
+- Choose the right technique for each problem
+- Write clean geometry proofs
 
-Sources:
+**Primary resource:**
+- Euclidean Geometry in Mathematical Olympiads (Evan Chen)
 
-IMO Shortlist
-IMO Compendium
-DAILY SCHEDULE
+---
 
-2-Hour Version
+## PHASE 4: COMBINATORICS
+**Duration: 8 weeks**
 
-20 min:
-Theory
+### Week 27: Pigeonhole Principle
 
-70 min:
-Problem solving
+**Topics:**
+- Basic pigeonhole principle
+- Generalized pigeonhole
+- Double counting with pigeonhole
+- Pigeonhole in number theory
+- Pigeonhole in geometry (points in shapes)
+- Erdős–Szekeres theorem
 
-20 min:
-Solution review
+**Practice:**
+- 25 problems
 
-10 min:
-Journal
+**Goals:**
+- Recognize when pigeonhole applies
+- Set up the right "pigeons" and "holes"
+- Apply to AMC/AIME problems
 
-WEEKLY SCHEDULE
+---
 
-Monday:
-Algebra
+### Week 28: Invariants
 
-Tuesday:
-Number Theory
+**Topics:**
+- What is an invariant?
+- Parity arguments
+- Colorings and invariants
+- Modular invariants
+- Sum invariants
+- Invariant in games and puzzles
 
-Wednesday:
-Geometry
+**Practice:**
+- 20 problems
 
-Thursday:
-Combinatorics
+**Goals:**
+- Identify useful invariants
+- Prove impossibility using invariants
+- Apply to game theory problems
 
-Friday:
-Mixed Problems
+---
 
-Saturday:
-Mock Contest (3–4 hours)
+### Week 29: Monovariants
 
-Sunday:
-Review and Journal
+**Topics:**
+- Monovariant definition
+- Strictly increasing/decreasing quantities
+- Bounding arguments
+- Termination proofs
+- Applications to optimization
 
-WHAT YOU SHOULD DO NEXT
+**Practice:**
+- 20 problems
+
+**Goals:**
+- Use monovariants to prove processes terminate
+- Find optimal configurations
+- Combine with invariants
+
+---
+
+### Week 30: Double Counting
+
+**Topics:**
+- Counting the same set two different ways
+-握手 problems
+- Incidence counting
+- Erdős–Ko–Rado (intro)
+- Turán-type problems
+
+**Practice:**
+- 25 problems
+
+**Goals:**
+- Set up double counting arguments
+- Apply to graph theory and set theory
+- Prove combinatorial identities
+
+---
+
+### Week 31: Graph Theory
+
+**Topics:**
+- Vertices, edges, degrees
+- Handshaking lemma
+- Paths, cycles, connectivity
+- Bipartite graphs
+- Trees
+- Planar graphs and Euler's formula
+- Ramsey theory (intro)
+
+**Practice:**
+- 25 problems
+
+**Goals:**
+- Apply handshaking lemma
+- Recognize bipartite structures
+- Use Euler's formula for planar graphs
+
+---
+
+### Week 32: Extremal Principle
+
+**Topics:**
+- Choosing extremal elements
+- Extremal graph theory
+- Maximum/minimum arguments
+- applications to Olympiad problems
+- Erdős–Szekeres revisited
+
+**Practice:**
+- 20 problems
+
+**Goals:**
+- Identify the right extremal quantity
+- Use extremal arguments to prove existence
+- Apply to hard combinatorics problems
+
+---
+
+### Week 33: Coloring Problems
+
+**Topics:**
+- 2-coloring and Ramsey numbers
+- Chromatic number
+- Graph coloring
+- Checkerboard coloring
+- Domino tiling
+- Invariant via coloring
+
+**Practice:**
+- 20 problems
+
+**Goals:**
+- Prove impossibility via coloring
+- Compute chromatic numbers
+- Apply coloring to tiling problems
+
+---
+
+### Week 34: Hall's Marriage Theorem
+
+**Topics:**
+- Hall's condition
+- Marriage theorem statement
+- Applications to matching
+- Systems of distinct representatives
+- Network flow introduction
+
+**Practice:**
+- 15 problems
+
+**Goals:**
+- Apply Hall's theorem to matching problems
+- Recognize Hall's condition in disguise
+- Connect to bipartite matching
+
+---
+
+## PHASE 5: PROBLEM SOLVING
+**Duration: Ongoing**
+
+**Topics:**
+- Proof by contradiction
+- Proof by construction
+- Symmetry arguments
+- Bounding techniques
+- Extremal arguments
+- Casework and exhaustion
+- Invariants and monovariants
+- Pigeonhole principle
+- Extreme value principle
+- Working backwards
+- Generalization and specialization
+
+**Book:**
+- Problem-Solving Strategies (Arthur Engel)
+
+**Practice:**
+- 5–10 hard problems per week from past competitions
+- Mix of AMC, AIME, and USAJMO problems
+
+**Goals:**
+- Develop a systematic approach to problem solving
+- Learn to try multiple approaches before giving up
+- Build problem-solving stamina (1+ hour per problem)
+
+---
+
+## PHASE 6: USAJMO TRAINING
+**Duration: Ongoing**
+
+**Goals:**
+- Solve 2–3 USAJMO problems weekly
+- Write complete proofs (not just answers)
+- Compare with official solutions
+- Learn proof writing style and rigor
+
+**Sources:**
+- USAJMO archives (Art of Problem Solving)
+- USAMO archives
+- ELMO problems
+
+**Practice structure:**
+1. Attempt problem for 30–60 minutes
+2. If stuck, read hint only
+3. Solve and write full proof
+4. Compare with official solution
+5. Note new techniques in a journal
+
+---
+
+## PHASE 7: IMO SHORTLIST
+**Duration: Ongoing**
+
+**Topics:**
+- Advanced algebra (functional equations, inequalities)
+- Advanced geometry (projective, inversion, coordinates)
+- Advanced number theory (p-adic valuations, quadratic residues, primitive roots)
+- Advanced combinatorics (probabilistic method, generating functions)
+
+**Sources:**
+- IMO Shortlist problems (by year and topic)
+- IMO Compendium (Niven, Zuckerman, Montgomery)
+- Problems from the Book (Andreescu, Dospinescu)
+- 106 Problems in Olympiad Mathematics (Titu Andreescu)
+
+**Goals:**
+- Solve IMO Shortlist problems in your strongest area
+- Develop original problem-solving techniques
+- Compete in national olympiad selections
+
+---
+
+## DAILY SCHEDULE
+
+### 2-Hour Version
+| Time | Activity |
+|------|----------|
+| 20 min | Theory (read/study new concept) |
+| 70 min | Problem solving (attempt problems) |
+| 20 min | Solution review (check and learn) |
+| 10 min | Journal (what you learned, what was hard) |
+
+### 3-Hour Version
+| Time | Activity |
+|------|----------|
+| 30 min | Theory |
+| 100 min | Problem solving |
+| 30 min | Solution review |
+| 20 min | Journal and reflection |
+
+---
+
+## WEEKLY SCHEDULE
+
+| Day | Focus |
+|-----|-------|
+| Monday | Algebra |
+| Tuesday | Number Theory |
+| Wednesday | Geometry |
+| Thursday | Combinatorics |
+| Friday | Mixed Problems (random topics) |
+| Saturday | Mock Contest (3–4 hours, timed) |
+| Sunday | Review, Journal, and catch-up |
+
+---
+
+## WHAT YOU SHOULD DO NEXT
 
 You have already completed:
+- ✓ Polynomial Foundations
+- ✓ Vieta's Formulas
+- ✓ Intro Newton Sums
 
-✓ Polynomial Foundations
-✓ Vieta's Formulas
-✓ Intro Newton Sums
+Your next topic should be: **SYMMETRIC POLYNOMIALS**
 
-Your next topic should be:
+**Learn:**
+- What makes an expression symmetric
+- Elementary symmetric polynomials
+- How every symmetric polynomial in two variables can be rewritten using:
+  - s = x+y
+  - p = xy
 
-SYMMETRIC POLYNOMIALS
-
-Learn:
-
-What makes an expression symmetric
-Elementary symmetric polynomials
-How every symmetric polynomial in two variables can be rewritten using:
-s = x+y
-p = xy
-
-Master identities:
-
-x²+y² = s²−2p
-
-x³+y³ = s³−3ps
-
-x⁴+y⁴ = (s²−2p)²−2p²
-
-x⁵+y⁵ = s(x⁴+y⁴)−p(x³+y³)
+**Master identities:**
+- x²+y² = s²−2p
+- x³+y³ = s³−3ps
+- x⁴+y⁴ = (s²−2p)²−2p²
+- x⁵+y⁵ = s(x⁴+y⁴)−p(x³+y³)
 
 This topic is the bridge between Vieta, Newton sums, and many AIME algebra problems, so it is the most logical next lesson for you.
