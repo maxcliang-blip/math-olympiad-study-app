@@ -1,0 +1,8 @@
+{
+  "name": "math-olympiad-study-app",
+  "private": true,
+  "dependencies": {
+    "@upstash/redis": "^1.38.0",
+    "@vercel/kv": "^3.0.0"
+  }
+}

@@ -462,10 +462,12 @@ let sols = JSON.parse(localStorage.getItem("msol") || "{}");
 let openSols = {};
 let checkStates = JSON.parse(localStorage.getItem("mcheck") || "{}");
 
+const API_BASE = location.pathname.startsWith('/math') ? '/math' : '';
+
 // Try to load progress from server
 async function syncLoad() {
   try {
-    const r = await fetch('/api/load', { signal: AbortSignal.timeout(3000) });
+    const r = await fetch(API_BASE + '/api/load', { signal: AbortSignal.timeout(3000) });
     if (!r.ok) return;
     const data = await r.json();
     if (data.sols) { sols = data.sols; localStorage.setItem("msol", JSON.stringify(sols)); }
@@ -477,7 +479,7 @@ async function syncLoad() {
 // Save progress to server
 function syncSave() {
   const data = JSON.stringify({ sols, checkStates });
-  fetch('/api/save', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: data, signal: AbortSignal.timeout(3000) }).catch(() => {});
+  fetch(API_BASE + '/api/save', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: data, signal: AbortSignal.timeout(3000) }).catch(() => {});
 }
 
 function key(s, p) { return s + "-" + p; }
