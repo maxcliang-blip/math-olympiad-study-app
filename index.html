@@ -468,22 +468,18 @@ const API_BASE = location.pathname.startsWith('/math') ? '/math' : '';
 async function syncLoad() {
   try {
     const r = await fetch(API_BASE + '/api/load', { signal: AbortSignal.timeout(5000) });
-    if (!r.ok) { console.error('Load failed:', r.status); return; }
+    if (!r.ok) return;
     const data = await r.json();
-    console.log('Loaded from server:', data);
     if (data.sols) { sols = data.sols; localStorage.setItem("msol", JSON.stringify(sols)); }
     if (data.checkStates) { checkStates = data.checkStates; localStorage.setItem("mcheck", JSON.stringify(checkStates)); }
     render();
-  } catch(e) { console.error('Sync failed:', e.message, 'URL was:', API_BASE + '/api/load'); }
+  } catch(e) { /* server not available, use local */ }
 }
 
 // Save progress to server
 function syncSave() {
   const data = JSON.stringify({ sols, checkStates });
-  console.log('Saving to server:', data);
-  fetch(API_BASE + '/api/save', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: data, signal: AbortSignal.timeout(5000) })
-    .then(r => r.json()).then(d => console.log('Save response:', d))
-    .catch(e => console.error('Save failed:', e.message));
+  fetch(API_BASE + '/api/save', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: data, signal: AbortSignal.timeout(5000) }).catch(() => {});
 }
 
 function key(s, p) { return s + "-" + p; }
