@@ -462,6 +462,24 @@ let sols = JSON.parse(localStorage.getItem("msol") || "{}");
 let openSols = {};
 let checkStates = JSON.parse(localStorage.getItem("mcheck") || "{}");
 
+// Try to load progress from server
+async function syncLoad() {
+  try {
+    const r = await fetch('/api/load', { signal: AbortSignal.timeout(3000) });
+    if (!r.ok) return;
+    const data = await r.json();
+    if (data.sols) { sols = data.sols; localStorage.setItem("msol", JSON.stringify(sols)); }
+    if (data.checkStates) { checkStates = data.checkStates; localStorage.setItem("mcheck", JSON.stringify(checkStates)); }
+    render();
+  } catch(e) { /* server not available, use local */ }
+}
+
+// Save progress to server
+function syncSave() {
+  const data = JSON.stringify({ sols, checkStates });
+  fetch('/api/save', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: data, signal: AbortSignal.timeout(3000) }).catch(() => {});
+}
+
 function key(s, p) { return s + "-" + p; }
 function done(s, p) { return !!sols[key(s, p)]; }
 
@@ -469,6 +487,7 @@ function toggle(s, p) {
   const k = key(s, p);
   sols[k] = !sols[k];
   localStorage.setItem("msol", JSON.stringify(sols));
+  syncSave();
   render();
 }
 
@@ -485,7 +504,8 @@ function checkAns(sid, pid, ansStr) {
           localStorage.setItem("msol", JSON.stringify(sols));
         }
         localStorage.setItem("mcheck", JSON.stringify(checkStates));
-        render();
+        syncSave();
+render();
         return;
       }
     }
@@ -597,6 +617,7 @@ function importProgress(input) {
       const data = JSON.parse(e.target.result);
       if (data.sols) { sols = data.sols; localStorage.setItem("msol", JSON.stringify(sols)); }
       if (data.checkStates) { checkStates = data.checkStates; localStorage.setItem("mcheck", JSON.stringify(checkStates)); }
+      syncSave();
       render();
     } catch(err) {
       alert("Invalid progress file.");
