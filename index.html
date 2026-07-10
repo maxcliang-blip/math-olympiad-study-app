@@ -457,22 +457,21 @@ const SECTIONS = [
   {
     id: "aime-ineq",
     title: "AIME Inequalities",
-    sub: "10 real AIME problems using AM-GM, Cauchy, Engel",
+    sub: "4 real AIME problems (verified from AoPS/Po-Shen Loh)",
     type: "prac",
     levels: [
       {
-        n: "AIME Problems",
+        n: "AM-GM Problems",
         probs: [
-          [1, "(2008 AIME II #3) A block of cheese measures 10 cm by 13 cm by 14 cm. Ten 1-cm slices are cut parallel to faces. Find the maximum possible volume of the remaining cheese.", "Let remaining sides be \\(a,b,c\\) with \\(a+b+c=27\\). By AM-GM: \\(abc \\le \\left(\\frac{a+b+c}{3}\\right)^3 = 9^3 = 729\\). Equality at \\(a=b=c=9\\), achieved by 1+4+5=10 slices.", "729"],
-          [2, "(2011 AIME II #9) Nonneg reals \\(x_1+\\cdots+x_6=1\\) with \\(x_1x_3x_5+x_2x_4x_6 \\ge \\frac{1}{540}\\). Find max of \\(x_1x_2x_3+x_2x_3x_4+x_3x_4x_5+x_4x_5x_6+x_5x_6x_1+x_6x_1x_2\\).", "Note \\((x_1+x_4)(x_2+x_5)(x_3+x_6) \\le \\frac{1}{27}\\) by AM-GM. The target plus the constraint equals this product. Max \\(= \\frac{1}{27}-\\frac{1}{540}=\\frac{19}{540}\\). \\(p+q=559\\).", "559"],
-          [3, "(2014 AIME I #7) \\(|w|=1,\\;|z|=10\\). \\(\\theta=\\arg\\!\\left(\\frac{w-z}{z}\\right)\\). Find the maximum of \\(\\tan^2\\theta\\) as \\(\\frac{p}{q}\\). Find \\(p+q\\).", "By AM-GM: \\(\\cos\\theta \\ge \\frac{\\sqrt{99}}{10}\\). Then \\(\\tan^2\\theta = \\sec^2\\theta-1 = \\frac{1}{99}\\). \\(p+q=100\\).", "100"],
-          [4, "(2016 AIME I #9) Triangle \\(ABC\\) has \\(AB=40,\\;AC=31,\\;\\sin A=\\frac15\\). Inscribed in rectangle \\(AQRS\\). Find max area of \\(AQRS\\).", "Let \\(\\alpha,\\beta\\) be angles. Area \\(= 1240\\cos\\alpha\\cos\\beta\\). By AM-GM: \\(\\cos\\alpha\\cos\\beta \\le \\frac{3}{5}\\). Max area \\(= 31\\cdot40\\cdot\\frac{3}{5}=744\\).", "744"],
-          [5, "(2024 AIME I #7) Find largest real part of \\((75+117i)z+\\frac{96+144i}{z}\\) for \\(|z|=4\\).", "Let \\(z=4e^{i\\theta}\\). Real part \\(= 324\\cos\\theta-432\\sin\\theta\\). By Cauchy-Schwarz: \\((324\\cos\\theta-432\\sin\\theta)^2 \\le 324^2+432^2=540^2\\). Max \\(=540\\).", "540"],
-          [6, "(2009 AIME II #15) Circle diameter 1, \\(A\\) midpoint of semicircle, \\(MB=3/5\\). Point \\(C\\) on other arc. \\(d\\) = distance between intersections of \\(MN\\) with \\(AC,BC\\). Find max \\(d\\) as \\(r-s\\sqrt{t}\\). Find \\(r+s+t\\).", "By AM-GM: \\(3(x/y)+4(y/x) \\ge 4\\sqrt{3}\\). Max \\(d = 7-4\\sqrt{3}\\). \\(r+s+t=7+4+3=14\\).", "014"],
-          [7, "(2005 AIME II #5) Positive reals \\(x,y\\) with \\(x+y=1\\). Find minimum of \\(\\left(1+\\frac1x\\right)\\left(1+\\frac1y\\right)\\).", "Expand: \\(2+\\frac1x+\\frac1y+\\frac1{xy}\\). By AM-GM with \\(x+y=1\\): min at \\(x=y=\\frac12\\). Value \\(= 9\\).", "9"],
-          [8, "(2000 AIME I #5) For \\(x,y>0\\) with \\(x+y=1\\), find minimum of \\(\\frac1x+\\frac4y\\).", "By Cauchy-Schwarz (Engel): \\(\\frac{1^2}{x}+\\frac{2^2}{y} \\ge \\frac{(1+2)^2}{x+y}=9\\). Equality at \\(x=\\frac13,\\;y=\\frac23\\).", "9"],
-          [9, "(2003 AIME II #14) For positive reals \\(a,b\\) with \\(a \\ge b\\), system \\(a^2+y^2=b^2+x^2=(a-x)^2+(b-y)^2\\) has solution with \\(0 \\le x < a,\\; 0 \\le y < b\\). Max \\(b/a = \\sqrt{m/n}\\). Find \\(m+n\\).", "By AM-GM in the geometric setup: \\(\\frac{b}{a} \\le \\frac{2}{\\sqrt{3}}\\). So \\(\\rho^2 = \\frac{4}{3}\\), \\(m+n=7\\).", "7"],
-          [10, "(1985 AIME #8) \\(w\\) is a complex root of \\(z^6=1\\). Find \\(11w^{22}+12w^{33}+13w^{44}\\).", "Since \\(w^6=1\\): \\(w^{22}=w^4,\\;w^{33}=w^3=-1,\\;w^{44}=w^2\\). Also \\(1+w+w^2+w^3+w^4+w^5=0\\), so \\(w^2+w^4=-1-w-w^3-w^5\\). Evaluate: \\(11w^4-13+13w^2 = 11(w^2+w^4)-13+2w^2\\). After work: answer is \\(-8\\).", "-8"],
+          [1, "(2008 AIME II #3) A block of cheese measures 10 cm by 13 cm by 14 cm. Ten 1-cm slices are cut parallel to faces. What is the maximum possible volume of the remaining cheese?", "After 10 cuts, dimensions sum to 27. By AM-GM, product is maximized when all three dimensions equal 9. Take 1 slice from 10cm edge, 4 from 13cm, 5 from 14cm. Max volume = 9^3 = 729.", "729"],
+          [2, "(2011 AIME II #9) Let x1,...,x6 be nonneg reals summing to 1, with x1*x3*x5 + x2*x4*x6 >= 1/540. Find the max of x1*x2*x3 + x2*x3*x4 + x3*x4*x5 + x4*x5*x6 + x5*x6*x1 + x6*x1*x2 as p/q. Find p+q.", "Let r = x1x3x5+x2x4x6 and s = the cyclic sum. Then r+s = (x1+x4)(x2+x5)(x3+x6) <= (1/3)^3 = 1/27 by AM-GM. So s <= 1/27 - 1/540 = 19/540. Answer: 559.", "559"],
+          [3, "(2009 AIME II #15) MN is diameter 1. A is midpoint of semicircle, MB=3/5. C on other arc. d = distance between intersections of MN with chords AC and BC. Max d = r - s*sqrt(t). Find r+s+t.", "Let x = CM/CN. Then d = 1/(3x + 4/x + 7). By AM-GM: 3x+4/x >= 4*sqrt(3). Max d = 1/(7+4*sqrt(3)) = 7-4*sqrt(3). Answer: 7+4+3 = 14.", "014"],
+        ]
+      },
+      {
+        n: "Cauchy-Schwarz Problem",
+        probs: [
+          [4, "(2016 AIME II #15) For 1<=i<=215 let ai=1/2^i and a216=1/2^215. Positive reals x1+...+x216=1 with sum_{i<j} xixj = 107/215 + sum aixi^2/(2(1-ai)). Find max x2 = m/n. Find m+n.", "Rearrange to get sum xi^2/(1-ai) = 1/215. By Cauchy-Schwarz: 1 = (sum xi)^2 <= (sum xi^2/(1-ai))(sum(1-ai)) = (1/215)(215) = 1. Equality holds, so xi = (1-ai)/215. x2 = (1-1/4)/215 = 3/860. Answer: 863.", "863"],
         ]
       }
     ]
