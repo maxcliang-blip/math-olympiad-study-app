@@ -257,6 +257,7 @@ const SECTIONS = [
     title: "Symmetric Polynomials",
     sub: "40 practice problems across 6 levels",
     type: "prac",
+    group: "Symmetric Polynomials",
     levels: [
       {
         n: "Level 1: Basic Rewriting",
@@ -335,6 +336,7 @@ const SECTIONS = [
     title: "AIME Symmetric Polynomials",
     sub: "10 real AIME & AIME-style problems",
     type: "prac",
+    group: "Symmetric Polynomials",
     levels: [
       {
         n: "AIME Problems",
@@ -358,6 +360,7 @@ const SECTIONS = [
     title: "Inequalities I \u2014 Lesson",
     sub: "AM-GM, Cauchy-Schwarz, Engel Form",
     type: "lesson",
+    group: "Inequalities I",
     sections: [
       { h: "1. AM-GM (Arithmetic Mean \u2265 Geometric Mean)",
         c: [
@@ -428,6 +431,7 @@ const SECTIONS = [
     title: "Inequalities I \u2014 Practice",
     sub: "20 problems covering AM-GM, Cauchy, Engel",
     type: "prac",
+    group: "Inequalities I",
     levels: [
       {
         n: "Level 1: Direct AM-GM",
@@ -476,6 +480,7 @@ const SECTIONS = [
     title: "AIME Inequalities",
     sub: "4 real AIME problems (verified from AoPS/Po-Shen Loh)",
     type: "prac",
+    group: "Inequalities I",
     levels: [
       {
         n: "AM-GM Problems",
@@ -498,6 +503,7 @@ const SECTIONS = [
     title: "Inequalities II \u2014 Lesson",
     sub: "Power Mean, Schur, Rearrangement, Jensen, SOS, uvw",
     type: "lesson",
+    group: "Inequalities II",
     sections: [
       { h: "1. Power Mean Inequality",
         c: [
@@ -634,6 +640,7 @@ const SECTIONS = [
     title: "Inequalities II \u2014 Practice",
     sub: "20 problems covering advanced inequality methods",
     type: "prac",
+    group: "Inequalities II",
     levels: [
       {
         n: "Level 1: Power Mean",
@@ -747,16 +754,22 @@ function render() {
   // Sidebar
   let side = '<div class="sidebar-header"><h1>Math Olympiad</h1><p>Study App</p></div>';
   side += '<div class="sidebar-actions"><button class="btn export-btn" onclick="exportProgress()">Export</button><button class="btn import-btn" onclick="document.getElementById(\'importFile\').click()">Import</button><input type="file" id="importFile" accept=".json" style="display:none" onchange="importProgress(this)"></div>';
+  let lastGroup = "";
   SECTIONS.forEach(sec => {
-    side += '<div class="nav-group"><div class="nav-label">' + (sec.type === "lesson" ? "Lesson" : "Practice") + '</div>';
+    if (sec.group !== lastGroup) {
+      if (lastGroup) side += '</div>';
+      side += '<div class="nav-group"><div class="nav-label">' + sec.group + '</div>';
+      lastGroup = sec.group;
+    }
     side += '<div class="nav-item' + (cur === sec.id ? " active" : "") + '" onclick="go(\'' + sec.id + '\')">' + sec.title;
     if (sec.type === "prac") {
       let t = 0, d = 0;
       sec.levels.forEach(l => l.probs.forEach(p => { t++; if (done(sec.id, p[0])) d++; }));
       side += ' <span class="count">' + d + '/' + t + '</span>';
     }
-    side += '</div></div>';
+    side += '</div>';
   });
+  side += '</div>';
   document.getElementById("sidebar").innerHTML = side;
 
   const sec = SECTIONS.find(s => s.id === cur);
