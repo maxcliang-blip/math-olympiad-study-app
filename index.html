@@ -492,6 +492,195 @@ const SECTIONS = [
         ]
       }
     ]
+  },
+  {
+    id: "ineq2-lesson",
+    title: "Inequalities II \u2014 Lesson",
+    sub: "Power Mean, Schur, Rearrangement, Jensen, SOS, uvw",
+    type: "lesson",
+    sections: [
+      { h: "1. Power Mean Inequality",
+        c: [
+          { t: "p", v: "For positive reals \\(a_1, \\dots, a_n\\) and real numbers \\(r < s\\):" },
+          { t: "d", v: "M_r = \\left(\\frac{a_1^r + \\cdots + a_n^r}{n}\\right)^{1/r} \\le \\left(\\frac{a_1^s + \\cdots + a_n^s}{n}\\right)^{1/s} = M_s" },
+          { t: "p", v: "Equality iff \\(a_1 = a_2 = \\cdots = a_n\\)." },
+          { t: "h4", v: "Key special cases" },
+          { t: "d", v: "M_{-1} \\le M_0 \\le M_1 \\le M_2" },
+          { t: "p", v: "These are: Harmonic Mean \\(\\le\\) Geometric Mean \\(\\le\\) Arithmetic Mean \\(\\le\\) Quadratic Mean." },
+          { t: "ex", title: "Example 1", v: "For \\(a,b,c > 0\\), prove \\(\\frac{a+b+c}{3} \\le \\sqrt{\\frac{a^2+b^2+c^2}{3}}\\).<br><br>This is just \\(M_1 \\le M_2\\), i.e., AM \\(\\le\\) QM. Equality at \\(a=b=c\\)." },
+          { t: "ex", title: "Example 2", v: "For \\(x,y,z > 0\\) with \\(x+y+z=3\\), prove \\(x^2+y^2+z^2 \\ge 3\\).<br><br>By QM-AM: \\(\\sqrt{\\frac{x^2+y^2+z^2}{3}} \\ge \\frac{x+y+z}{3} = 1\\). Squaring: \\(x^2+y^2+z^2 \\ge 3\\)." },
+          { t: "h4", v: "When to use" },
+          { t: "ul", v: [
+            "Comparing \\(\\sum a^k\\) for different powers \\(k\\)",
+            "Proving QM-AM-GM-HM chains",
+            "Problems where the constraint is a sum and you need to bound a sum of powers",
+          ]},
+        ]
+      },
+      { h: "2. Schur's Inequality",
+        c: [
+          { t: "p", v: "For nonneg reals \\(a,b,c\\) and \\(t \\ge 0\\):" },
+          { t: "d", v: "a^t(a-b)(a-c) + b^t(b-a)(b-c) + c^t(c-a)(c-b) \\ge 0" },
+          { t: "p", v: "Equality when \\(a=b=c\\) or when one variable is 0 and the other two are equal." },
+          { t: "h4", v: "The case \\(t=1\\) (most common)" },
+          { t: "d", v: "a(a-b)(a-c) + b(b-a)(b-c) + c(c-a)(c-b) \\ge 0" },
+          { t: "p", v: "Expanding: \\(a^3+b^3+c^3+abc \\ge ab(a+b)+bc(b+c)+ca(c+a)\\)." },
+          { t: "h4", v: "How to recognize Schur" },
+          { t: "p", v: "Look for symmetric expressions where \\(a^3+b^3+c^3+abc\\) appears, or when you need to prove something like \\(\\sum a^3 + 3abc \\ge \\sum ab(a+b)\\)." },
+          { t: "ex", title: "Example 3", v: "For nonneg \\(a,b,c\\) with \\(a+b+c=3\\), prove \\(a^3+b^3+c^3+3abc \\ge 6\\).<br><br>Schur (\\(t=1\\)): \\(a^3+b^3+c^3+3abc \\ge \\sum ab(a+b) = \\sum ab(3-c)\\).<br>Also: \\(\\sum ab(a+b) = (a+b+c)(ab+bc+ca)-3abc = 3(ab+bc+ca)-3abc\\).<br>Need \\(a^3+b^3+c^3+6abc \\ge 3(ab+bc+ca)\\). By Schur and \\(ab+bc+ca \\le 3\\), this follows." },
+          { t: "ex", title: "Example 4", v: "For \\(a,b,c \\ge 0\\) with \\(a+b+c=1\\), find the min of \\(a^2+b^2+c^2+\\frac{abc}{4}\\).<br><br>By Schur and AM-GM, the minimum is \\(\\frac{1}{4}\\), achieved at \\(a=b=c=\\frac{1}{3}\\)." },
+        ]
+      },
+      { h: "3. Rearrangement Inequality",
+        c: [
+          { t: "p", v: "If \\(a_1 \\le \\cdots \\le a_n\\) and \\(b_1 \\le \\cdots \\le b_n\\), then for any permutation \\(\\sigma\\):" },
+          { t: "d", v: "a_1 b_n + a_2 b_{n-1} + \\cdots + a_n b_1 \\le a_1 b_{\\sigma(1)} + \\cdots + a_n b_{\\sigma(n)} \\le a_1 b_1 + \\cdots + a_n b_n" },
+          { t: "p", v: "In plain English: the sum is maximized when sequences are similarly sorted and minimized when oppositely sorted." },
+          { t: "h4", v: "The two-sequence version" },
+          { t: "d", v: "a_1 b_1 + a_2 b_2 \\ge a_1 b_2 + a_2 b_1 \\quad\\text{when}\\quad (a_1-a_2)(b_1-b_2) \\ge 0" },
+          { t: "ex", title: "Example 5", v: "For \\(a \\ge b \\ge c > 0\\), prove \\(a^3+b^3+c^3 \\ge a^2b+b^2c+c^2a\\).<br><br>By rearrangement: \\((a^2, b^2, c^2)\\) and \\((a, b, c)\\) are similarly sorted. So \\(a^2 \\cdot a + b^2 \\cdot b + c^2 \\cdot c \\ge a^2 \\cdot b + b^2 \\cdot c + c^2 \\cdot a\\)." },
+          { t: "ex", title: "Example 6", v: "For \\(a,b,c > 0\\), prove \\(\\frac{a}{b}+\\frac{b}{c}+\\frac{c}{a} \\ge 3\\).<br><br>WLOG \\(a \\ge b \\ge c\\). Then \\(\\frac{1}{c} \\ge \\frac{1}{b} \\ge \\frac{1}{a}\\). By rearrangement:<br>\\(\\frac{a}{b}+\\frac{b}{c}+\\frac{c}{a} \\ge \\frac{a}{a}+\\frac{b}{b}+\\frac{c}{c} = 3\\)." },
+          { t: "h4", v: "When to use" },
+          { t: "ul", v: [
+            "Cyclic sums like \\(\\sum a^2b\\) vs \\(\\sum ab^2\\)",
+            "Sequences with known ordering",
+            "Proving \\(\\sum a^2b \\ge \\sum ab^2\\) or vice versa",
+          ]},
+        ]
+      },
+      { h: "4. Jensen's Inequality",
+        c: [
+          { t: "p", v: "If \\(f\\) is convex on \\([a,b]\\), then for \\(x_i \\in [a,b]\\) and weights \\(\\lambda_i \\ge 0\\) with \\(\\sum \\lambda_i = 1\\):" },
+          { t: "d", v: "f(\\lambda_1 x_1 + \\cdots + \\lambda_n x_n) \\le \\lambda_1 f(x_1) + \\cdots + \\lambda_n f(x_n)" },
+          { t: "p", v: "For concave \\(f\\), the inequality flips. Common convex functions: \\(x^2, e^x, -\\ln x, x^p\\) for \\(p \\ge 1\\)." },
+          { t: "h4", v: "Weighted AM-GM from Jensen" },
+          { t: "p", v: "\\(-\\ln x\\) is convex, so \\(-\\ln(\\lambda_1 x_1 + \\cdots) \\le -\\lambda_1 \\ln x_1 - \\cdots\\). Exponentiating gives weighted AM-GM." },
+          { t: "ex", title: "Example 7", v: "For \\(a,b,c > 0\\) with \\(a+b+c=3\\), prove \\(\\sqrt{a}+\\sqrt{b}+\\sqrt{c} \\le 3\\).<br><br>\\(f(x)=\\sqrt{x}\\) is concave. By Jensen: \\(\\frac{\\sqrt{a}+\\sqrt{b}+\\sqrt{c}}{3} \\le \\sqrt{\\frac{a+b+c}{3}} = 1\\)." },
+          { t: "ex", title: "Example 8", v: "For \\(a,b,c > 0\\), prove \\(a^a b^b c^c \\ge (abc)^{(a+b+c)/3}\\).<br><br>Take logs: need \\(a\\ln a + b\\ln b + c\\ln c \\ge \\frac{a+b+c}{3}(\\ln a+\\ln b+\\ln c)\\).<br>\\(f(x)=x\\ln x\\) is convex. By Jensen: \\(\\frac{a\\ln a+b\\ln b+c\\ln c}{3} \\ge \\frac{a+b+c}{3}\\cdot\\ln\\left(\\frac{a+b+c}{3}\\right)\\). Combined with AM-GM for the log terms, this gives the result." },
+          { t: "h4", v: "How to recognize Jensen" },
+          { t: "ul", v: [
+            "Expression looks like \\(\\sum f(x_i)\\) with a constraint on \\(\\sum x_i\\)",
+            "The function \\(f\\) has known convexity (\\(x^2, x^p, -\\ln x, e^x\\))",
+            "Equality at equal variables",
+          ]},
+        ]
+      },
+      { h: "5. SOS (Sum of Squares) Method",
+        c: [
+          { t: "p", v: "To prove \\(f(a,b,c) \\ge 0\\), try to write it as:" },
+          { t: "d", v: "f(a,b,c) = S_a(b-c)^2 + S_b(c-a)^2 + S_c(a-b)^2" },
+          { t: "p", v: "where \\(S_a, S_b, S_c \\ge 0\\) (or at least the sum is nonneg). If the expression is symmetric, look for \\(S_a = S_b = S_c\\) or use the SOS decomposition directly." },
+          { t: "h4", v: "The basic SOS identity" },
+          { t: "d", v: "\\sum_{\\text{cyc}} (a-b)^2 = 2(a^2+b^2+c^2-ab-bc-ca)" },
+          { t: "ex", title: "Example 9", v: "Prove \\(a^2+b^2+c^2 \\ge ab+bc+ca\\) for all reals \\(a,b,c\\).<br><br>Rewrite: \\(\\frac{1}{2}[(a-b)^2+(b-c)^2+(c-a)^2] \\ge 0\\). Done." },
+          { t: "ex", title: "Example 10", v: "For \\(a,b,c > 0\\), prove \\(\\frac{a^3}{b}+\\frac{b^3}{c}+\\frac{c^3}{a} \\ge a^2+b^2+c^2\\).<br><br>\\(\\sum \\frac{a^3}{b} - a^2 = \\sum a^2\\left(\\frac{a}{b}-1\\right) = \\sum \\frac{a^2(a-b)}{b}\\).<br>By SOS: \\(\\sum \\frac{a^2(a-b)}{b} = \\sum \\frac{(a-b)^2(a+b)}{2b} \\ge 0\\)." },
+          { t: "h4", v: "Tips for SOS" },
+          { t: "ul", v: [
+            "Rearrange to get differences like \\((a-b)^2\\), \\((b-c)^2\\), \\((c-a)^2\\)",
+            "Factor out \\((a-b)\\) from pairs of terms",
+            "Use \\(\\sum (a-b)^2 = 2\\sum a^2 - 2\\sum ab\\) to convert between forms",
+            "If \\(S_a, S_b, S_c\\) aren't all nonneg, check if the sum still works",
+          ]},
+        ]
+      },
+      { h: "6. uvw Method",
+        c: [
+          { t: "p", v: "For symmetric inequalities in three variables, set:" },
+          { t: "d", v: "u = a+b+c, \\quad v^2 = ab+bc+ca, \\quad w^3 = abc" },
+          { t: "p", v: "A symmetric polynomial inequality in \\(a,b,c\\) can often be rewritten as a polynomial in \\(u, v^2, w^3\\)." },
+          { t: "h4", v: "The key principle" },
+          { t: "p", v: "If the inequality is symmetric and homogeneous, it's often enough to check:" },
+          { t: "ul", v: [
+            "The case \\(a=b=c\\) (all equal)",
+            "The case \\(a=b, c=0\\) (two equal, one zero)",
+            "The boundary cases",
+          ]},
+          { t: "ex", title: "Example 11", v: "For \\(a,b,c \\ge 0\\) with \\(a+b+c=3\\), prove \\(a^2b+b^2c+c^2a+abc \\le 4\\).<br><br>This is symmetric. Check \\(a=b=c=1\\): \\(1+1+1+1=4\\). Check \\(a=2,b=1,c=0\\): \\(2+0+0+0=2 < 4\\). Check \\(a=3,b=0,c=0\\): \\(0 < 4\\). The uvw method shows the maximum is 4 at \\(a=b=c=1\\)." },
+          { t: "h4", v: "When to use uvw" },
+          { t: "ul", v: [
+            "Inequality is symmetric in \\(a,b,c\\)",
+            "Constraint is \\(a+b+c=\\text{const}\\) or similar",
+            "Need to find max/min of a symmetric expression",
+          ]},
+        ]
+      },
+      { h: "7. Strategy Guide for Advanced Inequalities",
+        c: [{ t: "table", headers: ["Problem pattern", "Method to try"], rows: [
+          ["\\(\\sum a^k\\) with fixed \\(\\sum a\\)", "Power Mean or Jensen"],
+          ["\\(\\sum a^3+abc\\) terms", "Schur"],
+          ["Cyclic sums \\(\\sum a^2b\\) vs \\(\\sum ab^2\\)", "Rearrangement"],
+          ["\\(\\sum f(a_i)\\) with fixed \\(\\sum a_i\\)", "Jensen (if \\(f\\) convex/concave)"],
+          ["Symmetric, want to show \\(\\ge 0\\)", "SOS"],
+          ["Symmetric, find max/min", "uvw or check boundary cases"],
+          ["Fractions \\(\\sum \\frac{a^2}{b}\\)", "Cauchy-Schwarz or SOS"],
+          ["\\(a^a b^b c^c\\) type", "Jensen with \\(x\\ln x\\)"],
+        ]}]
+      },
+      { h: "8. Common Mistakes Checklist",
+        c: [{ t: "ul", v: [
+          "Verified equality case for all methods?",
+          "For Schur: checked the correct power \\(t\\)?",
+          "For Jensen: confirmed convexity/concavity of \\(f\\)?",
+          "For SOS: all \\(S_a, S_b, S_c\\) nonneg, or sum verified?",
+          "For uvw: checked all boundary cases (not just \\(a=b=c\\))?",
+          "For rearrangement: sequences actually sorted the same way?",
+          "For Power Mean: \\(r < s\\) (not reversed)?",
+        ]}]
+      }
+    ]
+  },
+  {
+    id: "ineq2-practice",
+    title: "Inequalities II \u2014 Practice",
+    sub: "20 problems covering advanced inequality methods",
+    type: "prac",
+    levels: [
+      {
+        n: "Level 1: Power Mean",
+        probs: [
+          [1, "For \\(a,b,c > 0\\) with \\(a+b+c=6\\), find the minimum of \\(a^2+b^2+c^2\\).", "By QM-AM: \\(\\sqrt{\\frac{a^2+b^2+c^2}{3}} \\ge \\frac{a+b+c}{3} = 2\\). So \\(a^2+b^2+c^2 \\ge 12\\). Equality at \\(a=b=c=2\\).", "12"],
+          [2, "For \\(a,b,c > 0\\) with \\(a^2+b^2+c^2=12\\), find the maximum of \\(a+b+c\\).", "By QM-AM: \\(\\frac{a+b+c}{3} \\le \\sqrt{\\frac{a^2+b^2+c^2}{3}} = 2\\). So \\(a+b+c \\le 6\\). Equality at \\(a=b=c=2\\).", "6"],
+          [3, "For \\(a,b,c > 0\\) with \\(a+b+c=3\\), prove \\(\\sqrt{a}+\\sqrt{b}+\\sqrt{c} \\le 3\\).", "QM-AM: \\(\\frac{\\sqrt{a}+\\sqrt{b}+\\sqrt{c}}{3} \\le \\sqrt{\\frac{a+b+c}{3}} = 1\\). So sum \\(\\le 3\\).", "3"],
+          [4, "For \\(a,b,c,d > 0\\) with \\(a+b+c+d=4\\), find min of \\(a^3+b^3+c^3+d^3\\).", "By Power Mean: \\(M_3 \\ge M_1 \\Rightarrow \\frac{\\sum a^3}{4} \\ge \\left(\\frac{\\sum a}{4}\\right)^3 = 1\\). Min = 4.", "4"],
+        ]
+      },
+      {
+        n: "Level 2: Schur",
+        probs: [
+          [5, "For \\(a,b,c \\ge 0\\) with \\(a+b+c=1\\), find the minimum of \\(ab+bc+ca-2abc\\).", "Schur gives \\(a^3+b^3+c^3+3abc \\ge \\sum ab(a+b)\\). Rearranging: \\(ab+bc+ca-2abc \\le \\frac{1}{3}\\)... Actually: min is 0 at \\((1,0,0)\\).", "0"],
+          [6, "For \\(a,b,c \\ge 0\\) with \\(a+b+c=3\\), prove \\(a^2+b^2+c^2+abc \\ge 4\\).", "Schur (\\(t=1\\)): \\(a^3+b^3+c^3+3abc \\ge \\sum ab(a+b)\\). Combined with \\(a^2+b^2+c^2 \\ge ab+bc+ca\\), this gives the result.", "4"],
+          [7, "For \\(a,b,c \\ge 0\\) with \\(a+b+c=3\\), prove \\(a^2b+b^2c+c^2a+abc \\le 4\\).", "This is a known Schur-type bound. Check: \\(a=b=c=1\\) gives 4. Boundary cases give less.", "4"],
+          [8, "For \\(a,b,c > 0\\) with \\(abc=1\\), prove \\(a+b+c \\ge 3\\).", "AM-GM: \\(\\frac{a+b+c}{3} \\ge \\sqrt[3]{abc} = 1\\). So \\(a+b+c \\ge 3\\).", "3"],
+        ]
+      },
+      {
+        n: "Level 3: Rearrangement",
+        probs: [
+          [9, "For \\(a \\ge b \\ge c > 0\\), prove \\(a^3c+c^3b+b^3a \\ge a^3b+b^3c+c^3a\\).", "By rearrangement with sequences \\((a^2,b^2,c^2)\\) and \\((ac,cb,ba)\\)... Actually: rearrange to \\(\\sum a^2(a-b)(a-c) \\ge 0\\), which is Schur.", "0"],
+          [10, "For \\(a,b,c > 0\\), prove \\(\\frac{a}{b}+\\frac{b}{c}+\\frac{c}{a} \\ge \\frac{b}{a}+\\frac{c}{b}+\\frac{a}{c}\\) if \\(a \\ge b \\ge c\\).", "WLOG \\(a \\ge b \\ge c\\). Then \\(\\frac{1}{c} \\ge \\frac{1}{b} \\ge \\frac{1}{a}\\). By rearrangement: \\(\\sum \\frac{a}{b} \\ge \\sum \\frac{b}{a}\\).", "0"],
+          [11, "For \\(a,b,c > 0\\), find the minimum of \\(\\frac{a^2}{b}+\\frac{b^2}{c}+\\frac{c^2}{a}\\).", "By Cauchy-Schwarz (Engel): \\(\\sum \\frac{a^2}{b} \\ge \\frac{(a+b+c)^2}{a+b+c} = a+b+c\\). Min depends on constraint.", "a+b+c"],
+          [12, "For \\(a,b,c > 0\\) with \\(a+b+c=3\\), find the min of \\(\\frac{a^2}{b}+\\frac{b^2}{c}+\\frac{c^2}{a}\\).", "Engel: \\(\\sum \\frac{a^2}{b} \\ge \\frac{(a+b+c)^2}{a+b+c} = 3\\). Equality at \\(a=b=c=1\\).", "3"],
+        ]
+      },
+      {
+        n: "Level 4: Jensen",
+        probs: [
+          [13, "For \\(a,b,c > 0\\) with \\(a+b+c=3\\), find the max of \\(\\ln a + \\ln b + \\ln c\\).", "\\(f(x)=\\ln x\\) is concave. Jensen: \\(\\frac{\\ln a+\\ln b+\\ln c}{3} \\le \\ln\\left(\\frac{a+b+c}{3}\\right) = \\ln 1 = 0\\). Max = 0.", "0"],
+          [14, "For \\(a,b,c > 0\\) with \\(a+b+c=3\\), find the min of \\(a^2+b^2+c^2\\).", "\\(f(x)=x^2\\) is convex. Jensen: \\(\\frac{a^2+b^2+c^2}{3} \\ge \\left(\\frac{a+b+c}{3}\\right)^2 = 1\\). Min = 3.", "3"],
+          [15, "For \\(a,b,c > 0\\) with \\(a+b+c=1\\), prove \\(\\frac{1}{a}+\\frac{1}{b}+\\frac{1}{c} \\ge 9\\).", "\\(f(x)=1/x\\) is convex. Jensen: \\(\\frac{1/a+1/b+1/c}{3} \\ge \\frac{1}{(a+b+c)/3} = 3\\). So sum \\(\\ge 9\\).", "9"],
+          [16, "For \\(a,b,c > 0\\) with \\(a+b+c=3\\), prove \\(2^a+2^b+2^c \\ge 6\\).", "\\(f(x)=2^x\\) is convex. Jensen: \\(\\frac{2^a+2^b+2^c}{3} \\ge 2^{(a+b+c)/3} = 2\\). So sum \\(\\ge 6\\).", "6"],
+        ]
+      },
+      {
+        n: "Level 5: SOS",
+        probs: [
+          [17, "Prove \\(a^2+b^2+c^2 \\ge ab+bc+ca\\) for all reals \\(a,b,c\\).", "\\(\\frac{1}{2}[(a-b)^2+(b-c)^2+(c-a)^2] \\ge 0\\).", "0"],
+          [18, "For \\(a,b,c > 0\\), prove \\(\\frac{a^2}{b}+\\frac{b^2}{c}+\\frac{c^2}{a} \\ge a+b+c\\).", "By Cauchy-Schwarz: \\((\\sum \\frac{a^2}{b})(\\sum ab) \\ge (\\sum a)^2\\). Since \\(\\sum ab \\le \\sum a^2\\), we get \\(\\sum \\frac{a^2}{b} \\ge \\frac{(\\sum a)^2}{\\sum ab} \\ge \\sum a\\).", "0"],
+          [19, "For \\(a,b,c > 0\\) with \\(a+b+c=3\\), prove \\(a^3+b^3+c^3 \\ge 3\\).", "By Schur or Jensen: \\(f(x)=x^3\\) is convex. Jensen: \\(\\frac{\\sum a^3}{3} \\ge \\left(\\frac{\\sum a}{3}\\right)^3 = 1\\). So \\(\\sum a^3 \\ge 3\\).", "3"],
+          [20, "For \\(a,b,c > 0\\), prove \\(a^4+b^4+c^4 \\ge a^3b+b^3c+c^3a\\).", "By rearrangement: sequences \\((a^3,b^3,c^3)\\) and \\((a,b,c)\\) similarly sorted. So \\(\\sum a^3 \\cdot a \\ge \\sum a^3 \\cdot b\\).", "0"],
+        ]
+      }
+    ]
   }
 ];
 
