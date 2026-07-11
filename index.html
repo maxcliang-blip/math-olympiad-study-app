@@ -205,6 +205,32 @@ body {
 .lesson li { margin-bottom: 4px; }
 .lesson .katex-display { margin: 8px 0; }
 .lvl { font-size: 20px; font-weight: 700; margin: 32px 0 16px; }
+
+/* Topics */
+.topic-cat { font-size: 20px; font-weight: 700; margin: 28px 0 12px; color: var(--blue); }
+.topic-item {
+  display: flex; align-items: flex-start; gap: 12px;
+  padding: 12px 16px; margin-bottom: 6px;
+  background: var(--card); border-radius: 10px;
+  border: 1px solid var(--border);
+}
+.topic-check {
+  width: 22px; height: 22px; min-width: 22px;
+  border-radius: 50%; border: 2px solid var(--border);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 13px; font-weight: 700; margin-top: 1px; cursor: pointer;
+  transition: .15s;
+}
+.topic-check.done { background: var(--green-bg); border-color: var(--green); color: var(--green); }
+.topic-check:hover { border-color: var(--blue); }
+.topic-body { flex: 1; }
+.topic-name { font-size: 15px; font-weight: 600; }
+.topic-name.done { color: var(--green); text-decoration: line-through; opacity: .7; }
+.topic-notes { font-size: 13px; color: var(--muted); margin-top: 2px; }
+.topic-progress { margin-top: 24px; }
+.topic-progress-bar { height: 8px; background: var(--border); border-radius: 4px; overflow: hidden; margin-top: 8px; }
+.topic-progress-fill { height: 100%; background: var(--green); border-radius: 4px; transition: width .4s; }
+.topic-summary { font-size: 14px; color: var(--muted); margin-top: 8px; }
 @media (max-width: 768px) {
   .sidebar { display: none; }
   .main { margin-left: 0; padding: 20px 16px; }
@@ -252,6 +278,50 @@ function matchAns(userAns, storedAns) {
 }
 
 const SECTIONS = [
+  {
+    id: "roadmap",
+    title: "USAJMO Roadmap",
+    sub: "Topics needed to qualify for USAJMO",
+    type: "topics",
+    group: "Roadmap",
+    topics: [
+      { cat: "Algebra", items: [
+        { name: "Polynomials & Vieta's Formulas", status: "done", notes: "Mastered in Symmetric Polynomials" },
+        { name: "Symmetric Polynomials", status: "done", notes: "40 practice problems + AIME" },
+        { name: "Inequalities I (AM-GM, Cauchy, Engel)", status: "done", notes: "Lesson + 20 practice + AIME" },
+        { name: "Inequalities II (Schur, Jensen, SOS, uvw)", status: "done", notes: "Lesson + 20 practice" },
+        { name: "Sequences & Series", status: "todo", notes: "Arithmetic, geometric, telescoping, recurrence" },
+        { name: "Functional Equations", status: "todo", notes: "Cauchy-type, injective/surjective, P(x,y)" },
+        { name: "Logarithms & Exponents", status: "todo", notes: "Properties, inequalities, equations" },
+        { name: "Complex Numbers", status: "todo", notes: "Roots of unity, De Moivre, geometric interpretation" },
+        { name: "Polynomial Interpolation", status: "todo", notes: "Lagrange, finite differences" },
+      ]},
+      { cat: "Geometry", items: [
+        { name: "Triangle Geometry", status: "todo", notes: "Centers, cevians, Stewart's, trig" },
+        { name: "Circle Geometry", status: "todo", notes: "Power of a point, radical axis, Ptolemy" },
+        { name: "Coordinate/Bashing", status: "todo", notes: "Barycentric, complex, Cartesian" },
+        { name: "Transformations", status: "todo", notes: "Inversion, projective, spiral similarity" },
+        { name: "Lemmas", status: "todo", notes: "Euler line, Sawayama, Feuerbach" },
+        { name: "3D Geometry", status: "todo", notes: "Cross sections, sphere problems" },
+      ]},
+      { cat: "Number Theory", items: [
+        { name: "Divisibility & Primes", status: "todo", notes: "GCD, LCM, prime factorization" },
+        { name: "Modular Arithmetic", status: "todo", notes: "CRT, Fermat's Little, Euler's theorem" },
+        { name: "Diophantine Equations", status: "todo", notes: "Linear, Pythagorean, Pell's" },
+        { name: "Quadratic Residues", status: "todo", notes: "Legendre symbol, law of quadratic reciprocity" },
+        { name: "p-adic Valuations", status: "todo", notes: "Lifting the exponent, order" },
+        { name: "Orders & Primitive Roots", status: "todo", notes: "Discrete log, structure of (Z/nZ)*" },
+      ]},
+      { cat: "Combinatorics", items: [
+        { name: "Counting Techniques", status: "todo", notes: "Stars and bars, bijections, inclusion-exclusion" },
+        { name: "Bijections & Combinatorial Proofs", status: "todo", notes: "Double counting, hockey stick" },
+        { name: "Pigeonhole Principle", status: "todo", notes: "Direct, weighted, extremal" },
+        { name: "Invariants & Monovariants", status: "todo", notes: "Coloring arguments, parity" },
+        { name: "Generating Functions", status: "todo", notes: "Ordinary, exponential, applications" },
+        { name: "Recurrence Relations", status: "todo", notes: "Characteristic equation, Catalan numbers" },
+      ]},
+    ]
+  },
   {
     id: "sym-practice",
     title: "Symmetric Polynomials",
@@ -775,6 +845,7 @@ function render() {
   const sec = SECTIONS.find(s => s.id === cur);
   const main = document.getElementById("main");
   if (sec.type === "lesson") renderLesson(main, sec);
+  else if (sec.type === "topics") renderTopics(main, sec);
   else renderPrac(main, sec);
 }
 
@@ -828,7 +899,7 @@ function renderLesson(main, sec) {
     html += '<div class="lesson"><h3>' + R(s.h) + '</h3>';
     s.c.forEach(item => {
       if (item.t === "p") html += '<p>' + R(item.v) + '</p>';
-      else if (item.t === "d") html += K.renderToString(item.v, Object.assign({}, opts, { displayMode: true }));
+      else if (item.t === "d") html = K.renderToString(item.v, Object.assign({}, opts, { displayMode: true }));
       else if (item.t === "h4") html += '<h4>' + R(item.v) + '</h4>';
       else if (item.t === "ex") html += '<div class="ex"><div class="ex-title">' + item.title + '</div>' + R(item.v) + '</div>';
       else if (item.t === "table") {
@@ -843,6 +914,57 @@ function renderLesson(main, sec) {
     html += '</div>';
   });
   main.innerHTML = html;
+}
+
+function renderTopics(main, sec) {
+  let total = 0, doneCount = 0;
+  sec.topics.forEach(cat => cat.items.forEach(item => {
+    total++;
+    if (item.status === "done") doneCount++;
+  }));
+  let html = '<h2>' + sec.title + '</h2><p class="subtitle">' + sec.sub + '</p>';
+  html += '<div class="topic-progress"><div class="topic-progress-bar"><div class="topic-progress-fill" style="width:' + (total ? (doneCount/total*100) : 0) + '%"></div></div>';
+  html += '<div class="topic-summary">' + doneCount + ' / ' + total + ' topics completed (' + Math.round(doneCount/total*100) + '%)</div></div>';
+  sec.topics.forEach(cat => {
+    html += '<div class="topic-cat">' + cat.cat + '</div>';
+    cat.items.forEach((item, i) => {
+      const isDone = item.status === "done";
+      html += '<div class="topic-item">';
+      html += '<div class="topic-check' + (isDone ? ' done' : '') + '" onclick="toggleTopic(\'' + sec.id + '\',' + sec.topics.indexOf(cat) + ',' + i + ')">' + (isDone ? '&#10003;' : '') + '</div>';
+      html += '<div class="topic-body"><div class="topic-name' + (isDone ? ' done' : '') + '">' + item.name + '</div>';
+      html += '<div class="topic-notes">' + item.notes + '</div></div></div>';
+    });
+  });
+  main.innerHTML = html;
+}
+
+function toggleTopic(secId, catIdx, itemIdx) {
+  const sec = SECTIONS.find(s => s.id === secId);
+  const item = sec.topics[catIdx].items[itemIdx];
+  item.status = item.status === "done" ? "todo" : "done";
+  localStorage.setItem("mtopics", JSON.stringify(getTopicStates()));
+  render();
+}
+
+function getTopicStates() {
+  const states = {};
+  SECTIONS.filter(s => s.type === "topics").forEach(sec => {
+    states[sec.id] = sec.topics.map(cat => cat.items.map(item => item.status));
+  });
+  return states;
+}
+
+function loadTopicStates() {
+  const saved = JSON.parse(localStorage.getItem("mtopics") || "{}");
+  SECTIONS.filter(s => s.type === "topics").forEach(sec => {
+    if (saved[sec.id]) {
+      sec.topics.forEach((cat, ci) => {
+        cat.items.forEach((item, ii) => {
+          if (saved[sec.id][ci] && saved[sec.id][ci][ii]) item.status = saved[sec.id][ci][ii];
+        });
+      });
+    }
+  });
 }
 
 function toggleSol(s, p) {
@@ -880,6 +1002,7 @@ function importProgress(input) {
       if (data.sols) { sols = data.sols; localStorage.setItem("msol", JSON.stringify(sols)); }
       if (data.checkStates) { checkStates = data.checkStates; localStorage.setItem("mcheck", JSON.stringify(checkStates)); }
       syncSave();
+loadTopicStates();
 syncLoad().then(() => render());
     } catch(err) {
       alert("Invalid progress file.");
