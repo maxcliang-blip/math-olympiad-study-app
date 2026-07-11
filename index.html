@@ -983,7 +983,7 @@ function renderLesson(main, sec) {
         html += '<table><thead><tr>';
         item.headers.forEach(h => html += '<th>' + h + '</th>');
         html += '</tr></thead><tbody>';
-        item.rows.forEach(r => html += '<tr><td>' + R(r[0]) + '</td><td>' + r[1] + '</td></tr>');
+        item.rows.forEach(r => { html += '<tr>'; r.forEach(c => html += '<td>' + R(c) + '</td>'); html += '</tr>'; });
         html += '</tbody></table>';
       }
       else if (item.t === "ul") { html += '<ul>'; item.v.forEach(x => html += '<li>' + R(x) + '</li>'); html += '</ul>'; }
