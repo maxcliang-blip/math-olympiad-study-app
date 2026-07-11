@@ -976,7 +976,7 @@ function renderLesson(main, sec) {
     html += '<div class="lesson"><h3>' + R(s.h) + '</h3>';
     s.c.forEach(item => {
       if (item.t === "p") html += '<p>' + R(item.v) + '</p>';
-      else if (item.t === "d") html = K.renderToString(item.v, Object.assign({}, opts, { displayMode: true }));
+      else if (item.t === "d") html += K.renderToString(item.v, Object.assign({}, opts, { displayMode: true }));
       else if (item.t === "h4") html += '<h4>' + R(item.v) + '</h4>';
       else if (item.t === "ex") html += '<div class="ex"><div class="ex-title">' + item.title + '</div>' + R(item.v) + '</div>';
       else if (item.t === "table") {
