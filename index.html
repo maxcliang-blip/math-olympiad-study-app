@@ -143,6 +143,35 @@ body {
 }
 .hint-btn:hover { background: #fff3c4; }
 .hint-btn:disabled { opacity: .4; cursor: default; }
+
+/* Solution textarea */
+.sol-write { padding: 0 20px 14px; }
+.sol-write-label {
+  font-size: 11px; font-weight: 700; text-transform: uppercase;
+  letter-spacing: .05em; color: var(--blue); margin-bottom: 6px;
+}
+.sol-textarea {
+  width: 100%; min-height: 100px; font-family: var(--font);
+  font-size: 14px; padding: 10px 14px; border: 2px solid var(--border);
+  border-radius: 8px; outline: none; resize: vertical; line-height: 1.5;
+  transition: .15s;
+}
+.sol-textarea:focus { border-color: var(--blue); }
+.sol-preview {
+  background: var(--bg); border: 1px solid var(--border); border-radius: 8px;
+  padding: 12px 16px; margin-top: 8px; min-height: 40px; font-size: 14px;
+}
+.sol-preview .katex { font-size: 1em; }
+.latex-toolbar {
+  display: flex; flex-wrap: wrap; gap: 4px; margin-top: 6px; padding: 8px;
+  background: var(--card); border: 1px solid var(--border); border-radius: 8px;
+}
+.latex-btn {
+  font-family: "Courier New", monospace; font-size: 12px; font-weight: 600;
+  padding: 4px 8px; border: 1px solid var(--border); border-radius: 4px;
+  background: var(--bg); cursor: pointer; transition: .15s; color: var(--text);
+}
+.latex-btn:hover { background: var(--blue-bg); border-color: var(--blue); color: var(--blue); }
 .ans-row {
   display: flex;
   align-items: center;
@@ -843,6 +872,7 @@ let cur = "sym-practice";
 let sols = JSON.parse(localStorage.getItem("msol") || "{}");
 let openSols = {};
 let hintStates = {};
+let userSolutions = JSON.parse(localStorage.getItem("msolutions") || "{}");
 let checkStates = JSON.parse(localStorage.getItem("mcheck") || "{}");
 
 const API_BASE = location.pathname.startsWith('/math') ? '/math' : '';
@@ -963,6 +993,22 @@ function renderPrac(main, sec) {
         }
         html += '</div>';
       }
+      if (p[1].toLowerCase().includes('prove')) {
+        const solKey = key(sid, pid);
+        const savedSol = userSolutions[solKey] || '';
+        html += '<div class="sol-write">';
+        html += '<div class="sol-write-label">Your Solution</div>';
+        html += '<textarea class="sol-textarea" id="sol-ta-' + solKey + '" placeholder="Write your proof here... Use \\( \\) for inline LaTeX" oninput="saveUserSolution(\'' + sid + '\',' + pid + ',this.value);renderPreview(\'' + sid + '\',' + pid + ')">' + savedSol.replace(/</g,'&lt;').replace(/>/g,'&gt;') + '</textarea>';
+        html += '<div class="latex-toolbar">';
+        ['\\(','\\)','\\[','\\]','\\frac{}{}','\\sqrt{}','\\sum','\\prod','\\int','\\infty','\\le','\\ge','\\neq','\\approx','\\pm','\\times','\\cdot','\\alpha','\\beta','\\gamma','\\theta','\\phi','\\psi','\\omega','\\pi','\\sigma','\\Delta','\\nabla','\\forall','\\exists','\\in','\\subset','\\cup','\\cap','\\Rightarrow','\\Leftrightarrow','\\rightarrow','\\leftarrow','\\text{}','\\textbf{}','\\textit{}','\\mathbb{R}','\\mathbb{Z}','\\mathbb{N}','\\mathbb{Q}','\\mathbb{C}'].forEach(sym => {
+          html += '<button class="latex-btn" onclick="insertLatex(\'' + sid + '\',' + pid + ',\'' + sym.replace(/\\/g,'\\\\') + '\')">' + sym.replace(/\\\\/g,'\\') + '</button>';
+        });
+        html += '</div>';
+        html += '<div class="sol-preview" id="sol-prev-' + solKey + '">';
+        if (savedSol) html += R(savedSol);
+        else html += '<span style="color:var(--muted)">Your solution will appear here...</span>';
+        html += '</div></div>';
+      }
       if (open) html += '<div class="sol"><div class="sol-label">Solution</div>' + R(p[2]) + '</div>';
       html += '</div>';
     });
@@ -1055,6 +1101,33 @@ function showHint(s, p, n) {
   if (!hintStates[k]) hintStates[k] = 0;
   if (hintStates[k] < n) hintStates[k] = n;
   render();
+}
+
+function saveUserSolution(s, p, text) {
+  const k = key(s, p);
+  userSolutions[k] = text;
+  localStorage.setItem("msolutions", JSON.stringify(userSolutions));
+}
+
+function insertLatex(s, p, latex) {
+  const ta = document.getElementById('sol-ta-' + key(s, p));
+  if (!ta) return;
+  const start = ta.selectionStart, end = ta.selectionEnd;
+  const val = ta.value;
+  ta.value = val.slice(0, start) + latex + val.slice(end);
+  ta.selectionStart = ta.selectionEnd = start + latex.length;
+  ta.focus();
+  saveUserSolution(s, p, ta.value);
+  renderPreview(s, p);
+}
+
+function renderPreview(s, p) {
+  const ta = document.getElementById('sol-ta-' + key(s, p));
+  const prev = document.getElementById('sol-prev-' + key(s, p));
+  if (!ta || !prev) return;
+  const text = ta.value;
+  if (!text.trim()) { prev.innerHTML = '<span style="color:var(--muted)">Your solution will appear here...</span>'; return; }
+  prev.innerHTML = R(text);
 }
 
 function go(id) { cur = id; openSols = {}; render(); }
