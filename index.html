@@ -885,13 +885,14 @@ async function syncLoad() {
     const data = await r.json();
     if (data.sols) { sols = data.sols; localStorage.setItem("msol", JSON.stringify(sols)); }
     if (data.checkStates) { checkStates = data.checkStates; localStorage.setItem("mcheck", JSON.stringify(checkStates)); }
+    if (data.userSolutions) { userSolutions = data.userSolutions; localStorage.setItem("msolutions", JSON.stringify(userSolutions)); }
     render();
   } catch(e) { /* server not available, use local */ }
 }
 
 // Save progress to server
 function syncSave() {
-  const data = JSON.stringify({ sols, checkStates });
+  const data = JSON.stringify({ sols, checkStates, userSolutions });
   fetch(API_BASE + '/api/save', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: data, signal: AbortSignal.timeout(5000) }).catch(() => {});
 }
 
