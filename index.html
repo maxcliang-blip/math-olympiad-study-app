@@ -319,7 +319,7 @@ const SECTIONS = [
         { name: "Symmetric Polynomials", status: "done", notes: "40 practice problems + AIME" },
         { name: "Inequalities I (AM-GM, Cauchy, Engel)", status: "done", notes: "Lesson + 20 practice + AIME" },
         { name: "Inequalities II (Schur, Jensen, SOS, uvw)", status: "done", notes: "Lesson + 20 practice" },
-        { name: "Sequences & Series", status: "todo", notes: "Arithmetic, geometric, telescoping, recurrence" },
+        { name: "Sequences & Series", status: "done", notes: "Arithmetic, geometric, telescoping, recurrence" },
         { name: "Functional Equations", status: "todo", notes: "Cauchy-type, injective/surjective, P(x,y)" },
         { name: "Logarithms & Exponents", status: "todo", notes: "Properties, inequalities, equations" },
         { name: "Complex Numbers", status: "todo", notes: "Roots of unity, De Moivre, geometric interpretation" },
@@ -861,6 +861,201 @@ const SECTIONS = [
           [18, "For \\(a,b,c > 0\\), prove \\(\\frac{a^2}{b}+\\frac{b^2}{c}+\\frac{c^2}{a} \\ge a+b+c\\).", "By Cauchy-Schwarz: \\((\\sum \\frac{a^2}{b})(\\sum ab) \\ge (\\sum a)^2\\). Since \\(\\sum ab \\le \\sum a^2\\), we get \\(\\sum \\frac{a^2}{b} \\ge \\frac{(\\sum a)^2}{\\sum ab} \\ge \\sum a\\).", "0"],
           [19, "For \\(a,b,c > 0\\) with \\(a+b+c=3\\), prove \\(a^3+b^3+c^3 \\ge 3\\).", "By Schur or Jensen: \\(f(x)=x^3\\) is convex. Jensen: \\(\\frac{\\sum a^3}{3} \\ge \\left(\\frac{\\sum a}{3}\\right)^3 = 1\\). So \\(\\sum a^3 \\ge 3\\).", "3"],
           [20, "For \\(a,b,c > 0\\), prove \\(a^4+b^4+c^4 \\ge a^3b+b^3c+c^3a\\).", "By rearrangement: sequences \\((a^3,b^3,c^3)\\) and \\((a,b,c)\\) similarly sorted. So \\(\\sum a^3 \\cdot a \\ge \\sum a^3 \\cdot b\\).", "0"],
+        ]
+      }
+    ]
+  },
+  {
+    id: "seq-lesson",
+    title: "Sequences \u2014 Lesson",
+    sub: "Arithmetic, Geometric, Telescoping, Recurrences, Summation",
+    type: "lesson",
+    group: "Sequences",
+    sections: [
+      { h: "1. Arithmetic Sequences",
+        c: [
+          { t: "p", v: "An arithmetic sequence has constant difference \\(d\\) between consecutive terms:" },
+          { t: "d", v: "a_n = a_1 + (n-1)d" },
+          { t: "h4", v: "Sum of first \\(n\\) terms" },
+          { t: "d", v: "S_n = \\frac{n}{2}(a_1 + a_n) = \\frac{n}{2}(2a_1 + (n-1)d) = na_1 + \\frac{n(n-1)}{2}d" },
+          { t: "h4", v: "Key properties" },
+          { t: "ul", v: [
+            "\\(a_k = \\frac{a_{k-1} + a_{k+1}}{2}\\) (middle term is average of neighbors)",
+            "The average of the first \\(n\\) terms equals the middle term: \\(\\frac{S_n}{n} = a_{\\text{mid}}\\)",
+            "If \\(m+n = p+q\\), then \\(a_m + a_n = a_p + a_q\\)",
+          ]},
+          { t: "ex", title: "Example 1", v: "Find the sum of all multiples of 3 from 1 to 100.<br><br>Multiples: 3, 6, 9, ..., 99. This is arithmetic with \\(a_1=3, d=3, a_n=99\\).<br>\\(n = \\frac{99-3}{3}+1 = 33\\). Sum \\(= \\frac{33}{2}(3+99) = \\frac{33 \\cdot 102}{2} = 1683\\)." },
+          { t: "ex", title: "Example 2", v: "In an arithmetic sequence, \\(a_3 = 7\\) and \\(a_7 = 19\\). Find \\(a_{15}\\).<br><br>\\(a_7 - a_3 = 4d = 12 \\Rightarrow d = 3\\). Then \\(a_{15} = a_3 + 12d = 7 + 36 = 43\\)." },
+        ]
+      },
+      { h: "2. Geometric Sequences",
+        c: [
+          { t: "p", v: "A geometric sequence has constant ratio \\(r\\) between consecutive terms:" },
+          { t: "d", v: "a_n = a_1 \\cdot r^{n-1}" },
+          { t: "h4", v: "Sum of first \\(n\\) terms" },
+          { t: "d", v: "S_n = a_1 \\cdot \\frac{1-r^n}{1-r} \\quad (r \\ne 1)" },
+          { t: "h4", v: "Infinite geometric series" },
+          { t: "p", v: "If \\(|r| < 1\\), the infinite sum converges:" },
+          { t: "d", v: "S_\\infty = \\frac{a_1}{1-r}" },
+          { t: "h4", v: "Key properties" },
+          { t: "ul", v: [
+            "\\(a_k^2 = a_{k-1} \\cdot a_{k+1}\\) (middle term is geometric mean of neighbors)",
+            "If \\(m+n = p+q\\), then \\(a_m \\cdot a_n = a_p \\cdot a_q\\)",
+            "The product of the first \\(n\\) terms: \\(P_n = a_1^n \\cdot r^{n(n-1)/2}\\)",
+          ]},
+          { t: "ex", title: "Example 3", v: "Find \\(\\sum_{k=0}^{\\infty} \\frac{3}{2^k}\\).<br><br>This is a geometric series with \\(a_1 = 3, r = \\frac{1}{2}\\).<br>Sum \\(= \\frac{3}{1-1/2} = 6\\)." },
+          { t: "ex", title: "Example 4", v: "In a geometric sequence, \\(a_2 = 6\\) and \\(a_5 = 162\\). Find \\(a_1\\) and \\(r\\).<br><br>\\(\\frac{a_5}{a_2} = r^3 = 27 \\Rightarrow r = 3\\). Then \\(a_1 = \\frac{a_2}{r} = \\frac{6}{3} = 2\\)." },
+          { t: "ex", title: "Example 5", v: "The sum of an infinite geometric series is 12 and the sum of the first two terms is 8. Find all possible values of the common ratio \\(r\\).<br><br>\\(\\frac{a_1}{1-r} = 12\\) and \\(a_1(1+r) = 8\\). Dividing: \\(\\frac{1+r}{1-r} = \\frac{8}{12} = \\frac{2}{3}\\). Solving: \\(3+3r = 2-2r \\Rightarrow 5r = -1 \\Rightarrow r = -\\frac{1}{5}\\). (Check: \\(|r| < 1\\) so converges.)" },
+        ]
+      },
+      { h: "3. Telescoping Series",
+        c: [
+          { t: "p", v: "A telescoping series is one where most terms cancel when you write out the partial sums. The key technique is partial fractions or difference manipulation." },
+          { t: "h4", v: "The basic idea" },
+          { t: "p", v: "If \\(a_k = b_k - b_{k+1}\\), then \\(\\sum_{k=1}^{n} a_k = b_1 - b_{n+1}\\)." },
+          { t: "h4", v: "Partial fractions for telescoping" },
+          { t: "p", v: "Decompose \\(\\frac{1}{f(k)g(k)}\\) into \\(\\frac{A}{f(k)} + \\frac{B}{g(k)}\\) where \\(f(k)\\) and \\(g(k)\\) are linear in \\(k\\)." },
+          { t: "ex", title: "Example 6", v: "Evaluate \\(\\sum_{k=1}^{n} \\frac{1}{k(k+1)}\\).<br><br>Partial fractions: \\(\\frac{1}{k(k+1)} = \\frac{1}{k} - \\frac{1}{k+1}\\).<br>Telescoping: \\(\\left(1 - \\frac{1}{2}\\right) + \\left(\\frac{1}{2} - \\frac{1}{3}\\right) + \\cdots + \\left(\\frac{1}{n} - \\frac{1}{n+1}\\right) = 1 - \\frac{1}{n+1} = \\frac{n}{n+1}\\)." },
+          { t: "ex", title: "Example 7", v: "Evaluate \\(\\sum_{k=1}^{n} \\frac{1}{k(k+2)}\\).<br><br>Partial fractions: \\(\\frac{1}{k(k+2)} = \\frac{1}{2}\\left(\\frac{1}{k} - \\frac{1}{k+2}\\right)\\).<br>Telescoping: \\(\\frac{1}{2}\\left[\\left(1+\\frac{1}{2}\\right) - \\left(\\frac{1}{n+1}+\\frac{1}{n+2}\\right)\\right] = \\frac{1}{2}\\left[\\frac{3}{2} - \\frac{2n+3}{(n+1)(n+2)}\\right] = \\frac{n(3n+5)}{4(n+1)(n+2)}\\)." },
+          { t: "ex", title: "Example 8", v: "Evaluate \\(\\sum_{k=1}^{n} k \\cdot k!\\).<br><br>Note \\(k \\cdot k! = (k+1)! - k!\\). Telescoping: \\((2!-1!) + (3!-2!) + \\cdots + ((n+1)!-n!) = (n+1)! - 1\\)." },
+          { t: "h4", v: "Common telescoping patterns" },
+          { t: "table", headers: ["Sum", "Telescopes to"], rows: [
+            ["\\(\\sum \\frac{1}{k(k+1)}\\)", "\\(1 - \\frac{1}{n+1}\\)"],
+            ["\\(\\sum \\frac{1}{k(k+2)}\\)", "\\(\\frac{3}{4} - \\frac{1}{2(n+1)} - \\frac{1}{2(n+2)}\\)"],
+            ["\\(\\sum k \\cdot k!\\)", "\\((n+1)! - 1\\)"],
+            ["\\(\\sum \\frac{k}{(k+1)!}\\)", "\\(1 - \\frac{1}{(n+1)!}\\)"],
+            ["\\(\\sum (2k-1)\\)", "\\(n^2\\)"],
+          ]},
+        ]
+      },
+      { h: "4. Recurrence Relations",
+        c: [
+          { t: "p", v: "A recurrence relation defines a sequence in terms of previous terms. The most common type in competitions is the linear recurrence." },
+          { t: "h4", v: "First-order linear recurrence" },
+          { t: "d", v: "a_{n+1} = pa_n + q" },
+          { t: "p", v: "Solution: \\(a_n = p^{n-1}a_1 + q\\cdot\\frac{p^{n-1}-1}{p-1}\\) for \\(p \\ne 1\\)." },
+          { t: "h4", v: "Second-order linear recurrence (characteristic equation)" },
+          { t: "d", v: "a_{n+2} = \\alpha \\cdot a_{n+1} + \\beta \\cdot a_n" },
+          { t: "p", v: "The characteristic equation is \\(x^2 = \\alpha x + \\beta\\). If roots are \\(r_1, r_2\\) (distinct), then \\(a_n = Ar_1^n + Br_2^n\\) where \\(A, B\\) are determined by initial conditions." },
+          { t: "ex", title: "Example 9", v: "Fibonacci: \\(F_1 = 1, F_2 = 1, F_{n+2} = F_{n+1} + F_n\\). Find \\(F_n\\) in closed form.<br><br>Characteristic equation: \\(x^2 = x + 1 \\Rightarrow x = \\frac{1 \\pm \\sqrt{5}}{2}\\). Let \\(\\phi = \\frac{1+\\sqrt{5}}{2}, \\psi = \\frac{1-\\sqrt{5}}{2}\\).<br>Then \\(F_n = \\frac{\\phi^n - \\psi^n}{\\sqrt{5}}\\) (Binet's formula)." },
+          { t: "ex", title: "Example 10", v: "Solve \\(a_1 = 1, a_{n+1} = 2a_n + 3\\).<br><br>This is first-order: \\(p=2, q=3\\). Fixed point: \\(x = 2x+3 \\Rightarrow x = -3\\).<br>Let \\(b_n = a_n + 3\\). Then \\(b_{n+1} = 2b_n\\), so \\(b_n = 4 \\cdot 2^{n-1} = 2^{n+1}\\).<br>Thus \\(a_n = 2^{n+1} - 3\\)." },
+          { t: "ex", title: "Example 11", v: "Solve \\(a_1 = 1, a_2 = 4, a_{n+2} = 5a_{n+1} - 6a_n\\).<br><br>Characteristic: \\(x^2 = 5x - 6 \\Rightarrow (x-2)(x-3) = 0\\). Roots: \\(2, 3\\).<br>\\(a_n = A \\cdot 2^n + B \\cdot 3^n\\). From \\(a_1=1, a_2=4\\): \\(2A+3B=1, 4A+9B=4\\).<br>Solving: \\(A=-\\frac{1}{2}, B=1\\). So \\(a_n = 3^n - 2^{n-1}\\)." },
+          { t: "h4", v: "When to use recurrences" },
+          { t: "ul", v: [
+            "Fibonacci-type problems",
+            "Counting problems with recursive structure",
+            "Problems where \\(a_n\\) depends on \\(a_{n-1}\\) and \\(a_{n-2}\\)",
+            "Proving closed forms by induction",
+          ]},
+        ]
+      },
+      { h: "5. Summation Techniques",
+        c: [
+          { t: "h4", v: "Common summation formulas" },
+          { t: "table", headers: ["Sum", "Formula"], rows: [
+            ["\\(\\sum_{k=1}^{n} k\\)", "\\(\\frac{n(n+1)}{2}\\)"],
+            ["\\(\\sum_{k=1}^{n} k^2\\)", "\\(\\frac{n(n+1)(2n+1)}{6}\\)"],
+            ["\\(\\sum_{k=1}^{n} k^3\\)", "\\(\\left(\\frac{n(n+1)}{2}\\right)^2\\)"],
+            ["\\(\\sum_{k=0}^{n} r^k\\)", "\\(\\frac{1-r^{n+1}}{1-r}\\)"],
+            ["\\(\\sum_{k=1}^{n} \\binom{k}{m}\\)", "\\(\\binom{n+1}{m+1}\\)"],
+          ]},
+          { t: "h4", v: "Arithmetico-geometric series" },
+          { t: "p", v: "A sum of the form \\(\\sum_{k=1}^{n} (a+(k-1)d)r^{k-1}\\). Multiply by \\(r\\) and subtract to telescope." },
+          { t: "ex", title: "Example 12", v: "Find \\(\\sum_{k=1}^{n} k \\cdot 2^k\\).<br><br>Let \\(S = 1 \\cdot 2 + 2 \\cdot 4 + 3 \\cdot 8 + \\cdots + n \\cdot 2^n\\).<br>Then \\(2S = 1 \\cdot 4 + 2 \\cdot 8 + \\cdots + (n-1) \\cdot 2^n + n \\cdot 2^{n+1}\\).<br>Subtracting: \\(-S = 2 + 4 + 8 + \\cdots + 2^n - n \\cdot 2^{n+1} = 2(2^n-1) - n \\cdot 2^{n+1}\\).<br>So \\(S = n \\cdot 2^{n+1} - 2^{n+1} + 2 = (n-1) \\cdot 2^{n+1} + 2\\)." },
+          { t: "ex", title: "Example 13", v: "Find \\(\\sum_{k=1}^{n} k^2 \\cdot 2^k\\).<br><br>Use the identity \\(k^2 = k(k-1) + k\\). Then \\(\\sum k^2 \\cdot 2^k = \\sum k(k-1) \\cdot 2^k + \\sum k \\cdot 2^k\\).<br>The first sum: \\(\\sum k(k-1) \\cdot 2^k = 2 \\sum k(k-1) \\cdot 2^{k-1}\\). Let \\(S_2 = \\sum k(k-1) \\cdot 2^k\\). Then \\(S_2 = 2S_2'\\) where \\(S_2' = \\sum k(k-1) \\cdot 2^{k-1}\\).<br>By similar technique: \\(S_2 = (n^2-n-2) \\cdot 2^{n+1} + 8\\). Combined with Example 12." },
+          { t: "h4", v: "Summation by parts (Abel summation)" },
+          { t: "p", v: "The discrete version of integration by parts:" },
+          { t: "d", v: "\\sum_{k=1}^{n} a_k b_k = A_n b_{n+1} - \\sum_{k=1}^{n} A_k(b_{k+1}-b_k)" },
+          { t: "p", v: "where \\(A_k = a_1 + a_2 + \\cdots + a_k\\)." },
+        ]
+      },
+      { h: "6. Special Sequences",
+        c: [
+          { t: "h4", v: "Fibonacci numbers" },
+          { t: "d", v: "F_1=1, F_2=1, F_{n+2}=F_{n+1}+F_n" },
+          { t: "p", v: "Key identities: \\(F_1+F_2+\\cdots+F_n = F_{n+2}-1\\), \\(F_n^2 + F_{n+1}^2 = F_{2n+1}\\), \\(F_{n+1}F_{n-1}-F_n^2 = (-1)^n\\)." },
+          { t: "h4", v: "Catalan numbers" },
+          { t: "d", v: "C_n = \\frac{1}{n+1}\\binom{2n}{n}" },
+          { t: "p", v: "Counts: balanced parentheses, binary trees, lattice paths, triangulations. Recurrence: \\(C_{n+1} = \\sum_{k=0}^{n} C_k C_{n-k}\\)." },
+          { t: "h4", v: "Tribonacci numbers" },
+          { t: "d", v: "T_1=1, T_2=1, T_3=2, T_{n+3}=T_{n+2}+T_{n+1}+T_n" },
+          { t: "p", v: "Characteristic equation: \\(x^3 = x^2+x+1\\). Roots: one real, two complex." },
+          { t: "ex", title: "Example 14", v: "Prove \\(\\sum_{k=1}^{n} F_k = F_{n+2} - 1\\).<br><br>By induction. Base: \\(F_1 = 1 = F_3 - 1 = 2-1\\). Assume true for \\(n\\).<br>For \\(n+1\\): \\(\\sum_{k=1}^{n+1} F_k = F_{n+2}-1+F_{n+1} = F_{n+3}-1\\). Done." },
+          { t: "ex", title: "Example 15", v: "How many ways to tile a \\(2 \\times n\\) board with \\(1 \\times 2\\) dominoes?<br><br>Let \\(a_n\\) be the number of tilings. For the last column: either place a vertical domino (\\(a_{n-1}\\) ways) or two horizontal dominoes (\\(a_{n-2}\\) ways).<br>So \\(a_n = a_{n-1}+a_{n-2}\\) with \\(a_1=1, a_2=2\\). This is \\(a_n = F_{n+1}\\)." },
+        ]
+      },
+      { h: "7. Strategy Guide",
+        c: [
+          { t: "table", headers: ["Problem pattern", "Method to try"], rows: [
+            ["Sum of arithmetic series", "Use \\(S_n = \\frac{n}{2}(a_1+a_n)\\)"],
+            ["Sum of geometric series", "Use \\(S_n = a_1 \\cdot \\frac{1-r^n}{1-r}\\)"],
+            ["Fractions like \\(\\frac{1}{k(k+1)}\\)", "Partial fractions + telescoping"],
+            ["Recurrence \\(a_{n+1} = pa_n+q\\)", "Fixed point or substitution"],
+            ["Recurrence \\(a_{n+2} = \\alpha a_{n+1}+\\beta a_n\\)", "Characteristic equation"],
+            ["Sum \\(\\sum k \\cdot r^k\\)", "Arithmetico-geometric (multiply and subtract)"],
+            ["Counting with recursion", "Set up recurrence, solve"],
+            ["Fibonacci identities", "Use \\(F_{m+n} = F_{m+1}F_n+F_mF_{n-1}\\)"],
+          ]},
+          { t: "p", v: "Always check: Is the sequence arithmetic? Geometric? Does it telescope? Is there a recurrence?" },
+        ]
+      },
+      { h: "8. Common Mistakes",
+        c: [{ t: "ul", v: [
+          "Off-by-one errors in indexing (starting at \\(k=0\\) vs \\(k=1\\))?",
+          "Geometric series: checked \\(|r| < 1\\) for infinite sums?",
+          "Telescoping: verified all middle terms actually cancel?",
+          "Recurrence: used correct initial conditions for closed form?",
+          "Fibonacci: \\(F_0 = 0, F_1 = 1\\) or \\(F_1 = 1, F_2 = 1\\)?",
+          "Sum formulas: correct for the range of \\(k\\)?",
+        ]}]
+      }
+    ]
+  },
+  {
+    id: "seq-practice",
+    title: "Sequences \u2014 Practice",
+    sub: "20 problems covering all sequence methods",
+    type: "prac",
+    group: "Sequences",
+    levels: [
+      {
+        n: "Level 1: Arithmetic & Geometric",
+        probs: [
+          [1, "Find the 20th term of the arithmetic sequence: \\(3, 7, 11, 15, \\ldots\\)", "\\(a_n = 3 + (n-1) \\cdot 4 = 4n-1\\). \\(a_{20} = 79\\).", "79"],
+          [2, "Find the sum of the first 15 terms of \\(2, 5, 8, 11, \\ldots\\)", "\\(a_1=2, d=3, n=15\\). \\(S_{15} = \\frac{15}{2}(2+44) = \\frac{15 \\cdot 46}{2} = 345\\).", "345"],
+          [3, "Find the sum of the first 10 terms of \\(3, 6, 12, 24, \\ldots\\)", "Geometric: \\(a_1=3, r=2, n=10\\). \\(S_{10} = 3 \\cdot \\frac{2^{10}-1}{2-1} = 3(1023) = 3069\\).", "3069"],
+          [4, "An arithmetic sequence has \\(a_5 = 20\\) and \\(a_{10} = 35\\). Find \\(a_1\\).", "\\(a_{10}-a_5 = 5d = 15 \\Rightarrow d=3\\). \\(a_1 = a_5-4d = 20-12 = 8\\).", "8"],
+          [5, "Find \\(\\sum_{k=0}^{8} 3 \\cdot 2^k\\).", "Geometric: \\(a_1=3, r=2, n=9\\) terms. Sum \\(= 3(2^9-1) = 3 \\cdot 511 = 1533\\).", "1533"],
+        ]
+      },
+      {
+        n: "Level 2: Telescoping",
+        probs: [
+          [6, "Evaluate \\(\\sum_{k=1}^{50} \\frac{1}{k(k+1)}\\).", "Telescoping: \\(\\frac{1}{k(k+1)} = \\frac{1}{k} - \\frac{1}{k+1}\\). Sum \\(= 1 - \\frac{1}{51} = \\frac{50}{51}\\).", "50/51"],
+          [7, "Evaluate \\(\\sum_{k=1}^{n} \\frac{1}{(2k-1)(2k+1)}\\).", "\\(\\frac{1}{(2k-1)(2k+1)} = \\frac{1}{2}\\left(\\frac{1}{2k-1}-\\frac{1}{2k+1}\\right)\\). Sum \\(= \\frac{1}{2}\\left(1-\\frac{1}{2n+1}\\right) = \\frac{n}{2n+1}\\).", "n/(2n+1)"],
+          [8, "Evaluate \\(\\sum_{k=1}^{n} k \\cdot k!\\).", "\\(k \\cdot k! = (k+1)!-k!\\). Sum \\(= (n+1)!-1\\).", "(n+1)!-1|(n+1)! - 1"],
+          [9, "Evaluate \\(\\sum_{k=2}^{n} \\ln\\left(1-\\frac{1}{k^2}\\right)\\).", "\\(\\ln\\left(\\frac{(k-1)(k+1)}{k^2}\\right) = \\ln(k-1)+\\ln(k+1)-2\\ln k\\). Telescopes to \\(\\ln\\frac{n+1}{2n}\\).", "ln((n+1)/(2n))|ln((n+1)/2n)"],
+          [10, "Evaluate \\(\\sum_{k=1}^{n} \\frac{2k+1}{k^2(k+1)^2}\\).", "\\(\\frac{2k+1}{k^2(k+1)^2} = \\frac{1}{k^2}-\\frac{1}{(k+1)^2}\\). Sum \\(= 1-\\frac{1}{(n+1)^2} = \\frac{n^2+2n}{(n+1)^2}\\).", "1-1/(n+1)^2|(n^2+2n)/(n+1)^2"],
+        ]
+      },
+      {
+        n: "Level 3: Recurrences",
+        probs: [
+          [11, "Solve \\(a_1=2, a_{n+1}=3a_n-2\\).", "Fixed point: \\(x=3x-2 \\Rightarrow x=1\\). Let \\(b_n=a_n-1\\). Then \\(b_{n+1}=3b_n\\), \\(b_1=1\\). So \\(a_n=3^{n-1}+1\\).", "3^(n-1)+1|3^{n-1}+1"],
+          [12, "Find \\(F_{10}\\) where \\(F_1=1, F_2=1, F_{n+2}=F_{n+1}+F_n\\).", "Compute: 1,1,2,3,5,8,13,21,34,55. So \\(F_{10}=55\\).", "55"],
+          [13, "Solve \\(a_1=1, a_2=3, a_{n+2}=4a_{n+1}-3a_n\\).", "Char: \\(x^2=4x-3 \\Rightarrow (x-1)(x-3)=0\\). \\(a_n=A+B \\cdot 3^n\\). \\(A+B=3, A+3B=9\\)... Actually: \\(A=0, B=1\\). So \\(a_n=3^{n-1}\\)... Wait, check: \\(a_1=1, a_2=3\\). \\(a_n = \\frac{3^{n}-1}{2}\\).", "(3^n-1)/2|(3^n - 1)/2"],
+          [14, "A sequence satisfies \\(a_0=1, a_1=2, a_{n+2}=2a_{n+1}+3a_n\\). Find \\(a_5\\).", "Char: \\(x^2=2x+3 \\Rightarrow (x-3)(x+1)=0\\). \\(a_n=A \\cdot 3^n+B(-1)^n\\). \\(A+B=1, 3A-B=2\\). \\(A=3/4, B=1/4\\). \\(a_5 = \\frac{3 \\cdot 243+(-1)}{4} = \\frac{728}{4}=182\\).", "182"],
+          [15, "Find the number of ways to tile a \\(2 \\times 4\\) board with \\(1 \\times 2\\) dominoes.", "\\(a_n = a_{n-1}+a_{n-2}\\) with \\(a_1=1, a_2=2\\). \\(a_3=3, a_4=5\\).", "5"],
+        ]
+      },
+      {
+        n: "Level 4: Advanced",
+        probs: [
+          [16, "Find \\(\\sum_{k=1}^{n} k \\cdot 3^k\\).", "Let \\(S=\\sum k \\cdot 3^k\\). Then \\(3S=\\sum k \\cdot 3^{k+1}\\). Subtract: \\(-2S = 3+3^2+\\cdots+3^n-n \\cdot 3^{n+1} = \\frac{3(3^n-1)}{2}-n \\cdot 3^{n+1}\\). So \\(S = \\frac{(2n-1)3^{n+1}+3}{4}\\).", "(2n-1)3^(n+1)/4+3/4|(2n-1)3^{n+1}/4 + 3/4"],
+          [17, "For Fibonacci, prove \\(F_1^2+F_2^2+\\cdots+F_n^2 = F_n F_{n+1}\\).", "By induction or geometric argument (area of squares in Fibonacci spiral). Base: \\(F_1^2=1=F_1F_2\\).", "F_nF_{n+1}|F_n F_{n+1}"],
+          [18, "Find \\(\\sum_{k=1}^{n} \\binom{k}{2}\\).", "Hockey stick: \\(\\sum_{k=2}^{n} \\binom{k}{2} = \\binom{n+1}{3} = \\frac{n(n+1)(n-1)}{6}\\).", "n(n+1)(n-1)/6|C(n+1,3)"],
+          [19, "Find \\(\\sum_{k=0}^{n} (-1)^k \\binom{n}{k}\\).", "By binomial theorem: \\((1-1)^n = 0^n\\). For \\(n \\ge 1\\), this is 0.", "0"],
+          [20, "A sequence has \\(a_1=1\\) and \\(a_{n+1}=a_n+\\frac{1}{a_n}\\). Prove \\(a_n > \\sqrt{2n-1}\\) for \\(n \\ge 2\\).", "By induction. \\(a_2=2 > \\sqrt{3}\\). Assume \\(a_n > \\sqrt{2n-1}\\). Then \\(a_{n+1}^2 = a_n^2+2+\\frac{1}{a_n^2} > 2n-1+2 = 2n+1\\).", "proven"],
         ]
       }
     ]
