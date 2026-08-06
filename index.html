@@ -572,7 +572,8 @@ const SECTIONS = [
           [20, "For positive \\(a,b,c\\) with \\(a^2+b^2+c^2=12\\), find max of \\(a+b+c\\).", "Cauchy: \\((a+b+c)^2 \\le 3\\cdot12 = 36 \\Rightarrow a+b+c \\le 6\\).", "6"],
         ]
       }
-    ]
+    ,
+      {"n":"Level 5: AIME 10+/USAJMO","probs":[[21,"For positive reals \\(a, b, c\\), find the minimum of \\(\\dfrac{(a+b)(b+c)(c+a)}{abc}\\).","AM-GM gives \\((a+b)(b+c)(c+a) \\ge 2\\sqrt{ab}\\cdot 2\\sqrt{bc}\\cdot 2\\sqrt{ca} = 8abc\\), equality at \\(a=b=c\\).","8"],[22,"Let \\(x, y > 0\\) with \\(x + y = 2\\). Find the minimum of \\(\\dfrac{x}{y} + \\dfrac{y}{x}\\).","\\(\\frac{x}{y} + \\frac{y}{x} = \\frac{x^2+y^2}{xy} = \\frac{(x+y)^2-2xy}{xy} = \\frac{4}{xy}-2 \\ge 4-2 = 2\\) since \\(xy \\le 1\\).","2"],[23,"For positive \\(x, y, z\\) with \\(xyz = 1\\), find the minimum of \\(x + y + z\\).","AM-GM: \\(x+y+z \\ge 3\\sqrt[3]{xyz} = 3\\), equality at \\(x=y=z=1\\).","3"],[24,"Find the minimum of \\(\\dfrac{x^2+3x+1}{x}\\) for \\(x > 0\\).","\\(\\frac{x^2+3x+1}{x} = x + 3 + \\frac1x \\ge 3 + 2\\sqrt{x\\cdot\\frac1x} = 5\\).","5"],[25,"For positive \\(a, b\\) with \\(a + b = 1\\), find the minimum of \\(\\dfrac1a + \\dfrac1b\\).","By Cauchy, \\((\\frac1a+\\frac1b)(a+b) \\ge (1+1)^2\\), so \\(\\frac1a+\\frac1b \\ge 4\\), equality at \\(a=b=\\frac12\\).","4"],[26,"Find the maximum of \\(xy\\) given \\(x + y = 10\\) with \\(x, y \\ge 0\\).","AM-GM: \\(xy \\le (\\frac{x+y}{2})^2 = 25\\), equality at \\(x=y=5\\).","25"],[27,"For positive reals \\(x, y, z\\), find the minimum of \\((x+y+z)\\left(\\dfrac1x + \\dfrac1y + \\dfrac1z\\right)\\).","By Cauchy-Schwarz, \\((x+y+z)(\\frac1x+\\frac1y+\\frac1z) \\ge (1+1+1)^2 = 9\\).","9"],[28,"If \\(a, b, c > 0\\) and \\(a + b + c = 6\\), find the maximum of \\(abc\\).","AM-GM: \\(abc \\le (\\frac{a+b+c}{3})^3 = 8\\), equality at \\(a=b=c=2\\).","8"],[29,"Find the minimum of \\(x^2 + \\dfrac{1}{x^2}\\) for \\(x \\neq 0\\).","AM-GM: \\(x^2 + \\frac1{x^2} \\ge 2\\sqrt{x^2\\cdot\\frac1{x^2}} = 2\\), equality at \\(x=\\pm1\\).","2"],[30,"Find the minimum of \\(x + \\dfrac{4}{x}\\) for \\(x > 0\\).","AM-GM: \\(x + \\frac4x \\ge 2\\sqrt{x\\cdot\\frac4x} = 4\\), equality at \\(x=2\\).","4"]]}]
   },
   {
     id: "aime-ineq",
@@ -863,7 +864,8 @@ const SECTIONS = [
           [20, "For \\(a,b,c > 0\\), prove \\(a^4+b^4+c^4 \\ge a^3b+b^3c+c^3a\\).", "By rearrangement: sequences \\((a^3,b^3,c^3)\\) and \\((a,b,c)\\) similarly sorted. So \\(\\sum a^3 \\cdot a \\ge \\sum a^3 \\cdot b\\).", "0"],
         ]
       }
-    ]
+    ,
+      {"n":"Level 6: AIME 10+/USAJMO","probs":[[21,"For nonnegative \\(a, b, c\\) with \\(a + b + c = 1\\), find the minimum of \\(a^3 + b^3 + c^3 + 3abc\\).","By Jensen on the convex \\(t^3\\) plus the \\(3abc\\) term, the minimum occurs at \\(a=b=c=\\frac13\\): \\(3\\cdot\\frac1{27} + 3\\cdot\\frac1{27} = \\frac{2}{9}\\). (At \\((1,0,0)\\) it is 1, at \\((\\frac12,\\frac12,0)\\) it is \\(\\frac14\\).)","2/9"],[22,"For real \\(x, y, z\\) with \\(x + y + z = 3\\), find the minimum of \\(x^2 + y^2 + z^2\\).","Jensen (convexity of \\(t^2\\)): \\(\\frac{x^2+y^2+z^2}{3} \\ge \\left(\\frac{x+y+z}{3}\\right)^2 = 1\\), so the sum is at least 3.","3"],[23,"For positive \\(x, y\\) with \\(x + y = 4\\), find the minimum of \\(\\sqrt{\\dfrac{x^2+y^2}{2}}\\).","Power mean (RMS \\(\\ge\\) AM): \\(\\sqrt{\\frac{x^2+y^2}{2}} \\ge \\frac{x+y}{2} = 2\\), equality at \\(x=y=2\\).","2"],[24,"For \\(a = 3, b = 4, c = 5\\), compute \\(a^2 + b^2 + c^2 - (ab + bc + ca)\\).","\\(50 - (12+20+15) = 50 - 47 = 3\\). (The SOS identity guarantees this is nonnegative.)","3"],[25,"For real \\(x, y, z\\) with \\(x + y + z = 6\\), find the minimum of \\(x^2 + y^2 + z^2\\).","Convexity: \\(x^2+y^2+z^2 \\ge \\frac{(x+y+z)^2}{3} = \\frac{36}{3} = 12\\), equality at \\(x=y=z=2\\).","12"],[26,"For \\(a, b, c \\ge 0\\) with \\(a + b + c = 12\\), find the maximum of \\(ab + bc + ca\\).","By symmetry the maximum occurs at \\(a=b=c=4\\): \\(3\\cdot 16 = 48\\). (Indeed \\(ab+bc+ca \\le \\frac{(a+b+c)^2}{3}\\).)","48"],[27,"For \\(a = 1, b = 2, c = 3\\), compute the difference \\(a^3+b^3+c^3+3abc - (a^2b+a^2c+b^2a+b^2c+c^2a+c^2b)\\).","LHS \\(= 1+8+27+18 = 54\\). RHS \\(= 2+3+4+12+9+18 = 48\\). Difference \\(= 6\\). (Schur guarantees \\(\\ge 0\\).)","6"],[28,"For positive \\(a, b, c\\) with \\(abc = 8\\), find the minimum of \\(a + b + c\\).","AM-GM: \\(a+b+c \\ge 3\\sqrt[3]{abc} = 3\\cdot 2 = 6\\), equality at \\(a=b=c=2\\).","6"],[29,"Find the minimum of \\(4x^2 + \\dfrac{1}{x}\\) for \\(x > 0\\).","AM-GM on \\(4x^2, \\frac{1}{2x}, \\frac{1}{2x}\\): \\(4x^2+\\frac1x \\ge 3\\sqrt[3]{4x^2\\cdot\\frac{1}{4x^2}} = 3\\), equality at \\(x=\\frac12\\).","3"],[30,"For positive \\(a, b, c\\), find the minimum of \\(\\dfrac{a}{b+c} + \\dfrac{b}{c+a} + \\dfrac{c}{a+b}\\).","Nesbitt's inequality: the sum is at least \\(\\frac32\\), with equality at \\(a=b=c\\).","3/2"]]}]
   },
   {
     id: "seq-lesson",
@@ -1058,7 +1060,8 @@ const SECTIONS = [
           [20, "A sequence has \\(a_1=1\\) and \\(a_{n+1}=a_n+\\frac{1}{a_n}\\). Prove \\(a_n > \\sqrt{2n-1}\\) for \\(n \\ge 2\\).", "By induction. \\(a_2=2 > \\sqrt{3}\\). Assume \\(a_n > \\sqrt{2n-1}\\). Then \\(a_{n+1}^2 = a_n^2+2+\\frac{1}{a_n^2} > 2n-1+2 = 2n+1\\).", "proven"],
         ]
       }
-    ]
+    ,
+      {"n":"Level 5: AIME 10+/USAJMO","probs":[[21,"Let \\(F_1 = F_2 = 1\\) and \\(F_{n} = F_{n-1} + F_{n-2}\\). Find \\(F_1 + F_2 + \\cdots + F_{10}\\).","\\(F_1..F_{10} = 1,1,2,3,5,8,13,21,34,55\\); sum \\(= 143\\).","143"],[22,"Find the sum of the first 100 positive even integers.","The evens are \\(2,4,\\dots,200\\), an arithmetic sequence with 100 terms: \\(100\\cdot\\frac{2+200}{2} = 10100\\).","10100"],[23,"A sequence has \\(a_1 = 2\\) and \\(a_{n+1} = 3a_n + 1\\). Find \\(a_4\\).","\\(a_2 = 7, a_3 = 22, a_4 = 67\\).","67"],[24,"Find \\(1 + 2 + 4 + \\cdots + 2^9\\).","Geometric sum: \\(\\frac{2^{10}-1}{2-1} = 1023\\).","1023"],[25,"The sum of the first \\(n\\) terms of an arithmetic sequence is \\(n^2\\). Find its 100th term.","\\(a_n = S_n - S_{n-1} = n^2 - (n-1)^2 = 2n-1\\), so \\(a_{100} = 199\\).","199"],[26,"Find \\(\\dfrac{1}{1\\cdot 2} + \\dfrac{1}{2\\cdot 3} + \\cdots + \\dfrac{1}{99\\cdot 100}\\).","Telescoping: \\(\\frac1{k(k+1)} = \\frac1k - \\frac1{k+1}\\), so the sum is \\(1 - \\frac1{100} = \\frac{99}{100}\\).","99/100"],[27,"A sequence has \\(a_1 = 1\\) and \\(a_{n+1} = 2a_n + 3\\). Find \\(a_6\\).","\\(a_2=5, a_3=13, a_4=29, a_5=61, a_6=125\\).","125"],[28,"Find the sum of the infinite geometric series \\(3 + 1 + \\dfrac13 + \\dfrac19 + \\cdots\\).","First term 3, ratio \\(\\frac13\\): \\(\\frac{3}{1-1/3} = \\frac{9}{2}\\).","9/2"],[29,"A sequence has \\(a_1 = 0\\) and \\(a_{n+1} = a_n + 2n\\). Find \\(a_{10}\\).","\\(a_{10} = 2(1+2+\\cdots+9) = 2\\cdot 45 = 90\\).","90"],[30,"Find \\(1 + 2 + 3 + \\cdots + 200\\).","Arithmetic sum: \\(\\frac{200\\cdot 201}{2} = 20100\\).","20100"]]}]
   },
   {
     id: "poly-lesson",
@@ -1820,7 +1823,21 @@ const SECTIONS = [
           [12, "The centroid divides each median in ratio \\(2 : 1\\). If \\([ABC] = 60\\), find the area of the triangle formed by the three medians' segments \u2014 specifically \\([BGC]\\) where \\(G\\) is the centroid.", "\\([BGC] = \\frac13[ABC] = 20\\).", "20"],
         ]
       }
-    ]
+    ,
+      { n: "Level 4: AIME 10+/USAJMO",
+        probs: [
+          [13,"In \\(\\triangle ABC\\), \\(D \\in AB\\) with \\(AD:DB = 2:1\\) and \\(E \\in AC\\) with \\(AE:EC = 3:1\\). If \\(BE\\) and \\(CD\\) meet at \\(X\\) and \\(AX\\) meets \\(BC\\) at \\(F\\), find \\(BF/FC\\).","Mass points: masses \\(m(A)=1, m(B)=2, m(C)=3\\). Then \\(BF:FC = m(C):m(B) = 3:2\\).","3/2"],
+          [14,"A line parallel to \\(BC\\) meets \\(AB\\) at \\(D\\) and \\(AC\\) at \\(E\\), with \\(AD:DB = 1:2\\). What fraction of the area of \\(\\triangle ABC\\) is \\(\\triangle ADE\\)?","\\(AD/AB = 1/3\\), and similar triangles scale area by the square: \\(1/9\\).","1/9"],
+          [15,"A 6-foot-tall person casts an 8-foot shadow while a building casts a 60-foot shadow at the same time. How tall is the building?","Similar triangles: \\(h/60 = 6/8\\), so \\(h = 45\\).","45"],
+          [16,"Right triangle \\(ABC\\) has legs \\(AB = 6\\), \\(BC = 8\\) and right angle at \\(B\\). The altitude from \\(B\\) to \\(AC\\) has length \\(h\\). Find \\(h\\).","Hypotenuse is 10 and area is \\(24 = \\tfrac12 \\cdot 10h\\), so \\(h = 24/5\\).","24/5"],
+          [17,"Triangle \\(T\\) is similar to a \\(3:4:5\\) triangle and has perimeter 60. Find its longest side.","Longest side is \\(\\tfrac{5}{12} \\cdot 60 = 25\\).","25"],
+          [18,"In \\(\\triangle ABC\\), cevians divide the sides with \\(AD:DB = BF:FC = CE:EA = 2:1\\). Find the ratio of the area of the central triangle they bound to the area of \\(ABC\\).","Routh's theorem with \\(x = y = z = 2\\): \\(\\dfrac{(8-1)^2}{(4+2+1)^3} = \\dfrac{49}{343} = \\dfrac17\\).","1/7"],
+          [19,"In trapezoid \\(ABCD\\) with \\(AB \\parallel CD\\), \\(AB = 5\\), \\(CD = 8\\), and diagonals meet at \\(X\\). Find \\(AX/AC\\).","The diagonals cut proportionally: \\(AX/XC = AB/CD = 5/8\\), so \\(AX/AC = 5/13\\).","5/13"],
+          [20,"A right triangle has legs 9 and 12. The altitude to the hypotenuse divides it into two segments; find the longer segment.","Hypotenuse is 15. The segments are \\(9^2/15 = 27/5\\) and \\(12^2/15 = 48/5\\); the longer is \\(48/5\\).","48/5"],
+          [21,"In \\(\\triangle ABC\\), the angle bisector of \\(\\angle A\\) meets \\(BC\\) at \\(D\\). If \\(AB = 6\\), \\(AC = 8\\), and \\(BD = 3\\), find \\(BC\\).","Angle bisector theorem: \\(BD/DC = 6/8 = 3/4\\), so \\(DC = 4\\) and \\(BC = 7\\).","7"],
+          [22,"A square of side 2 sits inside \\(\\triangle ABC\\) with one side on \\(BC\\) and its top two vertices on \\(AB, AC\\). The altitude from \\(A\\) to \\(BC\\) is 6. Find \\(BC\\).","The small triangle above the square is similar to \\(ABC\\) with height ratio \\(4/6 = 2/3\\), so its base \\(2\\) satisfies \\(2/BC = 2/3\\), giving \\(BC = 3\\).","3"]
+        ]
+      }]
   },
   {
     id: "geo2-lesson",
@@ -1893,7 +1910,21 @@ const SECTIONS = [
           [12, "A cyclic quadrilateral is a square with side \\(4\\). Find its area by Brahmagupta and directly.", "Direct: 16. Brahmagupta: \\(s = 8\\), \\(\\sqrt{4^4} = 16\\).", "16"],
         ]
       }
-    ]
+    ,
+      { n: "Level 4: AIME 10+/USAJMO",
+        probs: [
+          [13,"Cyclic quadrilateral \\(ABCD\\) has \\(\\angle A = 70^\\circ\\). Find \\(\\angle C\\).","Opposite angles of a cyclic quadrilateral are supplementary: \\(\\angle C = 110^\\circ\\).","110"],
+          [14,"In cyclic quadrilateral \\(ABCD\\), \\(AB = 3\\), \\(BC = 4\\), \\(CD = 5\\), \\(DA = 6\\). Find \\(AC \\cdot BD\\).","Ptolemy: \\(AC \\cdot BD = AB \\cdot CD + BC \\cdot DA = 15 + 24 = 39\\).","39"],
+          [15,"In cyclic quadrilateral \\(ABCD\\), \\(AB = 2\\), \\(BC = 3\\), \\(CD = 4\\), \\(DA = 5\\). Find \\(AC \\cdot BD\\).","Ptolemy: \\(2 \\cdot 4 + 3 \\cdot 5 = 8 + 15 = 23\\).","23"],
+          [16,"An inscribed angle subtends a diameter of its circle. Find its measure.","An angle inscribed in a semicircle is a right angle: \\(90^\\circ\\).","90"],
+          [17,"A cyclic quadrilateral has sides 5, 5, 6, 6 in order. Find its area.","Brahmagupta: \\(s = 11\\), area \\(= \\sqrt{(11-5)(11-5)(11-6)(11-6)} = \\sqrt{900} = 30\\).","30"],
+          [18,"A cyclic quadrilateral has perpendicular diagonals of lengths 10 and 24. Find its area.","Area \\(= \\tfrac12 d_1 d_2 = \\tfrac12 \\cdot 10 \\cdot 24 = 120\\).","120"],
+          [19,"A cyclic quadrilateral has sides 2, 2, 3, 3 in order. Find \\(AC \\cdot BD\\).","Ptolemy: \\(2 \\cdot 3 + 2 \\cdot 3 = 12\\).","12"],
+          [20,"Points \\(A, B, C, D\\) lie on a circle with \\(AB = 6\\), \\(BC = 8\\), \\(CD = 6\\), \\(DA = 8\\). Find the area.","Brahmagupta: \\(s = 14\\), area \\(= \\sqrt{8 \\cdot 6 \\cdot 8 \\cdot 6} = 48\\).","48"],
+          [21,"A cyclic quadrilateral has \\(\\angle A = 70^\\circ\\) and \\(\\angle B = 90^\\circ\\). Find \\(\\angle C + \\angle D\\).","\\(\\angle C = 180 - 70 = 110\\), \\(\\angle D = 180 - 90 = 90\\), so the sum is 200.","200"],
+          [22,"In cyclic quadrilateral \\(ABCD\\), \\(AB = 6\\), \\(BC = 8\\), \\(CD = 6\\), \\(DA = 8\\), and \\(AC\\) is a diameter. Find \\(AC\\).","\\(AC^2 = AB^2 + BC^2 = 36 + 64 = 100\\), so \\(AC = 10\\).","10"]
+        ]
+      }]
   },
   {
     id: "geo3-lesson",
@@ -1963,7 +1994,21 @@ const SECTIONS = [
           [12, "Chord \\(AB\\) split by \\(P\\) into \\(PA = 2, PB = 8\\); \\(PD = 4\\) on chord \\(CD\\). Find \\(PC\\).", "\\(16 = 4 \\cdot PC \\Rightarrow PC = 4\\).", "4"],
         ]
       }
-    ]
+    ,
+      { n: "Level 4: AIME 10+/USAJMO",
+        probs: [
+          [13,"From point \\(P\\) outside a circle, the tangent \\(PA = 12\\). A secant through \\(P\\) cuts the circle at \\(B\\) (nearest) and \\(C\\) with \\(PB = 6\\). Find \\(PC\\).","Power: \\(PA^2 = PB \\cdot PC\\), so \\(144 = 6 PC\\) and \\(PC = 24\\).","24"],
+          [14,"From \\(P\\), secants \\(PAB\\) and \\(PCD\\) meet the circle with \\(PA = 4\\), \\(AB = 5\\), \\(PC = 6\\). Find \\(PD\\).","\\(PA \\cdot PB = PC \\cdot PD\\): \\(4 \\cdot 9 = 6 \\cdot PD\\), so \\(PD = 6\\).","6"],
+          [15,"Chords \\(AB\\) and \\(CD\\) of a circle meet inside at \\(X\\), with \\(AX = 3\\), \\(XB = 8\\), \\(CX = 4\\). Find \\(XD\\).","\\(AX \\cdot XB = CX \\cdot XD\\): \\(24 = 4 \\cdot XD\\), so \\(XD = 6\\).","6"],
+          [16,"Point \\(P\\) is 5 units from the center of a circle of radius 4. Find the power of \\(P\\) with respect to the circle.","\\(OP^2 - r^2 = 25 - 16 = 9\\).","9"],
+          [17,"From \\(P\\) outside a circle, the tangent has length 10 and the nearer secant segment is 4. Find the distance to the far intersection point.","\\(10^2 = 4 \\cdot d\\), so \\(d = 25\\).","25"],
+          [18,"Chords \\(AB\\) and \\(CD\\) meet inside a circle at \\(X\\), with \\(AX = 2\\), \\(XB = 8\\), and \\(CX = XD\\). Find \\(CX\\).","\\(2 \\cdot 8 = CX^2\\), so \\(CX = 4\\).","4"],
+          [19,"Point \\(P\\) has power 20 with respect to a circle. A line through \\(P\\) cuts the circle at \\(X, Y\\) with \\(PX = 4\\). Find \\(PY\\).","\\(PX \\cdot PY = 20\\), so \\(PY = 5\\).","5"],
+          [20,"A point \\(P\\) is inside a circle of radius 5 with \\(OP = 3\\). For any chord through \\(P\\), find the product of the two segment lengths.","Power \\(= r^2 - OP^2 = 25 - 9 = 16\\).","16"],
+          [21,"From external point \\(P\\), \\(PA\\) is tangent to a circle of radius 5 at \\(A\\), and \\(OP = 13\\). Find \\(PA\\).","\\(PA^2 = OP^2 - OA^2 = 169 - 25 = 144\\), so \\(PA = 12\\).","12"],
+          [22,"Chord \\(AB\\) of a circle is extended past \\(B\\) to \\(P\\), with \\(PB = 8\\). The tangent from \\(P\\) touches the circle at \\(T\\) with \\(PT = 12\\). Find \\(AB\\).","\\(PT^2 = PB \\cdot PA\\): \\(144 = 8 \\cdot PA\\), so \\(PA = 18\\) and \\(AB = 18 - 8 = 10\\).","10"]
+        ]
+      }]
   },
   {
     id: "geo4-lesson",
@@ -2026,7 +2071,21 @@ const SECTIONS = [
           [10, "Two circles with centers 4 apart have radii 3 and 5. Do they intersect? If so, what's the radical axis?", "Radii 3+5 = 8 > 4 and |3-5| = 2 < 4, so they intersect. Radical axis is the common chord.", "yes|Yes"],
         ]
       }
-    ]
+    ,
+      { n: "Level 3: AIME 10+/USAJMO",
+        probs: [
+          [11,"Two circles have radii 6 and 8 and their centers are 12 apart. Find the distance from the radius-6 circle's center to the radical axis.","Radical axis is at \\(x = \\dfrac{6^2 - 8^2 + 12^2}{2 \\cdot 12} = \\dfrac{116}{24} = \\dfrac{29}{6}\\).","29/6"],
+          [12,"Two congruent circles of radius 5 have centers 10 apart. Find the distance from either center to the radical axis.","The radical axis is the perpendicular bisector of the centers, at distance 5.","5"],
+          [13,"Point \\(P\\) lies on the radical axis of circles \\(C_1\\) and \\(C_2\\). The power of \\(P\\) with respect to \\(C_1\\) is 15. Find the power of \\(P\\) with respect to \\(C_2\\).","On the radical axis powers are equal, so it is also 15.","15"],
+          [14,"Two circles with radii 3 and 4 are externally tangent, centers 7 apart. Find the distance from the radius-3 circle's center to the radical axis.","\\(x = \\dfrac{3^2 - 4^2 + 7^2}{14} = \\dfrac{42}{14} = 3\\).","3"],
+          [15,"Point \\(P\\) is the radical center of three circles of radius 5, and its power with respect to each is 11. Find \\(OP\\) for each center \\(O\\).","\\(\\text{power} = OP^2 - 25 = 11\\), so \\(OP^2 = 36\\) and \\(OP = 6\\).","6"],
+          [16,"Two circles have radii 2 and 3 with centers 13 apart. Find the distance from the radius-2 circle's center to the radical axis.","\\(x = \\dfrac{4 - 9 + 169}{26} = \\dfrac{164}{26} = \\dfrac{82}{13}\\).","82/13"],
+          [17,"Circles with centers at \\((0,0)\\) and \\((4,0)\\) have radii 3 and 5. Find the x-coordinate of their radical axis.","\\(x = \\dfrac{9 - 25 + 16}{8} = 0\\).","0"],
+          [18,"Two congruent circles of radius 7 have centers 20 apart. Find the distance from either center to the radical axis.","The radical axis is the perpendicular bisector: distance 10.","10"],
+          [19,"Circle \\(C_1\\) has radius 4 and center at the origin; circle \\(C_2\\) has radius 9 and center at \\((13,0)\\). Find the x-coordinate of the radical axis.","\\(x = \\dfrac{16 - 81 + 169}{26} = \\dfrac{104}{26} = 4\\).","4"],
+          [20,"A point has power 0 with respect to a circle of radius 7. Find its distance from the center.","Power 0 means the point is on the circle: distance 7.","7"]
+        ]
+      }]
   },
   {
     id: "geo5-lesson",
@@ -2096,7 +2155,21 @@ const SECTIONS = [
           [10, "Using trig Ceva, show that altitudes are concurrent (hint: \\(\\sin(90^\\circ - B)\\) etc.).", "\\(\\frac{\\sin(90-A)}{\\sin(90-B)} \\cdot \\frac{\\sin(90-B)}{\\sin(90-C)} \\cdot \\frac{\\sin(90-C)}{\\sin(90-A)} = 1\\).", "1"],
         ]
       }
-    ]
+    ,
+      { n: "Level 3: AIME 10+/USAJMO",
+        probs: [
+          [11,"In \\(\\triangle ABC\\), cevians \\(AD, BE, CF\\) are concurrent with \\(BD/DC = 2\\) and \\(CE/EA = 3\\). Find \\(AF/FB\\).","Ceva: \\(\\frac{AF}{FB} \\cdot 2 \\cdot 3 = 1\\), so \\(AF/FB = 1/6\\).","1/6"],
+          [12,"In \\(\\triangle ABC\\), the three medians meet at the centroid. Find \\(AF/FB\\), where \\(F\\) is the midpoint of \\(AB\\).","A median hits the midpoint, so \\(AF/FB = 1\\).","1"],
+          [13,"In \\(\\triangle ABC\\), cevians \\(AD, BE, CF\\) are concurrent with \\(AF/FB = 2\\) and \\(CE/EA = 4\\). Find \\(BD/DC\\).","Ceva: \\(2 \\cdot \\frac{BD}{DC} \\cdot 4 = 1\\), so \\(BD/DC = 1/8\\).","1/8"],
+          [14,"In \\(\\triangle ABC\\), \\(BD/DC = 2/3\\) and \\(CE/EA = 3/5\\). For the cevians \\(AD, BE, CF\\) to be concurrent, find \\(AF/FB\\).","Ceva: \\(\\frac{AF}{FB} \\cdot \\frac23 \\cdot \\frac35 = 1\\), so \\(AF/FB = 5/2\\).","5/2"],
+          [15,"In \\(\\triangle ABC\\), \\(AD\\) is the angle bisector of \\(\\angle A\\) with \\(AB = 4\\), \\(AC = 6\\). Find \\(BD/DC\\).","Angle bisector theorem: \\(BD/DC = AB/AC = 4/6 = 2/3\\).","2/3"],
+          [16,"In \\(\\triangle ABC\\), the cevians through the centroid meet sides at \\(D, E, F\\). Find \\(AE/EC\\).","Each centroid cevian is a median, so \\(AE = EC\\) and \\(AE/EC = 1\\).","1"],
+          [17,"In \\(\\triangle ABC\\), \\(BD:DC = 3:1\\), \\(CE:EA = 2:3\\), \\(AF:FB = 5:4\\). Find the value of the Ceva product \\(\\frac{AF}{FB} \\cdot \\frac{BD}{DC} \\cdot \\frac{CE}{EA}\\).","Product \\(= \\frac54 \\cdot 3 \\cdot \\frac23 = \\frac52\\), so the cevians are not concurrent.","5/2"],
+          [18,"Two of three concurrent cevians of \\(\\triangle ABC\\) are angle bisectors. Find \\(\\sin \\angle ACF / \\sin \\angle FCB\\).","If two concurrent cevians are angle bisectors, the third is too, so \\(\\angle ACF = \\angle FCB\\) and the sine ratio is 1.","1"],
+          [19,"In \\(\\triangle ABC\\), \\(D\\) is the midpoint of \\(BC\\), \\(E \\in AC\\) with \\(CE:EA = 2:1\\). If \\(AD\\) and \\(BE\\) meet at \\(X\\) and \\(CX\\) meets \\(AB\\) at \\(F\\), find \\(AF/FB\\).","By Ceva on the concurrent cevians: \\(\\frac{AF}{FB} \\cdot 1 \\cdot 2 = 1\\), so \\(AF/FB = 1/2\\).","1/2"],
+          [20,"In \\(\\triangle ABC\\), the angle bisector of \\(\\angle A\\) meets \\(BC\\) at \\(D\\), with \\(AB = 5\\), \\(AC = 6\\), \\(BC = 7\\). Find \\(BD\\).","\\(BD/DC = 5/6\\) and \\(BD + DC = 7\\), so \\(BD = \\frac{5}{11} \\cdot 7 = 35/11\\).","35/11"]
+        ]
+      }]
   },
   {
     id: "geo6-lesson",
@@ -2163,7 +2236,8 @@ const SECTIONS = [
         [9, "In \\(\\triangle ABC\\), let \\(D\\) be the midpoint of \\(BC\\) and \\(E\\) a point on \\(AC\\) with \\(AE : EC = 2 : 1\\). Let \\(F = AD \\cap BE\\). Compute \\(AF/FD\\).", "By mass points: \\(AF/FD = 2\\). (Assign mass 1 at C, 1 at B; E splits AC 2:1 gives mass at A = 1/2; balance at D: \\(AF/FD = \\frac{2}{1}\\).)", "2"],
         [10, "Show Menelaus and Ceva are algebraically dual by writing each as a product equal to 1 and \\(-1\\).", "Ceva: \\(\\frac{BD}{DC}\\frac{CE}{EA}\\frac{AF}{FB} = 1\\) (concurrency). Menelaus: same product with a sign flip \\(= -1\\) (collinearity). Interchanging 1 and \\(-1\\) swaps the two theorems.", "1"]
       ]}
-    ]
+    ,
+      {"n":"Level 4: AIME 10+/USAJMO","probs":[[11,"In \\(\\triangle ABC\\), \\(D \\in BC\\) with \\(BD:DC = 2:1\\), \\(E \\in CA\\) with \\(CE:EA = 3:1\\). Line \\(DE\\) meets \\(AB\\) at \\(F\\). Find \\(AF/FB\\).","Menelaus: \\(\\frac{AF}{FB} \\cdot \\frac{BD}{DC} \\cdot \\frac{CE}{EA} = 1\\) in magnitudes: \\(\\frac{AF}{FB} \\cdot 2 \\cdot 3 = 1\\), so \\(AF/FB = 1/6\\).","1/6"],[12,"In \\(\\triangle ABC\\), \\(D\\) is the midpoint of \\(BC\\) and \\(E \\in AC\\) with \\(AE:EC = 1:2\\). Line \\(DE\\) meets \\(AB\\) at \\(F\\). Find \\(AF/FB\\).","Menelaus: \\(\\frac{AF}{FB} \\cdot 1 \\cdot 2 = 1\\), so \\(AF/FB = 1/2\\) (with \\(F\\) on the extension of \\(AB\\)).","1/2"],[13,"Collinear points \\(D \\in BC, E \\in CA, F \\in AB\\) of \\(\\triangle ABC\\) have \\(BD/DC = 3\\) and \\(CE/EA = 4\\). Find \\(AF/FB\\).","Menelaus: \\(\\frac{AF}{FB} \\cdot 3 \\cdot 4 = 1\\), so \\(AF/FB = 1/12\\).","1/12"],[14,"In \\(\\triangle ABC\\), \\(BD:DC = 1:2\\) and \\(E\\) is the midpoint of \\(CA\\). If \\(D, E, F\\) are collinear with \\(F \\in AB\\), find \\(AF/FB\\).","Menelaus: \\(\\frac{AF}{FB} \\cdot \\frac{1}{2} \\cdot 1 = 1\\), so \\(AF/FB = 2\\).","2"],[15,"For \\(D \\in BC, E \\in CA, F \\in AB\\) to be collinear, with \\(AF/FB = 2\\) and \\(BD/DC = 3\\), find \\(CE/EA\\).","Menelaus: \\(2 \\cdot 3 \\cdot \\frac{CE}{EA} = 1\\), so \\(CE/EA = 1/6\\).","1/6"],[16,"Collinear \\(D \\in BC, E \\in CA, F \\in AB\\) with \\(AF/FB = 3/4\\) and \\(CE/EA = 2/5\\). Find \\(BD/DC\\).","Menelaus: \\(\\frac34 \\cdot \\frac{BD}{DC} \\cdot \\frac25 = 1\\), so \\(BD/DC = 10/3\\).","10/3"],[17,"In \\(\\triangle ABC\\), \\(D \\in BC\\), \\(E \\in CA\\), \\(F \\in AB\\) are collinear with \\(BD:DC = 4:1\\) and \\(CE:EA = 1:3\\). Find \\(AF:FB\\).","Menelaus: \\(\\frac{AF}{FB} \\cdot 4 \\cdot \\frac13 = 1\\), so \\(AF/FB = 3/4\\).","3/4"],[18,"The internal angle bisector of \\(\\angle A\\) meets \\(BC\\) at \\(D\\), with \\(AB = 5\\), \\(AC = 6\\). Find \\(BD/DC\\).","Angle bisector theorem: \\(BD/DC = AB/AC = 5/6\\).","5/6"],[19,"Collinear \\(D \\in BC, E \\in CA, F \\in AB\\) with \\(BD:DC = 2:3\\) and \\(CE:EA = 5:4\\). Find \\(AF:FB\\).","Menelaus: \\(\\frac{AF}{FB} \\cdot \\frac23 \\cdot \\frac54 = 1\\), so \\(AF/FB = 6/5\\).","6/5"],[20,"Triangle \\(ABC\\) has \\(AB = 5\\), \\(AC = 6\\), \\(BC = 7\\). The median from \\(A\\) meets \\(BC\\) at \\(M\\); through \\(M\\) a line parallel to \\(AB\\) meets \\(AC\\) at \\(E\\), and a line parallel to \\(AC\\) meets \\(AB\\) at \\(F\\). Find \\(EF\\).","\\(E\\) and \\(F\\) are midpoints of \\(AC\\) and \\(AB\\), so \\(EF = BC/2 = 7/2\\).","7/2"]]}]
   },
   {
     id: "geo7-lesson",
@@ -2228,7 +2302,8 @@ const SECTIONS = [
         [9, "Three circles of equal radius are pairwise externally tangent. Show the center triangle is homothetic to the triangle formed by the three common external tangent intersections.", "Centers form a triangle; the tangent intersections lie on the external homothety centers of pairs. Since the circles are equal, all ratios are 1 in the direction of the external centers.", "1"],
         [10, "Let \\(O\\) be the circumcenter of \\(\\triangle ABC\\) and \\(A'B'C'\\) the orthic triangle. If the incircle of \\(\\triangle ABC\\) is the image of the excircle under a homothety centered at the incenter, find the ratio.", "The incircle and excircle are tangent to the same lines; the homothety center is their tangency-vertex and the ratio is \\(\\frac{r}{r_a}\\) (signed).", "r/r_a"]
       ]}
-    ]
+    ,
+      {"n":"Level 4: AIME 10+/USAJMO","probs":[[11,"A homothety with ratio 2 maps a triangle of area 5 to its image. Find the image area.","Areas scale by the square: \\(5 \\cdot 2^2 = 20\\).","20"],[12,"A homothety maps a circle of radius 7 to a circle of radius 21. Find the ratio.","Radii scale linearly: \\(21/7 = 3\\).","3"],[13,"Two circles of radii 2 and 6 are externally tangent. Find the distance from the radius-2 circle's center to the external homothety center.","The external center divides the centers' segment externally in the ratio of the radii: if \\(X\\) is distance \\(d\\) from the radius-2 center, \\(d/(d+8) = 2/6\\), so \\(d = 4\\).","4"],[14,"Two circles of radii 4 and 9 have external homothety center \\(X\\) with \\(XO_1 = 8\\), where \\(O_1\\) is the radius-4 center. Find the distance between the centers.","\\(8/(8+d) = 4/9\\), so \\(72 = 32 + 4d\\) and \\(d = 10\\).","10"],[15,"A homothety centered at \\(O\\) with ratio 2 maps \\(A\\) to \\(A'\\), with \\(OA = 5\\). Find \\(OA'\\).","\\(OA' = 2 \\cdot OA = 10\\).","10"],[16,"The incircle of \\(\\triangle ABC\\) has radius 3 and the excircle opposite \\(A\\) has radius 9; they are homothetic about \\(A\\). Find the ratio of the homothety (in magnitude).","The homothety about \\(A\\) sends the incircle to the excircle, with ratio \\(r_a/r = 9/3 = 3\\).","3"],[17,"Two circles of radii 3 and 5 are internally tangent. How far is the internal homothety center from the point of tangency?","Internally tangent circles have their homothety center at the tangency point: distance 0.","0"],[18,"A homothety maps \\(\\triangle ABC\\) to \\(\\triangle A'B'C'\\) with ratio 3. The sides of the image are each 3 times the originals. If the original perimeter is 20, find the image perimeter.","Perimeter scales by the ratio: 60.","60"],[19,"Two circles of radii 4 and 9 are externally tangent. Find the length of their common external tangent.","\\(\\sqrt{d^2 - (r_1 - r_2)^2} = \\sqrt{13^2 - 5^2} = 12\\).","12"],[20,"Two circles of radii 8 and 18 are externally tangent. Find the length of their common external tangent.","\\(\\sqrt{26^2 - (18-8)^2} = \\sqrt{676 - 100} = 24\\).","24"]]}]
   },
   {
     id: "geo8-lesson",
@@ -2294,7 +2369,8 @@ const SECTIONS = [
         [9, "Given \\(AB\\) and \\(CD\\) on a line with \\(AB \\parallel CD\\) (opposite directions), describe the two spiral-similarity centers.", "Centers lie on the line: internal center (between the two segments) for the same-direction map, external center outside for the opposite.", "2 centers"],
         [10, "Prove: if \\(A, B, C, D\\) are concyclic, then the spiral similarity centered at the Miquel point of \\(ABCD\\) sends \\(AB\\) to \\(CD\\) and \\(BC\\) to \\(DA\\) simultaneously.", "A cyclic quadrilateral has two spiral similarities centered at the intersection of the two circles through opposite pairs; the Miquel point is the common center of those two maps.", "1"]
       ]}
-    ]
+    ,
+      {"n":"Level 4: AIME 10+/USAJMO","probs":[[11,"A spiral similarity with center \\(O\\) maps \\(A\\) to \\(A'\\) and \\(B\\) to \\(B'\\). If \\(OA = 4\\) and \\(OA' = 6\\), find the ratio of the spiral similarity.","Every distance from the center scales by the same ratio: \\(6/4 = 3/2\\).","3/2"],[12,"A rotation by \\(90^\\circ\\) is composed with a homothety of ratio 2. The result is a spiral similarity; find its ratio.","The ratio is the product: 2.","2"],[13,"Segments \\(AB\\) and \\(CD\\) are parallel with \\(AB = 2\\) and \\(CD = 5\\). Find the ratio of the spiral similarity sending \\(AB\\) to \\(CD\\).","Parallel segments are mapped by a (degenerate) spiral similarity whose ratio is \\(CD/AB = 5/2\\).","5/2"],[14,"A spiral similarity about \\(O\\) with angle \\(45^\\circ\\) and ratio 2 maps \\(P\\) to \\(P'\\), with \\(OP = 4\\). Find \\(OP'\\).","The angle does not affect lengths: \\(OP' = 2 \\cdot 4 = 8\\).","8"],[15,"Two spiral similarities have ratios 3 and 4. Find the ratio of their composition.","Ratios multiply: \\(3 \\cdot 4 = 12\\).","12"],[16,"Two spiral similarities have angles \\(30^\\circ\\) and \\(50^\\circ\\). Find the angle of their composition.","Angles add: \\(80^\\circ\\).","80"],[17,"In cyclic quadrilateral \\(ABCD\\), the spiral similarity about the Miquel point sends \\(AB\\) to \\(DC\\). If \\(AB = 4\\) and \\(DC = 6\\), find the ratio.","The ratio is \\(DC/AB = 6/4 = 3/2\\).","3/2"],[18,"A homothety of ratio 3 maps a triangle with side lengths 5 and 7 to a similar triangle. Find the larger triangle's side corresponding to 7.","\\(3 \\cdot 7 = 21\\).","21"],[19,"A spiral similarity maps chord \\(AB\\) of a circle to chord \\(A'B'\\) of a concentric circle, with \\(AB = 6\\) and \\(A'B' = 15\\). Find the ratio.","\\(15/6 = 5/2\\).","5/2"],[20,"Two spiral similarities, one with angle \\(60^\\circ\\) and one with angle \\(-20^\\circ\\), are composed. Find the resulting angle.","Angles add: \\(60 - 20 = 40^\\circ\\).","40"]]}]
   },
   {
     id: "geo9-lesson",
@@ -2360,7 +2436,8 @@ const SECTIONS = [
         [9, "Prove: the image of a line \\(\\ell\\) not through \\(O\\) under inversion is a circle through \\(O\\) whose center lies on the perpendicular from \\(O\\) to \\(\\ell\\).", "Let \\(H\\) be foot of perpendicular from \\(O\\), \\(H'\\) its inverse. The image is the circle with diameter \\(OH'\\).", "circle through O"],
         [10, "Use inversion to prove: if two circles are orthogonal, they intersect at right angles.", "Two orthogonal circles are fixed (as sets) under inversion in the other's circle. The tangent lines at an intersection are the images of each other, so the angle between tangents equals the angle between their images \u2014 90\u00b0.", "90"]
       ]}
-    ]
+    ,
+      {"n":"Level 4: AIME 10+/USAJMO","probs":[[11,"An inversion with radius 3 maps a point at distance 6 from the center to a point at distance \\(d\\). Find \\(d\\).","\\(OP \\cdot OP' = r^2\\), so \\(6d = 9\\) and \\(d = 3/2\\).","3/2"],[12,"Inversion of radius 2 sends the circle with diameter \\(OP\\) (where \\(OP = 8\\)) to a line. Find the distance from \\(O\\) to that line.","A circle through \\(O\\) with diameter \\(OP\\) maps to a line at distance \\(r^2/(2R) = 4/8 = 1/2\\).","1/2"],[13,"Inversion with radius 5 sends a line at distance 3 from the center to a circle. Find its radius.","\\(R = r^2/(2d) = 25/6\\).","25/6"],[14,"A point and its inverse lie at distances 4 and 9 from the center. Find the inversion radius.","\\(r^2 = 4 \\cdot 9 = 36\\), so \\(r = 6\\).","6"],[15,"Inversion with radius 7 sends a circle of radius 2 whose center is 5 from \\(O\\) to a circle. Find the image radius.","\\(R' = \\dfrac{r^2 R}{|d^2 - R^2|} = \\dfrac{49 \\cdot 2}{25 - 4} = \\dfrac{98}{21} = \\dfrac{14}{3}\\).","14/3"],[16,"Inversion with radius 2 sends a circle of radius 1 centered 3 from \\(O\\) to a circle. Find the image radius.","\\(R' = \\dfrac{4 \\cdot 1}{9 - 1} = \\dfrac{4}{8} = \\dfrac12\\).","1/2"],[17,"A circle with diameter 10 passes through the inversion center, and the inversion radius is 5. Find the distance from \\(O\\) to the image line.","\\(r^2/(2R) = 25/10 = 5/2\\).","5/2"],[18,"Inversion with radius 6 maps a point \\(P\\) at distance 9 to \\(P'\\). Find \\(OP \\cdot OP'\\).","\\(OP \\cdot OP' = r^2 = 36\\).","36"],[19,"Inverse points \\(P, P'\\) satisfy \\(OP = 2\\), \\(OP' = 8\\). Find the inversion radius.","\\(r^2 = 2 \\cdot 8 = 16\\), so \\(r = 4\\).","4"],[20,"Use inversion to derive Ptolemy. A cyclic quadrilateral has \\(AB = 3\\), \\(BC = 4\\), \\(CD = 5\\), \\(DA = 6\\). Find \\(AC \\cdot BD\\).","Ptolemy: \\(AC \\cdot BD = AB \\cdot CD + BC \\cdot DA = 15 + 24 = 39\\).","39"]]}]
   },
   {
     id: "coord-lesson",
@@ -2446,7 +2523,8 @@ const SECTIONS = [
         [18, "Find the circumcenter of the triangle \\((0,0), (4,0), (0,6)\\).", "Right triangle: circumcenter is the midpoint of the hypotenuse, \\((2,3)\\).", "(2,3)"],
         [19, "Find the perpendicular bisector of the segment from \\((0,0)\\) to \\((6,0)\\).", "Vertical line through the midpoint: \\(x = 3\\).", "x=3"],
         [20, "Using coordinates, find the centroid of \\((0,0), (6,0), (0,9)\\).", "Average of coordinates: \\((2, 3)\\).", "(2,3)"]
-      ]}]
+      ]},
+      {"n":"Level 5: AIME 10+/USAJMO","probs":[[21,"Find the distance between the points \\((3,5)\\) and \\((-1,2)\\).","\\(\\sqrt{(3+1)^2 + (5-2)^2} = \\sqrt{16 + 9} = 5\\).","5"],[22,"Find the area of the triangle with vertices \\((0,0), (6,0), (2,5)\\).","Base 6, height 5: area \\(= \\tfrac12 \\cdot 6 \\cdot 5 = 15\\).","15"],[23,"How many intersection points does the line \\(y = 3\\) have with the circle \\(x^2 + y^2 = 25\\)?","The line is distance 3 from the center, less than the radius 5: 2 intersections.","2"],[24,"Find the squared distance between the parallel lines \\(y = 3x + 2\\) and \\(y = 3x - 8\\).","Distance squared \\(= \\dfrac{(2 - (-8))^2}{3^2 + 1^2} = \\dfrac{100}{10} = 10\\).","10"],[25,"Find the x-coordinate of the midpoint of \\((2,3)\\) and \\((8,-1)\\).","\\((2+8)/2 = 5\\).","5"],[26,"Find the x-coordinate of the center of the circle through \\((0,0), (4,0), (0,6)\\).","The center is on the perpendicular bisector of \\((0,0)-(4,0)\\), so \\(x = 2\\).","2"],[27,"Find the slope of the line through \\((1,2)\\) and \\((4,11)\\).","\\((11-2)/(4-1) = 9/3 = 3\\).","3"],[28,"The distance between \\((2,4)\\) and \\((5,k)\\) is 5. Find the larger possible value of \\(k\\).","\\(9 + (k-4)^2 = 25\\), so \\((k-4)^2 = 16\\) and \\(k = 0\\) or 8; larger is 8.","8"],[29,"Find the area of the triangle with vertices \\((1,2), (4,6), (7,2)\\).","Base \\((1,2)-(7,2)\\) is 6, height is 4: area \\(= 12\\).","12"],[30,"Find the distance from the point \\((1,1)\\) to the line \\(3x + 4y = 10\\).","\\(\\dfrac{|3+4-10|}{\\sqrt{3^2+4^2}} = \\dfrac{3}{5}\\).","3/5"]]}]
   },
   {
     id: "lemma-lesson",
@@ -2530,7 +2608,8 @@ const SECTIONS = [
         [18, "For a \\(6-8-10\\) right triangle, find the distance between the circumcenter and orthocenter.", "O is the hypotenuse midpoint, H is the right-angle vertex; distance \\(= R = 5\\).", "5"],
         [19, "The feet of the three altitudes lie on the ____ circle.", "Nine-point circle.", "nine-point|nine point"],
         [20, "For an equilateral triangle, the nine-point circle and the incircle are ____ (Feuerbach's theorem in the degenerate case).", "They coincide: same center and equal radii \\(r = R/2\\).", "coincident|same circle|equal"]
-      ]}]
+      ]},
+      {"n":"Level 5: AIME 10+/USAJMO","probs":[[21,"In a coordinate system with circumcenter \\(O = (0,0)\\) and centroid \\(G = (1,2)\\), find the sum of the coordinates of the orthocenter \\(H\\).","On the Euler line, \\(H = 3G - 2O = (3,6)\\); sum \\(= 9\\).","9"],[22,"The nine-point circle of a triangle has radius 5. Find the circumradius.","The nine-point radius is half the circumradius: \\(R = 10\\).","10"],[23,"In a triangle with circumradius 5, the distance from the circumcenter to side \\(BC\\) is 3. Find the length of \\(BC\\).","Half of \\(BC\\) is \\(\\sqrt{25 - 9} = 4\\), so \\(BC = 8\\).","8"],[24,"Euler's formula gives \\(OI^2 = R^2 - 2Rr\\). If \\(R = 9\\) and \\(r = 4\\), find \\(OI\\).","\\(OI^2 = 81 - 72 = 9\\), so \\(OI = 3\\).","3"],[25,"The centroid \\(G\\) divides the Euler segment \\(OH\\) with \\(OG:GH = 1:2\\). If \\(O = (0,0)\\) and \\(G = (1,1)\\), find \\(H\\).","\\(H = 3G = (3,3)\\), so the sum of coordinates is 6.","6"],[26,"A triangle has circumradius 25 and inradius 12. Find \\(OI\\) by Euler's formula.","\\(OI^2 = 625 - 600 = 25\\), so \\(OI = 5\\).","5"],[27,"In \\(\\triangle ABC\\), \\(AB = 6\\), \\(AC = 8\\), \\(BC = 7\\), and cevian \\(AD\\) has \\(BD = 2\\), \\(DC = 5\\). Find \\(AD^2\\) by Stewart's theorem.","Stewart: \\(AC^2 \\cdot BD + AB^2 \\cdot DC = BC(AD^2 + BD \\cdot DC)\\). So \\(64 \\cdot 2 + 36 \\cdot 5 = 7(AD^2 + 10)\\), giving \\(308 = 7AD^2 + 70\\), \\(AD^2 = 34\\).","34"],[28,"In \\(\\triangle ABC\\), \\(AB = AC = 5\\) and \\(BC = 6\\). Find the length of the median from \\(A\\).","\\(m_a = \\tfrac12\\sqrt{2b^2 + 2c^2 - a^2} = \\tfrac12\\sqrt{50+50-36} = 4\\).","4"],[29,"Two chords \\(AB\\) and \\(CD\\) meet at the midpoint \\(M\\) of \\(AB\\). If \\(CM = 3\\) and \\(DM = 12\\), find \\(AM\\).","\\(AM^2 = CM \\cdot DM = 36\\), so \\(AM = 6\\).","6"],[30,"Chord \\(PQ\\) has midpoint \\(M\\); a chord through \\(M\\) has segments 4 and 9. Find the length of the chord through \\(M\\) perpendicular to \\(PQ\\).","\\(MP^2 = 4 \\cdot 9 = 36\\), so \\(MP = 6\\) and the full chord is 12.","12"]]}]
   },
   {
     id: "geo3d-lesson",
@@ -2615,7 +2694,8 @@ const SECTIONS = [
         [18, "Find the longest distance between two vertices of a \\(2 \\times 3 \\times 6\\) box.", "Space diagonal: \\(\\sqrt{4+9+36} = 7\\).", "7"],
         [19, "A plane through the center of a sphere cuts it in a circle called a ____ circle.", "Great circle.", "great"],
         [20, "Find the volume of a square pyramid with base side \\(3\\) and height \\(10\\).", "\\(\\frac13 \\cdot 9 \\cdot 10 = 30\\).", "30"]
-      ]}]
+      ]},
+      {"n":"Level 5: AIME 10+/USAJMO","probs":[[21,"A cube has space diagonal \\(6\\sqrt{3}\\). Find its volume.","The diagonal is \\(s\\sqrt{3}\\), so \\(s = 6\\) and volume \\(= 216\\).","216"],[22,"A sphere has surface area \\(144\\pi\\). Find its volume (in units of \\(\\pi\\)).","\\(4\\pi r^2 = 144\\pi\\) gives \\(r = 6\\), so \\(V = \\frac43 \\pi \\cdot 216 = 288\\pi\\).","288"],[23,"A right circular cylinder has height 10 and base radius 3. Find its volume (in units of \\(\\pi\\)).","\\(V = \\pi r^2 h = \\pi \\cdot 9 \\cdot 10 = 90\\pi\\).","90"],[24,"Find the volume of a cone with base radius 4 and height 9 (in units of \\(\\pi\\)).","\\(V = \\frac13 \\pi r^2 h = \\frac13 \\pi \\cdot 16 \\cdot 9 = 48\\pi\\).","48"],[25,"A rectangular box has edge lengths 3, 4, 12. Find its space diagonal.","\\(\\sqrt{9 + 16 + 144} = 13\\).","13"],[26,"Two cubes have volumes 8 and 27. Find the ratio of their surface areas.","Sides are 2 and 3, so surface areas ratio as the square: \\((2/3)^2 = 4/9\\).","4/9"],[27,"A sphere of radius 5 is inscribed in a cube. Find the cube's volume.","The cube's side is 10, so volume \\(= 1000\\).","1000"],[28,"A pyramid has a square base of side 6 and height 9. Find its volume.","\\(V = \\frac13 \\cdot 36 \\cdot 9 = 108\\).","108"],[29,"A regular tetrahedron has edge length \\(6\\sqrt{2}\\). Find its volume.","\\(V = \\dfrac{a^3}{6\\sqrt2} = \\dfrac{432\\sqrt2}{6\\sqrt2} = 72\\).","72"],[30,"For what radius is a sphere's volume numerically equal to its surface area?","\\(\\frac43\\pi r^3 = 4\\pi r^2\\) gives \\(r = 3\\).","3"]]}]
   },
   {
     id: "nt1-lesson",
@@ -2707,7 +2787,21 @@ const SECTIONS = [
           [15, "Find the number of positive integers \\(\\le 100\\) divisible by 3 or 5.", "Inclusion-exclusion: \\(33 + 20 - 6 = 47\\).", "47"],
         ]
       }
-    ]
+    ,
+      { n: "Level 4: AIME 10+/USAJMO",
+        probs: [
+          [16,"Find the largest power of 2 that divides \\(2024!\\).","Count the exponent of 2 in \\(2024!\\): \\(\\lfloor 2024/2 \\rfloor + \\lfloor 2024/4 \\rfloor + \\cdots + \\lfloor 2024/1024 \\rfloor = 1012 + 506 + 253 + 126 + 63 + 31 + 15 + 7 + 3 + 1 = 2017\\).","2017"],
+          [17,"How many positive integers at most 1000 are divisible by exactly one of 3 or 5?","Divisible by 3: 333; by 5: 200; by 15: 66. Exactly one: \\((333 - 66) + (200 - 66) = 267 + 134 = 401\\).","401"],
+          [18,"How many positive integers less than 200 are relatively prime to 200?","\\(200 = 2^3 \\cdot 5^2\\), so \\(\\varphi(200) = 200 \\cdot \\tfrac12 \\cdot \\tfrac45 = 80\\).","80"],
+          [19,"Let \\(N = 111\\ldots1\\) with 100 ones. Find the remainder when \\(N\\) is divided by 9.","A number is congruent to its digit sum mod 9, so \\(N \\equiv 100 \\equiv 1 \\pmod 9\\).","1"],
+          [20,"Find \\(\\gcd(2^{48} - 1,\\, 2^{36} - 1)\\).","\\(\\gcd(2^a - 1, 2^b - 1) = 2^{\\gcd(a,b)} - 1 = 2^{12} - 1 = 4095\\).","4095"],
+          [21,"Find the largest \\(n\\) such that \\(3^n\\) divides \\(100!\\).","\\(\\lfloor 100/3 \\rfloor + \\lfloor 100/9 \\rfloor + \\lfloor 100/27 \\rfloor + \\lfloor 100/81 \\rfloor = 33 + 11 + 3 + 1 = 48\\).","48"],
+          [22,"How many positive divisors does \\(2^6 \\cdot 3^4 \\cdot 5^2\\) have?","\\((6+1)(4+1)(2+1) = 7 \\cdot 5 \\cdot 3 = 105\\).","105"],
+          [23,"Find the smallest positive integer with exactly 12 divisors.","Exponent patterns: \\(p^{11}\\), \\(p^5 q\\), \\(p^3 q^2\\), \\(p^2 q r\\). Smallest: \\(2^{11}=2048\\), \\(2^5\\cdot 3 = 96\\), \\(2^3\\cdot 3^2 = 72\\), \\(2^2 \\cdot 3 \\cdot 5 = 60\\). Minimum is 60.","60"],
+          [24,"Find the remainder when \\(2^{2024}\\) is divided by 1000.","Mod 125: \\(2^{100} \\equiv 1\\), \\(2024 \\equiv 24 \\pmod{100}\\), and \\(2^{24} \\equiv 91 \\pmod{125}\\). Mod 8: \\(2^{2024} \\equiv 0\\). Solve \\(x \\equiv 91 \\pmod{125},\\; x \\equiv 0 \\pmod 8\\): \\(x = 216\\).","216"],
+          [25,"How many integers from 1 to 1000 are divisible by none of 2, 3, 5?","Inclusion-exclusion: \\(500 + 333 + 200 - 166 - 100 - 66 + 33 = 734\\) are divisible by at least one, so \\(1000 - 734 = 266\\).","266"]
+        ]
+      }]
   },
   {
     id: "nt2-lesson",
@@ -2784,7 +2878,21 @@ const SECTIONS = [
           [15, "Find the remainder of \\(3^{100}\\) divided by 4.", "\\(3 \\equiv -1\\), so \\((-1)^{100} = 1\\).", "1"],
         ]
       }
-    ]
+    ,
+      { n: "Level 4: AIME 10+/USAJMO",
+        probs: [
+          [16,"Find the last two digits of \\(7^{2024}\\).","\\(7^4 = 2401 \\equiv 1 \\pmod{100}\\). Since \\(2024 = 4 \\cdot 506\\), \\(7^{2024} \\equiv 1 \\pmod{100}\\).","01|1"],
+          [17,"Find the least positive residue of \\(3^{1000}\\) modulo 7.","By Fermat, \\(3^6 \\equiv 1 \\pmod 7\\). \\(1000 \\equiv 4 \\pmod 6\\), and \\(3^4 = 81 \\equiv 4 \\pmod 7\\).","4"],
+          [18,"Solve \\(5x \\equiv 3 \\pmod{14}\\) for the least positive \\(x\\).","\\(5^{-1} \\equiv 3 \\pmod{14}\\), so \\(x \\equiv 9 \\pmod{14}\\). Least positive: 9.","9"],
+          [19,"Find the units digit of \\(2024^{2024}\\).","Units digit of powers of 4 cycle as 4, 6. Since the exponent is even, the digit is 6.","6"],
+          [20,"How many solutions modulo 60 does \\(6x \\equiv 18 \\pmod{60}\\) have?","\\(\\gcd(6,60) = 6\\) divides 18, and the reduced congruence \\(x \\equiv 3 \\pmod{10}\\) gives 6 solutions modulo 60.","6"],
+          [21,"Find the smallest positive integer \\(x\\) with \\(x \\equiv 3 \\pmod 5\\) and \\(x \\equiv 4 \\pmod 7\\).","\\(x = 5k + 3\\); \\(5k \\equiv 1 \\pmod 7\\) gives \\(k \\equiv 3\\), so \\(x = 18\\).","18"],
+          [22,"Find the remainder when \\(2^{2024}\\) is divided by 17.","\\(2^8 = 256 \\equiv 1 \\pmod{17}\\). \\(2024 \\equiv 0 \\pmod 8\\), so the remainder is 1.","1"],
+          [23,"How many \\(x \\in \\{1,\\ldots,36\\}\\) satisfy \\(x^2 \\equiv 1 \\pmod{36}\\)?","Mod 9 and 4: \\(x \\equiv \\pm 1 \\pmod 9\\), \\(x\\) odd. The solutions are 1, 17, 19, 35: four values.","4"],
+          [24,"Find the sum of all positive integers \\(n \\le 100\\) for which \\(101 \\mid n^2 + 1\\).","\\(n^2 \\equiv -1 \\equiv 100 \\pmod{101}\\), so \\(n \\equiv \\pm 10\\), giving \\(n = 10, 91\\). Sum \\(= 101\\).","101"],
+          [25,"Find the remainder when \\(1! + 2! + \\cdots + 2024!\\) is divided by 12.","For \\(k \\ge 4\\), \\(k!\\) is divisible by 12. \\(1! + 2! + 3! = 1 + 2 + 6 = 9\\).","9"]
+        ]
+      }]
   },
   {
     id: "nt3-lesson",
@@ -2855,7 +2963,21 @@ const SECTIONS = [
           [12, "Find all solutions (mod 12) to \\(x \\equiv 2 \\pmod 3\\), \\(x \\equiv 0 \\pmod 4\\).", "\\(x = 2 + 3t\\): \\(2 + 3t \\equiv 0 \\pmod 4 \\Rightarrow 3t \\equiv 2 \\Rightarrow t \\equiv 2\\). \\(x = 8\\). Mod 12.", "8"],
         ]
       }
-    ]
+    ,
+      { n: "Level 4: AIME 10+/USAJMO",
+        probs: [
+          [13,"Find the smallest positive integer that is 2 mod 3, 3 mod 5, and 2 mod 7.","\\(x = 3k+2 \\equiv 3 \\pmod 5\\) gives \\(k \\equiv 2\\), so \\(x = 15m + 8\\). Then \\(15m \\equiv 1 \\pmod 7\\) gives \\(m \\equiv 1\\), so \\(x \\equiv 23 \\pmod{105}\\).","23"],
+          [14,"Find the smallest positive integer that is 1 mod 2, 2 mod 3, and 3 mod 5.","\\(x = 2k+1 \\equiv 2 \\pmod 3\\) gives \\(k \\equiv 2\\), so \\(x = 6m+5\\). \\(6m \\equiv 3 \\pmod 5\\) gives \\(m \\equiv 3\\), so \\(x = 23\\).","23"],
+          [15,"How many integers \\(n\\) with \\(1 \\le n \\le 1000\\) satisfy \\(n \\equiv 3 \\pmod 4\\) and \\(n \\equiv 2 \\pmod 5\\)?","\\(n = 4k+3 \\equiv 2 \\pmod 5\\) gives \\(k \\equiv 1\\), so \\(n = 20m + 7\\). Values up to 1000: \\(m = 0,\\ldots,49\\), i.e. 50 values.","50"],
+          [16,"Find the smallest positive integer that is 5 mod 6, 4 mod 7, and 3 mod 8.","\\(x = 6k+5 \\equiv 4 \\pmod 7\\) gives \\(k \\equiv 1\\), so \\(x = 42m+11\\). \\(42m \\equiv -8 \\equiv 0 \\pmod 8\\) gives \\(m \\equiv 0 \\pmod 4\\), so \\(x \\equiv 11 \\pmod{168}\\).","11"],
+          [17,"How many solutions modulo 60 does the system \\(x \\equiv 1 \\pmod 5\\), \\(x \\equiv 2 \\pmod 6\\) have?","Unique mod 30: \\(x \\equiv 26\\). Modulo 60: \\(x = 26, 56\\), so 2 solutions.","2"],
+          [18,"A number leaves remainder 2 mod 5, 3 mod 7, and 5 mod 9. Find it modulo 315.","\\(x = 5k+2 \\equiv 3 \\pmod 7\\) gives \\(k \\equiv 3\\), so \\(x = 35m+17\\). \\(35m \\equiv 6 \\pmod 9\\) gives \\(m \\equiv 3\\), so \\(x \\equiv 122 \\pmod{315}\\).","122"],
+          [19,"Find the smallest positive integer that leaves remainder 1 mod 2, 2 mod 3, 3 mod 4, 4 mod 5, and 5 mod 6.","Each condition says \\(n+1\\) is divisible by 2, 3, 4, 5, 6, hence by \\(\\operatorname{lcm}(2,3,4,5,6) = 60\\). So \\(n = 59\\).","59"],
+          [20,"Find the remainder when \\(2024^{2024}\\) is divided by 77.","Mod 7: \\(2024 \\equiv 1\\), so \\(1^{2024} = 1\\). Mod 11: \\(2024 \\equiv 0\\), so 0. Solving \\(x \\equiv 1 \\pmod 7\\), \\(x \\equiv 0 \\pmod{11}\\) gives \\(x = 22\\).","22"],
+          [21,"Find the smallest positive integer that is 7 mod 9, 5 mod 8, and 3 mod 7.","Each leaves remainder \\(-2\\), so \\(n + 2\\) is divisible by \\(\\operatorname{lcm}(9,8,7) = 504\\). Smallest: \\(n = 502\\).","502"],
+          [22,"Find the largest integer below 1000 that is 1 mod 3, 2 mod 4, and 3 mod 5.","\\(n+2\\) is divisible by \\(\\operatorname{lcm}(3,4,5) = 60\\), so \\(n \\equiv 58 \\pmod{60}\\). Largest below 1000: \\(58 + 900 = 958\\).","958"]
+        ]
+      }]
   },
   {
     id: "nt4-lesson",
@@ -2930,7 +3052,21 @@ const SECTIONS = [
           [12, "Show that \\(n!\\) is not \\(\\equiv -1 \\pmod n\\) for composite \\(n > 4\\).", "If \\(n\\) composite, \\(n!\\) contains \\(n\\)'s prime factors in the product (with enough multiplicity for \\(n \\ne 4\\)), so \\(n \\mid n!\\), making \\(n! \\equiv 0 \\pmod n\\), never \\(-1\\).", "proven"],
         ]
       }
-    ]
+    ,
+      { n: "Level 4: AIME 10+/USAJMO",
+        probs: [
+          [13,"Find the remainder when \\(2^{2024}\\) is divided by 13.","By Fermat, \\(2^{12} \\equiv 1\\). \\(2024 \\equiv 8 \\pmod{12}\\), and \\(2^8 = 256 \\equiv 9 \\pmod{13}\\).","9"],
+          [14,"Find the remainder when \\(5^{1234567}\\) is divided by 11.","Fermat: \\(5^{10} \\equiv 1\\). \\(1234567 \\equiv 7 \\pmod{10}\\). \\(5^5 \\equiv 1 \\pmod{11}\\), so \\(5^7 \\equiv 25 \\equiv 3\\).","3"],
+          [15,"Find the remainder when \\(2024!\\) is divided by the prime 2027.","Wilson: \\(2026! \\equiv -1\\). \\(2026! = 2024! \\cdot 2025 \\cdot 2026 \\equiv 2024! \\cdot 2 \\pmod{2027}\\). Hence \\(2024! \\equiv -1014 \\equiv 1013\\).","1013"],
+          [16,"Find the least positive residue of \\(3^{2024}\\) modulo 17.","Fermat: \\(3^{16} \\equiv 1\\). \\(2024 \\equiv 8 \\pmod{16}\\), and \\(3^8 = 6561 \\equiv 16 \\equiv -1 \\pmod{17}\\).","16"],
+          [17,"Find the remainder when \\(7^{2024}\\) is divided by 19.","Fermat: \\(7^{18} \\equiv 1\\). \\(2024 \\equiv 8 \\pmod{18}\\), and \\(7^8 \\equiv 11 \\pmod{19}\\).","11"],
+          [18,"How many integers \\(x\\) with \\(0 \\le x < 101\\) satisfy \\(x^{101} \\equiv x \\pmod{101}\\)?","By Fermat's little theorem, \\(x^{101} \\equiv x \\pmod{101}\\) for every \\(x\\), so all 101 values work.","101"],
+          [19,"Find the remainder when \\(2^{2024} + 2024\\) is divided by 11.","\\(2^{10} \\equiv 1\\), \\(2024 \\equiv 4 \\pmod{10}\\), so \\(2^{2024} \\equiv 2^4 = 16 \\equiv 5\\). And \\(2024 \\equiv 0 \\pmod{11}\\). Total: 5.","5"],
+          [20,"Find the remainder when \\(4444^{4444}\\) is divided by 9.","\\(4444 \\equiv 7 \\pmod 9\\). \\(7 \\equiv -2\\), and \\(2^6 \\equiv 1 \\pmod 9\\). \\(4444 \\equiv 4 \\pmod 6\\), so \\((-2)^4 = 16 \\equiv 7\\).","7"],
+          [21,"Find the remainder when \\(2^{2024}\\) is divided by 2025.","Mod 81: Euler gives \\(2^{2024} \\equiv 40\\) (since \\(\\varphi(81)=54\\), \\(2024 \\equiv 26\\), \\(2^{26} \\equiv 40\\)). Mod 25: \\(2^{20} \\equiv 1\\), so \\(2^{2024} \\equiv 2^4 = 16\\). Solve \\(x \\equiv 40 \\pmod{81}\\), \\(x \\equiv 16 \\pmod{25}\\): \\(x = 1741\\).","1741"],
+          [22,"Find the remainder when \\(100!\\) is divided by 101.","Since 101 is prime, Wilson gives \\(100! \\equiv -1 \\equiv 100 \\pmod{101}\\).","100"]
+        ]
+      }]
   },
   {
     id: "nt5-lesson",
@@ -3003,7 +3139,21 @@ const SECTIONS = [
           [12, "Find the order of 5 mod 12.", "\\(\\gcd(5,12) = 1\\). \\(5^1 = 5, 5^2 = 25 \\equiv 1\\). Order 2.", "2"],
         ]
       }
-    ]
+    ,
+      { n: "Level 4: AIME 10+/USAJMO",
+        probs: [
+          [13,"Find \\(\\varphi(2024)\\).","\\(2024 = 2^3 \\cdot 11 \\cdot 23\\), so \\(\\varphi(2024) = 2024 \\cdot \\tfrac12 \\cdot \\tfrac{10}{11} \\cdot \\tfrac{22}{23} = 880\\).","880"],
+          [14,"Find the last two digits of \\(3^{2024}\\).","\\(3^{20} \\equiv 1 \\pmod{100}\\) (Euler, \\(\\varphi(100)=40\\) and \\(3^{20} \\equiv 1\\)). \\(2024 \\equiv 4 \\pmod{20}\\), so \\(3^{2024} \\equiv 3^4 = 81\\).","81"],
+          [15,"How many integers from 1 to 500 are relatively prime to 500?","\\(500 = 2^2 \\cdot 5^3\\), so \\(\\varphi(500) = 500 \\cdot \\tfrac12 \\cdot \\tfrac45 = 200\\).","200"],
+          [16,"Find the remainder when \\(2^{2024}\\) is divided by 45.","\\(\\varphi(45) = 24\\). \\(2024 \\equiv 8 \\pmod{24}\\), and \\(2^8 = 256 \\equiv 31 \\pmod{45}\\).","31"],
+          [17,"Find \\(\\varphi(2025)\\).","\\(2025 = 3^4 \\cdot 5^2\\), so \\(\\varphi(2025) = 2025 \\cdot \\tfrac23 \\cdot \\tfrac45 = 1080\\).","1080"],
+          [18,"Find the last two digits of \\(7^{2025}\\).","\\(7^4 \\equiv 1 \\pmod{100}\\). \\(2025 \\equiv 1 \\pmod 4\\), so \\(7^{2025} \\equiv 7\\).","07|7"],
+          [19,"How many integers from 1 to 100 are relatively prime to 30?","\\(\\varphi(30) = 8\\) per block of 30. In \\(1\\ldots 90\\): \\(3 \\cdot 8 = 24\\); in \\(91\\ldots 100\\): 91 and 97 work. Total 26.","26"],
+          [20,"How many positive integers at most 1000 are relatively prime to 1000?","\\(1000 = 2^3 \\cdot 5^3\\), so \\(\\varphi(1000) = 1000 \\cdot \\tfrac12 \\cdot \\tfrac45 = 400\\).","400"],
+          [21,"Find the remainder when \\(5^{2024}\\) is divided by 72.","Mod 8: \\(5^{2024} \\equiv 1\\). Mod 9: \\(\\varphi(9)=6\\), \\(2024 \\equiv 2\\), \\(5^2 = 25 \\equiv 7\\). Solve \\(x \\equiv 1 \\pmod 8\\), \\(x \\equiv 7 \\pmod 9\\): \\(x = 25\\).","25"],
+          [22,"Find the smallest positive integer \\(n\\) with \\(\\varphi(n) = 12\\).","Candidates: \\(n = 13, 21, 26, 28, 36, 42\\). The smallest is \\(n = 13\\).","13"]
+        ]
+      }]
   },
   {
     id: "nt6-lesson",
@@ -3081,7 +3231,21 @@ const SECTIONS = [
           [15, "Solve \\(xy - x - y = 8\\) in positive integers.", "\\((x-1)(y-1) = 9\\). Pairs \\((2,10),(4,4),(10,2)\\). Three solutions.", "3"],
         ]
       }
-    ]
+    ,
+      { n: "Level 4: AIME 10+/USAJMO",
+        probs: [
+          [16,"Find the number of nonnegative integer solutions to \\(x + y + z = 30\\).","Stars and bars: \\(\\binom{30+3-1}{3-1} = \\binom{32}{2} = 496\\).","496"],
+          [17,"Find the number of positive integer solutions to \\(x + y + z = 30\\).","Set \\(x' = x-1\\) etc.; \\(\\binom{29}{2} = 406\\).","406"],
+          [18,"How many solutions in positive integers does \\(3x + 5y = 100\\) have?","\\(y \\equiv 2 \\pmod 3\\) with \\(y \\in \\{2,5,8,11,14,17\\}\\), giving 6 solutions.","6"],
+          [19,"Find the number of nonnegative integer solutions to \\(2x + 3y + z = 30\\).","For each \\(y = 0,\\ldots,10\\), \\(x\\) ranges over \\(0 \\le x \\le \\lfloor (30-3y)/2 \\rfloor\\). Summing gives \\(16+14+13+11+10+8+7+5+4+2+1 = 91\\).","91"],
+          [20,"How many integer solutions does \\(x^2 - y^2 = 60\\) have?","\\((x-y)(x+y) = 60\\). Factor pairs of equal parity: \\(\\pm(2,30), \\pm(6,10)\\) in both orders, giving 8 solutions.","8"],
+          [21,"How many pairs of positive integers \\((x,y)\\) satisfy \\(xy = x + y + 3\\)?","\\((x-1)(y-1) = 4\\), giving \\((2,5),(5,2),(3,3)\\): 3 pairs.","3"],
+          [22,"How many ordered pairs of positive integers satisfy \\(\\tfrac1a + \\tfrac1b = \\tfrac16\\)?","\\((a-6)(b-6) = 36\\). The 9 positive divisor pairs give 9 solutions.","9"],
+          [23,"How many pairs of positive integers \\((x,y)\\) satisfy \\(x^2 - y^2 = 96\\)?","\\((x-y)(x+y) = 96\\). Pairs \\((a,b)\\) both even with \\(a<b\\): \\((2,48),(4,24),(6,16),(8,12)\\), giving 4 solutions.","4"],
+          [24,"Find the number of positive integer solutions to \\(2x + y + z = 50\\).","\\(z = 50 - 2x - y \\ge 1\\), so \\(2x + y \\le 49\\). For \\(x = 1,\\ldots,24\\), \\(y\\) takes \\(49 - 2x\\) values. Sum \\(= 24 \\cdot 49 - 2 \\cdot 300 = 576\\).","576"],
+          [25,"How many integer solutions does \\(x^2 + y^2 = 100\\) have?","Pairs \\((\\pm6,\\pm8)\\) and \\((\\pm8,\\pm6)\\): 8 solutions, plus \\((\\pm10,0),(0,\\pm10)\\): 4 more. Total 12.","12"]
+        ]
+      }]
   },
   {
     id: "nt7-lesson",
@@ -3154,7 +3318,21 @@ const SECTIONS = [
           [12, "Find the smallest Pythagorean triple where both legs differ by 1 (consecutive legs).", "\\((3,4,5)\\).", "3,4,5"],
         ]
       }
-    ]
+    ,
+      { n: "Level 4: AIME 10+/USAJMO",
+        probs: [
+          [13,"How many right triangles with integer side lengths have hypotenuse 65?","\\(a^2 + b^2 = 4225\\): triples \\((16,63),(25,60),(33,56),(39,52)\\), so 4 triangles.","4"],
+          [14,"Find the smallest positive integer \\(x > 100\\) satisfying \\(x^2 - 2y^2 = 1\\).","Pell solutions \\((x,y)\\): \\((3,1),(17,12),(99,70),(577,408),\\ldots\\). First \\(x > 100\\) is 577.","577"],
+          [15,"How many integer solutions does \\(xy = 2024\\) have?","\\(2024 = 2^3 \\cdot 11 \\cdot 23\\) has \\((3+1)(1+1)(1+1) = 16\\) positive divisors, so \\(16 \\cdot 2 = 32\\) integer solutions.","32"],
+          [16,"How many pairs of positive integers satisfy \\(\\tfrac1x + \\tfrac1y = \\tfrac13\\)?","\\((x-3)(y-3) = 9\\), giving \\((4,12),(6,6),(12,4)\\): 3 pairs.","3"],
+          [17,"How many solutions in positive integers does \\(3x^2 + 5y^2 = 32\\) have?","\\(y = 1\\): \\(x = 3\\); \\(y = 2\\): \\(x = 2\\). That's 2 solutions.","2"],
+          [18,"Find the smallest \\(x > 50\\) with \\(x^2 - 3y^2 = 1\\).","Pell solutions \\((x,y)\\): \\((2,1),(7,4),(26,15),(97,56),\\ldots\\). First \\(x > 50\\) is 97.","97"],
+          [19,"How many ordered triples of positive integers \\((x,y,z)\\) satisfy \\(xyz = 100\\)?","Distribute \\(2^2\\) and \\(5^2\\) among 3 boxes: \\(\\binom{4}{2}^2 = 6 \\cdot 6 = 36\\).","36"],
+          [20,"Find the sum of all positive integers \\(x\\) for which \\(x^2 - 30x + 221\\) is prime.","\\(x^2 - 30x + 221 = (x-13)(x-17)\\). Prime only at \\(x = 12\\) (giving 5) and \\(x = 18\\) (giving 5). Sum \\(= 30\\).","30"],
+          [21,"How many positive integer solutions to \\(3x + 5y = 2024\\) have \\(x > y\\)?","\\(x \\equiv 3 \\pmod 5\\), \\(x \\le 674\\). Also \\(x > y\\) gives \\(8x > 2024\\), i.e. \\(x > 253\\). The values \\(258, 263, \\ldots, 673\\) number \\((673-258)/5 + 1 = 84\\).","84"],
+          [22,"How many integer solutions does \\(x^2 - 4y^2 = 100\\) have?","\\((x-2y)(x+2y) = 100\\) with factors congruent mod 4: \\((2,50),(10,10)\\) and sign variants, giving 6 solutions.","6"]
+        ]
+      }]
   },
   {
     id: "nt8-lesson",
@@ -3227,7 +3405,21 @@ const SECTIONS = [
           [10, "Find \\(v_2(3^{2026} - 1)\\).", "\\(v_2(2) + v_2(4) + v_2(2026) - 1 = 1 + 2 + 1 - 1 = 3\\).", "3"],
         ]
       }
-    ]
+    ,
+      { n: "Level 3: AIME 10+/USAJMO",
+        probs: [
+          [11,"Find the exponent of 5 in the prime factorization of \\(2024!\\).","\\(\\lfloor 2024/5 \\rfloor + \\lfloor 2024/25 \\rfloor + \\lfloor 2024/125 \\rfloor + \\lfloor 2024/625 \\rfloor = 404 + 80 + 16 + 3 = 503\\).","503"],
+          [12,"Find the largest \\(n\\) such that \\(2^n\\) divides \\(3^{2024} - 1\\).","LTE: \\(v_2(3^{2024}-1) = v_2(3^2-1) + v_2(2024) - 1 = 3 + 3 - 1 = 5\\).","5"],
+          [13,"Find the exponent of 3 in the prime factorization of \\(2024!\\).","\\(\\lfloor 2024/3 \\rfloor + \\lfloor 2024/9 \\rfloor + \\lfloor 2024/27 \\rfloor + \\lfloor 2024/81 \\rfloor + \\lfloor 2024/243 \\rfloor + \\lfloor 2024/729 \\rfloor = 674 + 224 + 74 + 24 + 8 + 2 = 1006\\).","1006"],
+          [14,"Find the exponent of 7 in the prime factorization of \\(2024!\\).","\\(\\lfloor 2024/7 \\rfloor + \\lfloor 2024/49 \\rfloor + \\lfloor 2024/343 \\rfloor = 289 + 41 + 5 = 335\\).","335"],
+          [15,"How many trailing zeros does \\(2024!\\) have?","\\(v_5(2024!) = 503\\) and \\(v_2 \\ge v_5\\), so there are 503 trailing zeros.","503"],
+          [16,"Find the largest \\(n\\) such that \\(3^n\\) divides \\(2^{2024} - 1\\).","\\(2^{2024} - 1 = 4^{1012} - 1\\). LTE: \\(v_3(4^{1012}-1) = v_3(4-1) + v_3(1012) = 1 + 0 = 1\\).","1"],
+          [17,"Find the exponent of 2 in the prime factorization of \\(1000!\\).","\\(500 + 250 + 125 + 62 + 31 + 15 + 7 + 3 + 1 = 994\\).","994"],
+          [18,"Find the largest \\(n\\) such that \\(2^n\\) divides \\(7^{100} - 1\\).","LTE: \\(v_2(7^{100}-1) = v_2(7^2-1) + v_2(100) - 1 = 4 + 2 - 1 = 5\\).","5"],
+          [19,"Find the largest \\(n\\) such that \\(12^n\\) divides \\(2024!\\).","Need \\(2^{2n}\\) and \\(3^n\\). \\(v_2 = 2017\\), \\(v_3 = 1006\\), so \\(n = 1006\\).","1006"],
+          [20,"Find the largest \\(n\\) such that \\(5^n\\) divides \\(3^{2024} - 1\\).","\\(3^{2024} - 1 = 81^{506} - 1\\). LTE: \\(v_5(81^{506}-1) = v_5(81-1) + v_5(506) = v_5(80) + 0 = 1\\).","1"]
+        ]
+      }]
   },
   {
     id: "aime-nt",
@@ -3339,7 +3531,21 @@ const SECTIONS = [
         [18, "The product of a quadratic residue and a non-residue mod \\(p\\) is a ____.", "Non-residue.", "non-residue|nonresidue|non residue"],
         [19, "Use Euler's criterion to decide whether \\(3\\) is a residue mod \\(17\\).", "\\(3^8 \\equiv 81^2 \\equiv (-4)^2 \\equiv 16 \\equiv -1\\), so it is a non-residue.", "-1|no|nonresidue|non-residue"],
         [20, "For \\(p \\equiv 3 \\pmod 4\\), \\(a^{(p+1)/4}\\) is a square root of a residue \\(a\\). Find a square root of \\(2\\) mod \\(7\\).", "\\(2^{(7+1)/4} = 2^2 = 4\\), and \\(4^2 \\equiv 2\\).", "4|3"]
-      ]}]
+      ]},
+      { n: "Level 5: AIME 10+/USAJMO",
+        probs: [
+          [21,"How many nonzero quadratic residues are there modulo 7?","The nonzero squares mod 7 are \\(1, 2, 4\\), so there are 3.","3"],
+          [22,"How many solutions does \\(x^2 \\equiv 4 \\pmod 7\\) have?","\\(x \\equiv \\pm 2\\), i.e. \\(x = 2, 5\\): 2 solutions.","2"],
+          [23,"How many quadratic residues are there modulo 11 among \\(1,\\ldots,10\\)?","There are \\((11-1)/2 = 5\\) nonzero quadratic residues.","5"],
+          [24,"How many solutions does \\(x^2 \\equiv 5 \\pmod{11}\\) have?","Squares mod 11 are \\(1,3,4,5,9\\); 5 appears, giving \\(x = 4, 7\\): 2 solutions.","2"],
+          [25,"How many solutions does \\(x^2 \\equiv 3 \\pmod{11}\\) have?","\\(x = 5, 6\\) both square to 3 mod 11: 2 solutions.","2"],
+          [26,"How many nonzero quadratic residues are there modulo 13?","There are \\((13-1)/2 = 6\\).","6"],
+          [27,"Use Euler's criterion: compute \\(2^5 \\pmod{11}\\).","\\(2^5 = 32 \\equiv 10 \\equiv -1 \\pmod{11}\\), so 2 is a nonresidue mod 11.","10"],
+          [28,"How many solutions does \\(x^2 \\equiv -1 \\pmod{17}\\) have?","\\(4^2 = 16 \\equiv -1\\), so \\(x = 4, 13\\): 2 solutions.","2"],
+          [29,"How many solutions does \\(x^2 \\equiv 9 \\pmod{15}\\) have?","Mod 3: \\(x \\equiv 0\\) (1 solution). Mod 5: \\(x \\equiv \\pm 2\\) (2 solutions). Total \\(1 \\cdot 2 = 2\\).","2"],
+          [30,"For how many primes \\(p < 20\\) is \\(-1\\) a quadratic residue mod \\(p\\)?","\\(-1\\) is a residue iff \\(p \\equiv 1 \\pmod 4\\). Primes \\(< 20\\): 5, 13, 17 work: 3 primes.","3"]
+        ]
+      }]
   },
   {
     id: "order-lesson",
@@ -3425,7 +3631,21 @@ const SECTIONS = [
         [18, "If \\(\\operatorname{ord}_m(a) = 2\\), then \\(a \\equiv\\) ____ (mod \\(m\\)).", "\\(a \\equiv -1\\pmod m\\).", "-1|m-1"],
         [19, "Solve \\(2^x \\equiv 8 \\pmod{11}\\).", "\\(2^3 = 8\\), so \\(x \\equiv 3 \\pmod{10}\\).", "3"],
         [20, "A primitive root mod \\(p\\) has order ____.", "\\(p-1 = \\varphi(p)\\).", "p-1|φ(p)|phi(p)"]
-      ]}]
+      ]},
+      { n: "Level 5: AIME 10+/USAJMO",
+        probs: [
+          [21,"Find the multiplicative order of 2 modulo 7.","\\(2^1 = 2,\\; 2^2 = 4,\\; 2^3 = 8 \\equiv 1\\), so the order is 3.","3"],
+          [22,"Find the multiplicative order of 3 modulo 7.","\\(3^6 \\equiv 1\\) and no smaller positive power equals 1, so the order is 6.","6"],
+          [23,"How many primitive roots are there modulo 7?","\\(\\varphi(\\varphi(7)) = \\varphi(6) = 2\\).","2"],
+          [24,"Find the multiplicative order of 5 modulo 13.","\\(5^2 = 25 \\equiv 12,\\; 5^3 \\equiv 8,\\; 5^4 = 40 \\equiv 1\\), so the order is 4.","4"],
+          [25,"How many primitive roots are there modulo 11?","\\(\\varphi(10) = 4\\).","4"],
+          [26,"Find the smallest primitive root modulo 7.","2 has order 3, so it fails; 3 has order 6, so the answer is 3.","3"],
+          [27,"Find the multiplicative order of 10 modulo 17.","\\(10^4 \\equiv 4,\\; 10^8 \\equiv -1\\), so \\(10^{16} \\equiv 1\\) and the order is 16.","16"],
+          [28,"How many primitive roots are there modulo 2024?","Primitive roots exist only modulo \\(2, 4, p^k, 2p^k\\). Since \\(2024 = 8 \\cdot 253\\), there are 0.","0"],
+          [29,"Find the multiplicative order of 2 modulo 2025.","Order mod 25 is 20 and order mod 81 is 54, so the order is \\(\\operatorname{lcm}(20,54) = 540\\).","540"],
+          [30,"Find the multiplicative order of 5 modulo 24.","\\(5^2 = 25 \\equiv 1 \\pmod{24}\\), so the order is 2.","2"]
+        ]
+      }]
   },
   {
     id: "comb1-lesson",
@@ -3495,7 +3715,21 @@ const SECTIONS = [
         [9, "How many ways to arrange the letters of MISSISSIPPI?", "\\(\\frac{11!}{4!4!2!} = 34650\\).", "34650"],
         [10, "How many integers from 1 to 1000 are divisible by none of 2, 3, 5?", "\\(1000 - (500+333+200) + (166+100+66) - 33 = 266\\).", "266"]
       ]}
-    ]
+    ,
+      { n: "Level 4: AIME 10+/USAJMO",
+        probs: [
+          [11,"How many distinct arrangements of the letters of MISSISSIPPI are there?","\\(\\dfrac{11!}{4!\\,4!\\,2!} = 34650\\).","34650"],
+          [12,"How many 5-digit positive integers contain at least one 0?","Total \\(9 \\cdot 10^4 = 90000\\). None use 0: \\(9^5 = 59049\\). Answer \\(90000 - 59049 = 30951\\).","30951"],
+          [13,"In how many ways can 5 distinct books be given to 3 distinct students so each gets at least one?","Inclusion-exclusion: \\(3^5 - 3 \\cdot 2^5 + 3 \\cdot 1^5 = 243 - 96 + 3 = 150\\).","150"],
+          [14,"Five men and five women sit around a circular table, alternating genders. How many arrangements?","Fix one man: arrange the other 4 men (\\(4!\\)) and place the women in the 5 gaps (\\(5!\\)): \\(24 \\cdot 120 = 2880\\).","2880"],
+          [15,"In how many ways can 5 distinct letters be mailed into mailboxes so that each letter goes to a different mailbox than its own address? (derangements)","\\(D_5 = 5! \\left(1 - \\tfrac11 + \\tfrac12 - \\tfrac16 + \\tfrac1{24} - \\tfrac1{120}\\right) = 44\\).","44"],
+          [16,"How many subsets of \\(\\{1,\\ldots,10\\}\\) contain 1 or 2?","Total \\(2^{10}\\); subsets with neither: \\(2^8\\). Answer \\(1024 - 256 = 768\\).","768"],
+          [17,"How many ordered triples \\((x,y,z)\\) of nonnegative integers satisfy \\(x+y+z \\le 10\\)?","Introduce slack \\(w \\ge 0\\) with \\(x+y+z+w = 10\\): \\(\\binom{13}{3} = 286\\).","286"],
+          [18,"How many ways to put 10 identical balls into 4 boxes, each box nonempty?","Stars and bars: \\(\\binom{10-1}{4-1} = \\binom{9}{3} = 84\\).","84"],
+          [19,"In how many ways can one climb a flight of 10 stairs taking steps of size 1 or 2?","Let \\(a_n\\) be ways up \\(n\\) stairs; \\(a_n = a_{n-1} + a_{n-2}\\), \\(a_1 = 1, a_2 = 2\\). Then \\(a_{10} = 89\\).","89"],
+          [20,"How many 3-element subsets of \\(\\{1,\\ldots,10\\}\\) contain no two consecutive integers?","\\(\\binom{10-3+1}{3} = \\binom{8}{3} = 56\\).","56"]
+        ]
+      }]
   },
   {
     id: "comb2-lesson",
@@ -3563,7 +3797,21 @@ const SECTIONS = [
         [9, "Prove that among \\(n+1\\) integers chosen from \\(1, 2, \\ldots, 2n\\), one divides another.", "Write each number as \\(2^k \\cdot m\\) with \\(m\\) odd. There are only \\(n\\) odd numbers \\(\\le 2n\\), so two share the same \\(m\\); the smaller divides the larger.", "n"],
         [10, "In a room of 10 people, prove two know the same number of people (knowledge is mutual).", "Each knows between 0 and 9 people, but 0 and 9 can't both occur. So only 9 possible values for 10 people: pigeonhole.", "9"]
       ]}
-    ]
+    ,
+      { n: "Level 4: AIME 10+/USAJMO",
+        probs: [
+          [11,"What is the minimum number of people needed to guarantee that two share a birthday?","366 possible birthdays; by pigeonhole, 367 people suffice.","367"],
+          [12,"What is the minimum number of integers from \\(0,\\ldots,9\\) one must pick to guarantee two share a last digit?","10 possible last digits, so 11 integers suffice.","11"],
+          [13,"At least how many integers chosen from \\(\\{1,2,\\ldots,200\\}\\) guarantee two consecutive integers?","Partition into the 100 pairs \\((1,2),(3,4),\\ldots,(199,200)\\). Choosing 101 forces a whole pair.","101"],
+          [14,"At least how many integers guarantee that two differ by a multiple of 5?","5 residue classes mod 5, so 6 integers suffice.","6"],
+          [15,"At least how many integers guarantee that two have a difference divisible by 1000?","1000 residue classes, so 1001 integers suffice.","1001"],
+          [16,"At least how many integers from \\(1,\\ldots,100\\) guarantee that one divides another?","Write each \\(n = 2^k m\\) with \\(m\\) odd; there are 50 odd parts, so 51 numbers force a division.","51"],
+          [17,"How many points inside an equilateral triangle of side 1 guarantee two within distance \\(\\tfrac12\\)?","Divide into 4 triangles of side \\(\\tfrac12\\); 5 points force two in one small triangle.","5"],
+          [18,"What is the minimum number of people needed to guarantee that two were born in the same month?","12 months, so 13 people suffice.","13"],
+          [19,"At least how many numbers from \\(\\{1,\\ldots,99\\}\\) guarantee a pair summing to 100?","The boxes \\((1,99),(2,98),\\ldots,(49,51)\\) plus singleton \\(\\{50\\}\\): 50 boxes, so 51 numbers.","51"],
+          [20,"At least how many integers guarantee that two have the same parity?","2 parity classes, so 3 integers suffice.","3"]
+        ]
+      }]
   },
   {
     id: "comb3-lesson",
@@ -3629,7 +3877,21 @@ const SECTIONS = [
         [9, "Numbers 1..25 on a wheel. Each move replaces a triple by (b+c, c+a, a+b) (wrapped). Show the sum is invariant up to doubling, and determine the reachable parity.", "New sum \\(2(a+b+c)\\): parity of the sum is preserved.", "parity"],
         [10, "Prove that it is impossible to cover a 6\u00d76 board with 18 dominoes such that each domino covers one white and one black cell of a 3-color pattern.", "Construct a coloring with unequal counts under any tile\u2014standard: color like a chessboard plus stripes so the required count is odd for one color.", "impossible"]
       ]}
-    ]
+    ,
+      { n: "Level 4: AIME 10+/USAJMO",
+        probs: [
+          [11,"An 8×8 checkerboard has two opposite corner squares removed. In how many ways can the rest be tiled by 1×2 dominoes?","Removed corners have the same color, leaving unequal color counts; a domino covers one of each. Impossible: 0 ways.","0"],
+          [12,"The numbers \\(1,\\ldots,10\\) are written around a circle. Prove two adjacent numbers sum to at least 11; give that minimum bound.","The 10 adjacent sums add to \\(2(1+\\cdots+10) = 110\\), so the largest is at least 11.","11"],
+          [13,"A token starts at \\((0,0)\\) and each move changes exactly one coordinate by \\(\\pm 1\\). Can it ever reach \\((1,1)\\)?","The parity of \\(x+y\\) is invariant and \\((0,0)\\) has even parity while \\((1,1)\\) is odd. Impossible: 0 ways.","0"],
+          [14,"On a \\(4\\times4\\) board a move flips every square in one row or column. Starting all white, can a board with exactly 3 black squares arise?","Each move flips 4 squares, changing the number of black squares by an even amount, so the parity of black squares is invariant; 3 is odd. Impossible.","0"],
+          [15,"Starting from \\((2,2)\\), each step replaces \\((x,y)\\) by \\((x+y, x-y)\\). Can the pair \\((3,5)\\) be reached?","\\(\\gcd(x,y)\\) is invariant (the step preserves the gcd), and \\(\\gcd(2,2)=2 \\ne \\gcd(3,5)\\). Impossible.","0"],
+          [16,"Start with 2024. While the number is even, replace it by half. How many halvings until an odd number results?","Each halving removes one factor of 2; \\(2024 = 2^3 \\cdot 253\\), so 3 halvings.","3"],
+          [17,"Can a \\(5\\times5\\) checkerboard be tiled by \\(2\\times2\\) squares?","A \\(2\\times2\\) square covers 4 squares, so any tiling covers an even number; 25 is odd. Impossible: 0 tilings.","0"],
+          [18,"Each move changes three numbers by adding 1 to two and subtracting 2 from the third. Starting at \\((0,0,0)\\), can \\((1,1,1)\\) be reached?","The sum is invariant and stays 0, but \\((1,1,1)\\) has sum 3. Impossible.","0"],
+          [19,"A process adds 1 to two of the numbers \\((a,b,c)\\) and subtracts 1 from the other two. Show \\((a-b)(b-c)(c-a)\\) is invariant; can \\((1,1,1)\\) be reached from \\((0,0,0)\\)?","Each move flips the sign of all three differences, preserving the product. From \\((0,0,0)\\) the product is 0, but for \\((1,1,1)\\) it is also 0—reachable. The invariant does not block it, and \\((1,1,1)\\) can indeed be reached. Reachable: 1 way (up to symmetry).","1"],
+          [20,"Starting from \\((2024,0)\\), each move replaces \\((x,y)\\) with \\((x-1,y+1)\\) or \\((x,y-1)\\) if \\(y>0\\). How many moves until the process must stop?","The total \\(x+y\\) strictly decreases by 1 each move and starts at 2024, so the process lasts exactly 2024 moves.","2024"]
+        ]
+      }]
   },
   {
     id: "comb4-lesson",
@@ -3699,7 +3961,21 @@ const SECTIONS = [
         [9, "Prove \\(\\sum_{k=1}^{n} k \\binom{n}{k} = n 2^{n-1}\\) by double counting committee-with-chair.", "Count pairs (committee, chair) two ways: by committee size (\\(k \\binom{n}{k}\\)) or by choosing the chair first (\\(n \\cdot 2^{n-1}\\)).", "n2^(n-1)"],
         [10, "Given a 5\u00d75 grid, prove that the number of ways to place nonattacking rooks is invariant under transposing the board.", "A placement is a permutation of columns for the chosen rows: row/column symmetry gives a bijection.", "1"]
       ]}
-    ]
+    ,
+      { n: "Level 4: AIME 10+/USAJMO",
+        probs: [
+          [11,"How many subsets of \\(\\{1,\\ldots,10\\}\\) have an odd number of elements?","Exactly half of the \\(2^{10}\\) subsets, by pairing each subset with its complement: \\(512\\).","512"],
+          [12,"Evaluate \\(\\sum_{k=0}^{10} \\binom{10}{k}\\).","By the binomial theorem with \\(x = 1\\): \\(2^{10} = 1024\\).","1024"],
+          [13,"Evaluate \\(\\sum_{k=0}^{10} k\\binom{10}{k}\\).","Each of the 10 elements lies in half of the subsets: \\(10 \\cdot 2^9 = 5120\\).","5120"],
+          [14,"Evaluate \\(\\sum_{k=0}^{10} \\binom{10}{k}\\binom{10}{10-k}\\).","Vandermonde: \\(\\binom{20}{10} = 184756\\).","184756"],
+          [15,"Evaluate \\(\\sum_{k=0}^{5} \\binom{6}{k}\\binom{7}{5-k}\\).","Vandermonde: \\(\\binom{13}{5} = 1287\\).","1287"],
+          [16,"Evaluate \\(\\sum_{k=5}^{10} \\binom{k}{5}\\).","Hockey stick: \\(\\binom{11}{6} = 462\\).","462"],
+          [17,"Evaluate \\(\\sum_{k=0}^{6} \\binom{6}{k}^2\\).","Vandermonde with \\(m = n = r = 6\\): \\(\\binom{12}{6} = 924\\).","924"],
+          [18,"How many monotone lattice paths go from \\((0,0)\\) to \\((5,5)\\), moving only right or up?","Each path has 5 R's and 5 U's: \\(\\binom{10}{5} = 252\\).","252"],
+          [19,"How many monotone lattice paths go from \\((0,0)\\) to \\((7,7)\\) without crossing above the diagonal \\(y = x\\)?","Catalan number \\(C_7 = 429\\).","429"],
+          [20,"Over all subsets \\(S \\subseteq \\{1,\\ldots,8\\}\\), find the sum of all \\(|S|\\).","Each element is counted in \\(2^7\\) subsets: \\(8 \\cdot 2^7 = 1024\\).","1024"]
+        ]
+      }]
   },
   {
     id: "comb5-lesson",
@@ -3767,7 +4043,21 @@ const SECTIONS = [
         [9, "Using generating functions, find the number of nonnegative integer solutions to \\(x_1 + x_2 + x_3 + x_4 = 10\\) with each \\(x_i \\le 3\\).", "Coefficient of \\(x^{10}\\) in \\((1+x+x^2+x^3)^4\\). Expand or use inclusion-exclusion: total \\(\\binom{13}{3} - 4\\binom{9}{3} + \\binom{4}{2}\\binom{5}{3} = 286 - 336 + 60 = 10\\).", "10"],
         [10, "Prove that the number of compositions of \\(n\\) into 1s and 2s is \\(F_{n+1}\\) (Fibonacci) using \\(\\frac{1}{1-x-x^2}\\).", "The generating function satisfies \\(G = 1 + xG + x^2G\\), so coefficients satisfy the Fibonacci recurrence and \\(G = \\frac{1}{1-x-x^2}\\).", "Fibonacci"]
       ]}
-    ]
+    ,
+      { n: "Level 4: AIME 10+/USAJMO",
+        probs: [
+          [11,"How many nonnegative integer solutions does \\(x + 2y + 3z = 8\\) have?","For \\(z = 0,1,2\\), \\(x+2y = 8,5,2\\) gives \\(5 + 3 + 2 = 10\\) solutions.","10"],
+          [12,"Two standard dice are rolled. In how many ways can the total be 12?","Only \\((6,6)\\): 1 way.","1"],
+          [13,"Find the coefficient of \\(x^5\\) in \\((1+x)^{10}\\).","\\(\\binom{10}{5} = 252\\).","252"],
+          [14,"How many ways can 20 cents be made with pennies, nickels, and dimes?","For \\(d = 0,1,2\\) dimes, \\(5n \\le 20-10d\\) gives \\(5 + 3 + 1 = 9\\) ways.","9"],
+          [15,"Find the coefficient of \\(x^4\\) in \\((1-x)^{-3}\\).","\\(\\binom{4+3-1}{3-1} = \\binom{6}{2} = 15\\).","15"],
+          [16,"How many positive integer solutions does \\(x+y+z = 10\\) have?","Coefficient of \\(x^{10}\\) in \\((x/(1-x))^3\\): \\(\\binom{9}{2} = 36\\).","36"],
+          [17,"Four standard dice are rolled; how many ways give a total of 6 with every die showing at most 3?","After subtracting 1 from each die, we need nonnegative parts summing to 2: \\(\\binom{2+4-1}{3} = \\binom{5}{3} = 10\\) (and every such outcome automatically respects the cap of 3).","10"],
+          [18,"Three standard dice are rolled; how many ways give a total of 10?","Unrestricted \\(\\binom{9}{2} = 36\\); subtract 3 ways with a die \\(\\ge 7\\), each contributing \\(\\binom{3}{2} = 3\\): \\(36 - 9 = 27\\).","27"],
+          [19,"How many nonnegative solutions does \\(2a + 3b = 10\\) have?","\\(b = 0,1,2,3\\): only \\(b = 0,2\\) work, giving 2 solutions.","2"],
+          [20,"In how many ways can 10 be written as a sum of distinct positive integers (order irrelevant)?","The distinct-partition count \\(q(10)\\): \\(10;\\;9+1;\\;8+2;\\;7+3;\\;7+2+1;\\;6+4;\\;6+3+1;\\;5+4+1;\\;5+3+2;\\;4+3+2+1\\), giving 10.","10"]
+        ]
+      }]
   },
   {
     id: "comb6-lesson",
@@ -3836,7 +4126,21 @@ const SECTIONS = [
         [9, "Solve \\(a_n = 2a_{n-1} + n\\), \\(a_0 = 0\\) using the method of particular solutions.", "Particular solution \\(a_n = An + B\\): \\(An + B = 2A(n-1) + 2B + n\\). Match: \\(A = -2, B = -2\\)? Solve: \\(An+B = 2An - 2A + 2B + n\\) \u2192 \\(A = -2\\), \\(B = 2A - 2B\\) \u2192 \\(3B = 2A = -4\\), \\(B = -4/3\\). Full: \\(a_n = c 2^n - 2n - 4/3\\), \\(a_0 = 0 \\Rightarrow c = 4/3\\).", "-2n"],
         [10, "Show that the number of Dyck paths of length \\(2n\\) is \\(C_n\\) by establishing the recurrence \\(C_{n+1} = \\sum C_i C_{n-i}\\).", "Split at the first return to 0: the path is \\(U\\cdot P\\cdot D\\cdot Q\\) where \\(P\\) is a Dyck path of length \\(2i\\) and \\(Q\\) of length \\(2(n-i)\\). Sum over \\(i\\).", "1"]
       ]}
-    ]
+    ,
+      { n: "Level 4: AIME 10+/USAJMO",
+        probs: [
+          [11,"With \\(F_1 = F_2 = 1\\), find \\(F_{20}\\).","The Fibonacci numbers are \\(1,1,2,3,5,8,13,21,34,55,89,144,233,377,610,987,1597,2584,4181,6765\\), so \\(F_{20} = 6765\\).","6765"],
+          [12,"How many ways can a \\(1\\times10\\) board be tiled with \\(1\\times1\\) and \\(1\\times2\\) tiles?","With \\(a_1 = 1, a_2 = 2\\), \\(a_n = a_{n-1} + a_{n-2}\\) gives \\(a_{10} = 89\\).","89"],
+          [13,"The sequence satisfies \\(a_n = 2a_{n-1} + 3a_{n-2}\\), \\(a_0 = 1, a_1 = 2\\). Find \\(a_5\\).","\\(a_2 = 7, a_3 = 20, a_4 = 61, a_5 = 182\\).","182"],
+          [14,"How many sequences of 6 up-steps and 6 down-steps never drop below the start?","Catalan \\(C_6 = 132\\).","132"],
+          [15,"How many full binary trees have 5 leaves?","The number with \\(n\\) leaves is the Catalan number \\(C_{n-1}\\), so \\(C_4 = 14\\).","14"],
+          [16,"How many ways to tile a \\(1\\times7\\) board with tiles of sizes 1, 2, and 3?","Tribonacci: \\(a_1=1, a_2=2, a_3=4, a_4=7, a_5=13, a_6=24, a_7=44\\).","44"],
+          [17,"The sequence satisfies \\(a_n = 3a_{n-1} - 2a_{n-2}\\), \\(a_0 = 0, a_1 = 1\\). Find \\(a_{10}\\).","Characteristic \\((r-1)(r-2)\\): \\(a_n = 2^n - 1\\), so \\(a_{10} = 1023\\).","1023"],
+          [18,"How many ways can a convex hexagon be triangulated by noncrossing diagonals?","\\(C_4 = 14\\) triangulations.","14"],
+          [19,"How many ways can a convex octagon be triangulated by noncrossing diagonals?","\\(C_6 = 132\\) triangulations.","132"],
+          [20,"The sequence satisfies \\(a_n = 2a_{n-1} + n\\), \\(a_0 = 1\\). Find \\(a_5\\).","\\(a_1 = 3, a_2 = 8, a_3 = 19, a_4 = 42, a_5 = 89\\).","89"]
+        ]
+      }]
   }
 ];
 
