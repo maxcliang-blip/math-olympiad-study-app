@@ -321,25 +321,25 @@ const SECTIONS = [
         { name: "Inequalities II (Schur, Jensen, SOS, uvw)", status: "done", notes: "Lesson + 20 practice" },
         { name: "Sequences & Series", status: "done", notes: "Arithmetic, geometric, telescoping, recurrence" },
         { name: "Functional Equations", status: "done", notes: "Cauchy-type, injective/surjective, P(x,y)" },
-        { name: "Logarithms & Exponents", status: "todo", notes: "Properties, inequalities, equations" },
-        { name: "Complex Numbers", status: "todo", notes: "Roots of unity, De Moivre, geometric interpretation" },
-        { name: "Polynomial Interpolation", status: "todo", notes: "Lagrange, finite differences" },
+        { name: "Logarithms & Exponents", status: "done", notes: "Properties, inequalities, equations" },
+        { name: "Complex Numbers", status: "done", notes: "Roots of unity, De Moivre, geometric interpretation" },
+        { name: "Polynomial Interpolation", status: "done", notes: "Lagrange, finite differences" },
       ]},
       { cat: "Geometry", items: [
         { name: "Triangle Geometry", status: "done", notes: "Similarity, Ceva, Menelaus" },
         { name: "Circle Geometry", status: "done", notes: "Cyclic quadrilaterals, power, radical axis" },
-        { name: "Coordinate/Bashing", status: "todo", notes: "Barycentric, complex, Cartesian" },
+        { name: "Coordinate/Bashing", status: "done", notes: "Barycentric, complex, Cartesian" },
         { name: "Transformations", status: "done", notes: "Homothety, spiral similarity, inversion" },
-        { name: "Lemmas", status: "todo", notes: "Euler line, Sawayama, Feuerbach" },
-        { name: "3D Geometry", status: "todo", notes: "Cross sections, sphere problems" },
+        { name: "Lemmas", status: "done", notes: "Euler line, Sawayama, Feuerbach" },
+        { name: "3D Geometry", status: "done", notes: "Cross sections, sphere problems" },
       ]},
       { cat: "Number Theory", items: [
         { name: "Divisibility & Primes", status: "done", notes: "GCD, LCM, prime factorization" },
         { name: "Modular Arithmetic", status: "done", notes: "CRT, Fermat's Little, Euler's theorem" },
         { name: "Diophantine Equations", status: "done", notes: "Linear, Pythagorean" },
-        { name: "Quadratic Residues", status: "todo", notes: "Legendre symbol, law of quadratic reciprocity" },
+        { name: "Quadratic Residues", status: "done", notes: "Legendre symbol, law of quadratic reciprocity" },
         { name: "p-adic Valuations", status: "done", notes: "LTE, valuations" },
-        { name: "Orders & Primitive Roots", status: "todo", notes: "Discrete log, structure of (Z/nZ)*" },
+        { name: "Orders & Primitive Roots", status: "done", notes: "Discrete log, structure of (Z/nZ)*" },
       ]},
       { cat: "Combinatorics", items: [
         { name: "Counting Techniques", status: "done", notes: "Stars and bars, inclusion-exclusion" },
@@ -356,7 +356,7 @@ const SECTIONS = [
     title: "Symmetric Polynomials",
     sub: "40 practice problems across 6 levels",
     type: "prac",
-    group: "Symmetric Polynomials",
+    group: "Algebra",
     levels: [
       {
         n: "Level 1: Basic Rewriting",
@@ -435,7 +435,7 @@ const SECTIONS = [
     title: "AIME Symmetric Polynomials",
     sub: "10 real AIME & AIME-style problems",
     type: "prac",
-    group: "Symmetric Polynomials",
+    group: "Algebra",
     levels: [
       {
         n: "AIME Problems",
@@ -459,7 +459,7 @@ const SECTIONS = [
     title: "Inequalities I \u2014 Lesson",
     sub: "AM-GM, Cauchy-Schwarz, Engel Form",
     type: "lesson",
-    group: "Inequalities I",
+    group: "Algebra",
     sections: [
       { h: "1. AM-GM (Arithmetic Mean \u2265 Geometric Mean)",
         c: [
@@ -530,7 +530,7 @@ const SECTIONS = [
     title: "Inequalities I \u2014 Practice",
     sub: "20 problems covering AM-GM, Cauchy, Engel",
     type: "prac",
-    group: "Inequalities I",
+    group: "Algebra",
     levels: [
       {
         n: "Level 1: Direct AM-GM",
@@ -579,7 +579,7 @@ const SECTIONS = [
     title: "AIME Inequalities",
     sub: "4 real AIME problems (verified from AoPS/Po-Shen Loh)",
     type: "prac",
-    group: "Inequalities I",
+    group: "Algebra",
     levels: [
       {
         n: "AM-GM Problems",
@@ -602,7 +602,7 @@ const SECTIONS = [
     title: "Inequalities II \u2014 Lesson",
     sub: "Power Mean, Schur, Rearrangement, Jensen, SOS, uvw",
     type: "lesson",
-    group: "Inequalities II",
+    group: "Algebra",
     sections: [
       { h: "1. Power Mean Inequality",
         c: [
@@ -816,7 +816,7 @@ const SECTIONS = [
     title: "Inequalities II \u2014 Practice",
     sub: "20 problems covering advanced inequality methods",
     type: "prac",
-    group: "Inequalities II",
+    group: "Algebra",
     levels: [
       {
         n: "Level 1: Power Mean",
@@ -870,7 +870,7 @@ const SECTIONS = [
     title: "Sequences \u2014 Lesson",
     sub: "Arithmetic, Geometric, Telescoping, Recurrences, Summation",
     type: "lesson",
-    group: "Sequences",
+    group: "Algebra",
     sections: [
       { h: "1. Arithmetic Sequences",
         c: [
@@ -1016,7 +1016,7 @@ const SECTIONS = [
     title: "Sequences \u2014 Practice",
     sub: "20 problems covering all sequence methods",
     type: "prac",
-    group: "Sequences",
+    group: "Algebra",
     levels: [
       {
         n: "Level 1: Arithmetic & Geometric",
@@ -1059,14 +1059,13 @@ const SECTIONS = [
         ]
       }
     ]
-  }
-  ,
+  },
   {
     id: "poly-lesson",
     title: "Polynomial Foundations \u2014 Lesson",
     sub: "Degree, Factor Theorem, Remainder Theorem, Multiplicity, Identity Principle",
     type: "lesson",
-    group: "Polynomials",
+    group: "Algebra",
     sections: [
       { h: "1. Definitions and Degree",
         c: [
@@ -1116,7 +1115,7 @@ const SECTIONS = [
     title: "Polynomial Foundations \u2014 Practice",
     sub: "15 problems on degree, remainder, factor theorem, multiplicity",
     type: "prac",
-    group: "Polynomials",
+    group: "Algebra",
     levels: [
       {
         n: "Level 1: Degree & Basic Facts",
@@ -1155,7 +1154,7 @@ const SECTIONS = [
     title: "Vieta's Formulas \u2014 Lesson",
     sub: "Quadratic, cubic, and higher-degree Vieta; reverse Vieta",
     type: "lesson",
-    group: "Polynomials",
+    group: "Algebra",
     sections: [
       { h: "1. Quadratic Vieta",
         c: [
@@ -1204,7 +1203,7 @@ const SECTIONS = [
     title: "Vieta's Formulas \u2014 Practice",
     sub: "15 problems: quadratic, cubic, reciprocal sums, reverse Vieta",
     type: "prac",
-    group: "Polynomials",
+    group: "Algebra",
     levels: [
       {
         n: "Level 1: Quadratic Vieta",
@@ -1243,7 +1242,7 @@ const SECTIONS = [
     title: "AIME Vieta & Polynomials",
     sub: "10 AIME-level polynomial problems",
     type: "prac",
-    group: "Polynomials",
+    group: "Algebra",
     levels: [
       {
         n: "AIME Problems",
@@ -1267,7 +1266,7 @@ const SECTIONS = [
     title: "Newton Sums \u2014 Lesson",
     sub: "Power sums, Newton's identities, recurrences",
     type: "lesson",
-    group: "Polynomials",
+    group: "Algebra",
     sections: [
       { h: "1. Power Sums",
         c: [
@@ -1305,7 +1304,7 @@ const SECTIONS = [
     title: "Newton Sums \u2014 Practice",
     sub: "12 power-sum problems using Newton's identities",
     type: "prac",
-    group: "Polynomials",
+    group: "Algebra",
     levels: [
       {
         n: "Level 1: Two Variables",
@@ -1341,7 +1340,7 @@ const SECTIONS = [
     title: "Functional Equations I \u2014 Lesson",
     sub: "Special values, substitutions, Cauchy's equation",
     type: "lesson",
-    group: "Functional Equations",
+    group: "Algebra",
     sections: [
       { h: "1. Plugging in Special Values",
         c: [
@@ -1385,7 +1384,7 @@ const SECTIONS = [
     title: "Functional Equations I \u2014 Practice",
     sub: "12 beginner-to-intermediate FE problems",
     type: "prac",
-    group: "Functional Equations",
+    group: "Algebra",
     levels: [
       {
         n: "Level 1: Special Values",
@@ -1421,7 +1420,7 @@ const SECTIONS = [
     title: "Functional Equations II \u2014 Lesson",
     sub: "Injective/surjective, P(x,y) strategies, induction on N to R",
     type: "lesson",
-    group: "Functional Equations",
+    group: "Algebra",
     sections: [
       { h: "1. Injective, Surjective, Bijective",
         c: [
@@ -1462,7 +1461,7 @@ const SECTIONS = [
     title: "Functional Equations II \u2014 Practice",
     sub: "10 injective/surjective and USAJMO-level FE problems",
     type: "prac",
-    group: "Functional Equations",
+    group: "Algebra",
     levels: [
       {
         n: "Level 1: Injectivity & Surjectivity",
@@ -1484,6 +1483,887 @@ const SECTIONS = [
           [10, "Find \\(f\\) given \\(f(x + y) + f(x - y) = 2f(x) + 2f(y)\\) for all reals (continuous).", "This is Jensen's equation for quadratics: \\(f(x) = ax^2\\). Check: \\(a(x+y)^2 + a(x-y)^2 = 2ax^2 + 2ay^2\\). Yes.", "ax^2|a x^2"],
         ]
       }
+    ]
+  },
+  {
+    id: "log-lesson",
+    title: "Logarithms & Exponents \u2014 Lesson",
+    sub: "Properties, equations, inequalities with logs",
+    type: "lesson",
+    group: "Algebra",
+    sections: [
+      { h: "1. Exponent Laws",
+        c: [
+          { t: "p", v: "For \\(a > 0\\): \\(a^m a^n = a^{m+n}\\), \\((a^m)^n = a^{mn}\\), \\(a^m / a^n = a^{m-n}\\), \\((ab)^n = a^n b^n\\), and \\(a^0 = 1\\). Negative exponents mean reciprocals: \\(a^{-n} = 1/a^n\\)." },
+          { t: "ex", title: "Example 1", v: "Simplify \\(2^5 \\cdot 2^{-3}\\).<br><br>\\(2^{5-3} = 2^2 = 4\\)." },
+          { t: "ex", title: "Example 2", v: "Simplify \\(\\left(\\frac{a^2 b^3}{ab}\\right)^2\\).<br><br>Inside: \\(a^{2-1} b^{3-1} = ab^2\\). Squared: \\(a^2 b^4\\)." }
+        ]
+      },
+      { h: "2. Logarithm Definition",
+        c: [
+          { t: "p", v: "The logarithm is the inverse of exponentiation: \\(\\log_a b = x \\iff a^x = b\\). Key identities: \\(\\log_a (xy) = \\log_a x + \\log_a y\\), \\(\\log_a (x/y) = \\log_a x - \\log_a y\\), \\(\\log_a x^p = p \\log_a x\\), and change of base \\(\\log_a x = \\frac{\\log_b x}{\\log_b a}\\)." },
+          { t: "d", v: "\\log_a (xy) = \\log_a x + \\log_a y" },
+          { t: "ex", title: "Example 3", v: "Compute \\(\\log_2 8 + \\log_2 4\\).<br><br>\\(\\log_2 8 = 3\\), \\(\\log_2 4 = 2\\), sum \\(= 5\\) (equivalently \\(\\log_2 32\\))." }
+        ]
+      },
+      { h: "3. Log and Exponential Equations",
+        c: [
+          { t: "p", v: "To solve, isolate the log/exponential, then apply the inverse. For \\(a^x = b\\) take \\(\\log_a\\) both sides: \\(x = \\log_a b\\). For \\(\\log_a f(x) = k\\), exponentiate: \\(f(x) = a^k\\). Watch domains: the argument of a log must be positive." },
+          { t: "ex", title: "Example 4", v: "Solve \\(\\log_3 (2x - 1) = 2\\).<br><br>\\(2x - 1 = 3^2 = 9\\), so \\(x = 5\\). Check: \\(\\log_3 9 = 2\\). Correct." },
+          { t: "ex", title: "Example 5", v: "Solve \\(2^{x+1} = 16\\).<br><br>\\(16 = 2^4\\), so \\(x + 1 = 4\\), \\(x = 3\\)." }
+        ]
+      }
+    ]
+  },
+  {
+    id: "log-practice",
+    title: "Logarithms & Exponents \u2014 Practice",
+    sub: "10 problems",
+    type: "prac",
+    group: "Algebra",
+    levels: [
+      { n: "Easy", probs: [
+        [1, "Simplify \\(3^4 \\cdot 3^{-2}\\).", "\\(3^2 = 9\\).", "9"],
+        [2, "Evaluate \\(\\log_5 25\\).", "\\(5^2 = 25\\), so \\(2\\).", "2"],
+        [3, "Evaluate \\(\\log_2 64 + \\log_2 2\\).", "\\(6 + 1 = 7\\).", "7"]
+      ]},
+      { n: "Medium", probs: [
+        [4, "Solve \\(2^x = 32\\).", "\\(x = 5\\).", "5"],
+        [5, "Solve \\(\\log_2 (x) + \\log_2 (x - 2) = 3\\).", "\\(\\log_2(x(x-2)) = 3\\), so \\(x(x-2) = 8\\), \\(x^2 - 2x - 8 = 0\\), \\(x = 4\\) (x = -2 invalid).", "4"],
+        [6, "Evaluate \\(\\log_3 27 \\cdot \\log_2 8\\).", "\\(3 \\cdot 3 = 9\\).", "9"],
+        [7, "Simplify \\(\\log_{10} 5 + \\log_{10} 20\\).", "\\(\\log_{10} 100 = 2\\).", "2"],
+        [8, "Solve \\(\\log_x 64 = 3\\).", "\\(x^3 = 64\\), so \\(x = 4\\).", "4"]
+      ]},
+      { n: "Hard", probs: [
+        [9, "If \\(\\log_a b = 2\\) and \\(\\log_a c = 5\\), find \\(\\log_a (bc^2)\\).", "\\(2 + 2 \\cdot 5 = 12\\).", "12"],
+        [10, "Solve \\(3^{2x} = 9 \\cdot 3^x\\).", "Let \\(y = 3^x\\): \\(y^2 = 9y\\), \\(y = 9\\) (y=0 impossible), so \\(x = 2\\).", "2"]
+      ]}
+    ]
+  },
+  {
+    id: "cx-lesson",
+    title: "Complex Numbers \u2014 Lesson",
+    sub: "Arithmetic, roots of unity, De Moivre, geometry",
+    type: "lesson",
+    group: "Algebra",
+    sections: [
+      { h: "1. Arithmetic of Complex Numbers",
+        c: [
+          { t: "p", v: "A complex number is \\(z = a + bi\\) with \\(i^2 = -1\\). The conjugate is \\(\\bar z = a - bi\\), and \\(z \\bar z = a^2 + b^2 = |z|^2\\). Division uses the conjugate: \\(\\frac{1}{a+bi} = \\frac{a - bi}{a^2 + b^2}\\)." },
+          { t: "d", v: "|z| = \\sqrt{a^2 + b^2}, \\quad \\bar z = a - bi" },
+          { t: "ex", title: "Example 1", v: "Compute \\(\\frac{1}{2 + i}\\).<br><br>\\(\\frac{2 - i}{5} = \\frac25 - \\frac15 i\\)." }
+        ]
+      },
+      { h: "2. Polar Form and De Moivre",
+        c: [
+          { t: "p", v: "Write \\(z = r(\\cos \\theta + i \\sin \\theta) = re^{i\\theta}\\). Then \\(z^n = r^n e^{in\\theta}\\) (De Moivre). The \\(n\\)-th roots of unity \\(1, \\omega, \\omega^2, \\ldots, \\omega^{n-1}\\) with \\(\\omega = e^{2\\pi i/n}\\) satisfy \\(1 + \\omega + \\cdots + \\omega^{n-1} = 0\\)." },
+          { t: "d", v: "z^n = r^n(\\cos n\\theta + i \\sin n\\theta)" },
+          { t: "ex", title: "Example 2", v: "Compute \\((1 + i)^8\\) using De Moivre.<br><br>\\(1 + i = \\sqrt2 e^{i\\pi/4}\\), so \\((\\sqrt2)^8 e^{2\\pi i} = 16\\)." }
+        ]
+      },
+      { h: "3. Geometric Interpretation",
+        c: [
+          { t: "p", v: "Adding complex numbers is vector addition. Multiplication by \\(re^{i\\theta}\\) is a rotation by \\(\\theta\\) and a scaling by \\(r\\). The roots of unity sit as the vertices of a regular \\(n\\)-gon." },
+          { t: "ex", title: "Example 3", v: "Multiplication by \\(i\\) rotates a point by \\(90^\\circ\\). Verify: \\(i \\cdot (a + bi) = -b + ai\\).<br><br>Vector \\((a, b)\\) maps to \\((-b, a)\\), a 90\u00b0 counterclockwise rotation." }
+        ]
+      }
+    ]
+  },
+  {
+    id: "cx-practice",
+    title: "Complex Numbers \u2014 Practice",
+    sub: "10 problems",
+    type: "prac",
+    group: "Algebra",
+    levels: [
+      { n: "Easy", probs: [
+        [1, "Compute \\(i^{25}\\).", "\\(i^4 = 1\\), so \\(i^{25} = i^1 = i\\).", "i"],
+        [2, "Compute \\((3 + 2i) + (4 - 5i)\\).", "\\(7 - 3i\\).", "7-3i"],
+        [3, "Compute \\((1 + i)^2\\).", "\\(1 + 2i + i^2 = 2i\\).", "2i"]
+      ]},
+      { n: "Medium", probs: [
+        [4, "Compute \\((2 - 3i)(2 + 3i)\\).", "\\(4 + 9 = 13\\) (it is \\(|z|^2\\)).", "13"],
+        [5, "Find the modulus of \\(3 + 4i\\).", "\\(\\sqrt{9 + 16} = 5\\).", "5"],
+        [6, "Compute \\((1 + i)^{10}\\).", "\\((1+i)^2 = 2i\\), so \\((2i)^5 = 32 i^5 = 32i\\).", "32i"],
+        [7, "Sum of all 5th roots of unity \\(1 + \\omega + \\omega^2 + \\omega^3 + \\omega^4\\).", "0.", "0"],
+        [8, "Write \\(\\frac{1}{1 - i}\\) in \\(a + bi\\) form.", "\\(\\frac{1+i}{2} = \\frac12 + \\frac12 i\\).", "1/2+1/2i"]
+      ]},
+      { n: "Hard", probs: [
+        [9, "Find \\((\\cos 15^\\circ + i \\sin 15^\\circ)^{12}\\).", "De Moivre: \\(\\cos 180^\\circ + i \\sin 180^\\circ = -1\\).", "-1"],
+        [10, "If \\(z = 1 + i\\), compute \\(z^2 + z + 1\\).", "\\(z^2 = 2i\\), so \\(2i + 1 + i + 1 = 2 + 3i\\).", "2+3i"]
+      ]}
+    ]
+  },
+  {
+    id: "intp-lesson",
+    title: "Polynomial Interpolation \u2014 Lesson",
+    sub: "Lagrange interpolation, finite differences",
+    type: "lesson",
+    group: "Algebra",
+    sections: [
+      { h: "1. The Lagrange Formula",
+        c: [
+          { t: "p", v: "Given \\(n+1\\) points \\((x_0, y_0), \\ldots, (x_n, y_n)\\) with distinct \\(x\\)'s, there is a unique polynomial of degree \\(\\le n\\) through them: the <b>Lagrange interpolant</b>." },
+          { t: "d", v: "P(x) = \\sum_{k=0}^{n} y_k \\prod_{j \\neq k} \\frac{x - x_j}{x_k - x_j}" },
+          { t: "ex", title: "Example 1", v: "Find the linear polynomial through \\((0, 1)\\) and \\((1, 3)\\).<br><br>\\(P(x) = 1 \\cdot \\frac{x-1}{0-1} + 3 \\cdot \\frac{x-0}{1-0} = -(x-1) + 3x = 2x + 1\\)." }
+        ]
+      },
+      { h: "2. Finite Differences",
+        c: [
+          { t: "p", v: "For a degree-<i>d</i> polynomial, the <i>d</i>-th finite difference is constant. First differences: \\(\\Delta a_k = a_{k+1} - a_k\\). If \\(\\Delta^2\\) is constant, the sequence is quadratic; \\(\\Delta^3\\) constant means cubic." },
+          { t: "ex", title: "Example 2", v: "The sequence \\(2, 5, 10, 17, 26\\) has first differences \\(3, 5, 7, 9\\) and second differences \\(2, 2, 2\\): quadratic, \\(a_n = n^2 + 1\\)." }
+        ]
+      },
+      { h: "3. Newton Forward Formula",
+        c: [
+          { t: "p", v: "With equally spaced points at \\(x = 0, 1, 2, \\ldots\\), the Newton forward formula reads \\(a_n = \\sum \\binom{n}{k} \\Delta^k a_0\\), using the finite differences evaluated at the start." },
+          { t: "ex", title: "Example 3", v: "Using \\(\\Delta\\) on \\(1, 3, 5, 7\\): \\(\\Delta a_0 = 2\\), \\(\\Delta^2 a_0 = 0\\), so \\(a_n = 1 + 2n\\)." }
+        ]
+      }
+    ]
+  },
+  {
+    id: "intp-practice",
+    title: "Polynomial Interpolation \u2014 Practice",
+    sub: "10 problems",
+    type: "prac",
+    group: "Algebra",
+    levels: [
+      { n: "Easy", probs: [
+        [1, "Find the linear polynomial through \\((0, 2)\\) and \\((1, 5)\\).", "\\(P(x) = 3x + 2\\).", "3x+2"],
+        [2, "First differences of \\(4, 7, 10, 13\\) are constant. The sequence is linear: \\(a_n = ?\\)", "\\(a_n = 3n + 4\\).", "3n+4"],
+        [3, "A sequence has constant second difference 2. Is it linear, quadratic, or cubic?", "Quadratic.", "quadratic"]
+      ]},
+      { n: "Medium", probs: [
+        [4, "Find the quadratic through \\((0,1), (1,2), (2,5)\\).", "\\(P(x) = x^2 + 1\\).", "x^2+1"],
+        [5, "Sequence \\(1, 4, 9, 16\\): give the formula.", "\\(a_n = n^2\\).", "n^2"],
+        [6, "Compute the second difference of \\(0, 3, 8, 15\\).", "First: 3,5,7; second: 2,2 (constant 2).", "2"],
+        [7, "Using Lagrange, interpolate \\((1,2)\\) and \\((3,8)\\).", "\\(P(x) = 2\\cdot\\frac{x-3}{-2} + 8\\cdot\\frac{x-1}{2} = -x+3+4x-4 = 3x-1\\).", "3x-1"],
+        [8, "The degree of a polynomial with constant third difference is?", "Cubic (degree 3).", "3"]
+      ]},
+      { n: "Hard", probs: [
+        [9, "Find the cubic whose first values are \\(0, 1, 8, 27\\).", "\\(a_n = n^3\\).", "n^3"],
+        [10, "A polynomial \\(P\\) satisfies \\(P(0)=1, P(1)=0, P(2)=1, P(3)=10\\). Find \\(P(4)\\).", "Finite differences: sequence 1,0,1,10; first diffs -1,1,9; second 2,8; third 6. Extend: third 6, second 14, first 23, \\(P(4) = 33\\).", "33"]
+      ]}
+    ]
+  },
+  {
+    id: "geo1-lesson",
+    title: "Similar Triangles \u2014 Lesson",
+    sub: "AA/SAS/SSS similarity, angle bisector theorem, area ratios",
+    type: "lesson",
+    group: "Geometry",
+    sections: [
+      { h: "1. Similarity Criteria",
+        c: [
+          { t: "p", v: "Triangles are <b>similar</b> if corresponding angles are equal. Criteria: <b>AA</b> (two angles equal), <b>SAS</b> (two proportional sides, included angle equal), <b>SSS</b> (all three sides proportional). The ratio of areas of similar triangles is the square of the side ratio." },
+          { t: "ex", title: "Example 1", v: "Triangle \\(ABC\\) has \\(AB = 6, BC = 8, AC = 10\\). A similar triangle \\(DEF\\) has longest side 15. Find \\(DE\\) and \\(EF\\).<br><br>Scale factor \\(= 15/10 = 3/2\\). \\(DE = 6 \\cdot \\frac32 = 9\\), \\(EF = 8 \\cdot \\frac32 = 12\\)." },
+          { t: "ex", title: "Example 2", v: "Two similar triangles have side ratio \\(2 : 3\\). The smaller has area 20. Find the larger's area.<br><br>Area scales by \\(9/4\\): \\(20 \\cdot \\frac94 = 45\\)." }
+        ]
+      },
+      { h: "2. Angle Bisector Theorem",
+        c: [
+          { t: "p", v: "In \\(\\triangle ABC\\), if \\(AD\\) bisects \\(\\angle A\\) and meets \\(BC\\) at \\(D\\), then:" },
+          { t: "d", v: "\\frac{BD}{DC} = \\frac{AB}{AC}" },
+          { t: "ex", title: "Example 3", v: "In \\(\\triangle ABC\\), \\(AB = 10, AC = 15, BC = 20\\). The angle bisector from \\(A\\) meets \\(BC\\) at \\(D\\). Find \\(BD\\).<br><br>\\(\\frac{BD}{DC} = \\frac{10}{15} = \\frac23\\). So \\(BD = \\frac{2}{5} \\cdot 20 = 8\\)." }
+        ]
+      },
+      { h: "3. Nested and Overlapping Triangles",
+        c: [
+          { t: "p", v: "When a line is drawn parallel to one side of a triangle, the small triangle at the top is similar to the whole (basic proportionality / intercept theorem). Overlapping triangles sharing an angle are a frequent source of similarity." },
+          { t: "ex", title: "Example 4", v: "In \\(\\triangle ABC\\), \\(DE \\parallel BC\\) with \\(D\\) on \\(AB\\), \\(E\\) on \\(AC\\), \\(AD = 2, DB = 3\\). Find \\(AE : EC\\).<br><br>\\(\\triangle ADE \\sim \\triangle ABC\\) with ratio \\(2 : 5\\). So \\(AE : AC = 2 : 5\\), giving \\(AE : EC = 2 : 3\\)." },
+          { t: "ex", title: "Example 5", v: "Right triangle with altitude to the hypotenuse: \\(\\triangle ABC\\) right at \\(A\\), altitude \\(AD\\). Show \\(\\triangle ABD \\sim \\triangle CAD \\sim \\triangle CBA\\).<br><br>All three share the acute angles; the altitude creates two smaller right triangles similar to the original and each other. Consequently \\(AD^2 = BD \\cdot DC\\)." }
+        ]
+      },
+      { h: "4. Area Ratios",
+        c: [
+          { t: "p", v: "Triangles with the same base have area proportional to height; sharing a vertex and lying on the same line, areas are proportional to the base lengths. This gives quick ratio chains." },
+          { t: "ex", title: "Example 6", v: "\\(D\\) divides \\(BC\\) in ratio \\(BD : DC = 2 : 3\\). Find the ratio \\([ABD] : [ADC]\\).<br><br>Same altitude from \\(A\\), so area ratio equals base ratio \\(2 : 3\\)." },
+          { t: "ex", title: "Example 7", v: "Medians split a triangle into 6 equal-area triangles. If \\([ABC] = 30\\), find \\([BGM]\\) where \\(G\\) is centroid, \\(M\\) midpoint of \\(BC\\).<br><br>Each of the 6 small triangles has area \\(30/6 = 5\\)." }
+        ]
+      }
+    ]
+  },
+  {
+    id: "geo1-practice",
+    title: "Similar Triangles \u2014 Practice",
+    sub: "12 similarity, angle bisector, and area ratio problems",
+    type: "prac",
+    group: "Geometry",
+    levels: [
+      {
+        n: "Level 1: Basic Similarity",
+        probs: [
+          [1, "Triangles \\(ABC\\) and \\(DEF\\) are similar with \\(AB = 4, DE = 6\\). If \\(AC = 8\\), find \\(DF\\).", "Scale factor \\(6/4 = 3/2\\). \\(DF = 8 \\cdot \\frac32 = 12\\).", "12"],
+          [2, "Similar triangles have side ratio \\(1 : 3\\). The smaller has area 5. Find the larger area.", "\\(5 \\cdot 9 = 45\\).", "45"],
+          [3, "A triangle has sides \\(3, 4, 5\\). The larger similar triangle has perimeter 60. Find its scale factor from the small one.", "Small perimeter 12. Scale \\(60/12 = 5\\).", "5"],
+          [4, "In \\(\\triangle ABC\\), \\(DE \\parallel BC\\), \\(AD = 1, DB = 2\\). Find \\([ADE] : [ABC]\\).", "Similar with ratio \\(1 : 3\\), areas \\(1 : 9\\).", "1:9"],
+          [5, "Two right triangles both have a \\(30^\\circ\\) angle. What similarity criterion guarantees they are similar?", "AA (both have \\(90^\\circ\\) and \\(30^\\circ\\)).", "AA"],
+        ]
+      },
+      {
+        n: "Level 2: Angle Bisector Theorem",
+        probs: [
+          [6, "In \\(\\triangle ABC\\), \\(AB = 6, AC = 9, BC = 15\\). Angle bisector from \\(A\\) meets \\(BC\\) at \\(D\\). Find \\(BD\\).", "\\(BD : DC = 6 : 9 = 2 : 3\\). \\(BD = \\frac25 \\cdot 15 = 6\\).", "6"],
+          [7, "In \\(\\triangle ABC\\), angle bisector from \\(A\\) hits \\(BC\\) at \\(D\\) with \\(BD = 4, DC = 6\\). If \\(AB = 8\\), find \\(AC\\).", "\\(\\frac48 = \\frac{4}{AC}\\)? Use \\(BD/DC = AB/AC\\): \\(4/6 = 8/AC \\Rightarrow AC = 12\\).", "12"],
+          [8, "Triangle has \\(AB = 12, AC = 20\\), angle bisector from A to BC, \\(BC = 32\\). Find \\(DC\\).", "\\(BD/DC = 12/20 = 3/5\\). \\(DC = \\frac{5}{8} \\cdot 32 = 20\\).", "20"],
+          [9, "In a \\(3-4-5\\) right triangle, the right angle bisector meets the hypotenuse at \\(D\\). Find \\(BD\\) where \\(B\\) is the vertex of the shorter leg.", "\\(AB = 3, AC = 4, BC = 5\\). \\(BD/DC = 3/4\\), \\(BD = \\frac37 \\cdot 5 = \\frac{15}{7}\\).", "15/7"],
+          [10, "The angle bisector of \\(\\angle A\\) in \\(\\triangle ABC\\) gives \\(BD = 2, DC = 3\\). Find \\(AB : AC\\).", "\\(AB : AC = BD : DC = 2 : 3\\).", "2:3"],
+        ]
+      },
+      {
+        n: "Level 3: Area Ratios & Challenge",
+        probs: [
+          [11, "\\(D\\) is the midpoint of \\(BC\\). If \\([ABC] = 40\\), find \\([ABD]\\).", "\\([ABD] = 20\\) (half).", "20"],
+          [12, "The centroid divides each median in ratio \\(2 : 1\\). If \\([ABC] = 60\\), find the area of the triangle formed by the three medians' segments \u2014 specifically \\([BGC]\\) where \\(G\\) is the centroid.", "\\([BGC] = \\frac13[ABC] = 20\\).", "20"],
+        ]
+      }
+    ]
+  },
+  {
+    id: "geo2-lesson",
+    title: "Cyclic Quadrilaterals \u2014 Lesson",
+    sub: "Ptolemy, opposite angles, Brahmagupta, power of a point preview",
+    type: "lesson",
+    group: "Geometry",
+    sections: [
+      { h: "1. Definition and Opposite Angles",
+        c: [
+          { t: "p", v: "A quadrilateral is <b>cyclic</b> if it can be inscribed in a circle. A quadrilateral is cyclic iff opposite angles are supplementary, or iff an inscribed angle subtends a side correctly. \\(ABCD\\) cyclic \\(\\Leftrightarrow \\angle A + \\angle C = 180^\\circ\\)." },
+          { t: "ex", title: "Example 1", v: "In cyclic quadrilateral \\(ABCD\\), \\(\\angle A = 110^\\circ\\). Find \\(\\angle C\\).<br><br>\\(\\angle C = 180 - 110 = 70^\\circ\\)." },
+          { t: "ex", title: "Example 2", v: "Show \\(ABCD\\) with \\(\\angle ABD = \\angle ACD\\) is cyclic.<br><br>Equal angles subtend the same chord \\(AD\\) \u2014 the converse of the inscribed angle theorem gives concyclicity." }
+        ]
+      },
+      { h: "2. Ptolemy's Theorem",
+        c: [
+          { t: "p", v: "For cyclic \\(ABCD\\) with diagonals \\(AC, BD\\) and sides as usual:" },
+          { t: "d", v: "AC \\cdot BD = AB \\cdot CD + BC \\cdot AD" },
+          { t: "ex", title: "Example 3", v: "Rectangle with sides 3 and 4 is cyclic. Use Ptolemy to verify its diagonal.\u2014diagonals both 5, so \\(AC \\cdot BD = 25 = 3 \\cdot 3 + 4 \\cdot 4 = 25\\). Wait, sides \\(AB = 3, BC = 4, CD = 3, DA = 4\\): \\(25 = 9 + 16\\). Correct." },
+          { t: "ex", title: "Example 4", v: "Cyclic \\(ABCD\\) has \\(AB = 2, BC = 3, CD = 4, DA = 5\\). Find \\(AC \\cdot BD\\).<br><br>By Ptolemy: \\(AC \\cdot BD = 2 \\cdot 4 + 3 \\cdot 5 = 8 + 15 = 23\\)." }
+        ]
+      },
+      { h: "3. Brahmagupta's Formula",
+        c: [
+          { t: "p", v: "For a cyclic quadrilateral with sides \\(a, b, c, d\\) and semiperimeter \\(s = \\frac{a+b+c+d}{2}\\), the area is:" },
+          { t: "d", v: "K = \\sqrt{(s-a)(s-b)(s-c)(s-d)}" },
+          { t: "ex", title: "Example 5", v: "Find the area of cyclic quadrilateral with sides \\(2, 3, 4, 5\\).<br><br>\\(s = 7\\). Area \\(= \\sqrt{(5)(4)(3)(2)} = \\sqrt{120} = 2\\sqrt{30}\\)." }
+        ]
+      },
+      { h: "4. Power of a Point (Preview)",
+        c: [
+          { t: "p", v: "For a point \\(P\\) and chords \\(AB, CD\\) through \\(P\\) in a circle, \\(PA \\cdot PB = PC \\cdot PD\\). This is the <b>power of the point</b> and is the subject of the next lesson." },
+          { t: "ex", title: "Example 6", v: "In cyclic quadrilateral \\(ABCD\\), diagonals meet at \\(P\\), with \\(PA = 4, PB = 6, PC = 8\\). Find \\(PD\\).<br><br>\\(PA \\cdot PB = PC \\cdot PD \\Rightarrow 24 = 8 \\cdot PD \\Rightarrow PD = 3\\)." }
+        ]
+      }
+    ]
+  },
+  {
+    id: "geo2-practice",
+    title: "Cyclic Quadrilaterals \u2014 Practice",
+    sub: "12 cyclic quadrilateral problems",
+    type: "prac",
+    group: "Geometry",
+    levels: [
+      {
+        n: "Level 1: Angles & Concyclicity",
+        probs: [
+          [1, "In cyclic \\(ABCD\\), \\(\\angle B = 70^\\circ\\). Find \\(\\angle D\\).", "\\(\\angle D = 110^\\circ\\).", "110"],
+          [2, "Cyclic \\(ABCD\\) has \\(\\angle A = 2x\\), \\(\\angle C = x + 60\\). Find \\(x\\).", "\\(2x + x + 60 = 180 \\Rightarrow x = 40\\).", "40"],
+          [3, "In cyclic \\(ABCD\\), \\(\\angle A = 80^\\circ\\). Find \\(\\angle C\\).", "\\(100^\\circ\\).", "100"],
+          [4, "Four points lie on a circle in order \\(A, B, C, D\\) with \\(\\angle ABC = 95^\\circ\\). Find \\(\\angle ADC\\).", "Opposite angles: \\(85^\\circ\\).", "85"],
+          [5, "If \\(\\angle ABC = \\angle ADC\\), what must be true of \\(A, B, C, D\\)?", "They are cyclic (equal angles subtend chord \\(AC\\)).", "cyclic|concyclic"],
+        ]
+      },
+      {
+        n: "Level 2: Ptolemy",
+        probs: [
+          [6, "Cyclic quadrilateral with sides \\(3, 4, 3, 4\\) (a rectangle). Find the product of its diagonals.", "Diagonals are 5 and 5, product 25.", "25"],
+          [7, "Cyclic \\(ABCD\\): \\(AB = 1, BC = 2, CD = 3, DA = 4\\). Find \\(AC \\cdot BD\\).", "\\(1 \\cdot 3 + 2 \\cdot 4 = 11\\).", "11"],
+          [8, "Cyclic \\(ABCD\\): \\(AB = 5, BC = 5, CD = 5, DA = 5\\) (a square inscribed). Find \\(AC \\cdot BD\\).", "Square side 5: diagonals \\(5\\sqrt2\\). Product \\(50\\).", "50"],
+          [9, "Cyclic \\(ABCD\\) with \\(AC = 8, BD = 6\\), \\(AB = 4, BC = 5\\). Find \\(AD \\cdot CD\\) given \\(AD + CD\\)? Use \\(AD \\cdot CD + AB \\cdot BC = AC \\cdot BD\\).", "\\(AD \\cdot CD = 48 - 20 = 28\\).", "28"],
+          [10, "In cyclic quadrilateral, diagonals \\(AC \\cdot BD = 30\\) and \\(AB \\cdot CD = 12\\). Find \\(BC \\cdot AD\\).", "\\(BC \\cdot AD = 30 - 12 = 18\\).", "18"],
+        ]
+      },
+      {
+        n: "Level 3: Brahmagupta & Mixed",
+        probs: [
+          [11, "Find the area of a cyclic quadrilateral with sides \\(1, 2, 3, 4\\).", "\\(s = 5\\). Area \\(= \\sqrt{4 \\cdot 3 \\cdot 2 \\cdot 1} = \\sqrt{24} = 2\\sqrt6\\).", "2sqrt6|2√6"],
+          [12, "A cyclic quadrilateral is a square with side \\(4\\). Find its area by Brahmagupta and directly.", "Direct: 16. Brahmagupta: \\(s = 8\\), \\(\\sqrt{4^4} = 16\\).", "16"],
+        ]
+      }
+    ]
+  },
+  {
+    id: "geo3-lesson",
+    title: "Power of a Point \u2014 Lesson",
+    sub: "Tangent-secant, two secants, intersecting chords, radical center",
+    type: "lesson",
+    group: "Geometry",
+    sections: [
+      { h: "1. The Power of a Point",
+        c: [
+          { t: "p", v: "For a point \\(P\\) and a circle, fix a line through \\(P\\) hitting the circle at \\(A, B\\). The product \\(PA \\cdot PB\\) is constant, independent of the line. It is the <b>power</b> of \\(P\\): positive outside, negative inside, zero on the circle." },
+          { t: "ex", title: "Example 1", v: "\\(P\\) outside a circle; a secant through \\(P\\) hits the circle at \\(A, B\\) with \\(PA = 3, PB = 8\\). Another secant hits at \\(C, D\\) with \\(PC = 4\\). Find \\(PD\\).<br><br>\\(3 \\cdot 8 = 4 \\cdot PD \\Rightarrow PD = 6\\)." }
+        ]
+      },
+      { h: "2. Tangent-Secant Theorem",
+        c: [
+          { t: "p", v: "If \\(PT\\) is a tangent from \\(P\\) and \\(PAB\\) a secant, then \\(PT^2 = PA \\cdot PB\\). This is the power when the two intersection points 'coincide' at the tangent point." },
+          { t: "ex", title: "Example 2", v: "From point \\(P\\), tangent length \\(PT = 6\\) and secant with \\(PA = 4\\). Find \\(PB\\).<br><br>\\(36 = 4 \\cdot PB \\Rightarrow PB = 9\\)." },
+          { t: "ex", title: "Example 3", v: "Two tangents from \\(P\\) to a circle touch at \\(T_1, T_2\\). Show \\(PT_1 = PT_2\\).<br><br>Both equal \\(\\sqrt{\\text{power}(P)}\\\) from \\(PT^2 = \\text{power}\\), so equal." }
+        ]
+      },
+      { h: "3. Intersecting Chords Theorem",
+        c: [
+          { t: "p", v: "If chords \\(AB\\) and \\(CD\\) intersect inside at \\(P\\), then \\(PA \\cdot PB = PC \\cdot PD\\). (Here the power is negative; lengths are measured along chords.)" },
+          { t: "ex", title: "Example 4", v: "Chords \\(AB\\) and \\(CD\\) intersect at \\(P\\) with \\(PA = 2, PB = 6, PC = 3\\). Find \\(PD\\).<br><br>\\(12 = 3 \\cdot PD \\Rightarrow PD = 4\\)." }
+        ]
+      },
+      { h: "4. Radical Center",
+        c: [
+          { t: "p", v: "The <b>radical axis</b> of two circles is the set of points with equal power to both circles (a line). The three radical axes of three circles concur at the <b>radical center</b>." },
+          { t: "ex", title: "Example 5", v: "Given three circles, why do the three radical axes meet at one point?<br><br>Let \\(X\\) be the intersection of two radical axes; \\(X\\) has equal power to circles 1, 2 and to 2, 3, hence equal power to 1, 3, so it lies on the third radical axis too." }
+        ]
+      }
+    ]
+  },
+  {
+    id: "geo3-practice",
+    title: "Power of a Point \u2014 Practice",
+    sub: "12 power-of-a-point problems",
+    type: "prac",
+    group: "Geometry",
+    levels: [
+      {
+        n: "Level 1: Secant-Secant",
+        probs: [
+          [1, "\\(P\\) outside circle; secant \\(PAB\\) with \\(PA = 2, PB = 8\\), and secant \\(PCD\\) with \\(PC = 4\\). Find \\(PD\\).", "\\(2 \\cdot 8 = 4 \\cdot PD \\Rightarrow PD = 4\\).", "4"],
+          [2, "Secants from \\(P\\): \\(PA = 3, PB = 12\\), \\(PC = 6\\). Find \\(PD\\).", "\\(36 = 6 \\cdot PD \\Rightarrow PD = 6\\).", "6"],
+          [3, "Two secants from \\(P\\): \\(PA = 1, PB = 9\\), \\(PC = 3\\). Find \\(PD\\).", "\\(9 = 3 \\cdot PD \\Rightarrow PD = 3\\).", "3"],
+          [4, "Secant through \\(P\\) hits circle at \\(A, B\\) with \\(PA = 5, PB = 5\\) (P at midpoint). What is \\(PD\\) if \\(PC = 5\\) on another secant?", "\\(25 = 5 \\cdot PD \\Rightarrow PD = 5\\).", "5"],
+          [5, "\\(PA \\cdot PB = 24\\) and \\(PC = 3\\). Find \\(PD\\).", "\\(PD = 8\\).", "8"],
+        ]
+      },
+      {
+        n: "Level 2: Tangent-Secant",
+        probs: [
+          [6, "Tangent \\(PT = 5\\), secant \\(PA = 2\\). Find \\(PB\\).", "\\(25 = 2 \\cdot PB \\Rightarrow PB = 12.5\\).", "25/2|12.5"],
+          [7, "Tangent \\(PT = 6\\), \\(PB = 9\\). Find \\(PA\\).", "\\(36 = 9 \\cdot PA \\Rightarrow PA = 4\\).", "4"],
+          [8, "Two tangents from \\(P\\) have length 7. Another tangent? What is the power of \\(P\\)?", "Power \\(= PT^2 = 49\\).", "49"],
+          [9, "From \\(P\\), tangent length 10 and the nearer secant intersection \\(PA = 4\\). Find \\(AB\\) (the chord part).", "\\(PB = 100/4 = 25\\), so \\(AB = 21\\).", "21"],
+          [10, "If \\(PT = 8\\) and \\(PA = 8\\), what is \\(PB\\)?", "\\(64 = 8 \\cdot PB \\Rightarrow PB = 8\\), so the secant is a diameter situation? Actually \\(PB = 8\\) means \\(P\\) is on the circle. Degenerate.", "8"],
+        ]
+      },
+      {
+        n: "Level 3: Chords & Applications",
+        probs: [
+          [11, "Chords \\(AB\\) and \\(CD\\) meet at \\(P\\): \\(PA = 4, PB = 3, PC = 6\\). Find \\(PD\\).", "\\(12 = 6 \\cdot PD \\Rightarrow PD = 2\\).", "2"],
+          [12, "Chord \\(AB\\) split by \\(P\\) into \\(PA = 2, PB = 8\\); \\(PD = 4\\) on chord \\(CD\\). Find \\(PC\\).", "\\(16 = 4 \\cdot PC \\Rightarrow PC = 4\\).", "4"],
+        ]
+      }
+    ]
+  },
+  {
+    id: "geo4-lesson",
+    title: "Radical Axis \u2014 Lesson",
+    sub: "Radical axis, radical center, coaxial circles",
+    type: "lesson",
+    group: "Geometry",
+    sections: [
+      { h: "1. Radical Axis Definition",
+        c: [
+          { t: "p", v: "The <b>radical axis</b> of two circles is the locus of points \\(P\\) with equal powers to both circles. For non-concentric circles it is a straight line perpendicular to the line of centers." },
+          { t: "p", v: "Using coordinates: with circles \\(x^2 + y^2 + ax + by + c = 0\\) and \\(x^2 + y^2 + dx + ey + f = 0\\), subtracting gives the linear equation of the radical axis." },
+          { t: "ex", title: "Example 1", v: "Two circles intersect at two points. Where is their radical axis?<br><br>At each intersection point both powers are 0, so the radical axis is the common chord line through both intersections." }
+        ]
+      },
+      { h: "2. Radical Center",
+        c: [
+          { t: "p", v: "For three circles, the radical axes (pairwise) meet at a single point, the <b>radical center</b>. Its power to all three circles is equal." },
+          { t: "ex", title: "Example 2", v: "Show the radical center exists.<br><br>\\(X = \\) intersection of radical axes of circles \\((1,2)\\) and \\((2,3)\\). Then \\(Pow_1 = Pow_2 = Pow_3\\) at \\(X\\), so \\(X\\) lies on the radical axis of \\((1,3)\\)." }
+        ]
+      },
+      { h: "3. Coaxial Circles",
+        c: [
+          { t: "p", v: "A family of circles sharing a common radical axis is <b>coaxial</b>. Every circle through the two fixed intersection points of a coaxal family shares the radical axis with the others." },
+          { t: "ex", title: "Example 3", v: "If two circles intersect at \\(A, B\\), show every circle through \\(A, B\\) shares the radical axis with them.<br><br>On the line \\(AB\\), every point has power 0 to all such circles (it lies on each circle), so \\(AB\\) is the common radical axis." }
+        ]
+      },
+      { h: "4. Applications",
+        c: [
+          { t: "p", v: "Radical axis proves concurrence, finds equal-power points, and solves tangency problems. If two circles are tangent, the radical axis is their common tangent at the tangency point." },
+          { t: "ex", title: "Example 4", v: "Two tangent circles touch at \\(T\\). What is their radical axis?<br><br>The common tangent line at \\(T\\): points on it (other than \\(T\\)) have equal (tangent-length-squared) power to both circles, and \\(T\\) has power 0 to both." }
+        ]
+      }
+    ]
+  },
+  {
+    id: "geo4-practice",
+    title: "Radical Axis \u2014 Practice",
+    sub: "10 radical axis and radical center problems",
+    type: "prac",
+    group: "Geometry",
+    levels: [
+      {
+        n: "Level 1: Basics",
+        probs: [
+          [1, "Two circles intersect at \\(A\\) and \\(B\\). What is their radical axis?", "The line \\(AB\\) (common chord).", "AB|line AB|common chord"],
+          [2, "Two circles of equal radius with centers 10 apart. Where is the radical axis?", "Perpendicular bisector of the segment joining centers, 5 units from each.", "perpendicular bisector|5"],
+          [3, "Two circles are tangent externally at \\(T\\). What is the radical axis?", "The common internal tangent at \\(T\\) (perpendicular to line of centers).", "common tangent at T|common tangent"],
+          [4, "A point on the radical axis has what relationship to the two circles' powers?", "Equal powers.", "equal|equal powers"],
+          [5, "If a circle has center at the radical axis of two others, what can you say?", "Its center lies on a line of equal power; no immediate statement about tangency. (Powers equal only for points on it.)", "nothing"],
+        ]
+      },
+      {
+        n: "Level 2: Radical Center",
+        probs: [
+          [6, "Three circles have radical axes meeting at a point. What is this point called?", "Radical center.", "radical center"],
+          [7, "If two radical axes of three circles intersect at \\(X\\), what is true of \\(X\\)'s powers?", "\\(Pow_1 = Pow_2 = Pow_3\\).", "equal"],
+          [8, "The radical center of three circles has all powers equal. If the common power is 0, what does that mean?", "\\(X\\) lies on all three circles (common point).", "X is on all three circles|common point"],
+          [9, "Three circles pairwise intersect at \\((A,B), (C,D), (E,F)\\). The radical axes are the lines \\(AB, CD, EF\\). What theorem says they're concurrent?", "Radical center theorem.", "radical center theorem"],
+          [10, "Two circles with centers 4 apart have radii 3 and 5. Do they intersect? If so, what's the radical axis?", "Radii 3+5 = 8 > 4 and |3-5| = 2 < 4, so they intersect. Radical axis is the common chord.", "yes|Yes"],
+        ]
+      }
+    ]
+  },
+  {
+    id: "geo5-lesson",
+    title: "Ceva's Theorem \u2014 Lesson",
+    sub: "Ceva's theorem, trigonometric Ceva, special centers",
+    type: "lesson",
+    group: "Geometry",
+    sections: [
+      { h: "1. Ceva's Theorem",
+        c: [
+          { t: "p", v: "In \\(\\triangle ABC\\), points \\(D \\in BC, E \\in CA, F \\in AB\\). The cevians \\(AD, BE, CF\\) are concurrent iff:" },
+          { t: "d", v: "\\frac{BD}{DC} \\cdot \\frac{CE}{EA} \\cdot \\frac{AF}{FB} = 1" },
+          { t: "p", v: "With directed segments, signs are handled automatically. Ceva proves concurrency." },
+          { t: "ex", title: "Example 1", v: "\\(D, E, F\\) are midpoints of the sides. Show the medians are concurrent.<br><br>Each ratio is 1, product 1, so concurrent at the centroid." }
+        ]
+      },
+      { h: "2. Trigonometric Ceva",
+        c: [
+          { t: "p", v: "An equivalent form using angles is useful when ratios of sides are awkward:" },
+          { t: "d", v: "\\frac{\\sin\\angle BAD}{\\sin\\angle CAD} \\cdot \\frac{\\sin\\angle CBE}{\\sin\\angle ABE} \\cdot \\frac{\\sin\\angle ACF}{\\sin\\angle BCF} = 1" },
+          { t: "ex", title: "Example 2", v: "Show the angle bisectors are concurrent via trig Ceva.<br><br>Each sine ratio is 1 by angle bisectors, product 1. (Their concurrency point is the incenter.)" }
+        ]
+      },
+      { h: "3. Special Centers",
+        c: [
+          { t: "ul", v: [
+            "Centroid: medians \u2014 ratio \\(1 : 1\\) each.",
+            "Incenter: angle bisectors \u2014 ratio \\(c : b\\) etc. by angle bisector theorem.",
+            "Orthocenter: altitudes \u2014 ratios expressible via \\(\\cos\\) or area.",
+            "Circumcenter: perpendicular bisectors \u2014 Ceva handles the pedal version."
+          ]},
+          { t: "ex", title: "Example 3", v: "Verify the incenter cevians satisfy Ceva.\u2014by angle bisector theorem: \\(\\frac{BD}{DC} = \\frac{c}{b}\\), \\(\\frac{CE}{EA} = \\frac{a}{c}\\), \\(\\frac{AF}{FB} = \\frac{b}{a}\\). Product \\(= 1\\)." }
+        ]
+      },
+      { h: "4. Using Ceva",
+        c: [
+          { t: "p", v: "To use Ceva, compute the three ratios (often from similar triangles or the angle bisector theorem) and check the product. To find a ratio given concurrency, set the product to 1 and solve." },
+          { t: "ex", title: "Example 4", v: "In \\(\\triangle ABC\\), \\(AD\\) is a median, \\(BE\\) meets \\(AC\\) at \\(E\\) with \\(CE = 2, EA = 3\\), and \\(CF\\) meets \\(AB\\) at \\(F\\). If the three are concurrent, find \\(AF : FB\\).<br><br>\\(\\frac{BD}{DC} = 1\\). \\(\\frac{CE}{EA} = \\frac23\\). Product \\(= 1 \\cdot \\frac23 \\cdot \\frac{AF}{FB} = 1 \\Rightarrow AF : FB = 3 : 2\\)." }
+        ]
+      }
+    ]
+  },
+  {
+    id: "geo5-practice",
+    title: "Ceva's Theorem \u2014 Practice",
+    sub: "10 Ceva concurrency problems",
+    type: "prac",
+    group: "Geometry",
+    levels: [
+      {
+        n: "Level 1: Direct Application",
+        probs: [
+          [1, "In \\(\\triangle ABC\\), \\(BD/DC = 2\\), \\(CE/EA = 1/3\\). Find \\(AF/FB\\) for concurrency.", "\\(2 \\cdot \\frac13 \\cdot \\frac{AF}{FB} = 1 \\Rightarrow AF/FB = \\frac32\\).", "3/2"],
+          [2, "If all three ratios \\(BD/DC, CE/EA, AF/FB\\) equal 1, which point do the cevians meet at?", "Centroid.", "centroid"],
+          [3, "Cevians from vertices to midpoints meet at the centroid. If \\(BD/DC = 1\\) and \\(CE/EA = 1\\), what is \\(AF/FB\\)?", "1.", "1"],
+          [4, "In \\(\\triangle ABC\\), \\(D\\) on \\(BC\\) with \\(BD/DC = 3\\), \\(E\\) on \\(CA\\) with \\(CE/EA = 1/2\\), \\(F\\) on \\(AB\\) with \\(AF/FB = 2/3\\). Are \\(AD, BE, CF\\) concurrent?", "\\(3 \\cdot \\frac12 \\cdot \\frac23 = 1\\), yes.", "yes|Yes"],
+          [5, "Given \\(BD/DC = 1/4\\) and \\(AF/FB = 2\\), find \\(CE/EA\\) for concurrency.", "\\(\\frac14 \\cdot 2 \\cdot \\frac{CE}{EA} = 1 \\Rightarrow CE/EA = 2\\).", "2"],
+        ]
+      },
+      {
+        n: "Level 2: Angle Bisector & Trig Ceva",
+        probs: [
+          [6, "Verify the angle bisectors are concurrent using the angle bisector theorem. In \\(\\triangle ABC\\) with \\(a = BC, b = CA, c = AB\\), the ratio \\(BD/DC = c/b\\). Write the full product.", "\\(\\frac{c}{b} \\cdot \\frac{a}{c} \\cdot \\frac{b}{a} = 1\\).", "1"],
+          [7, "In a triangle with sides \\(a = 5, b = 6, c = 7\\), the angle bisector from \\(A\\) gives \\(BD/DC\\). Find it.", "\\(BD/DC = c/b = 7/6\\).", "7/6"],
+          [8, "Medians \\(AD, BE, CF\\) meet at \\(G\\). If \\([ABC] = 30\\), find \\([BGD]\\).", "Centroid divides median \\(2:1\\). \\([BGD] = \\frac16[ABC] = 5\\).", "5"],
+          [9, "Altitudes concur at the orthocenter. In a triangle, which cevians are the altitudes?", "Lines from each vertex perpendicular to the opposite side.", "altitudes"],
+          [10, "Using trig Ceva, show that altitudes are concurrent (hint: \\(\\sin(90^\\circ - B)\\) etc.).", "\\(\\frac{\\sin(90-A)}{\\sin(90-B)} \\cdot \\frac{\\sin(90-B)}{\\sin(90-C)} \\cdot \\frac{\\sin(90-C)}{\\sin(90-A)} = 1\\).", "1"],
+        ]
+      }
+    ]
+  },
+  {
+    id: "geo6-lesson",
+    title: "Menelaus' Theorem \u2014 Lesson",
+    sub: "Collinearity via signed ratios, applications with Ceva",
+    type: "lesson",
+    group: "Geometry",
+    sections: [
+      { h: "1. The Theorem",
+        c: [
+          { t: "p", v: "<b>Menelaus' theorem</b> states that for a triangle \\(ABC\\) and points \\(D, E, F\\) on lines \\(BC, CA, AB\\) respectively, the points are <b>collinear</b> exactly when the signed product satisfies:" },
+          { t: "d", v: "\\frac{BD}{DC} \\cdot \\frac{CE}{EA} \\cdot \\frac{AF}{FB} = -1" },
+          { t: "p", v: "Menelaus is the dual companion of Ceva: Ceva detects concurrency of cevians, Menelaus detects collinearity of points on the sides (or their extensions). The minus sign accounts for one point lying on an extension; using directed lengths, exactly one or three of the points are on extensions." }
+        ]
+      },
+      { h: "2. Sign and Directed Lengths",
+        c: [
+          { t: "p", v: "With ordinary (undirected) lengths, write Menelaus as \\(\\frac{BD}{DC} \\cdot \\frac{CE}{EA} \\cdot \\frac{AF}{FB} = 1\\) provided exactly one of \\(D, E, F\\) is on an extension. A quick sanity check: an external point makes one ratio negative." },
+          { t: "ex", title: "Example 1", v: "In \\(\\triangle ABC\\), \\(D\\) is the midpoint of \\(BC\\), \\(E\\) on \\(CA\\) with \\(CE : EA = 1 : 2\\). A line through \\(D, E\\) meets \\(AB\\) at \\(F\\). Find \\(AF : FB\\).<br><br>Menelaus: \\(\\frac{BD}{DC} \\cdot \\frac{CE}{EA} \\cdot \\frac{AF}{FB} = 1\\), so \\(1 \\cdot \\frac12 \\cdot \\frac{AF}{FB} = 1\\), hence \\(AF : FB = 2 : 1\\)." }
+        ]
+      },
+      { h: "3. Menelaus + Ceva",
+        c: [
+          { t: "p", v: "A line cutting two sides and the third extension, together with three concurrent cevians, often yields a ratio Menelaus computes directly. Always identify which ratios are known and which one Menelaus will produce." },
+          { t: "ex", title: "Example 2", v: "Cevians \\(AD, BE, CF\\) of \\(\\triangle ABC\\) concur at \\(G\\) with \\(BD/DC = 2\\) and \\(CE/EA = 1\\). Find \\(AF/FB\\).<br><br>Ceva: \\(2 \\cdot 1 \\cdot \\frac{AF}{FB} = 1\\), so \\(AF/FB = 1/2\\)." }
+        ]
+      }
+    ]
+  },
+  {
+    id: "geo6-prac",
+    title: "Menelaus \u2014 Practice",
+    sub: "10 problems",
+    type: "prac",
+    group: "Geometry",
+    levels: [
+      { n: "Easy", probs: [
+        [1, "In \\(\\triangle ABC\\), \\(D\\) is the midpoint of \\(BC\\) and \\(E\\) on \\(CA\\) has \\(CE = EA\\). Line \\(DE\\) meets \\(AB\\) at \\(F\\). Find \\(AF/FB\\).", "Menelaus: \\(1 \\cdot 1 \\cdot \\frac{AF}{FB} = 1\\), so \\(AF/FB = 1\\).", "1"],
+        [2, "In \\(\\triangle ABC\\), line \\(DEF\\) with \\(D\\) on \\(BC\\) has \\(BD/DC = 1/3\\), \\(E\\) on \\(CA\\) has \\(CE/EA = 1/2\\). Find \\(AF/FB\\) (the non-extended case).", "\\(\\frac13 \\cdot \\frac12 \\cdot \\frac{AF}{FB} = 1\\) gives \\(AF/FB = 6\\).", "6"],
+        [3, "In \\(\\triangle ABC\\), \\(D\\in BC\\), \\(E\\in CA\\), \\(F\\in AB\\) are collinear with \\(BD/DC = 2\\), \\(CE/EA = 3/2\\). Find \\(AF/FB\\).", "\\(2 \\cdot \\frac32 \\cdot \\frac{AF}{FB} = 1\\), so \\(AF/FB = 1/3\\).", "1/3"]
+      ]},
+      { n: "Medium", probs: [
+        [4, "In \\(\\triangle ABC\\) with median \\(AD\\), a line through \\(D\\) and \\(E\\) (on \\(CA\\) with \\(CE/EA = 2\\)) meets \\(AB\\) at \\(F\\). Find \\(AF/FB\\).", "\\(1 \\cdot 2 \\cdot \\frac{AF}{FB} = 1\\), so \\(AF/FB = 1/2\\).", "1/2"],
+        [5, "Cevians \\(AD, BE, CF\\) concur with \\(AF/FB = 3/2\\), \\(BD/DC = 2\\). Find \\(CE/EA\\).", "Ceva: \\(2 \\cdot \\frac{CE}{EA} \\cdot \\frac32 = 1\\), so \\(CE/EA = 1/3\\).", "1/3"],
+        [6, "In \\(\\triangle ABC\\), \\(\\angle A\\) bisector \\(AD\\) and \\(\\angle B\\) bisector \\(BE\\) meet at the incenter. What ratio must \\(CF\\) (through incenter) give on \\(AB\\)? Use Ceva.", "Angle bisector theorem: \\(BD/DC = c/b\\), \\(CE/EA = a/c\\). Ceva forces \\(AF/FB = b/a\\), matching the angle bisector theorem.", "1"],
+        [7, "A transversal meets sides \\(AB, BC, CA\\) (extended if needed) at \\(F, D, E\\). If \\(AF/FB = 2\\), \\(BD/DC = 3\\), must the line also pass through the midpoint of \\(AC\\)? Use Menelaus.", "\\(\\frac{BD}{DC} \\cdot \\frac{CE}{EA} \\cdot \\frac{AF}{FB} = 1\\), so \\(3 \\cdot \\frac{CE}{EA} \\cdot 2 = 1\\), \\(CE/EA = 1/6\\): not the midpoint, so no.", "no"],
+        [8, "Triangle \\(ABC\\) has side \\(AB = 5\\), \\(BC = 6\\), \\(CA = 7\\). The angle bisector of \\(\\angle C\\) meets \\(AB\\) at \\(F\\) and a cevian from \\(A\\) meets \\(BC\\) at \\(D\\) with \\(BD/DC = 2/5\\). Where do the two cevians meet? (Just compute the missing Ceva ratio.)", "Angle bisector: \\(AF/FB = AC/BC = 7/6\\). Ceva: \\(\\frac{BD}{DC} \\cdot \\frac{CE}{EA} \\cdot \\frac{AF}{FB} = 1\\) \u2014 missing ratio is \\(\\frac{CE}{EA} = \\frac{1}{7/6 \\cdot 2/5} = \\frac{15}{7}\\).", "15/7"]
+      ]},
+      { n: "Hard", probs: [
+        [9, "In \\(\\triangle ABC\\), let \\(D\\) be the midpoint of \\(BC\\) and \\(E\\) a point on \\(AC\\) with \\(AE : EC = 2 : 1\\). Let \\(F = AD \\cap BE\\). Compute \\(AF/FD\\).", "By mass points: \\(AF/FD = 2\\). (Assign mass 1 at C, 1 at B; E splits AC 2:1 gives mass at A = 1/2; balance at D: \\(AF/FD = \\frac{2}{1}\\).)", "2"],
+        [10, "Show Menelaus and Ceva are algebraically dual by writing each as a product equal to 1 and \\(-1\\).", "Ceva: \\(\\frac{BD}{DC}\\frac{CE}{EA}\\frac{AF}{FB} = 1\\) (concurrency). Menelaus: same product with a sign flip \\(= -1\\) (collinearity). Interchanging 1 and \\(-1\\) swaps the two theorems.", "1"]
+      ]}
+    ]
+  },
+  {
+    id: "geo7-lesson",
+    title: "Homothety \u2014 Lesson",
+    sub: "Dilation maps, homothetic figures, centers and ratios",
+    type: "lesson",
+    group: "Geometry",
+    sections: [
+      { h: "1. Definition",
+        c: [
+          { t: "p", v: "A <b>homothety</b> with center \\(O\\) and ratio \\(k\\) maps every point \\(P\\) to \\(P'\\) on ray \\(OP\\) with \\(OP' = k \\cdot OP\\). It is a <b>dilation</b>: it scales all distances by \\(|k|\\) and preserves angles. When \\(k = -1\\) it is a half-turn about \\(O\\); when \\(|k| \\neq 1\\) it moves every point except \\(O\\) itself." },
+          { t: "ex", title: "Example 1", v: "A homothety centered at \\(O\\) with ratio 2 sends \\(A\\) to \\(A'\\) with \\(OA' = 12\\). Find \\(OA\\).<br><br>\\(OA = OA'/2 = 6\\)." }
+        ]
+      },
+      { h: "2. Homothetic Figures",
+        c: [
+          { t: "p", v: "Two figures are <b>homothetic</b> if one is the image of the other under a homothety. Corresponding sides are parallel and proportional; corresponding points and the center are collinear. The center of a homothety sending circle \\(\\omega_1\\) to \\(\omega_2\\) lies on the line of centers." },
+          { t: "ex", title: "Example 2", v: "Two circles with radii 2 and 5 are externally tangent. Their external homothety center \\(H\\) lies on the line of centers such that \\(HO_1/HO_2 = 2/5\\). Where is \\(H\\)?<br><br>External center lies outside segment \\(O_1O_2\\) on the side of the smaller circle, with \\(HO_1 : HO_2 = 2 : 5\\). Since \\(O_1O_2 = 7\\), \\(HO_1 = \\frac{2}{3} \\cdot 7\\), \\(HO_2 = \\frac{5}{3} \\cdot 7\\) \u2014 careful: distances measured along the same ray." }
+        ]
+      },
+      { h: "3. Using Homothety in Problems",
+        c: [
+          { t: "p", v: "When a figure is constructed by scaling a simpler one (e.g., two similar triangles with parallel corresponding sides), look for the hidden homothety. A <b>reduction</b> reduces a problem to its scaled copy, especially useful with incircles/excircles and tangent circles." },
+          { t: "ex", title: "Example 3", v: "In \\(\\triangle ABC\\), the midpoint triangle \\(A'B'C'\\) (joining side midpoints) is homothetic to \\(ABC\\) with center the centroid and ratio \\(-1/2\\). Verify \\(A'A : A\\text{centroid}\\) ratio.\u2014By medians, the centroid divides each median \\(2 : 1\\); the midpoint triangle is the image under ratio \\(-1/2\\)." }
+        ]
+      }
+    ]
+  },
+  {
+    id: "geo7-prac",
+    title: "Homothety \u2014 Practice",
+    sub: "10 problems",
+    type: "prac",
+    group: "Geometry",
+    levels: [
+      { n: "Easy", probs: [
+        [1, "A homothety with center \\(O\\) and ratio 3 sends a segment of length 4 to one of length \\(\\underline{\\phantom{12}}\\).", "Lengths scale by \\(|k| = 3\\), so the image has length 12.", "12"],
+        [2, "A homothety with ratio \\(-2\\) sends \\(P\\) to \\(P'\\) with \\(OP' = 10\\). Find \\(OP\\).", "\\(OP = 10/2 = 5\\).", "5"],
+        [3, "Two squares of side 3 and 9 share the same center and orientation. Give the homothety ratio that sends one to the other.", "\\(k = 9/3 = 3\\) (or \\(1/3\\) the other way).", "3"]
+      ]},
+      { n: "Medium", probs: [
+        [4, "Under a homothety with center \\(O\\) ratio 2, the image of a circle of radius 5 has radius \\(\\underline{\\phantom{}}\\).", "Radii scale by \\(|k|\\), so radius 10.", "10"],
+        [5, "Triangle \\(ABC\\) and its image \\(A'B'C'\\) under a homothety with ratio 3 have corresponding sides parallel. The perimeter of \\(ABC\\) is 7. Find the perimeter of \\(A'B'C'\\).", "Perimeter scales by 3: \\(7 \\cdot 3 = 21\\).", "21"],
+        [6, "Two tangent circles of radii 3 and 6 touch externally at \\(T\\). What is the ratio of distances from the external homothety center to the two centers?", "\\(k = 6/3 = 2\\), so \\(HO_{\\text{small}} : HO_{\\text{large}} = 1 : 2\\).", "1:2"],
+        [7, "A homothety with center \\(O\\) and ratio \\(-1\\) is applied twice. What net transformation results?", "Each application is a half-turn; two half-turns compose to the identity.", "identity"],
+        [8, "In \\(\\triangle ABC\\) with centroid \\(G\\), what homothety centered at \\(G\\) sends \\(ABC\\) to the anticomplementary triangle (formed by lines through vertices parallel to opposite sides)?", "Anticomplementary triangle is the image under ratio \\(-2\\) centered at the centroid (each vertex maps to the opposite side).", "-2"]
+      ]},
+      { n: "Hard", probs: [
+        [9, "Three circles of equal radius are pairwise externally tangent. Show the center triangle is homothetic to the triangle formed by the three common external tangent intersections.", "Centers form a triangle; the tangent intersections lie on the external homothety centers of pairs. Since the circles are equal, all ratios are 1 in the direction of the external centers.", "1"],
+        [10, "Let \\(O\\) be the circumcenter of \\(\\triangle ABC\\) and \\(A'B'C'\\) the orthic triangle. If the incircle of \\(\\triangle ABC\\) is the image of the excircle under a homothety centered at the incenter, find the ratio.", "The incircle and excircle are tangent to the same lines; the homothety center is their tangency-vertex and the ratio is \\(\\frac{r}{r_a}\\) (signed).", "r/r_a"]
+      ]}
+    ]
+  },
+  {
+    id: "geo8-lesson",
+    title: "Spiral Similarity \u2014 Lesson",
+    sub: "Rotations + dilations, Miquel points, angle chasing",
+    type: "lesson",
+    group: "Geometry",
+    sections: [
+      { h: "1. Definition",
+        c: [
+          { t: "p", v: "A <b>spiral similarity</b> is a transformation that is a rotation about a point \\(O\\) followed by a homothety about the same \\(O\\) (or vice versa). It maps segments to segments with a constant ratio of lengths and constant angle between corresponding directions." },
+          { t: "d", v: "AB' / AB = k, \\quad \\angle AOB = \\angle A'OB' = \\theta" },
+          { t: "ex", title: "Example 1", v: "A spiral similarity with ratio 2 and angle \\(90^\\circ\\) sends \\(AB\\) to \\(A'B'\\). If \\(AB = 5\\), find \\(A'B'\\).<br><br>\\(A'B' = k \\cdot AB = 10\\) (the angle doesn't affect length)." }
+        ]
+      },
+      { h: "2. Centers of Spiral Similarity",
+        c: [
+          { t: "p", v: "Given two segments \\(AB\\) and \\(A'B'\\), there are exactly two spiral similarities sending one to the other. Their centers are the intersection points of the circumcircles of \\(AA'\\) and \\(BB'\\) (or of \\(AB'\\) and \\(A'B\\)). When \\(AB \\parallel A'B'\\) and the centers coincide, it degenerates to a homothety." },
+          { t: "ex", title: "Example 2", v: "Segments \\(AB\\) and \\(A'B'\\) are parallel and congruent. The two spiral-similarity centers are at infinity \u2014 the transformation is a translation. Find the ratio.\u2014The ratio is 1, the angle is \\(0^\\circ\\)." }
+        ]
+      },
+      { h: "3. Spiral Similarity in Olympiad Problems",
+        c: [
+          { t: "p", v: "The <b>Miquel point</b> of a complete quadrilateral is the common point of the four circumcircles \u2014 a classic source of spiral similarities. Two spiral-similarities compose to a rotation by the sum of angles; use them to prove collinearity or concyclicity." },
+          { t: "ex", title: "Example 3", v: "In \\(\\triangle ABC\\), points \\(D, E\\) on \\(AB\\), \\(AC\\) with \\(AD = AE = 2\\). The spiral similarity centered at \\(A\\) sends \\(AB\\) to \\(AC\\) if and only if \\(AB = AC\\) (ratio 1).<br><br>Here \\(AD/AE = 1\\) but \\(AB/AC\\) need not equal 1, so the map is not a spiral similarity unless the triangle is isosceles." }
+        ]
+      }
+    ]
+  },
+  {
+    id: "geo8-prac",
+    title: "Spiral Similarity \u2014 Practice",
+    sub: "10 problems",
+    type: "prac",
+    group: "Geometry",
+    levels: [
+      { n: "Easy", probs: [
+        [1, "A spiral similarity of ratio 4 and angle \\(60^\\circ\\) sends \\(XY\\) to \\(X'Y'\\). If \\(XY = 3\\), find \\(X'Y'\\).", "Length scales by 4: \\(X'Y' = 12\\).", "12"],
+        [2, "Two segments are parallel, same direction, lengths 5 and 15. What is the ratio of the homothety (degenerate spiral) mapping one to the other?", "\\(k = 15/5 = 3\\).", "3"],
+        [3, "A spiral similarity is a rotation by \\(120^\\circ\\) followed by a homothety ratio \\(1/2\\). If a segment of length 8 is mapped, what is its image length?", "Only the ratio matters for length: \\(8/2 = 4\\).", "4"]
+      ]},
+      { n: "Medium", probs: [
+        [4, "Segments \\(AB\\) and \\(CD\\) of lengths 6 and 10 are mapped by a spiral similarity with angle \\(45^\\circ\\). Find the ratio.", "Ratio \\(= 10/6 = 5/3\\).", "5/3"],
+        [5, "In \\(\\triangle ABC\\), \\(D\\) on \\(AB\\) with \\(AD = 2, DB = 4\\), and \\(E\\) on \\(AC\\) with \\(AE = 3, EC = 6\\). Show \\(DE \\parallel BC\\) using ratios, and give the homothety center.", "\\(AD/AB = 2/6 = 1/3 = AE/AC\\), so \\(DE \\parallel BC\\) by the intercept theorem; the center is \\(A\\), ratio \\(1/3\\).", "1/3"],
+        [6, "Two circles \\(\\omega_1, \\omega_2\\) intersect at \\(A, B\\). The tangent to \\(\\omega_1\\) at \\(A\\) meets \\(\\omega_2\\) again at \\(C\\). Show \\(\\triangle ABC\\) is isosceles when the two circles have equal radii.", "Equal radii \u2192 the spiral similarity centered at \\(A\\) sending \\(\\omega_1\\) to \\(\\omega_2\\) has ratio 1, so \\(AB = AC\\).", "1"],
+        [7, "A spiral similarity of ratio \\(r\\) maps segment \\(PQ\\) to \\(P'Q'\\). If it is applied twice, what is the net ratio and rotation?", "Ratio \\(r^2\\), rotation \\(2\\theta\\) (composition adds angles, multiplies ratios).", "r^2"],
+        [8, "In \\(\\triangle ABC\\) with \\(\\angle A = 60^\\circ\\), points \\(P, Q\\) on \\(AB, AC\\) satisfy \\(AP/AB = AQ/AC = 1/3\\). Show \\(PQ\\) is \\(1/3\\) of \\(BC\\) using a spiral similarity centered at \\(A\\).", "The map centered at \\(A\\) ratio \\(1/3\\) rotation \\(0\\) sends \\(B \\to P, C \\to Q\\), so \\(PQ = BC/3\\).", "1/3"]
+      ]},
+      { n: "Hard", probs: [
+        [9, "Given \\(AB\\) and \\(CD\\) on a line with \\(AB \\parallel CD\\) (opposite directions), describe the two spiral-similarity centers.", "Centers lie on the line: internal center (between the two segments) for the same-direction map, external center outside for the opposite.", "2 centers"],
+        [10, "Prove: if \\(A, B, C, D\\) are concyclic, then the spiral similarity centered at the Miquel point of \\(ABCD\\) sends \\(AB\\) to \\(CD\\) and \\(BC\\) to \\(DA\\) simultaneously.", "A cyclic quadrilateral has two spiral similarities centered at the intersection of the two circles through opposite pairs; the Miquel point is the common center of those two maps.", "1"]
+      ]}
+    ]
+  },
+  {
+    id: "geo9-lesson",
+    title: "Inversion \u2014 Lesson",
+    sub: "Circles to lines, orthogonal circles, inversion centers",
+    type: "lesson",
+    group: "Geometry",
+    sections: [
+      { h: "1. Definition",
+        c: [
+          { t: "p", v: "<b>Inversion</b> in a circle with center \\(O\\) and radius \\(R\\) sends a point \\(P \\neq O\\) to \\(P'\\) on ray \\(OP\\) with:" },
+          { t: "d", v: "OP \\cdot OP' = R^2" },
+          { t: "p", v: "Points inside map outside, and vice versa; the circle itself is fixed pointwise. Inversion is an <b>involution</b> (inverting twice returns \\(P\\)). It preserves angles (conformal) but generally does not preserve distances." }
+        ]
+      },
+      { h: "2. Lines and Circles Under Inversion",
+        c: [
+          { t: "p", v: "A line not through \\(O\\) inverts to a circle through \\(O\\) (whose diameter is \\(O\\) and the inverse of the foot of the perpendicular). A line through \\(O\\) maps to itself. A circle through \\(O\\) maps to a line not through \\(O\\). A circle not through \\(O\\) maps to another circle not through \\(O\\)." },
+          { t: "ex", title: "Example 1", v: "Inversion in a circle of radius 1. Point \\(P\\) with \\(OP = 4\\) maps to \\(P'\\) with \\(OP' = ?\\).<br><br>\\(OP' = 1/4\\)." }
+        ]
+      },
+      { h: "3. Orthogonal Circles and the Inversion Center",
+        c: [
+          { t: "p", v: "A circle is fixed (as a set) under inversion iff it is orthogonal to the inversion circle. Two circles tangent at \\(O\\) map to parallel lines, a fact used to prove tangency/concurrency of circles." },
+          { t: "ex", title: "Example 2", v: "Invert the configuration of two tangent circles at their point of tangency \\(T\\): they become two parallel lines. Conclude any circle tangent to both at \\(T\\) becomes a line parallel to those, proving tangency becomes parallelism.\u2014A standard technique for tangency problems." }
+        ]
+      }
+    ]
+  },
+  {
+    id: "geo9-prac",
+    title: "Inversion \u2014 Practice",
+    sub: "10 problems",
+    type: "prac",
+    group: "Geometry",
+    levels: [
+      { n: "Easy", probs: [
+        [1, "Inversion radius 3. Point \\(P\\) at \\(OP = 6\\) maps to \\(P'\\) with \\(OP' = ?\\).", "\\(OP' = 9/6 = 3/2\\).", "3/2"],
+        [2, "Inversion radius 2. Point \\(P'\\) at \\(OP' = 1/2\\) is the image of \\(P\\). Find \\(OP\\).", "\\(OP = 4/(1/2) = 8\\).", "8"],
+        [3, "A line through the inversion center \\(O\\) maps to \\(\\underline{\\phantom{}}\\).", "Itself (pointwise fixed by inversion).", "itself"]
+      ]},
+      { n: "Medium", probs: [
+        [4, "Inversion in the unit circle maps a circle of radius 2 centered at distance 3 from \\(O\\) to another circle. Find its radius.", "Use \\(R' = \\frac{R}{|d^2 - R^2|} = \\frac{2}{9-4} = 2/5\\).", "2/5"],
+        [5, "A line at distance 2 from \\(O\\) inverts (unit circle) into a circle. Find its diameter.", "The image circle has diameter \\(1/2 \\cdot 1 = 1/2\\)? No: distance to \\(O\\) is 2, so \\(O\\) to foot is \\(2\\), inverse is \\(1/2\\), diameter = 1.", "1"],
+        [6, "Two circles tangent at \\(O\\) are inverted at \\(O\\). What do they become?", "Two parallel lines (they no longer meet).", "parallel lines"],
+        [7, "Inversion is conformal: it preserves \\(\\underline{\\phantom{}}\\).", "Angles (it is angle-preserving).", "angles"],
+        [8, "Inversion radius \\(R = 5\\). Point at \\(OP = 10\\) maps to \\(P'\\). How far is \\(P'\\) from \\(O\\)?", "\\(25/10 = 5/2\\).", "5/2"]
+      ]},
+      { n: "Hard", probs: [
+        [9, "Prove: the image of a line \\(\\ell\\) not through \\(O\\) under inversion is a circle through \\(O\\) whose center lies on the perpendicular from \\(O\\) to \\(\\ell\\).", "Let \\(H\\) be foot of perpendicular from \\(O\\), \\(H'\\) its inverse. The image is the circle with diameter \\(OH'\\).", "circle through O"],
+        [10, "Use inversion to prove: if two circles are orthogonal, they intersect at right angles.", "Two orthogonal circles are fixed (as sets) under inversion in the other's circle. The tangent lines at an intersection are the images of each other, so the angle between tangents equals the angle between their images \u2014 90\u00b0.", "90"]
+      ]}
+    ]
+  },
+  {
+    id: "coord-lesson",
+    title: "Coordinate Geometry & Bashing \u2014 Lesson",
+    sub: "Cartesian, barycentric, and complex methods",
+    type: "lesson",
+    group: "Geometry",
+    sections: [
+      { h: "1. Cartesian Setup",
+        c: [
+          { t: "p", v: "Place figures conveniently: put a triangle with \\(A = (0,0)\\), \\(B = (c, 0)\\), \\(C = (b\\cos A, b\\sin A)\\). Then use the distance formula, midpoint, and section formula to compute the desired ratio or locus directly." },
+          { t: "d", v: "d = \\sqrt{(x_2 - x_1)^2 + (y_2 - y_1)^2}" },
+          { t: "ex", title: "Example 1", v: "Find the centroid of \\((0,0), (4,0), (1,3)\\).<br><br>\\(G = ((0+4+1)/3, (0+0+3)/3) = (5/3, 1)\\)." }
+        ]
+      },
+      { h: "2. Barycentric Coordinates",
+        c: [
+          { t: "p", v: "A point \\(P\\) in \\(\\triangle ABC\\) is written \\((x : y : z)\\) with normalized masses \\(x + y + z = 1\\). The barycentric coordinates equal the ratios of subtriangle areas: \\((\\frac{[PBC]}{[ABC]} : \\frac{[PCA]}{[ABC]} : \\frac{[PAB]}{[ABC]})\\)." },
+          { t: "ex", title: "Example 2", v: "The centroid has barycentrics \\((1:1:1)\\).<br><br>Equal areas \u2192 equal coordinates." }
+        ]
+      },
+      { h: "3. Complex Numbers as Coordinates",
+        c: [
+          { t: "p", v: "Identify the plane with \\(\\mathbb{C}\\). A triangle is equilateral iff \\(a + \\omega b + \\omega^2 c = 0\\) with \\(\\omega\\) a cube root of unity. Cyclicity and perpendicularity have clean complex criteria: \\(\\frac{(a-b)(c-d)}{(a-d)(c-b)} \\in \\mathbb{R}\\) for concyclicity of \\(a,b,c,d\\)." },
+          { t: "ex", title: "Example 3", v: "Show \\((0, 1), (1, 0), (0, -1)\\) are concyclic using the complex criterion.\u2014They all lie on the unit circle: \\(|z| = 1\\) is a circle." }
+        ]
+      }
+    ]
+  },
+  {
+    id: "coord-practice",
+    title: "Coordinate Geometry \u2014 Practice",
+    sub: "10 problems",
+    type: "prac",
+    group: "Geometry",
+    levels: [
+      { n: "Easy", probs: [
+        [1, "Distance between \\((1, 2)\\) and \\((4, 6)\\).", "\\(\\sqrt{3^2 + 4^2} = 5\\).", "5"],
+        [2, "Midpoint of \\((0,0)\\) and \\((6, 8)\\).", "\\((3, 4)\\).", "(3,4)"],
+        [3, "Centroid of \\((0,0), (3,0), (0,6)\\).", "\\((1, 2)\\).", "(1,2)"]
+      ]},
+      { n: "Medium", probs: [
+        [4, "Find the point on the x-axis equidistant from \\((0,1)\\) and \\((4,1)\\).", "By symmetry \\((2, 0)\\): distances to both equal \\(\\sqrt5\\).", "(2,0)"],
+        [5, "Area of triangle with vertices \\((0,0), (3,0), (0,4)\\).", "\\(\\frac12 \\cdot 3 \\cdot 4 = 6\\).", "6"],
+        [6, "The point dividing \\(A(0,0)\\) to \\(B(6,3)\\) in ratio \\(2:1\\).", "\\((4, 2)\\).", "(4,2)"],
+        [7, "Show \\((0,0), (2,2), (4,0), (2,-2)\\) form a square: side length?", "Distance between adjacent vertices \\(=\\sqrt{8} = 2\\sqrt2\\).", "2sqrt2"],
+        [8, "Circumcenter of \\((0,0), (2,0), (0,2)\\).", "\\((1, 1)\\).", "(1,1)"]
+      ]},
+      { n: "Hard", probs: [
+        [9, "Find the locus of points equidistant from \\((0,0)\\) and \\((4,0)\\).", "The perpendicular bisector \\(x = 2\\).", "x=2"],
+        [10, "Using coordinates, verify the median from \\(A = (0,0)\\) of triangle with \\(B = (6,0)\\), \\(C = (0,8)\\) has length equal to half the hypotenuse.", "Midpoint of BC is \\((3,4)\\), distance from (0,0) is 5; hypotenuse BC = 10. True.", "5"]
+      ]}
+    ]
+  },
+  {
+    id: "lemma-lesson",
+    title: "Classical Lemmas \u2014 Lesson",
+    sub: "Euler line, Feuerbach, and key olympiad lemmas",
+    type: "lesson",
+    group: "Geometry",
+    sections: [
+      { h: "1. The Euler Line",
+        c: [
+          { t: "p", v: "In any triangle, the <b>circumcenter</b> \\(O\\), <b>centroid</b> \\(G\\), and <b>orthocenter</b> \\(H\\) are collinear, and \\(G\\) divides \\(OH\\) in ratio \\(1 : 2\\): \\(\\overrightarrow{GH} = 2 \\overrightarrow{OG}\\)." },
+          { t: "d", v: "O, G, H \\text{ collinear}, \\quad \\overrightarrow{GH} = -2 \\overrightarrow{GO}" },
+          { t: "ex", title: "Example 1", v: "In \\(\\triangle ABC\\), \\(O = (0,0), G = (1,1)\\). Find \\(H\\).<br><br>\\(H = 3G - 2O = (3, 3)\\)." }
+        ]
+      },
+      { h: "2. Nine-Point Circle",
+        c: [
+          { t: "p", v: "The midpoints of the sides, the feet of the altitudes, and the midpoints of \\(AH, BH, CH\\) all lie on one circle: the <b>nine-point circle</b>, centered at the midpoint of \\(OH\\) with radius \\(R/2\\)." },
+          { t: "ex", title: "Example 2", v: "If the circumradius is 10, the nine-point circle has radius 5.<br><br>Nine-point radius \\(= R/2 = 5\\)." }
+        ]
+      },
+      { h: "3. Feuerbach's Theorem",
+        c: [
+          { t: "p", v: "<b>Feuerbach's theorem</b>: the nine-point circle is internally tangent to the incircle and externally tangent to each of the three excircles. This tangency point is the <i>Feuerbach point</i>." },
+          { t: "ex", title: "Example 3", v: "In a triangle with inradius \\(r = 3\\) and nine-point radius \\(5\\), the incircle is internally tangent: distance between centers \\(= 5 - 3 = 2\\).<br><br>Feuerbach: centers are 2 apart." }
+        ]
+      }
+    ]
+  },
+  {
+    id: "lemma-practice",
+    title: "Classical Lemmas \u2014 Practice",
+    sub: "10 problems",
+    type: "prac",
+    group: "Geometry",
+    levels: [
+      { n: "Easy", probs: [
+        [1, "In \\(\\triangle ABC\\), circumcenter O, centroid G, orthocenter H are collinear. The line is called the \\(\\underline{\\phantom{}}\\) line.", "Euler line.", "Euler line"],
+        [2, "The nine-point circle has radius half the circumradius. If \\(R = 8\\), nine-point radius?", "\\(4\\).", "4"],
+        [3, "How many points define the nine-point circle (name the type)?", "Side midpoints, altitude feet, and AH/BH/CH midpoints.", "9"]
+      ]},
+      { n: "Medium", probs: [
+        [4, "If \\(OG = 2\\), find \\(GH\\).", "\\(GH = 2 \\cdot OG = 4\\).", "4"],
+        [5, "In the right triangle with circumradius 5, the orthocenter is at the right-angle vertex. Where is O?", "O is the midpoint of the hypotenuse (circumcenter), radius 5.", "hypotenuse midpoint"],
+        [6, "The nine-point circle passes through the feet of the altitudes and the \\(\\underline{\\phantom{}}\\) of the sides.", "Midpoints of the sides.", "side midpoints"],
+        [7, "Feuerbach: the nine-point circle is tangent to how many circles (counting incircle and excircles)?", "4 circles: incircle + 3 excircles.", "4"],
+        [8, "The distance between the incenter I and nine-point center N is given by Feuerbach as \\(R/2 - r\\)? Justify.", "Internal tangency: \\(IN = R/2 - r\\).", "R/2 - r"]
+      ]},
+      { n: "Hard", probs: [
+        [9, "Prove that the midpoint of the orthocenter and a vertex lies on the nine-point circle.", "This is true by definition\u2014the nine-point circle passes through AH/2, BH/2, CH/2. Since angle at that point subtends a side through the altitude foot, it is a right angle, confirming concyclicity.", "proven"],
+        [10, "In any triangle, show the Euler line contains the incenter only for isosceles triangles.", "For a scalene triangle, \\(I\\) lies on \\(OH\\) only if the triangle is isosceles (standard lemma).", "isosceles"]
+      ]}
+    ]
+  },
+  {
+    id: "geo3d-lesson",
+    title: "3D Geometry \u2014 Lesson",
+    sub: "Cross sections, volumes, spheres and polyhedra",
+    type: "lesson",
+    group: "Geometry",
+    sections: [
+      { h: "1. Volumes and Surface Areas",
+        c: [
+          { t: "p", v: "Standard formulas: prism \\(V = Bh\\), pyramid \\(V = \\frac13 Bh\\), cylinder \\(V = \\pi r^2 h\\), cone \\(V = \\frac13 \\pi r^2 h\\), sphere \\(V = \\frac43 \\pi r^3\\), sphere surface \\(4\\pi r^2\\)." },
+          { t: "d", v: "V_{\\text{pyramid}} = \\frac{1}{3} B h" },
+          { t: "ex", title: "Example 1", v: "A cone has radius 3 and height 4. Find its volume.<br><br>\\(\\frac13 \\pi \\cdot 9 \\cdot 4 = 12\\pi\\)." }
+        ]
+      },
+      { h: "2. Cross Sections",
+        c: [
+          { t: "p", v: "Cut a solid with a plane and compute the area of the section. Common cuts: a plane through a cube, a plane slicing a cone (ellipse, parabola, hyperbola, or circle). Use similar triangles to relate section sizes." },
+          { t: "ex", title: "Example 2", v: "A plane cuts a cube of side 2 through three adjacent vertices. What is the shape and its area?<br><br>The section is an equilateral triangle with side \\(2\\sqrt2\\), area \\(\\frac{\\sqrt3}{4} \\cdot 8 = 2\\sqrt3\\)." }
+        ]
+      },
+      { h: "3. Spheres and Inscribed Solids",
+        c: [
+          { t: "p", v: "For a sphere inscribed in a cube of side \\(a\\), radius \\(= a/2\\). For a sphere circumscribed about a cube, radius \\(= a\\sqrt3/2\\) (half the space diagonal). Inscribed solids touch tangentially; relate radii through right triangles." },
+          { t: "ex", title: "Example 3", v: "Find the radius of the sphere inscribed in a cube of side 6.<br><br>Diameter \\(= 6\\), so radius \\(= 3\\)." }
+        ]
+      }
+    ]
+  },
+  {
+    id: "geo3d-practice",
+    title: "3D Geometry \u2014 Practice",
+    sub: "10 problems",
+    type: "prac",
+    group: "Geometry",
+    levels: [
+      { n: "Easy", probs: [
+        [1, "Volume of a sphere with radius 3.", "\\(\\frac43 \\pi \\cdot 27 = 36\\pi\\).", "36pi"],
+        [2, "Volume of a cone with radius 2 and height 6.", "\\(\\frac13 \\pi \\cdot 4 \\cdot 6 = 8\\pi\\).", "8pi"],
+        [3, "Surface area of a sphere of radius 2.", "\\(4\\pi \\cdot 4 = 16\\pi\\).", "16pi"]
+      ]},
+      { n: "Medium", probs: [
+        [4, "Volume of a pyramid with square base side 4 and height 9.", "\\(\\frac13 \\cdot 16 \\cdot 9 = 48\\).", "48"],
+        [5, "A cube of side 2 has a sphere inscribed. Sphere radius?", "\\(1\\).", "1"],
+        [6, "A sphere circumscribed about a cube of side 2. Radius?", "\\(\\sqrt3\\) (half the space diagonal \\(2\\sqrt3\\)).", "sqrt3"],
+        [7, "Cylinder radius 1, height 10. Volume?", "\\(\\pi \\cdot 1 \\cdot 10 = 10\\pi\\).", "10pi"],
+        [8, "The cross section of a cone by a plane parallel to its base is a \\(\\underline{\\phantom{}}\\).", "Circle.", "circle"]
+      ]},
+      { n: "Hard", probs: [
+        [9, "A plane cuts a unit cube through four midpoints of edges. Find the area of the resulting cross section if it is a square.", "The section is a square of side \\(\\sqrt{1/2}\\), area \\(1/2\\).", "1/2"],
+        [10, "A cone of radius 3 and slant height 5 is cut by a plane parallel to the base halfway up. Find the radius of the section.", "By similar triangles, radius \\(= 3 \\cdot \\frac12 = 3/2\\).", "3/2"]
+      ]}
     ]
   },
   {
@@ -2122,569 +3002,114 @@ const SECTIONS = [
       }
     ]
   },
-
-{
-    id: "geo1-lesson",
-    title: "Similar Triangles \u2014 Lesson",
-    sub: "AA/SAS/SSS similarity, angle bisector theorem, area ratios",
+  {
+    id: "qr-lesson",
+    title: "Quadratic Residues \u2014 Lesson",
+    sub: "Legendre symbol, Euler's criterion, quadratic reciprocity",
     type: "lesson",
-    group: "Geometry",
+    group: "Number Theory",
     sections: [
-      { h: "1. Similarity Criteria",
+      { h: "1. Quadratic Residues",
         c: [
-          { t: "p", v: "Triangles are <b>similar</b> if corresponding angles are equal. Criteria: <b>AA</b> (two angles equal), <b>SAS</b> (two proportional sides, included angle equal), <b>SSS</b> (all three sides proportional). The ratio of areas of similar triangles is the square of the side ratio." },
-          { t: "ex", title: "Example 1", v: "Triangle \\(ABC\\) has \\(AB = 6, BC = 8, AC = 10\\). A similar triangle \\(DEF\\) has longest side 15. Find \\(DE\\) and \\(EF\\).<br><br>Scale factor \\(= 15/10 = 3/2\\). \\(DE = 6 \\cdot \\frac32 = 9\\), \\(EF = 8 \\cdot \\frac32 = 12\\)." },
-          { t: "ex", title: "Example 2", v: "Two similar triangles have side ratio \\(2 : 3\\). The smaller has area 20. Find the larger's area.<br><br>Area scales by \\(9/4\\): \\(20 \\cdot \\frac94 = 45\\)." }
+          { t: "p", v: "An integer \\(a\\) is a <b>quadratic residue</b> mod \\(p\\) (odd prime) if \\(x^2 \\equiv a \\pmod p\\) has a solution with \\(x \\not\\equiv 0\\). Among \\(1, \\ldots, p-1\\), exactly half are residues and half are non-residues: the residues are \\(1^2, 2^2, \\ldots, \\left(\\frac{p-1}{2}\\right)^2\\)." },
+          { t: "d", v: "\\left(\\frac{a}{p}\\right) = \\begin{cases} 1 & a \\text{ residue} \\\\ -1 & a \\text{ non-residue} \\end{cases}" },
+          { t: "ex", title: "Example 1", v: "The quadratic residues mod 7 are \\(1, 2, 4\\) (\\(1^2, 2^2, 3^2 \\equiv 1, 4, 2\\)). The rest \\(3, 5, 6\\) are non-residues." }
         ]
       },
-      { h: "2. Angle Bisector Theorem",
+      { h: "2. Euler's Criterion",
         c: [
-          { t: "p", v: "In \\(\\triangle ABC\\), if \\(AD\\) bisects \\(\\angle A\\) and meets \\(BC\\) at \\(D\\), then:" },
-          { t: "d", v: "\\frac{BD}{DC} = \\frac{AB}{AC}" },
-          { t: "ex", title: "Example 3", v: "In \\(\\triangle ABC\\), \\(AB = 10, AC = 15, BC = 20\\). The angle bisector from \\(A\\) meets \\(BC\\) at \\(D\\). Find \\(BD\\).<br><br>\\(\\frac{BD}{DC} = \\frac{10}{15} = \\frac23\\). So \\(BD = \\frac{2}{5} \\cdot 20 = 8\\)." }
+          { t: "p", v: "For an odd prime \\(p\\) and \\(p \\nmid a\\), <b>Euler's criterion</b> gives \\(a^{(p-1)/2} \\equiv \\left(\\frac{a}{p}\\right) \\pmod p\\)." },
+          { t: "d", v: "a^{(p-1)/2} \\equiv \\left(\\frac{a}{p}\\right) \\pmod p" },
+          { t: "ex", title: "Example 2", v: "Check that 2 is a non-residue mod 5.<br><br>\\(2^2 = 4 \\equiv -1 \\pmod 5\\), so \\((2/5) = -1\\)." }
         ]
       },
-      { h: "3. Nested and Overlapping Triangles",
+      { h: "3. Quadratic Reciprocity",
         c: [
-          { t: "p", v: "When a line is drawn parallel to one side of a triangle, the small triangle at the top is similar to the whole (basic proportionality / intercept theorem). Overlapping triangles sharing an angle are a frequent source of similarity." },
-          { t: "ex", title: "Example 4", v: "In \\(\\triangle ABC\\), \\(DE \\parallel BC\\) with \\(D\\) on \\(AB\\), \\(E\\) on \\(AC\\), \\(AD = 2, DB = 3\\). Find \\(AE : EC\\).<br><br>\\(\\triangle ADE \\sim \\triangle ABC\\) with ratio \\(2 : 5\\). So \\(AE : AC = 2 : 5\\), giving \\(AE : EC = 2 : 3\\)." },
-          { t: "ex", title: "Example 5", v: "Right triangle with altitude to the hypotenuse: \\(\\triangle ABC\\) right at \\(A\\), altitude \\(AD\\). Show \\(\\triangle ABD \\sim \\triangle CAD \\sim \\triangle CBA\\).<br><br>All three share the acute angles; the altitude creates two smaller right triangles similar to the original and each other. Consequently \\(AD^2 = BD \\cdot DC\\)." }
-        ]
-      },
-      { h: "4. Area Ratios",
-        c: [
-          { t: "p", v: "Triangles with the same base have area proportional to height; sharing a vertex and lying on the same line, areas are proportional to the base lengths. This gives quick ratio chains." },
-          { t: "ex", title: "Example 6", v: "\\(D\\) divides \\(BC\\) in ratio \\(BD : DC = 2 : 3\\). Find the ratio \\([ABD] : [ADC]\\).<br><br>Same altitude from \\(A\\), so area ratio equals base ratio \\(2 : 3\\)." },
-          { t: "ex", title: "Example 7", v: "Medians split a triangle into 6 equal-area triangles. If \\([ABC] = 30\\), find \\([BGM]\\) where \\(G\\) is centroid, \\(M\\) midpoint of \\(BC\\).<br><br>Each of the 6 small triangles has area \\(30/6 = 5\\)." }
+          { t: "p", v: "For distinct odd primes \\(p, q\\): \\(\\left(\\frac{p}{q}\\right)\\left(\\frac{q}{p}\\right) = (-1)^{\\frac{p-1}{2}\\frac{q-1}{2}}\\). The supplement: \\(\\left(\\frac{-1}{p}\\right) = (-1)^{(p-1)/2}\\) and \\(\\left(\\frac{2}{p}\\right) = (-1)^{(p^2-1)/8}\\)." },
+          { t: "d", v: "\\left(\\frac{p}{q}\\right) = \\left(\\frac{q}{p}\\right) \\cdot (-1)^{\\frac{p-1}{2}\\frac{q-1}{2}}" },
+          { t: "ex", title: "Example 3", v: "Determine whether 5 is a residue mod 7.<br><br>\\((5/7) = -(7/5)\\) (both \\(\\equiv 3 \\pmod 4\\)) \\(= -(2/5) = -(-1) = 1\\): yes, 5 is a residue mod 7 (\\(4^2 = 16 \\equiv 5\\))." }
         ]
       }
     ]
   },
   {
-    id: "geo1-practice",
-    title: "Similar Triangles \u2014 Practice",
-    sub: "12 similarity, angle bisector, and area ratio problems",
-    type: "prac",
-    group: "Geometry",
-    levels: [
-      {
-        n: "Level 1: Basic Similarity",
-        probs: [
-          [1, "Triangles \\(ABC\\) and \\(DEF\\) are similar with \\(AB = 4, DE = 6\\). If \\(AC = 8\\), find \\(DF\\).", "Scale factor \\(6/4 = 3/2\\). \\(DF = 8 \\cdot \\frac32 = 12\\).", "12"],
-          [2, "Similar triangles have side ratio \\(1 : 3\\). The smaller has area 5. Find the larger area.", "\\(5 \\cdot 9 = 45\\).", "45"],
-          [3, "A triangle has sides \\(3, 4, 5\\). The larger similar triangle has perimeter 60. Find its scale factor from the small one.", "Small perimeter 12. Scale \\(60/12 = 5\\).", "5"],
-          [4, "In \\(\\triangle ABC\\), \\(DE \\parallel BC\\), \\(AD = 1, DB = 2\\). Find \\([ADE] : [ABC]\\).", "Similar with ratio \\(1 : 3\\), areas \\(1 : 9\\).", "1:9"],
-          [5, "Two right triangles both have a \\(30^\\circ\\) angle. What similarity criterion guarantees they are similar?", "AA (both have \\(90^\\circ\\) and \\(30^\\circ\\)).", "AA"],
-        ]
-      },
-      {
-        n: "Level 2: Angle Bisector Theorem",
-        probs: [
-          [6, "In \\(\\triangle ABC\\), \\(AB = 6, AC = 9, BC = 15\\). Angle bisector from \\(A\\) meets \\(BC\\) at \\(D\\). Find \\(BD\\).", "\\(BD : DC = 6 : 9 = 2 : 3\\). \\(BD = \\frac25 \\cdot 15 = 6\\).", "6"],
-          [7, "In \\(\\triangle ABC\\), angle bisector from \\(A\\) hits \\(BC\\) at \\(D\\) with \\(BD = 4, DC = 6\\). If \\(AB = 8\\), find \\(AC\\).", "\\(\\frac48 = \\frac{4}{AC}\\)? Use \\(BD/DC = AB/AC\\): \\(4/6 = 8/AC \\Rightarrow AC = 12\\).", "12"],
-          [8, "Triangle has \\(AB = 12, AC = 20\\), angle bisector from A to BC, \\(BC = 32\\). Find \\(DC\\).", "\\(BD/DC = 12/20 = 3/5\\). \\(DC = \\frac{5}{8} \\cdot 32 = 20\\).", "20"],
-          [9, "In a \\(3-4-5\\) right triangle, the right angle bisector meets the hypotenuse at \\(D\\). Find \\(BD\\) where \\(B\\) is the vertex of the shorter leg.", "\\(AB = 3, AC = 4, BC = 5\\). \\(BD/DC = 3/4\\), \\(BD = \\frac37 \\cdot 5 = \\frac{15}{7}\\).", "15/7"],
-          [10, "The angle bisector of \\(\\angle A\\) in \\(\\triangle ABC\\) gives \\(BD = 2, DC = 3\\). Find \\(AB : AC\\).", "\\(AB : AC = BD : DC = 2 : 3\\).", "2:3"],
-        ]
-      },
-      {
-        n: "Level 3: Area Ratios & Challenge",
-        probs: [
-          [11, "\\(D\\) is the midpoint of \\(BC\\). If \\([ABC] = 40\\), find \\([ABD]\\).", "\\([ABD] = 20\\) (half).", "20"],
-          [12, "The centroid divides each median in ratio \\(2 : 1\\). If \\([ABC] = 60\\), find the area of the triangle formed by the three medians' segments \u2014 specifically \\([BGC]\\) where \\(G\\) is the centroid.", "\\([BGC] = \\frac13[ABC] = 20\\).", "20"],
-        ]
-      }
-    ]
-  },
-  {
-    id: "geo2-lesson",
-    title: "Cyclic Quadrilaterals \u2014 Lesson",
-    sub: "Ptolemy, opposite angles, Brahmagupta, power of a point preview",
-    type: "lesson",
-    group: "Geometry",
-    sections: [
-      { h: "1. Definition and Opposite Angles",
-        c: [
-          { t: "p", v: "A quadrilateral is <b>cyclic</b> if it can be inscribed in a circle. A quadrilateral is cyclic iff opposite angles are supplementary, or iff an inscribed angle subtends a side correctly. \\(ABCD\\) cyclic \\(\\Leftrightarrow \\angle A + \\angle C = 180^\\circ\\)." },
-          { t: "ex", title: "Example 1", v: "In cyclic quadrilateral \\(ABCD\\), \\(\\angle A = 110^\\circ\\). Find \\(\\angle C\\).<br><br>\\(\\angle C = 180 - 110 = 70^\\circ\\)." },
-          { t: "ex", title: "Example 2", v: "Show \\(ABCD\\) with \\(\\angle ABD = \\angle ACD\\) is cyclic.<br><br>Equal angles subtend the same chord \\(AD\\) \u2014 the converse of the inscribed angle theorem gives concyclicity." }
-        ]
-      },
-      { h: "2. Ptolemy's Theorem",
-        c: [
-          { t: "p", v: "For cyclic \\(ABCD\\) with diagonals \\(AC, BD\\) and sides as usual:" },
-          { t: "d", v: "AC \\cdot BD = AB \\cdot CD + BC \\cdot AD" },
-          { t: "ex", title: "Example 3", v: "Rectangle with sides 3 and 4 is cyclic. Use Ptolemy to verify its diagonal.\u2014diagonals both 5, so \\(AC \\cdot BD = 25 = 3 \\cdot 3 + 4 \\cdot 4 = 25\\). Wait, sides \\(AB = 3, BC = 4, CD = 3, DA = 4\\): \\(25 = 9 + 16\\). Correct." },
-          { t: "ex", title: "Example 4", v: "Cyclic \\(ABCD\\) has \\(AB = 2, BC = 3, CD = 4, DA = 5\\). Find \\(AC \\cdot BD\\).<br><br>By Ptolemy: \\(AC \\cdot BD = 2 \\cdot 4 + 3 \\cdot 5 = 8 + 15 = 23\\)." }
-        ]
-      },
-      { h: "3. Brahmagupta's Formula",
-        c: [
-          { t: "p", v: "For a cyclic quadrilateral with sides \\(a, b, c, d\\) and semiperimeter \\(s = \\frac{a+b+c+d}{2}\\), the area is:" },
-          { t: "d", v: "K = \\sqrt{(s-a)(s-b)(s-c)(s-d)}" },
-          { t: "ex", title: "Example 5", v: "Find the area of cyclic quadrilateral with sides \\(2, 3, 4, 5\\).<br><br>\\(s = 7\\). Area \\(= \\sqrt{(5)(4)(3)(2)} = \\sqrt{120} = 2\\sqrt{30}\\)." }
-        ]
-      },
-      { h: "4. Power of a Point (Preview)",
-        c: [
-          { t: "p", v: "For a point \\(P\\) and chords \\(AB, CD\\) through \\(P\\) in a circle, \\(PA \\cdot PB = PC \\cdot PD\\). This is the <b>power of the point</b> and is the subject of the next lesson." },
-          { t: "ex", title: "Example 6", v: "In cyclic quadrilateral \\(ABCD\\), diagonals meet at \\(P\\), with \\(PA = 4, PB = 6, PC = 8\\). Find \\(PD\\).<br><br>\\(PA \\cdot PB = PC \\cdot PD \\Rightarrow 24 = 8 \\cdot PD \\Rightarrow PD = 3\\)." }
-        ]
-      }
-    ]
-  },
-  {
-    id: "geo2-practice",
-    title: "Cyclic Quadrilaterals \u2014 Practice",
-    sub: "12 cyclic quadrilateral problems",
-    type: "prac",
-    group: "Geometry",
-    levels: [
-      {
-        n: "Level 1: Angles & Concyclicity",
-        probs: [
-          [1, "In cyclic \\(ABCD\\), \\(\\angle B = 70^\\circ\\). Find \\(\\angle D\\).", "\\(\\angle D = 110^\\circ\\).", "110"],
-          [2, "Cyclic \\(ABCD\\) has \\(\\angle A = 2x\\), \\(\\angle C = x + 60\\). Find \\(x\\).", "\\(2x + x + 60 = 180 \\Rightarrow x = 40\\).", "40"],
-          [3, "In cyclic \\(ABCD\\), \\(\\angle A = 80^\\circ\\). Find \\(\\angle C\\).", "\\(100^\\circ\\).", "100"],
-          [4, "Four points lie on a circle in order \\(A, B, C, D\\) with \\(\\angle ABC = 95^\\circ\\). Find \\(\\angle ADC\\).", "Opposite angles: \\(85^\\circ\\).", "85"],
-          [5, "If \\(\\angle ABC = \\angle ADC\\), what must be true of \\(A, B, C, D\\)?", "They are cyclic (equal angles subtend chord \\(AC\\)).", "cyclic|concyclic"],
-        ]
-      },
-      {
-        n: "Level 2: Ptolemy",
-        probs: [
-          [6, "Cyclic quadrilateral with sides \\(3, 4, 3, 4\\) (a rectangle). Find the product of its diagonals.", "Diagonals are 5 and 5, product 25.", "25"],
-          [7, "Cyclic \\(ABCD\\): \\(AB = 1, BC = 2, CD = 3, DA = 4\\). Find \\(AC \\cdot BD\\).", "\\(1 \\cdot 3 + 2 \\cdot 4 = 11\\).", "11"],
-          [8, "Cyclic \\(ABCD\\): \\(AB = 5, BC = 5, CD = 5, DA = 5\\) (a square inscribed). Find \\(AC \\cdot BD\\).", "Square side 5: diagonals \\(5\\sqrt2\\). Product \\(50\\).", "50"],
-          [9, "Cyclic \\(ABCD\\) with \\(AC = 8, BD = 6\\), \\(AB = 4, BC = 5\\). Find \\(AD \\cdot CD\\) given \\(AD + CD\\)? Use \\(AD \\cdot CD + AB \\cdot BC = AC \\cdot BD\\).", "\\(AD \\cdot CD = 48 - 20 = 28\\).", "28"],
-          [10, "In cyclic quadrilateral, diagonals \\(AC \\cdot BD = 30\\) and \\(AB \\cdot CD = 12\\). Find \\(BC \\cdot AD\\).", "\\(BC \\cdot AD = 30 - 12 = 18\\).", "18"],
-        ]
-      },
-      {
-        n: "Level 3: Brahmagupta & Mixed",
-        probs: [
-          [11, "Find the area of a cyclic quadrilateral with sides \\(1, 2, 3, 4\\).", "\\(s = 5\\). Area \\(= \\sqrt{4 \\cdot 3 \\cdot 2 \\cdot 1} = \\sqrt{24} = 2\\sqrt6\\).", "2sqrt6|2√6"],
-          [12, "A cyclic quadrilateral is a square with side \\(4\\). Find its area by Brahmagupta and directly.", "Direct: 16. Brahmagupta: \\(s = 8\\), \\(\\sqrt{4^4} = 16\\).", "16"],
-        ]
-      }
-    ]
-  },
-  {
-    id: "geo3-lesson",
-    title: "Power of a Point \u2014 Lesson",
-    sub: "Tangent-secant, two secants, intersecting chords, radical center",
-    type: "lesson",
-    group: "Geometry",
-    sections: [
-      { h: "1. The Power of a Point",
-        c: [
-          { t: "p", v: "For a point \\(P\\) and a circle, fix a line through \\(P\\) hitting the circle at \\(A, B\\). The product \\(PA \\cdot PB\\) is constant, independent of the line. It is the <b>power</b> of \\(P\\): positive outside, negative inside, zero on the circle." },
-          { t: "ex", title: "Example 1", v: "\\(P\\) outside a circle; a secant through \\(P\\) hits the circle at \\(A, B\\) with \\(PA = 3, PB = 8\\). Another secant hits at \\(C, D\\) with \\(PC = 4\\). Find \\(PD\\).<br><br>\\(3 \\cdot 8 = 4 \\cdot PD \\Rightarrow PD = 6\\)." }
-        ]
-      },
-      { h: "2. Tangent-Secant Theorem",
-        c: [
-          { t: "p", v: "If \\(PT\\) is a tangent from \\(P\\) and \\(PAB\\) a secant, then \\(PT^2 = PA \\cdot PB\\). This is the power when the two intersection points 'coincide' at the tangent point." },
-          { t: "ex", title: "Example 2", v: "From point \\(P\\), tangent length \\(PT = 6\\) and secant with \\(PA = 4\\). Find \\(PB\\).<br><br>\\(36 = 4 \\cdot PB \\Rightarrow PB = 9\\)." },
-          { t: "ex", title: "Example 3", v: "Two tangents from \\(P\\) to a circle touch at \\(T_1, T_2\\). Show \\(PT_1 = PT_2\\).<br><br>Both equal \\(\\sqrt{\\text{power}(P)}\\\) from \\(PT^2 = \\text{power}\\), so equal." }
-        ]
-      },
-      { h: "3. Intersecting Chords Theorem",
-        c: [
-          { t: "p", v: "If chords \\(AB\\) and \\(CD\\) intersect inside at \\(P\\), then \\(PA \\cdot PB = PC \\cdot PD\\). (Here the power is negative; lengths are measured along chords.)" },
-          { t: "ex", title: "Example 4", v: "Chords \\(AB\\) and \\(CD\\) intersect at \\(P\\) with \\(PA = 2, PB = 6, PC = 3\\). Find \\(PD\\).<br><br>\\(12 = 3 \\cdot PD \\Rightarrow PD = 4\\)." }
-        ]
-      },
-      { h: "4. Radical Center",
-        c: [
-          { t: "p", v: "The <b>radical axis</b> of two circles is the set of points with equal power to both circles (a line). The three radical axes of three circles concur at the <b>radical center</b>." },
-          { t: "ex", title: "Example 5", v: "Given three circles, why do the three radical axes meet at one point?<br><br>Let \\(X\\) be the intersection of two radical axes; \\(X\\) has equal power to circles 1, 2 and to 2, 3, hence equal power to 1, 3, so it lies on the third radical axis too." }
-        ]
-      }
-    ]
-  },
-  {
-    id: "geo3-practice",
-    title: "Power of a Point \u2014 Practice",
-    sub: "12 power-of-a-point problems",
-    type: "prac",
-    group: "Geometry",
-    levels: [
-      {
-        n: "Level 1: Secant-Secant",
-        probs: [
-          [1, "\\(P\\) outside circle; secant \\(PAB\\) with \\(PA = 2, PB = 8\\), and secant \\(PCD\\) with \\(PC = 4\\). Find \\(PD\\).", "\\(2 \\cdot 8 = 4 \\cdot PD \\Rightarrow PD = 4\\).", "4"],
-          [2, "Secants from \\(P\\): \\(PA = 3, PB = 12\\), \\(PC = 6\\). Find \\(PD\\).", "\\(36 = 6 \\cdot PD \\Rightarrow PD = 6\\).", "6"],
-          [3, "Two secants from \\(P\\): \\(PA = 1, PB = 9\\), \\(PC = 3\\). Find \\(PD\\).", "\\(9 = 3 \\cdot PD \\Rightarrow PD = 3\\).", "3"],
-          [4, "Secant through \\(P\\) hits circle at \\(A, B\\) with \\(PA = 5, PB = 5\\) (P at midpoint). What is \\(PD\\) if \\(PC = 5\\) on another secant?", "\\(25 = 5 \\cdot PD \\Rightarrow PD = 5\\).", "5"],
-          [5, "\\(PA \\cdot PB = 24\\) and \\(PC = 3\\). Find \\(PD\\).", "\\(PD = 8\\).", "8"],
-        ]
-      },
-      {
-        n: "Level 2: Tangent-Secant",
-        probs: [
-          [6, "Tangent \\(PT = 5\\), secant \\(PA = 2\\). Find \\(PB\\).", "\\(25 = 2 \\cdot PB \\Rightarrow PB = 12.5\\).", "25/2|12.5"],
-          [7, "Tangent \\(PT = 6\\), \\(PB = 9\\). Find \\(PA\\).", "\\(36 = 9 \\cdot PA \\Rightarrow PA = 4\\).", "4"],
-          [8, "Two tangents from \\(P\\) have length 7. Another tangent? What is the power of \\(P\\)?", "Power \\(= PT^2 = 49\\).", "49"],
-          [9, "From \\(P\\), tangent length 10 and the nearer secant intersection \\(PA = 4\\). Find \\(AB\\) (the chord part).", "\\(PB = 100/4 = 25\\), so \\(AB = 21\\).", "21"],
-          [10, "If \\(PT = 8\\) and \\(PA = 8\\), what is \\(PB\\)?", "\\(64 = 8 \\cdot PB \\Rightarrow PB = 8\\), so the secant is a diameter situation? Actually \\(PB = 8\\) means \\(P\\) is on the circle. Degenerate.", "8"],
-        ]
-      },
-      {
-        n: "Level 3: Chords & Applications",
-        probs: [
-          [11, "Chords \\(AB\\) and \\(CD\\) meet at \\(P\\): \\(PA = 4, PB = 3, PC = 6\\). Find \\(PD\\).", "\\(12 = 6 \\cdot PD \\Rightarrow PD = 2\\).", "2"],
-          [12, "Chord \\(AB\\) split by \\(P\\) into \\(PA = 2, PB = 8\\); \\(PD = 4\\) on chord \\(CD\\). Find \\(PC\\).", "\\(16 = 4 \\cdot PC \\Rightarrow PC = 4\\).", "4"],
-        ]
-      }
-    ]
-  },
-  {
-    id: "geo4-lesson",
-    title: "Radical Axis \u2014 Lesson",
-    sub: "Radical axis, radical center, coaxial circles",
-    type: "lesson",
-    group: "Geometry",
-    sections: [
-      { h: "1. Radical Axis Definition",
-        c: [
-          { t: "p", v: "The <b>radical axis</b> of two circles is the locus of points \\(P\\) with equal powers to both circles. For non-concentric circles it is a straight line perpendicular to the line of centers." },
-          { t: "p", v: "Using coordinates: with circles \\(x^2 + y^2 + ax + by + c = 0\\) and \\(x^2 + y^2 + dx + ey + f = 0\\), subtracting gives the linear equation of the radical axis." },
-          { t: "ex", title: "Example 1", v: "Two circles intersect at two points. Where is their radical axis?<br><br>At each intersection point both powers are 0, so the radical axis is the common chord line through both intersections." }
-        ]
-      },
-      { h: "2. Radical Center",
-        c: [
-          { t: "p", v: "For three circles, the radical axes (pairwise) meet at a single point, the <b>radical center</b>. Its power to all three circles is equal." },
-          { t: "ex", title: "Example 2", v: "Show the radical center exists.<br><br>\\(X = \\) intersection of radical axes of circles \\((1,2)\\) and \\((2,3)\\). Then \\(Pow_1 = Pow_2 = Pow_3\\) at \\(X\\), so \\(X\\) lies on the radical axis of \\((1,3)\\)." }
-        ]
-      },
-      { h: "3. Coaxial Circles",
-        c: [
-          { t: "p", v: "A family of circles sharing a common radical axis is <b>coaxial</b>. Every circle through the two fixed intersection points of a coaxal family shares the radical axis with the others." },
-          { t: "ex", title: "Example 3", v: "If two circles intersect at \\(A, B\\), show every circle through \\(A, B\\) shares the radical axis with them.<br><br>On the line \\(AB\\), every point has power 0 to all such circles (it lies on each circle), so \\(AB\\) is the common radical axis." }
-        ]
-      },
-      { h: "4. Applications",
-        c: [
-          { t: "p", v: "Radical axis proves concurrence, finds equal-power points, and solves tangency problems. If two circles are tangent, the radical axis is their common tangent at the tangency point." },
-          { t: "ex", title: "Example 4", v: "Two tangent circles touch at \\(T\\). What is their radical axis?<br><br>The common tangent line at \\(T\\): points on it (other than \\(T\\)) have equal (tangent-length-squared) power to both circles, and \\(T\\) has power 0 to both." }
-        ]
-      }
-    ]
-  },
-  {
-    id: "geo4-practice",
-    title: "Radical Axis \u2014 Practice",
-    sub: "10 radical axis and radical center problems",
-    type: "prac",
-    group: "Geometry",
-    levels: [
-      {
-        n: "Level 1: Basics",
-        probs: [
-          [1, "Two circles intersect at \\(A\\) and \\(B\\). What is their radical axis?", "The line \\(AB\\) (common chord).", "AB|line AB|common chord"],
-          [2, "Two circles of equal radius with centers 10 apart. Where is the radical axis?", "Perpendicular bisector of the segment joining centers, 5 units from each.", "perpendicular bisector|5"],
-          [3, "Two circles are tangent externally at \\(T\\). What is the radical axis?", "The common internal tangent at \\(T\\) (perpendicular to line of centers).", "common tangent at T|common tangent"],
-          [4, "A point on the radical axis has what relationship to the two circles' powers?", "Equal powers.", "equal|equal powers"],
-          [5, "If a circle has center at the radical axis of two others, what can you say?", "Its center lies on a line of equal power; no immediate statement about tangency. (Powers equal only for points on it.)", "nothing"],
-        ]
-      },
-      {
-        n: "Level 2: Radical Center",
-        probs: [
-          [6, "Three circles have radical axes meeting at a point. What is this point called?", "Radical center.", "radical center"],
-          [7, "If two radical axes of three circles intersect at \\(X\\), what is true of \\(X\\)'s powers?", "\\(Pow_1 = Pow_2 = Pow_3\\).", "equal"],
-          [8, "The radical center of three circles has all powers equal. If the common power is 0, what does that mean?", "\\(X\\) lies on all three circles (common point).", "X is on all three circles|common point"],
-          [9, "Three circles pairwise intersect at \\((A,B), (C,D), (E,F)\\). The radical axes are the lines \\(AB, CD, EF\\). What theorem says they're concurrent?", "Radical center theorem.", "radical center theorem"],
-          [10, "Two circles with centers 4 apart have radii 3 and 5. Do they intersect? If so, what's the radical axis?", "Radii 3+5 = 8 > 4 and |3-5| = 2 < 4, so they intersect. Radical axis is the common chord.", "yes|Yes"],
-        ]
-      }
-    ]
-  },
-  {
-    id: "geo5-lesson",
-    title: "Ceva's Theorem \u2014 Lesson",
-    sub: "Ceva's theorem, trigonometric Ceva, special centers",
-    type: "lesson",
-    group: "Geometry",
-    sections: [
-      { h: "1. Ceva's Theorem",
-        c: [
-          { t: "p", v: "In \\(\\triangle ABC\\), points \\(D \\in BC, E \\in CA, F \\in AB\\). The cevians \\(AD, BE, CF\\) are concurrent iff:" },
-          { t: "d", v: "\\frac{BD}{DC} \\cdot \\frac{CE}{EA} \\cdot \\frac{AF}{FB} = 1" },
-          { t: "p", v: "With directed segments, signs are handled automatically. Ceva proves concurrency." },
-          { t: "ex", title: "Example 1", v: "\\(D, E, F\\) are midpoints of the sides. Show the medians are concurrent.<br><br>Each ratio is 1, product 1, so concurrent at the centroid." }
-        ]
-      },
-      { h: "2. Trigonometric Ceva",
-        c: [
-          { t: "p", v: "An equivalent form using angles is useful when ratios of sides are awkward:" },
-          { t: "d", v: "\\frac{\\sin\\angle BAD}{\\sin\\angle CAD} \\cdot \\frac{\\sin\\angle CBE}{\\sin\\angle ABE} \\cdot \\frac{\\sin\\angle ACF}{\\sin\\angle BCF} = 1" },
-          { t: "ex", title: "Example 2", v: "Show the angle bisectors are concurrent via trig Ceva.<br><br>Each sine ratio is 1 by angle bisectors, product 1. (Their concurrency point is the incenter.)" }
-        ]
-      },
-      { h: "3. Special Centers",
-        c: [
-          { t: "ul", v: [
-            "Centroid: medians \u2014 ratio \\(1 : 1\\) each.",
-            "Incenter: angle bisectors \u2014 ratio \\(c : b\\) etc. by angle bisector theorem.",
-            "Orthocenter: altitudes \u2014 ratios expressible via \\(\\cos\\) or area.",
-            "Circumcenter: perpendicular bisectors \u2014 Ceva handles the pedal version."
-          ]},
-          { t: "ex", title: "Example 3", v: "Verify the incenter cevians satisfy Ceva.\u2014by angle bisector theorem: \\(\\frac{BD}{DC} = \\frac{c}{b}\\), \\(\\frac{CE}{EA} = \\frac{a}{c}\\), \\(\\frac{AF}{FB} = \\frac{b}{a}\\). Product \\(= 1\\)." }
-        ]
-      },
-      { h: "4. Using Ceva",
-        c: [
-          { t: "p", v: "To use Ceva, compute the three ratios (often from similar triangles or the angle bisector theorem) and check the product. To find a ratio given concurrency, set the product to 1 and solve." },
-          { t: "ex", title: "Example 4", v: "In \\(\\triangle ABC\\), \\(AD\\) is a median, \\(BE\\) meets \\(AC\\) at \\(E\\) with \\(CE = 2, EA = 3\\), and \\(CF\\) meets \\(AB\\) at \\(F\\). If the three are concurrent, find \\(AF : FB\\).<br><br>\\(\\frac{BD}{DC} = 1\\). \\(\\frac{CE}{EA} = \\frac23\\). Product \\(= 1 \\cdot \\frac23 \\cdot \\frac{AF}{FB} = 1 \\Rightarrow AF : FB = 3 : 2\\)." }
-        ]
-      }
-    ]
-  },
-  {
-    id: "geo5-practice",
-    title: "Ceva's Theorem \u2014 Practice",
-    sub: "10 Ceva concurrency problems",
-    type: "prac",
-    group: "Geometry",
-    levels: [
-      {
-        n: "Level 1: Direct Application",
-        probs: [
-          [1, "In \\(\\triangle ABC\\), \\(BD/DC = 2\\), \\(CE/EA = 1/3\\). Find \\(AF/FB\\) for concurrency.", "\\(2 \\cdot \\frac13 \\cdot \\frac{AF}{FB} = 1 \\Rightarrow AF/FB = \\frac32\\).", "3/2"],
-          [2, "If all three ratios \\(BD/DC, CE/EA, AF/FB\\) equal 1, which point do the cevians meet at?", "Centroid.", "centroid"],
-          [3, "Cevians from vertices to midpoints meet at the centroid. If \\(BD/DC = 1\\) and \\(CE/EA = 1\\), what is \\(AF/FB\\)?", "1.", "1"],
-          [4, "In \\(\\triangle ABC\\), \\(D\\) on \\(BC\\) with \\(BD/DC = 3\\), \\(E\\) on \\(CA\\) with \\(CE/EA = 1/2\\), \\(F\\) on \\(AB\\) with \\(AF/FB = 2/3\\). Are \\(AD, BE, CF\\) concurrent?", "\\(3 \\cdot \\frac12 \\cdot \\frac23 = 1\\), yes.", "yes|Yes"],
-          [5, "Given \\(BD/DC = 1/4\\) and \\(AF/FB = 2\\), find \\(CE/EA\\) for concurrency.", "\\(\\frac14 \\cdot 2 \\cdot \\frac{CE}{EA} = 1 \\Rightarrow CE/EA = 2\\).", "2"],
-        ]
-      },
-      {
-        n: "Level 2: Angle Bisector & Trig Ceva",
-        probs: [
-          [6, "Verify the angle bisectors are concurrent using the angle bisector theorem. In \\(\\triangle ABC\\) with \\(a = BC, b = CA, c = AB\\), the ratio \\(BD/DC = c/b\\). Write the full product.", "\\(\\frac{c}{b} \\cdot \\frac{a}{c} \\cdot \\frac{b}{a} = 1\\).", "1"],
-          [7, "In a triangle with sides \\(a = 5, b = 6, c = 7\\), the angle bisector from \\(A\\) gives \\(BD/DC\\). Find it.", "\\(BD/DC = c/b = 7/6\\).", "7/6"],
-          [8, "Medians \\(AD, BE, CF\\) meet at \\(G\\). If \\([ABC] = 30\\), find \\([BGD]\\).", "Centroid divides median \\(2:1\\). \\([BGD] = \\frac16[ABC] = 5\\).", "5"],
-          [9, "Altitudes concur at the orthocenter. In a triangle, which cevians are the altitudes?", "Lines from each vertex perpendicular to the opposite side.", "altitudes"],
-          [10, "Using trig Ceva, show that altitudes are concurrent (hint: \\(\\sin(90^\\circ - B)\\) etc.).", "\\(\\frac{\\sin(90-A)}{\\sin(90-B)} \\cdot \\frac{\\sin(90-B)}{\\sin(90-C)} \\cdot \\frac{\\sin(90-C)}{\\sin(90-A)} = 1\\).", "1"],
-        ]
-      }
-    ]
-  },
-  {
-    id: "geo6-lesson",
-    title: "Menelaus' Theorem \u2014 Lesson",
-    sub: "Collinearity via signed ratios, applications with Ceva",
-    type: "lesson",
-    group: "Geometry",
-    sections: [
-      { h: "1. The Theorem",
-        c: [
-          { t: "p", v: "<b>Menelaus' theorem</b> states that for a triangle \\(ABC\\) and points \\(D, E, F\\) on lines \\(BC, CA, AB\\) respectively, the points are <b>collinear</b> exactly when the signed product satisfies:" },
-          { t: "d", v: "\\frac{BD}{DC} \\cdot \\frac{CE}{EA} \\cdot \\frac{AF}{FB} = -1" },
-          { t: "p", v: "Menelaus is the dual companion of Ceva: Ceva detects concurrency of cevians, Menelaus detects collinearity of points on the sides (or their extensions). The minus sign accounts for one point lying on an extension; using directed lengths, exactly one or three of the points are on extensions." }
-        ]
-      },
-      { h: "2. Sign and Directed Lengths",
-        c: [
-          { t: "p", v: "With ordinary (undirected) lengths, write Menelaus as \\(\\frac{BD}{DC} \\cdot \\frac{CE}{EA} \\cdot \\frac{AF}{FB} = 1\\) provided exactly one of \\(D, E, F\\) is on an extension. A quick sanity check: an external point makes one ratio negative." },
-          { t: "ex", title: "Example 1", v: "In \\(\\triangle ABC\\), \\(D\\) is the midpoint of \\(BC\\), \\(E\\) on \\(CA\\) with \\(CE : EA = 1 : 2\\). A line through \\(D, E\\) meets \\(AB\\) at \\(F\\). Find \\(AF : FB\\).<br><br>Menelaus: \\(\\frac{BD}{DC} \\cdot \\frac{CE}{EA} \\cdot \\frac{AF}{FB} = 1\\), so \\(1 \\cdot \\frac12 \\cdot \\frac{AF}{FB} = 1\\), hence \\(AF : FB = 2 : 1\\)." }
-        ]
-      },
-      { h: "3. Menelaus + Ceva",
-        c: [
-          { t: "p", v: "A line cutting two sides and the third extension, together with three concurrent cevians, often yields a ratio Menelaus computes directly. Always identify which ratios are known and which one Menelaus will produce." },
-          { t: "ex", title: "Example 2", v: "Cevians \\(AD, BE, CF\\) of \\(\\triangle ABC\\) concur at \\(G\\) with \\(BD/DC = 2\\) and \\(CE/EA = 1\\). Find \\(AF/FB\\).<br><br>Ceva: \\(2 \\cdot 1 \\cdot \\frac{AF}{FB} = 1\\), so \\(AF/FB = 1/2\\)." }
-        ]
-      }
-    ]
-  },
-  {
-    id: "geo6-prac",
-    title: "Menelaus \u2014 Practice",
+    id: "qr-practice",
+    title: "Quadratic Residues \u2014 Practice",
     sub: "10 problems",
     type: "prac",
-    group: "Geometry",
+    group: "Number Theory",
     levels: [
       { n: "Easy", probs: [
-        [1, "In \\(\\triangle ABC\\), \\(D\\) is the midpoint of \\(BC\\) and \\(E\\) on \\(CA\\) has \\(CE = EA\\). Line \\(DE\\) meets \\(AB\\) at \\(F\\). Find \\(AF/FB\\).", "Menelaus: \\(1 \\cdot 1 \\cdot \\frac{AF}{FB} = 1\\), so \\(AF/FB = 1\\).", "1"],
-        [2, "In \\(\\triangle ABC\\), line \\(DEF\\) with \\(D\\) on \\(BC\\) has \\(BD/DC = 1/3\\), \\(E\\) on \\(CA\\) has \\(CE/EA = 1/2\\). Find \\(AF/FB\\) (the non-extended case).", "\\(\\frac13 \\cdot \\frac12 \\cdot \\frac{AF}{FB} = 1\\) gives \\(AF/FB = 6\\).", "6"],
-        [3, "In \\(\\triangle ABC\\), \\(D\\in BC\\), \\(E\\in CA\\), \\(F\\in AB\\) are collinear with \\(BD/DC = 2\\), \\(CE/EA = 3/2\\). Find \\(AF/FB\\).", "\\(2 \\cdot \\frac32 \\cdot \\frac{AF}{FB} = 1\\), so \\(AF/FB = 1/3\\).", "1/3"]
+        [1, "List the quadratic residues mod 5.", "\\(1, 4\\) (\\(1^2, 2^2\\)).", "1,4"],
+        [2, "Is 2 a quadratic residue mod 7?", "Residues mod 7 are 1,2,4: yes.", "yes"],
+        [3, "The number of quadratic residues mod 11.", "5 (\\(p-1\\)/2).", "5"]
       ]},
       { n: "Medium", probs: [
-        [4, "In \\(\\triangle ABC\\) with median \\(AD\\), a line through \\(D\\) and \\(E\\) (on \\(CA\\) with \\(CE/EA = 2\\)) meets \\(AB\\) at \\(F\\). Find \\(AF/FB\\).", "\\(1 \\cdot 2 \\cdot \\frac{AF}{FB} = 1\\), so \\(AF/FB = 1/2\\).", "1/2"],
-        [5, "Cevians \\(AD, BE, CF\\) concur with \\(AF/FB = 3/2\\), \\(BD/DC = 2\\). Find \\(CE/EA\\).", "Ceva: \\(2 \\cdot \\frac{CE}{EA} \\cdot \\frac32 = 1\\), so \\(CE/EA = 1/3\\).", "1/3"],
-        [6, "In \\(\\triangle ABC\\), \\(\\angle A\\) bisector \\(AD\\) and \\(\\angle B\\) bisector \\(BE\\) meet at the incenter. What ratio must \\(CF\\) (through incenter) give on \\(AB\\)? Use Ceva.", "Angle bisector theorem: \\(BD/DC = c/b\\), \\(CE/EA = a/c\\). Ceva forces \\(AF/FB = b/a\\), matching the angle bisector theorem.", "1"],
-        [7, "A transversal meets sides \\(AB, BC, CA\\) (extended if needed) at \\(F, D, E\\). If \\(AF/FB = 2\\), \\(BD/DC = 3\\), must the line also pass through the midpoint of \\(AC\\)? Use Menelaus.", "\\(\\frac{BD}{DC} \\cdot \\frac{CE}{EA} \\cdot \\frac{AF}{FB} = 1\\), so \\(3 \\cdot \\frac{CE}{EA} \\cdot 2 = 1\\), \\(CE/EA = 1/6\\): not the midpoint, so no.", "no"],
-        [8, "Triangle \\(ABC\\) has side \\(AB = 5\\), \\(BC = 6\\), \\(CA = 7\\). The angle bisector of \\(\\angle C\\) meets \\(AB\\) at \\(F\\) and a cevian from \\(A\\) meets \\(BC\\) at \\(D\\) with \\(BD/DC = 2/5\\). Where do the two cevians meet? (Just compute the missing Ceva ratio.)", "Angle bisector: \\(AF/FB = AC/BC = 7/6\\). Ceva: \\(\\frac{BD}{DC} \\cdot \\frac{CE}{EA} \\cdot \\frac{AF}{FB} = 1\\) \u2014 missing ratio is \\(\\frac{CE}{EA} = \\frac{1}{7/6 \\cdot 2/5} = \\frac{15}{7}\\).", "15/7"]
+        [4, "Compute \\((7/11)\\) using squares.", "\\(5^2 = 25 \\equiv 3, 7^2 = 49 \\equiv 5\\)... check squares: 1,3,4,5,9. 7 not among them, so \\((7/11) = -1\\).", "-1"],
+        [5, "Evaluate \\((3/7)\\).", "Residues mod 7: 1,2,4; 3 not, so \\((3/7) = -1\\).", "-1"],
+        [6, "Evaluate \\((-1/13)\\).", "\\(13 \\equiv 1 \\pmod 4\\), so \\(( -1/13) = 1\\).", "1"],
+        [7, "Evaluate \\((2/9)\\)? Note 9 is not prime: state why the symbol is defined only for odd primes.", "The Legendre symbol is defined only for odd primes p.", "odd primes only"],
+        [8, "Find \\(x\\) with \\(x^2 \\equiv 4 \\pmod 11\\).", "\\(x \\equiv \\pm 2 \\equiv 2, 9\\).", "2,9"]
       ]},
       { n: "Hard", probs: [
-        [9, "In \\(\\triangle ABC\\), let \\(D\\) be the midpoint of \\(BC\\) and \\(E\\) a point on \\(AC\\) with \\(AE : EC = 2 : 1\\). Let \\(F = AD \\cap BE\\). Compute \\(AF/FD\\).", "By mass points: \\(AF/FD = 2\\). (Assign mass 1 at C, 1 at B; E splits AC 2:1 gives mass at A = 1/2; balance at D: \\(AF/FD = \\frac{2}{1}\\).)", "2"],
-        [10, "Show Menelaus and Ceva are algebraically dual by writing each as a product equal to 1 and \\(-1\\).", "Ceva: \\(\\frac{BD}{DC}\\frac{CE}{EA}\\frac{AF}{FB} = 1\\) (concurrency). Menelaus: same product with a sign flip \\(= -1\\) (collinearity). Interchanging 1 and \\(-1\\) swaps the two theorems.", "1"]
+        [9, "Use quadratic reciprocity to evaluate \\((5/11)\\).", "\\(5 \\equiv 1 \\pmod 4\\), so \\((5/11) = (11/5) = (1/5) = 1\\).", "1"],
+        [10, "Show that \\(-1\\) is a quadratic residue mod \\(p\\) iff \\(p \\equiv 1 \\pmod 4\\).", "\\((-1/p) = (-1)^{(p-1)/2}\\), which is 1 iff \\((p-1)/2\\) is even, i.e. \\(p \\equiv 1 \\pmod 4\\).", "p=1 mod 4"]
       ]}
     ]
   },
   {
-    id: "geo7-lesson",
-    title: "Homothety \u2014 Lesson",
-    sub: "Dilation maps, homothetic figures, centers and ratios",
+    id: "order-lesson",
+    title: "Orders & Primitive Roots \u2014 Lesson",
+    sub: "Multiplicative order, primitive roots, discrete log",
     type: "lesson",
-    group: "Geometry",
+    group: "Number Theory",
     sections: [
-      { h: "1. Definition",
+      { h: "1. Multiplicative Order",
         c: [
-          { t: "p", v: "A <b>homothety</b> with center \\(O\\) and ratio \\(k\\) maps every point \\(P\\) to \\(P'\\) on ray \\(OP\\) with \\(OP' = k \\cdot OP\\). It is a <b>dilation</b>: it scales all distances by \\(|k|\\) and preserves angles. When \\(k = -1\\) it is a half-turn about \\(O\\); when \\(|k| \\neq 1\\) it moves every point except \\(O\\) itself." },
-          { t: "ex", title: "Example 1", v: "A homothety centered at \\(O\\) with ratio 2 sends \\(A\\) to \\(A'\\) with \\(OA' = 12\\). Find \\(OA\\).<br><br>\\(OA = OA'/2 = 6\\)." }
+          { t: "p", v: "For \\(\\gcd(a, m) = 1\\), the <b>order</b> \\(\\operatorname{ord}_m(a)\\) is the smallest positive \\(d\\) with \\(a^d \\equiv 1 \\pmod m\\). Order always divides \\(\\varphi(m)\\) (by Euler's theorem and Lagrange's theorem on the group \\((\\mathbb{Z}/m\\mathbb{Z})^\\times\\))." },
+          { t: "d", v: "\\operatorname{ord}_m(a) \\mid \\varphi(m)" },
+          { t: "ex", title: "Example 1", v: "Find \\(\\operatorname{ord}_7(2)\\).<br><br>\\(2^1 = 2, 2^2 = 4, 2^3 = 1\\), so order 3." }
         ]
       },
-      { h: "2. Homothetic Figures",
+      { h: "2. Primitive Roots",
         c: [
-          { t: "p", v: "Two figures are <b>homothetic</b> if one is the image of the other under a homothety. Corresponding sides are parallel and proportional; corresponding points and the center are collinear. The center of a homothety sending circle \\(\\omega_1\\) to \\(\omega_2\\) lies on the line of centers." },
-          { t: "ex", title: "Example 2", v: "Two circles with radii 2 and 5 are externally tangent. Their external homothety center \\(H\\) lies on the line of centers such that \\(HO_1/HO_2 = 2/5\\). Where is \\(H\\)?<br><br>External center lies outside segment \\(O_1O_2\\) on the side of the smaller circle, with \\(HO_1 : HO_2 = 2 : 5\\). Since \\(O_1O_2 = 7\\), \\(HO_1 = \\frac{2}{3} \\cdot 7\\), \\(HO_2 = \\frac{5}{3} \\cdot 7\\) \u2014 careful: distances measured along the same ray." }
+          { t: "p", v: "A <b>primitive root</b> mod \\(m\\) is an element of order \\(\\varphi(m)\\). Then its powers \\(g^0, g^1, \\ldots, g^{\\varphi(m)-1}\\) cycle through all units. Primitive roots exist for \\(m = 2, 4, p^k, 2p^k\\) (odd prime \\(p\\))." },
+          { t: "ex", title: "Example 2", v: "Verify 3 is a primitive root mod 7.<br><br>\\(\\varphi(7) = 6\\). \\(3^1 = 3, 3^2 = 2, 3^3 = 6, 3^4 = 4, 3^5 = 5, 3^6 = 1\\): all units appear, order 6." }
         ]
       },
-      { h: "3. Using Homothety in Problems",
+      { h: "3. Discrete Logarithms",
         c: [
-          { t: "p", v: "When a figure is constructed by scaling a simpler one (e.g., two similar triangles with parallel corresponding sides), look for the hidden homothety. A <b>reduction</b> reduces a problem to its scaled copy, especially useful with incircles/excircles and tangent circles." },
-          { t: "ex", title: "Example 3", v: "In \\(\\triangle ABC\\), the midpoint triangle \\(A'B'C'\\) (joining side midpoints) is homothetic to \\(ABC\\) with center the centroid and ratio \\(-1/2\\). Verify \\(A'A : A\\text{centroid}\\) ratio.\u2014By medians, the centroid divides each median \\(2 : 1\\); the midpoint triangle is the image under ratio \\(-1/2\\)." }
+          { t: "p", v: "Given a primitive root \\(g\\), every unit \\(a\\) satisfies \\(a \\equiv g^x\\). The exponent \\(x\\) is the <b>discrete logarithm</b> \\(\\log_g a\\). This is the basis of cyclic group structure; congruence \\(g^x \\equiv a\\) solved by examining powers of \\(g\\)." },
+          { t: "ex", title: "Example 3", v: "Solve \\(2^x \\equiv 3 \\pmod 7\\) using the powers of 2 (a primitive root mod 7).<br><br>\\(2^1=2, 2^2=4, 2^3=1, 2^4=2, 2^5=4, 2^6=1\\)... wait, 2 has order 3. Use primitive root 3: \\(3^1=3\\), so \\(x \\equiv 1\\)." }
         ]
       }
     ]
   },
   {
-    id: "geo7-prac",
-    title: "Homothety \u2014 Practice",
+    id: "order-practice",
+    title: "Orders & Primitive Roots \u2014 Practice",
     sub: "10 problems",
     type: "prac",
-    group: "Geometry",
+    group: "Number Theory",
     levels: [
       { n: "Easy", probs: [
-        [1, "A homothety with center \\(O\\) and ratio 3 sends a segment of length 4 to one of length \\(\\underline{\\phantom{12}}\\).", "Lengths scale by \\(|k| = 3\\), so the image has length 12.", "12"],
-        [2, "A homothety with ratio \\(-2\\) sends \\(P\\) to \\(P'\\) with \\(OP' = 10\\). Find \\(OP\\).", "\\(OP = 10/2 = 5\\).", "5"],
-        [3, "Two squares of side 3 and 9 share the same center and orientation. Give the homothety ratio that sends one to the other.", "\\(k = 9/3 = 3\\) (or \\(1/3\\) the other way).", "3"]
+        [1, "Find \\(\\operatorname{ord}_7(3)\\).", "\\(3^1=3, 3^2=2, 3^3=6, 3^4=4, 3^5=5, 3^6=1\\): order 6.", "6"],
+        [2, "Find \\(\\operatorname{ord}_5(2)\\).", "\\(2^1=2, 2^2=4, 2^3=3, 2^4=1\\): order 4.", "4"],
+        [3, "Find \\(\\operatorname{ord}_5(4)\\).", "\\(4^1=4, 4^2=16\\equiv 1\\): order 2.", "2"]
       ]},
       { n: "Medium", probs: [
-        [4, "Under a homothety with center \\(O\\) ratio 2, the image of a circle of radius 5 has radius \\(\\underline{\\phantom{}}\\).", "Radii scale by \\(|k|\\), so radius 10.", "10"],
-        [5, "Triangle \\(ABC\\) and its image \\(A'B'C'\\) under a homothety with ratio 3 have corresponding sides parallel. The perimeter of \\(ABC\\) is 7. Find the perimeter of \\(A'B'C'\\).", "Perimeter scales by 3: \\(7 \\cdot 3 = 21\\).", "21"],
-        [6, "Two tangent circles of radii 3 and 6 touch externally at \\(T\\). What is the ratio of distances from the external homothety center to the two centers?", "\\(k = 6/3 = 2\\), so \\(HO_{\\text{small}} : HO_{\\text{large}} = 1 : 2\\).", "1:2"],
-        [7, "A homothety with center \\(O\\) and ratio \\(-1\\) is applied twice. What net transformation results?", "Each application is a half-turn; two half-turns compose to the identity.", "identity"],
-        [8, "In \\(\\triangle ABC\\) with centroid \\(G\\), what homothety centered at \\(G\\) sends \\(ABC\\) to the anticomplementary triangle (formed by lines through vertices parallel to opposite sides)?", "Anticomplementary triangle is the image under ratio \\(-2\\) centered at the centroid (each vertex maps to the opposite side).", "-2"]
+        [4, "Show that 2 is a primitive root mod 5.", "\\(\\varphi(5)=4\\) and \\(2\\) has order 4.", "4"],
+        [5, "Find \\(\\operatorname{ord}_{11}(3)\\).", "\\(3^1=3, 3^2=9, 3^3=27\\equiv 5, 3^4=15\\equiv 4, 3^5=12\\equiv 1\\): order 5.", "5"],
+        [6, "How many primitive roots mod 7 exist?", "\\(\\varphi(6) = 2\\) (they are 3 and 5).", "2"],
+        [7, "The order of any unit mod \\(m\\) divides \\(\\underline{\\phantom{}}\\).", "\\(\\varphi(m)\\).", "phi(m)"],
+        [8, "Solve \\(3^x \\equiv 4 \\pmod 7\\) using powers of the primitive root 3.", "\\(3^4 \\equiv 4\\), so \\(x \\equiv 4\\) (mod 6).", "4"]
       ]},
       { n: "Hard", probs: [
-        [9, "Three circles of equal radius are pairwise externally tangent. Show the center triangle is homothetic to the triangle formed by the three common external tangent intersections.", "Centers form a triangle; the tangent intersections lie on the external homothety centers of pairs. Since the circles are equal, all ratios are 1 in the direction of the external centers.", "1"],
-        [10, "Let \\(O\\) be the circumcenter of \\(\\triangle ABC\\) and \\(A'B'C'\\) the orthic triangle. If the incircle of \\(\\triangle ABC\\) is the image of the excircle under a homothety centered at the incenter, find the ratio.", "The incircle and excircle are tangent to the same lines; the homothety center is their tangency-vertex and the ratio is \\(\\frac{r}{r_a}\\) (signed).", "r/r_a"]
+        [9, "Show that if \\(g\\) is a primitive root mod \\(p\\), then \\(g^{(p-1)/2} \\equiv -1\\).", "If \\(g^{(p-1)/2} \\equiv 1\\) then order divides \\((p-1)/2\\), contradicting primitivity. It cannot be 0, so it is \\(-1\\).", "-1"],
+        [10, "Find all primitive roots mod 11 (hint: \\(\\varphi(10)=4\\) of them; check powers of 2).", "2 is a primitive root (order 10); the others are \\(2^k\\) with \\(\\gcd(k,10)=1\\): \\(2^1, 2^3, 2^7, 2^9 \\equiv 2, 8, 7, 6\\).", "2,8,7,6"]
       ]}
     ]
   },
-  {
-    id: "geo8-lesson",
-    title: "Spiral Similarity \u2014 Lesson",
-    sub: "Rotations + dilations, Miquel points, angle chasing",
-    type: "lesson",
-    group: "Geometry",
-    sections: [
-      { h: "1. Definition",
-        c: [
-          { t: "p", v: "A <b>spiral similarity</b> is a transformation that is a rotation about a point \\(O\\) followed by a homothety about the same \\(O\\) (or vice versa). It maps segments to segments with a constant ratio of lengths and constant angle between corresponding directions." },
-          { t: "d", v: "AB' / AB = k, \\quad \\angle AOB = \\angle A'OB' = \\theta" },
-          { t: "ex", title: "Example 1", v: "A spiral similarity with ratio 2 and angle \\(90^\\circ\\) sends \\(AB\\) to \\(A'B'\\). If \\(AB = 5\\), find \\(A'B'\\).<br><br>\\(A'B' = k \\cdot AB = 10\\) (the angle doesn't affect length)." }
-        ]
-      },
-      { h: "2. Centers of Spiral Similarity",
-        c: [
-          { t: "p", v: "Given two segments \\(AB\\) and \\(A'B'\\), there are exactly two spiral similarities sending one to the other. Their centers are the intersection points of the circumcircles of \\(AA'\\) and \\(BB'\\) (or of \\(AB'\\) and \\(A'B\\)). When \\(AB \\parallel A'B'\\) and the centers coincide, it degenerates to a homothety." },
-          { t: "ex", title: "Example 2", v: "Segments \\(AB\\) and \\(A'B'\\) are parallel and congruent. The two spiral-similarity centers are at infinity \u2014 the transformation is a translation. Find the ratio.\u2014The ratio is 1, the angle is \\(0^\\circ\\)." }
-        ]
-      },
-      { h: "3. Spiral Similarity in Olympiad Problems",
-        c: [
-          { t: "p", v: "The <b>Miquel point</b> of a complete quadrilateral is the common point of the four circumcircles \u2014 a classic source of spiral similarities. Two spiral-similarities compose to a rotation by the sum of angles; use them to prove collinearity or concyclicity." },
-          { t: "ex", title: "Example 3", v: "In \\(\\triangle ABC\\), points \\(D, E\\) on \\(AB\\), \\(AC\\) with \\(AD = AE = 2\\). The spiral similarity centered at \\(A\\) sends \\(AB\\) to \\(AC\\) if and only if \\(AB = AC\\) (ratio 1).<br><br>Here \\(AD/AE = 1\\) but \\(AB/AC\\) need not equal 1, so the map is not a spiral similarity unless the triangle is isosceles." }
-        ]
-      }
-    ]
-  },
-  {
-    id: "geo8-prac",
-    title: "Spiral Similarity \u2014 Practice",
-    sub: "10 problems",
-    type: "prac",
-    group: "Geometry",
-    levels: [
-      { n: "Easy", probs: [
-        [1, "A spiral similarity of ratio 4 and angle \\(60^\\circ\\) sends \\(XY\\) to \\(X'Y'\\). If \\(XY = 3\\), find \\(X'Y'\\).", "Length scales by 4: \\(X'Y' = 12\\).", "12"],
-        [2, "Two segments are parallel, same direction, lengths 5 and 15. What is the ratio of the homothety (degenerate spiral) mapping one to the other?", "\\(k = 15/5 = 3\\).", "3"],
-        [3, "A spiral similarity is a rotation by \\(120^\\circ\\) followed by a homothety ratio \\(1/2\\). If a segment of length 8 is mapped, what is its image length?", "Only the ratio matters for length: \\(8/2 = 4\\).", "4"]
-      ]},
-      { n: "Medium", probs: [
-        [4, "Segments \\(AB\\) and \\(CD\\) of lengths 6 and 10 are mapped by a spiral similarity with angle \\(45^\\circ\\). Find the ratio.", "Ratio \\(= 10/6 = 5/3\\).", "5/3"],
-        [5, "In \\(\\triangle ABC\\), \\(D\\) on \\(AB\\) with \\(AD = 2, DB = 4\\), and \\(E\\) on \\(AC\\) with \\(AE = 3, EC = 6\\). Show \\(DE \\parallel BC\\) using ratios, and give the homothety center.", "\\(AD/AB = 2/6 = 1/3 = AE/AC\\), so \\(DE \\parallel BC\\) by the intercept theorem; the center is \\(A\\), ratio \\(1/3\\).", "1/3"],
-        [6, "Two circles \\(\\omega_1, \\omega_2\\) intersect at \\(A, B\\). The tangent to \\(\\omega_1\\) at \\(A\\) meets \\(\\omega_2\\) again at \\(C\\). Show \\(\\triangle ABC\\) is isosceles when the two circles have equal radii.", "Equal radii \u2192 the spiral similarity centered at \\(A\\) sending \\(\\omega_1\\) to \\(\\omega_2\\) has ratio 1, so \\(AB = AC\\).", "1"],
-        [7, "A spiral similarity of ratio \\(r\\) maps segment \\(PQ\\) to \\(P'Q'\\). If it is applied twice, what is the net ratio and rotation?", "Ratio \\(r^2\\), rotation \\(2\\theta\\) (composition adds angles, multiplies ratios).", "r^2"],
-        [8, "In \\(\\triangle ABC\\) with \\(\\angle A = 60^\\circ\\), points \\(P, Q\\) on \\(AB, AC\\) satisfy \\(AP/AB = AQ/AC = 1/3\\). Show \\(PQ\\) is \\(1/3\\) of \\(BC\\) using a spiral similarity centered at \\(A\\).", "The map centered at \\(A\\) ratio \\(1/3\\) rotation \\(0\\) sends \\(B \\to P, C \\to Q\\), so \\(PQ = BC/3\\).", "1/3"]
-      ]},
-      { n: "Hard", probs: [
-        [9, "Given \\(AB\\) and \\(CD\\) on a line with \\(AB \\parallel CD\\) (opposite directions), describe the two spiral-similarity centers.", "Centers lie on the line: internal center (between the two segments) for the same-direction map, external center outside for the opposite.", "2 centers"],
-        [10, "Prove: if \\(A, B, C, D\\) are concyclic, then the spiral similarity centered at the Miquel point of \\(ABCD\\) sends \\(AB\\) to \\(CD\\) and \\(BC\\) to \\(DA\\) simultaneously.", "A cyclic quadrilateral has two spiral similarities centered at the intersection of the two circles through opposite pairs; the Miquel point is the common center of those two maps.", "1"]
-      ]}
-    ]
-  },
-  {
-    id: "geo9-lesson",
-    title: "Inversion \u2014 Lesson",
-    sub: "Circles to lines, orthogonal circles, inversion centers",
-    type: "lesson",
-    group: "Geometry",
-    sections: [
-      { h: "1. Definition",
-        c: [
-          { t: "p", v: "<b>Inversion</b> in a circle with center \\(O\\) and radius \\(R\\) sends a point \\(P \\neq O\\) to \\(P'\\) on ray \\(OP\\) with:" },
-          { t: "d", v: "OP \\cdot OP' = R^2" },
-          { t: "p", v: "Points inside map outside, and vice versa; the circle itself is fixed pointwise. Inversion is an <b>involution</b> (inverting twice returns \\(P\\)). It preserves angles (conformal) but generally does not preserve distances." }
-        ]
-      },
-      { h: "2. Lines and Circles Under Inversion",
-        c: [
-          { t: "p", v: "A line not through \\(O\\) inverts to a circle through \\(O\\) (whose diameter is \\(O\\) and the inverse of the foot of the perpendicular). A line through \\(O\\) maps to itself. A circle through \\(O\\) maps to a line not through \\(O\\). A circle not through \\(O\\) maps to another circle not through \\(O\\)." },
-          { t: "ex", title: "Example 1", v: "Inversion in a circle of radius 1. Point \\(P\\) with \\(OP = 4\\) maps to \\(P'\\) with \\(OP' = ?\\).<br><br>\\(OP' = 1/4\\)." }
-        ]
-      },
-      { h: "3. Orthogonal Circles and the Inversion Center",
-        c: [
-          { t: "p", v: "A circle is fixed (as a set) under inversion iff it is orthogonal to the inversion circle. Two circles tangent at \\(O\\) map to parallel lines, a fact used to prove tangency/concurrency of circles." },
-          { t: "ex", title: "Example 2", v: "Invert the configuration of two tangent circles at their point of tangency \\(T\\): they become two parallel lines. Conclude any circle tangent to both at \\(T\\) becomes a line parallel to those, proving tangency becomes parallelism.\u2014A standard technique for tangency problems." }
-        ]
-      }
-    ]
-  },
-  {
-    id: "geo9-prac",
-    title: "Inversion \u2014 Practice",
-    sub: "10 problems",
-    type: "prac",
-    group: "Geometry",
-    levels: [
-      { n: "Easy", probs: [
-        [1, "Inversion radius 3. Point \\(P\\) at \\(OP = 6\\) maps to \\(P'\\) with \\(OP' = ?\\).", "\\(OP' = 9/6 = 3/2\\).", "3/2"],
-        [2, "Inversion radius 2. Point \\(P'\\) at \\(OP' = 1/2\\) is the image of \\(P\\). Find \\(OP\\).", "\\(OP = 4/(1/2) = 8\\).", "8"],
-        [3, "A line through the inversion center \\(O\\) maps to \\(\\underline{\\phantom{}}\\).", "Itself (pointwise fixed by inversion).", "itself"]
-      ]},
-      { n: "Medium", probs: [
-        [4, "Inversion in the unit circle maps a circle of radius 2 centered at distance 3 from \\(O\\) to another circle. Find its radius.", "Use \\(R' = \\frac{R}{|d^2 - R^2|} = \\frac{2}{9-4} = 2/5\\).", "2/5"],
-        [5, "A line at distance 2 from \\(O\\) inverts (unit circle) into a circle. Find its diameter.", "The image circle has diameter \\(1/2 \\cdot 1 = 1/2\\)? No: distance to \\(O\\) is 2, so \\(O\\) to foot is \\(2\\), inverse is \\(1/2\\), diameter = 1.", "1"],
-        [6, "Two circles tangent at \\(O\\) are inverted at \\(O\\). What do they become?", "Two parallel lines (they no longer meet).", "parallel lines"],
-        [7, "Inversion is conformal: it preserves \\(\\underline{\\phantom{}}\\).", "Angles (it is angle-preserving).", "angles"],
-        [8, "Inversion radius \\(R = 5\\). Point at \\(OP = 10\\) maps to \\(P'\\). How far is \\(P'\\) from \\(O\\)?", "\\(25/10 = 5/2\\).", "5/2"]
-      ]},
-      { n: "Hard", probs: [
-        [9, "Prove: the image of a line \\(\\ell\\) not through \\(O\\) under inversion is a circle through \\(O\\) whose center lies on the perpendicular from \\(O\\) to \\(\\ell\\).", "Let \\(H\\) be foot of perpendicular from \\(O\\), \\(H'\\) its inverse. The image is the circle with diameter \\(OH'\\).", "circle through O"],
-        [10, "Use inversion to prove: if two circles are orthogonal, they intersect at right angles.", "Two orthogonal circles are fixed (as sets) under inversion in the other's circle. The tangent lines at an intersection are the images of each other, so the angle between tangents equals the angle between their images \u2014 90\u00b0.", "90"]
-      ]}
-    ]
-  }
-
-  ,
   {
     id: "comb1-lesson",
     title: "Counting Techniques \u2014 Lesson",
