@@ -1518,7 +1518,7 @@ const SECTIONS = [
   {
     id: "log-practice",
     title: "Logarithms & Exponents \u2014 Practice",
-    sub: "10 problems",
+    sub: "20 problems",
     type: "prac",
     group: "Algebra",
     levels: [
@@ -1538,7 +1538,19 @@ const SECTIONS = [
         [9, "If \\(\\log_a b = 2\\) and \\(\\log_a c = 5\\), find \\(\\log_a (bc^2)\\).", "\\(2 + 2 \\cdot 5 = 12\\).", "12"],
         [10, "Solve \\(3^{2x} = 9 \\cdot 3^x\\).", "Let \\(y = 3^x\\): \\(y^2 = 9y\\), \\(y = 9\\) (y=0 impossible), so \\(x = 2\\).", "2"]
       ]}
-    ]
+    ,
+      { n: "Challenge", probs: [
+        [11, "Evaluate \\(\\log_4 64\\).", "\\(4^3 = 64\\), so \\(3\\).", "3"],
+        [12, "Solve \\(\\log_2 x + \\log_4 x = 3\\).", "Rewrite: \\(\\log_4 x = \\tfrac12 \\log_2 x\\), so \\(\\tfrac32 \\log_2 x = 3\\), \\(\\log_2 x = 2\\), \\(x = 4\\).", "4"],
+        [13, "If \\(\\log_{10} 2 = a\\) and \\(\\log_{10} 3 = b\\), express \\(\\log_{10} 72\\).", "\\(72 = 2^3 \\cdot 3^2\\), so \\(3a + 2b\\).", "3a+2b"],
+        [14, "Solve \\(\\log_x 16 = 4\\).", "\\(x^4 = 16\\), so \\(x = 2\\) (positive base).", "2"],
+        [15, "Evaluate \\(\\log_2 3 \\cdot \\log_3 4 \\cdot \\log_4 5 \\cdot \\log_5 8\\).", "Change of base telescopes: \\(\\log_2 3 \\cdot \\log_3 4 = \\log_2 4\\), etc., leaving \\(\\log_2 8 = 3\\).", "3"],
+        [16, "Solve \\(2^{2x+1} = 8^{x-1}\\).", "\\(2^{2x+1} = 2^{3x-3}\\), so \\(2x+1 = 3x-3\\), \\(x = 4\\).", "4"],
+        [17, "Solve \\(\\log_2 x - \\log_2 (x-2) = 1\\).", "\\(\\log_2 \\frac{x}{x-2} = 1\\), so \\(\\frac{x}{x-2} = 2\\), \\(x = 2x - 4\\), \\(x = 4\\).", "4"],
+        [18, "Solve \\(\\log_2 (x+1) + \\log_2 (x-1) = 3\\).", "\\((x+1)(x-1) = 8\\), \\(x^2 - 1 = 8\\), \\(x^2 = 9\\), \\(x = 3\\) (need \\(x > 1\\)).", "3"],
+        [19, "Evaluate \\(\\log_{\\sqrt{2}} 8\\).", "\\((\\sqrt2)^6 = 8\\), so \\(6\\).", "6"],
+        [20, "Solve \\(4^x - 3 \\cdot 2^x - 4 = 0\\).", "Let \\(y = 2^x\\): \\(y^2 - 3y - 4 = 0\\), \\(y = 4\\) (positive), so \\(x = 2\\).", "2"]
+      ]}]
   },
   {
     id: "cx-lesson",
@@ -1572,7 +1584,7 @@ const SECTIONS = [
   {
     id: "cx-practice",
     title: "Complex Numbers \u2014 Practice",
-    sub: "10 problems",
+    sub: "20 problems",
     type: "prac",
     group: "Algebra",
     levels: [
@@ -1592,7 +1604,19 @@ const SECTIONS = [
         [9, "Find \\((\\cos 15^\\circ + i \\sin 15^\\circ)^{12}\\).", "De Moivre: \\(\\cos 180^\\circ + i \\sin 180^\\circ = -1\\).", "-1"],
         [10, "If \\(z = 1 + i\\), compute \\(z^2 + z + 1\\).", "\\(z^2 = 2i\\), so \\(2i + 1 + i + 1 = 2 + 3i\\).", "2+3i"]
       ]}
-    ]
+    ,
+      { n: "Challenge", probs: [
+        [11, "Compute \\(i^{50}\\).", "\\(i^{48} \\cdot i^2 = 1 \\cdot (-1) = -1\\).", "-1"],
+        [12, "Compute \\((1+i)^2\\).", "\\(1 + 2i + i^2 = 1 + 2i - 1 = 2i\\).", "2i"],
+        [13, "Compute \\(|2 - 2i|\\).", "\\(\\sqrt{2^2 + (-2)^2} = \\sqrt8 = 2\\sqrt2\\).", "2√2|2sqrt2|2sqrt{2}"],
+        [14, "Compute \\((1+i)/(1-i)\\).", "Multiply by conjugate: \\(\\frac{(1+i)^2}{2} = \\frac{2i}{2} = i\\).", "i"],
+        [15, "Solve \\(z^2 = -16\\).", "\\(z = \\pm 4i\\).", "4i|-4i|±4i|+/-4i"],
+        [16, "Find the sum of the three cube roots of unity.", "Roots of \\(x^3 - 1 = 0\\); by Vieta the sum is \\(0\\).", "0"],
+        [17, "Compute \\((1 + i\\sqrt3)^6\\).", "\\(|z| = 2\\), \\(\\arg z = \\pi/3\\). De Moivre: \\(2^6 \\cdot e^{i2\\pi} = 64\\).", "64"],
+        [18, "Compute \\((1+i)^8\\) using De Moivre.", "\\(1 + i = \\sqrt2 e^{i\\pi/4}\\), so \\((1+i)^8 = (\\sqrt2)^8 e^{i2\\pi} = 16\\).", "16"],
+        [19, "Compute \\((2+i)(1-3i)\\).", "\\(2 - 6i + i + 3 = 5 - 5i\\).", "5-5i"],
+        [20, "The roots of \\(x^2 + x + 1 = 0\\) are the non-real cube roots of unity. Find their product.", "By Vieta, product of roots \\(= 1\\) (constant term).", "1"]
+      ]}]
   },
   {
     id: "intp-lesson",
@@ -1625,7 +1649,7 @@ const SECTIONS = [
   {
     id: "intp-practice",
     title: "Polynomial Interpolation \u2014 Practice",
-    sub: "10 problems",
+    sub: "20 problems",
     type: "prac",
     group: "Algebra",
     levels: [
@@ -1645,7 +1669,19 @@ const SECTIONS = [
         [9, "Find the cubic whose first values are \\(0, 1, 8, 27\\).", "\\(a_n = n^3\\).", "n^3"],
         [10, "A polynomial \\(P\\) satisfies \\(P(0)=1, P(1)=0, P(2)=1, P(3)=10\\). Find \\(P(4)\\).", "Finite differences: sequence 1,0,1,10; first diffs -1,1,9; second 2,8; third 6. Extend: third 6, second 14, first 23, \\(P(4) = 33\\).", "33"]
       ]}
-    ]
+    ,
+      { n: "Challenge", probs: [
+        [11, "Find the line through \\((0,1)\\) and \\((2,3)\\).", "Slope \\(1\\), intercept \\(1\\): \\(y = x + 1\\).", "y=x+1|x+1"],
+        [12, "Find the quadratic through \\((0,0), (1,1), (2,4)\\).", "It is \\(y = x^2\\).", "x^2|y=x^2"],
+        [13, "Find \\(P(3)\\) for the quadratic with \\(P(0)=2, P(1)=3, P(2)=8\\).", "Newton: \\(P(x) = 2 + x + 2x(x-1) = 2x^2 - x + 2\\), so \\(P(3) = 18 - 3 + 2 = 17\\).", "17"],
+        [14, "A degree-at-most-1 polynomial has \\(P(1) = 3, P(3) = 7\\). Find \\(P(0)\\).", "\\(P(x) = 2x + 1\\), so \\(P(0) = 1\\).", "1"],
+        [15, "Using finite differences, find the next term of \\(2, 6, 14, 26\\).", "First differences \\(4, 8, 12\\) (constant second diff \\(4\\)); next first diff \\(16\\), next term \\(26 + 16 = 42\\).", "42"],
+        [16, "Find \\(f(3)\\) for the quadratic through \\((0,1), (1,2), (2,7)\\).", "Newton: \\(f(x) = 1 + x + 2\\frac{x(x-1)}{2} = x^2 + 1\\), so \\(f(3) = 10\\).", "10"],
+        [17, "How many polynomials of degree at most \\(n\\) pass through \\(n+1\\) points with distinct \\(x\\)-coordinates?", "Exactly one: the interpolation polynomial is unique.", "1"],
+        [18, "Given \\(P(0)=0, P(1)=1, P(2)=4, P(3)=9\\), find \\(P(4)\\).", "These are squares: \\(P(x) = x^2\\), so \\(P(4) = 16\\).", "16"],
+        [19, "Find the remainder when \\(x^3 - 2x + 5\\) is divided by \\(x - 1\\).", "Remainder theorem: \\(P(1) = 1 - 2 + 5 = 4\\).", "4"],
+        [20, "The cubic through \\((0,1), (1,2), (2,9), (3,28)\\) is \\(x^3 + 1\\). Find \\(P(4)\\).", "\\(P(4) = 64 + 1 = 65\\).", "65"]
+      ]}]
   },
   {
     id: "geo1-lesson",
@@ -2238,7 +2274,7 @@ const SECTIONS = [
   {
     id: "coord-practice",
     title: "Coordinate Geometry \u2014 Practice",
-    sub: "10 problems",
+    sub: "20 problems",
     type: "prac",
     group: "Geometry",
     levels: [
@@ -2258,7 +2294,19 @@ const SECTIONS = [
         [9, "Find the locus of points equidistant from \\((0,0)\\) and \\((4,0)\\).", "The perpendicular bisector \\(x = 2\\).", "x=2"],
         [10, "Using coordinates, verify the median from \\(A = (0,0)\\) of triangle with \\(B = (6,0)\\), \\(C = (0,8)\\) has length equal to half the hypotenuse.", "Midpoint of BC is \\((3,4)\\), distance from (0,0) is 5; hypotenuse BC = 10. True.", "5"]
       ]}
-    ]
+    ,
+      { n: "Challenge", probs: [
+        [11, "Reflect \\((2,3)\\) across the \\(y\\)-axis.", "\\((-2, 3)\\).", "(-2,3)"],
+        [12, "Rotate \\((1,0)\\) by \\(90^\\circ\\) counterclockwise about the origin.", "\\((0, 1)\\).", "(0,1)"],
+        [13, "Find the slope of the line through \\((1,1)\\) and \\((3,5)\\).", "\\((5-1)/(3-1) = 2\\).", "2"],
+        [14, "Find the distance from \\((2,0)\\) to the line \\(y = x\\).", "\\(\\frac{|2 - 0|}{\\sqrt2} = \\sqrt2\\).", "√2|sqrt2|sqrt{2}"],
+        [15, "Find the point on the \\(x\\)-axis equidistant from \\((0,1)\\) and \\((4,3)\\).", "\\((x,0)\\): \\(x^2 + 1 = (x-4)^2 + 9\\), so \\(8x = 24\\), \\(x = 3\\).", "(3,0)"],
+        [16, "Find the point on the \\(y\\)-axis equidistant from \\((0,0)\\) and \\((4,2)\\).", "\\((0,y)\\): \\(y^2 = 16 + (y-2)^2\\), so \\(4y = 20\\), \\(y = 5\\).", "(0,5)"],
+        [17, "Find the area of the triangle with vertices \\((0,0), (5,0), (2,4)\\).", "\\(\\frac12 \\cdot 5 \\cdot 4 = 10\\).", "10"],
+        [18, "Find the circumcenter of the triangle \\((0,0), (4,0), (0,6)\\).", "Right triangle: circumcenter is the midpoint of the hypotenuse, \\((2,3)\\).", "(2,3)"],
+        [19, "Find the perpendicular bisector of the segment from \\((0,0)\\) to \\((6,0)\\).", "Vertical line through the midpoint: \\(x = 3\\).", "x=3"],
+        [20, "Using coordinates, find the centroid of \\((0,0), (6,0), (0,9)\\).", "Average of coordinates: \\((2, 3)\\).", "(2,3)"]
+      ]}]
   },
   {
     id: "lemma-lesson",
@@ -2291,7 +2339,7 @@ const SECTIONS = [
   {
     id: "lemma-practice",
     title: "Classical Lemmas \u2014 Practice",
-    sub: "10 problems",
+    sub: "20 problems",
     type: "prac",
     group: "Geometry",
     levels: [
@@ -2311,7 +2359,19 @@ const SECTIONS = [
         [9, "Prove that the midpoint of the orthocenter and a vertex lies on the nine-point circle.", "This is true by definition\u2014the nine-point circle passes through AH/2, BH/2, CH/2. Since angle at that point subtends a side through the altitude foot, it is a right angle, confirming concyclicity.", "proven"],
         [10, "In any triangle, show the Euler line contains the incenter only for isosceles triangles.", "For a scalene triangle, \\(I\\) lies on \\(OH\\) only if the triangle is isosceles (standard lemma).", "isosceles"]
       ]}
-    ]
+    ,
+      { n: "Challenge", probs: [
+        [11, "The circumcenter of a right triangle is the midpoint of its ____.", "Hypotenuse.", "hypotenuse"],
+        [12, "The orthocenter of an acute triangle lies ____ the triangle (inside or outside).", "Inside.", "inside"],
+        [13, "If the circumradius is \\(10\\), what is the nine-point circle radius?", "\\(R/2 = 5\\).", "5"],
+        [14, "The Euler line is degenerate (O, G, H coincide) for which kind of triangle?", "Equilateral.", "equilateral"],
+        [15, "In an equilateral triangle, how many distinct points among the circumcenter, centroid, orthocenter, and incenter?", "All four coincide, so \\(1\\).", "1"],
+        [16, "If the circumcenter lies outside the triangle, the triangle is ____.", "Obtuse.", "obtuse"],
+        [17, "How many side-midpoints lie on the nine-point circle?", "All three.", "3"],
+        [18, "For a \\(6-8-10\\) right triangle, find the distance between the circumcenter and orthocenter.", "O is the hypotenuse midpoint, H is the right-angle vertex; distance \\(= R = 5\\).", "5"],
+        [19, "The feet of the three altitudes lie on the ____ circle.", "Nine-point circle.", "nine-point|nine point"],
+        [20, "For an equilateral triangle, the nine-point circle and the incircle are ____ (Feuerbach's theorem in the degenerate case).", "They coincide: same center and equal radii \\(r = R/2\\).", "coincident|same circle|equal"]
+      ]}]
   },
   {
     id: "geo3d-lesson",
@@ -2344,7 +2404,7 @@ const SECTIONS = [
   {
     id: "geo3d-practice",
     title: "3D Geometry \u2014 Practice",
-    sub: "10 problems",
+    sub: "20 problems",
     type: "prac",
     group: "Geometry",
     levels: [
@@ -2364,7 +2424,19 @@ const SECTIONS = [
         [9, "A plane cuts a unit cube through four midpoints of edges. Find the area of the resulting cross section if it is a square.", "The section is a square of side \\(\\sqrt{1/2}\\), area \\(1/2\\).", "1/2"],
         [10, "A cone of radius 3 and slant height 5 is cut by a plane parallel to the base halfway up. Find the radius of the section.", "By similar triangles, radius \\(= 3 \\cdot \\frac12 = 3/2\\).", "3/2"]
       ]}
-    ]
+    ,
+      { n: "Challenge", probs: [
+        [11, "Find the volume of a cube with side length \\(3\\).", "\\(3^3 = 27\\).", "27"],
+        [12, "Find the surface area of a cube with side length \\(4\\).", "\\(6 \\cdot 4^2 = 96\\).", "96"],
+        [13, "Find the volume of a sphere of radius \\(1\\).", "\\(\\frac43 \\pi \\cdot 1 = \\frac{4\\pi}{3}\\).", "4π/3|4pi/3|4/3pi|4π3"],
+        [14, "Find the volume of a cone of radius \\(2\\) and height \\(9\\).", "\\(\\frac13 \\pi \\cdot 4 \\cdot 9 = 12\\pi\\).", "12π|12pi"],
+        [15, "Find the space diagonal of a cube of side \\(2\\).", "\\(2\\sqrt3\\).", "2√3|2sqrt3|2sqrt{3}"],
+        [16, "Find the volume of a cylinder of radius \\(3\\) and height \\(5\\).", "\\(\\pi \\cdot 9 \\cdot 5 = 45\\pi\\).", "45π|45pi"],
+        [17, "A sphere is inscribed in a cube of side \\(6\\). Find the sphere's volume.", "Radius \\(3\\), volume \\(\\frac43 \\pi \\cdot 27 = 36\\pi\\).", "36π|36pi"],
+        [18, "Find the longest distance between two vertices of a \\(2 \\times 3 \\times 6\\) box.", "Space diagonal: \\(\\sqrt{4+9+36} = 7\\).", "7"],
+        [19, "A plane through the center of a sphere cuts it in a circle called a ____ circle.", "Great circle.", "great"],
+        [20, "Find the volume of a square pyramid with base side \\(3\\) and height \\(10\\).", "\\(\\frac13 \\cdot 9 \\cdot 10 = 30\\).", "30"]
+      ]}]
   },
   {
     id: "nt1-lesson",
@@ -3035,7 +3107,7 @@ const SECTIONS = [
   {
     id: "qr-practice",
     title: "Quadratic Residues \u2014 Practice",
-    sub: "10 problems",
+    sub: "20 problems",
     type: "prac",
     group: "Number Theory",
     levels: [
@@ -3055,7 +3127,19 @@ const SECTIONS = [
         [9, "Use quadratic reciprocity to evaluate \\((5/11)\\).", "\\(5 \\equiv 1 \\pmod 4\\), so \\((5/11) = (11/5) = (1/5) = 1\\).", "1"],
         [10, "Show that \\(-1\\) is a quadratic residue mod \\(p\\) iff \\(p \\equiv 1 \\pmod 4\\).", "\\((-1/p) = (-1)^{(p-1)/2}\\), which is 1 iff \\((p-1)/2\\) is even, i.e. \\(p \\equiv 1 \\pmod 4\\).", "p=1 mod 4"]
       ]}
-    ]
+    ,
+      { n: "Challenge", probs: [
+        [11, "List the quadratic residues mod \\(11\\).", "Squares of \\(1^2, \\ldots, 5^2\\): \\(1, 4, 9, 5, 3\\) (mod 11).", "1,3,4,5,9"],
+        [12, "How many quadratic residues are there mod \\(17\\)?", "\\((p-1)/2 = 8\\).", "8"],
+        [13, "Evaluate the Legendre symbol \\((2/17)\\).", "\\(17 \\equiv 1 \\pmod 8\\), so \\((2/p) = 1\\).", "1"],
+        [14, "Evaluate \\((-1/11)\\).", "\\(11 \\equiv 3 \\pmod 4\\), so \\((-1/p) = -1\\).", "-1"],
+        [15, "Solve \\(x^2 \\equiv 4 \\pmod{11}\\).", "\\(x \\equiv \\pm 2 \\equiv 2, 9\\).", "2,9"],
+        [16, "Solve \\(x^2 \\equiv 9 \\pmod{17}\\).", "\\(x \\equiv \\pm 3 \\equiv 3, 14\\).", "3,14"],
+        [17, "Is \\(6\\) a quadratic residue mod \\(13\\)?", "Squares mod 13 are \\(1, 4, 9, 3, 12, 10\\); \\(6\\) is absent, so no.", "no"],
+        [18, "The product of a quadratic residue and a non-residue mod \\(p\\) is a ____.", "Non-residue.", "non-residue|nonresidue|non residue"],
+        [19, "Use Euler's criterion to decide whether \\(3\\) is a residue mod \\(17\\).", "\\(3^8 \\equiv 81^2 \\equiv (-4)^2 \\equiv 16 \\equiv -1\\), so it is a non-residue.", "-1|no|nonresidue|non-residue"],
+        [20, "For \\(p \\equiv 3 \\pmod 4\\), \\(a^{(p+1)/4}\\) is a square root of a residue \\(a\\). Find a square root of \\(2\\) mod \\(7\\).", "\\(2^{(7+1)/4} = 2^2 = 4\\), and \\(4^2 \\equiv 2\\).", "4|3"]
+      ]}]
   },
   {
     id: "order-lesson",
@@ -3088,7 +3172,7 @@ const SECTIONS = [
   {
     id: "order-practice",
     title: "Orders & Primitive Roots \u2014 Practice",
-    sub: "10 problems",
+    sub: "20 problems",
     type: "prac",
     group: "Number Theory",
     levels: [
@@ -3108,7 +3192,19 @@ const SECTIONS = [
         [9, "Show that if \\(g\\) is a primitive root mod \\(p\\), then \\(g^{(p-1)/2} \\equiv -1\\).", "If \\(g^{(p-1)/2} \\equiv 1\\) then order divides \\((p-1)/2\\), contradicting primitivity. It cannot be 0, so it is \\(-1\\).", "-1"],
         [10, "Find all primitive roots mod 11 (hint: \\(\\varphi(10)=4\\) of them; check powers of 2).", "2 is a primitive root (order 10); the others are \\(2^k\\) with \\(\\gcd(k,10)=1\\): \\(2^1, 2^3, 2^7, 2^9 \\equiv 2, 8, 7, 6\\).", "2,8,7,6"]
       ]}
-    ]
+    ,
+      { n: "Challenge", probs: [
+        [11, "Find \\(\\operatorname{ord}_7(2)\\).", "\\(2^1=2, 2^2=4, 2^3=1\\): order \\(3\\).", "3"],
+        [12, "Find \\(\\operatorname{ord}_9(2)\\).", "\\(2^6 \\equiv 1 \\pmod 9\\) and no smaller power works: order \\(6\\).", "6"],
+        [13, "Find \\(\\operatorname{ord}_5(3)\\).", "\\(3^4 \\equiv 1\\) and \\(3^2 \\equiv 4 \\neq 1\\): order \\(4\\).", "4"],
+        [14, "Find \\(\\operatorname{ord}_{11}(10)\\).", "\\(10 \\equiv -1\\), so its order is \\(2\\).", "2"],
+        [15, "Is \\(2\\) a primitive root mod \\(5\\)?", "\\(\\operatorname{ord}_5(2) = 4 = \\varphi(5)\\), so yes.", "yes"],
+        [16, "Find \\(\\operatorname{ord}_{11}(2)\\).", "\\(2^{10} \\equiv 1\\) and \\(2^5 = 32 \\equiv 10 \\neq 1\\): order \\(10\\).", "10"],
+        [17, "How many primitive roots exist mod \\(11\\)?", "\\(\\varphi(\\varphi(11)) = \\varphi(10) = 4\\).", "4"],
+        [18, "If \\(\\operatorname{ord}_m(a) = 2\\), then \\(a \\equiv\\) ____ (mod \\(m\\)).", "\\(a \\equiv -1\\pmod m\\).", "-1|m-1"],
+        [19, "Solve \\(2^x \\equiv 8 \\pmod{11}\\).", "\\(2^3 = 8\\), so \\(x \\equiv 3 \\pmod{10}\\).", "3"],
+        [20, "A primitive root mod \\(p\\) has order ____.", "\\(p-1 = \\varphi(p)\\).", "p-1|φ(p)|phi(p)"]
+      ]}]
   },
   {
     id: "comb1-lesson",
