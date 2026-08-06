@@ -1487,6 +1487,644 @@ const SECTIONS = [
     ]
   },
 
+  ,
+  {
+    id: "nt1-lesson",
+    title: "Divisibility \u2014 Lesson",
+    sub: "Primes, FTA, GCD/LCM, Euclidean algorithm, B\u00e9zout",
+    type: "lesson",
+    group: "Number Theory",
+    sections: [
+      { h: "1. Divisibility Basics",
+        c: [
+          { t: "p", v: "\\(a\\) <b>divides</b> \\(b\\) (written \\(a \\mid b\\)) if \\(b = ak\\) for some integer \\(k\\). Properties: if \\(a \\mid b\\) and \\(a \\mid c\\) then \\(a \\mid b \\pm c\\); if \\(a \\mid b\\) and \\(b \\mid c\\) then \\(a \\mid c\\) (transitivity)." },
+          { t: "p", v: "A positive integer \\(p > 1\\) is <b>prime</b> if its only positive divisors are 1 and itself. The <b>Fundamental Theorem of Arithmetic</b>: every integer \\(n > 1\\) factors uniquely as \\(p_1^{e_1} p_2^{e_2} \\cdots p_k^{e_k}\\) with primes \\(p_i\\) and positive exponents." },
+          { t: "ex", title: "Example 1", v: "Prime factorize 360.<br><br>\\(360 = 36 \\cdot 10 = 2^3 \\cdot 3^2 \\cdot 5\\)." },
+          { t: "ex", title: "Example 2", v: "How many positive divisors does 360 have?<br><br>\\((3+1)(2+1)(1+1) = 24\\)." }
+        ]
+      },
+      { h: "2. GCD and LCM",
+        c: [
+          { t: "p", v: "\\(\\gcd(a,b)\\) is the largest integer dividing both; \\(\\operatorname{lcm}(a,b)\\) is the smallest positive integer divisible by both. From prime factorizations, take min exponents for GCD and max exponents for LCM." },
+          { t: "d", v: "\\gcd(a,b) \\cdot \\operatorname{lcm}(a,b) = |ab|" },
+          { t: "ex", title: "Example 3", v: "Find \\(\\gcd(12, 18)\\) and \\(\\operatorname{lcm}(12, 18)\\).<br><br>\\(12 = 2^2 \\cdot 3, 18 = 2 \\cdot 3^2\\). GCD \\(= 2 \\cdot 3 = 6\\). LCM \\(= 2^2 \\cdot 3^2 = 36\\). Check: \\(6 \\cdot 36 = 216 = 12 \\cdot 18\\)." }
+        ]
+      },
+      { h: "3. Euclidean Algorithm",
+        c: [
+          { t: "p", v: "To find \\(\\gcd(a,b)\\), repeatedly replace \\((a,b)\\) with \\((b, a \\bmod b)\\) until reaching 0; the last nonzero remainder is the GCD." },
+          { t: "ex", title: "Example 4", v: "Compute \\(\\gcd(252, 105)\\).<br><br>\\(252 = 2 \\cdot 105 + 42\\). \\(105 = 2 \\cdot 42 + 21\\). \\(42 = 2 \\cdot 21 + 0\\). So \\(\\gcd = 21\\)." },
+          { t: "ex", title: "Example 5", v: "Use the algorithm to find \\(\\gcd(210, 165)\\).<br><br>\\(210 = 1 \\cdot 165 + 45\\), \\(165 = 3 \\cdot 45 + 30\\), \\(45 = 1 \\cdot 30 + 15\\), \\(30 = 2 \\cdot 15 + 0\\). GCD \\(= 15\\)." }
+        ]
+      },
+      { h: "4. B\u00e9zout's Identity",
+        c: [
+          { t: "p", v: "There exist integers \\(x, y\\) with \\(ax + by = \\gcd(a,b)\\). Extending the Euclidean algorithm (back-substitution) produces them. This is the key tool for Diophantine equations." },
+          { t: "ex", title: "Example 6", v: "Find integers \\(x, y\\) with \\(252x + 105y = 21\\).<br><br>From the algorithm: \\(21 = 105 - 2(42)\\) and \\(42 = 252 - 2(105)\\). Substitute: \\(21 = 105 - 2(252 - 2 \\cdot 105) = 5 \\cdot 105 - 2 \\cdot 252\\). So \\((x, y) = (-2, 5)\\)." }
+        ]
+      },
+      { h: "5. Divisibility Rules",
+        c: [
+          { t: "table", headers: ["Divisible by", "Rule"], rows: [
+            ["2", "Last digit even"],
+            ["3", "Digit sum divisible by 3"],
+            ["4", "Last two digits divisible by 4"],
+            ["5", "Last digit 0 or 5"],
+            ["6", "Divisible by both 2 and 3"],
+            ["8", "Last three digits divisible by 8"],
+            ["9", "Digit sum divisible by 9"],
+            ["11", "Alternating digit sum divisible by 11"]
+          ]},
+          { t: "ex", title: "Example 7", v: "Determine whether 123456789 is divisible by 9.<br><br>Digit sum \\(= 45\\), divisible by 9, so yes." },
+          { t: "ex", title: "Example 8", v: "Check 918273 by 11.<br><br>Alternating sum \\((9-1)+(8-2)+(7-3) = 8+6+4 = 18\\), not divisible by 11. So no." }
+        ]
+      }
+    ]
+  },
+  {
+    id: "nt1-practice",
+    title: "Divisibility \u2014 Practice",
+    sub: "15 problems on primes, GCD/LCM, Euclidean algorithm, B\u00e9zout",
+    type: "prac",
+    group: "Number Theory",
+    levels: [
+      {
+        n: "Level 1: Primes & Factorization",
+        probs: [
+          [1, "How many positive divisors does 72 have?", "\\(72 = 2^3 \\cdot 3^2\\), so \\((3+1)(2+1) = 12\\).", "12"],
+          [2, "Prime factorize 210.", "\\(210 = 2 \\cdot 3 \\cdot 5 \\cdot 7\\).", "2*3*5*7"],
+          [3, "How many positive divisors does 1000 have?", "\\(1000 = 2^3 \\cdot 5^3\\), so \\(4 \\cdot 4 = 16\\).", "16"],
+          [4, "Is 91 prime?", "\\(91 = 7 \\cdot 13\\), so no.", "no|No"],
+          [5, "Find the sum of the digits of the largest 3-digit prime.", "997 is prime (not divisible by primes \\(\\le 31\\)). Sum \\(= 25\\).", "25"],
+        ]
+      },
+      {
+        n: "Level 2: GCD & LCM",
+        probs: [
+          [6, "Find \\(\\gcd(24, 36)\\).", "\\(24 = 2^3 \\cdot 3, 36 = 2^2 \\cdot 3^2\\). GCD \\(= 2^2 \\cdot 3 = 12\\).", "12"],
+          [7, "Find \\(\\operatorname{lcm}(24, 36)\\).", "\\(2^3 \\cdot 3^2 = 72\\).", "72"],
+          [8, "If \\(\\gcd(a,b) = 6\\) and \\(ab = 216\\), find \\(\\operatorname{lcm}(a,b)\\).", "\\(\\operatorname{lcm} = \\frac{ab}{\\gcd} = \\frac{216}{6} = 36\\).", "36"],
+          [9, "Find \\(\\gcd(150, 210)\\).", "\\(150 = 2 \\cdot 3 \\cdot 5^2\\), \\(210 = 2 \\cdot 3 \\cdot 5 \\cdot 7\\). GCD \\(= 30\\).", "30"],
+          [10, "Find the smallest positive integer \\(n\\) divisible by every integer from 1 to 10.", "\\(\\operatorname{lcm}(1..10) = 2^3 \\cdot 3^2 \\cdot 5 \\cdot 7 = 2520\\).", "2520"],
+        ]
+      },
+      {
+        n: "Level 3: Euclidean Algorithm & B\u00e9zout",
+        probs: [
+          [11, "Use the Euclidean algorithm to find \\(\\gcd(420, 252)\\).", "\\(420 = 1 \\cdot 252 + 168\\), \\(252 = 1 \\cdot 168 + 84\\), \\(168 = 2 \\cdot 84 + 0\\). GCD \\(= 84\\).", "84"],
+          [12, "Find integers \\(x, y\\) such that \\(252x + 168y = 84\\).", "\\(84 = 252 - 168 = 1 \\cdot 252 + (-1) \\cdot 168\\). So \\((x,y) = (1, -1)\\).", "1,-1"],
+          [13, "Find \\(\\gcd(1001, 91)\\).", "\\(1001 = 11 \\cdot 91\\), so \\(\\gcd = 91\\).", "91"],
+          [14, "Which integers \\(n\\) satisfy \\(7 \\mid (n^2 - 1)\\)? (Characterize by \\(n \\bmod 7\\).)", "\\(n^2 \\equiv 1 \\pmod 7\\) means \\(n \\equiv \\pm 1 \\pmod 7\\).", "n≡±1 mod7|n = 1 or 6 mod7|n ≡ 1,6 mod 7"],
+          [15, "Find the number of positive integers \\(\\le 100\\) divisible by 3 or 5.", "Inclusion-exclusion: \\(33 + 20 - 6 = 47\\).", "47"],
+        ]
+      }
+    ]
+  },
+  {
+    id: "nt2-lesson",
+    title: "Modular Arithmetic \u2014 Lesson",
+    sub: "Congruences, inverses, linear congruences, last digits",
+    type: "lesson",
+    group: "Number Theory",
+    sections: [
+      { h: "1. Congruences",
+        c: [
+          { t: "p", v: "\\(a \\equiv b \\pmod m\\) means \\(m \\mid (a - b)\\), i.e., \\(a\\) and \\(b\\) leave the same remainder when divided by \\(m\\). Congruences respect addition and multiplication: if \\(a \\equiv b\\) and \\(c \\equiv d\\), then \\(a \\pm c \\equiv b \\pm d\\) and \\(ac \\equiv bd \\pmod m\\)." },
+          { t: "ex", title: "Example 1", v: "Compute \\(37 \\times 51 \\pmod 10\\).<br><br>\\(37 \\equiv 7\\), \\(51 \\equiv 1\\). Product \\(\\equiv 7 \\pmod{10}\\)." },
+          { t: "ex", title: "Example 2", v: "What is the last digit of \\(7^{2026}\\)?<br><br>\\(7^1 \\equiv 7, 7^2 \\equiv 9, 7^3 \\equiv 3, 7^4 \\equiv 1 \\pmod{10}\\). Cycle of length 4. \\(2026 \\equiv 2 \\pmod 4\\), so answer \\(7^2 = 49 \\equiv 9\\)." }
+        ]
+      },
+      { h: "2. Modular Inverses",
+        c: [
+          { t: "p", v: "\\(a\\) has an inverse mod \\(m\\) (an integer \\(b\\) with \\(ab \\equiv 1 \\pmod m\\)) iff \\(\\gcd(a, m) = 1\\). Inverses let you 'divide' both sides of a congruence." },
+          { t: "ex", title: "Example 3", v: "Find the inverse of 3 mod 7.<br><br>\\(3 \\cdot 5 = 15 \\equiv 1 \\pmod 7\\), so the inverse is 5." },
+          { t: "ex", title: "Example 4", v: "Solve \\(3x \\equiv 4 \\pmod 7\\).<br><br>Multiply by inverse 5: \\(x \\equiv 20 \\equiv 6 \\pmod 7\\)." },
+          { t: "ex", title: "Example 5", v: "Does 4 have an inverse mod 6?<br><br>\\(\\gcd(4, 6) = 2 \\neq 1\\), so no." }
+        ]
+      },
+      { h: "3. Linear Congruences",
+        c: [
+          { t: "p", v: "To solve \\(ax \\equiv b \\pmod m\\): let \\(d = \\gcd(a, m)\\). If \\(d \\nmid b\\), no solutions. If \\(d \\mid b\\), divide everything by \\(d\\) and solve the reduced congruence mod \\(m/d\\); there are \\(d\\) solutions mod \\(m\\)." },
+          { t: "ex", title: "Example 6", v: "Solve \\(6x \\equiv 9 \\pmod{15}\\).<br><br>\\(d = \\gcd(6,15) = 3\\), and \\(3 \\mid 9\\). Divide: \\(2x \\equiv 3 \\pmod 5\\). Inverse of 2 mod 5 is 3: \\(x \\equiv 9 \\equiv 4 \\pmod 5\\). Mod 15 the solutions are \\(4, 9, 14\\)." },
+          { t: "ex", title: "Example 7", v: "Solve \\(2x \\equiv 3 \\pmod 4\\).<br><br>\\(\\gcd(2,4) = 2 \\nmid 3\\), so no solutions." }
+        ]
+      },
+      { h: "4. Last Digit Problems",
+        c: [
+          { t: "p", v: "Last digit \\(\\Leftrightarrow\\) value mod 10. Find the cycle of \\(a^k \\pmod{10}\\) (or mod 100 for last two digits) and reduce the exponent mod the cycle length." },
+          { t: "ex", title: "Example 8", v: "Find the last two digits of \\(2^{100}\\).<br><br>\\(2^{10} = 1024 \\equiv 24\\), \\(2^{20} \\equiv 24^2 = 576 \\equiv 76\\), \\(2^{30} \\equiv 76 \\cdot 24 = 1824 \\equiv 24\\). Pattern alternates: \\(2^{100} \\equiv 76\\pmod{100}\\). (Known: \\(2^{20} \\equiv 76\\), and 100 is a multiple of 20.)" },
+          { t: "ex", title: "Example 9", v: "Find the last digit of \\(3^{11}\\).<br><br>\\(3\\) cycles mod 10 as \\(3, 9, 7, 1\\) (length 4). \\(11 \\equiv 3 \\pmod 4\\), so last digit \\(= 7\\)." }
+        ]
+      }
+    ]
+  },
+  {
+    id: "nt2-practice",
+    title: "Modular Arithmetic \u2014 Practice",
+    sub: "15 problems on congruences, inverses, last digits",
+    type: "prac",
+    group: "Number Theory",
+    levels: [
+      {
+        n: "Level 1: Basic Congruences",
+        probs: [
+          [1, "Compute \\(17 + 28 \\pmod 5\\).", "\\(17 \\equiv 2, 28 \\equiv 3\\). Sum \\(\\equiv 0 \\pmod 5\\).", "0"],
+          [2, "Compute \\(23 \\times 41 \\pmod 7\\).", "\\(23 \\equiv 2, 41 \\equiv 6\\). Product \\(\\equiv 12 \\equiv 5\\).", "5"],
+          [3, "What is \\(7^{2} \\pmod 9\\)?", "\\(49 \\equiv 4\\).", "4"],
+          [4, "Find the remainder of \\(5^{10}\\) when divided by 6.", "\\(5 \\equiv -1 \\pmod 6\\), so \\(5^{10} \\equiv 1\\).", "1"],
+          [5, "What is the last digit of \\(4^{2026}\\)?", "\\(4^{1} \\to 4, 4^2 \\to 6\\), cycle of length 2. Even exponent \\(\\Rightarrow 6\\).", "6"],
+        ]
+      },
+      {
+        n: "Level 2: Inverses & Equations",
+        probs: [
+          [6, "Find the inverse of 5 mod 12.", "\\(5 \\cdot 5 = 25 \\equiv 1\\). Inverse is 5.", "5"],
+          [7, "Solve \\(2x \\equiv 1 \\pmod 9\\).", "Inverse of 2 mod 9 is 5, so \\(x \\equiv 5\\).", "5"],
+          [8, "Solve \\(3x \\equiv 6 \\pmod 9\\).", "\\(d = 3\\), \\(3 \\mid 6\\). Divide: \\(x \\equiv 2 \\pmod 3\\). Solutions mod 9: \\(2, 5, 8\\).", "2,5,8"],
+          [9, "How many solutions does \\(4x \\equiv 1 \\pmod 8\\) have?", "\\(\\gcd(4,8) = 4 \\nmid 1\\), so no solutions (0).", "0"],
+          [10, "Solve \\(5x \\equiv 7 \\pmod{13}\\).", "Inverse of 5 mod 13 is 8 (\\(5 \\cdot 8 = 40 \\equiv 1\\)). \\(x \\equiv 56 \\equiv 4\\).", "4"],
+        ]
+      },
+      {
+        n: "Level 3: Last Digits & Powers",
+        probs: [
+          [11, "Find the last digit of \\(7^{99}\\).", "Cycle \\(7,9,3,1\\). \\(99 \\equiv 3 \\pmod 4\\), so \\(3\\).", "3"],
+          [12, "Find the last two digits of \\(7^{4}\\).", "\\(7^2 = 49\\), \\(7^4 = 2401 \\equiv 01\\).", "1|01"],
+          [13, "Find the last digit of \\(2^{50} + 3^{50}\\).", "\\(2^k\\) mod 10 cycles \\(2,4,8,6\\): \\(50 \\equiv 2 \\Rightarrow 4\\). \\(3^k\\) cycles \\(3,9,7,1\\): \\(50 \\equiv 2 \\Rightarrow 9\\). Sum \\(\\equiv 13 \\equiv 3\\).", "3"],
+          [14, "Find the remainder when \\(11^{10}\\) is divided by 10.", "\\(11 \\equiv 1\\), so \\(\\equiv 1\\).", "1"],
+          [15, "Find the remainder of \\(3^{100}\\) divided by 4.", "\\(3 \\equiv -1\\), so \\((-1)^{100} = 1\\).", "1"],
+        ]
+      }
+    ]
+  },
+  {
+    id: "nt3-lesson",
+    title: "Chinese Remainder Theorem \u2014 Lesson",
+    sub: "Systems of congruences, non-coprime moduli",
+    type: "lesson",
+    group: "Number Theory",
+    sections: [
+      { h: "1. CRT Statement",
+        c: [
+          { t: "p", v: "If \\(m_1, m_2, \\ldots, m_k\\) are pairwise coprime, then the system \\(x \\equiv a_i \\pmod{m_i}\\) has a unique solution modulo \\(M = m_1 m_2 \\cdots m_k\\)." },
+          { t: "ex", title: "Example 1", v: "Solve \\(x \\equiv 2 \\pmod 3\\), \\(x \\equiv 3 \\pmod 5\\).<br><br>Solutions to first: \\(2, 5, 8, 11, \\ldots\\). Check mod 5: \\(8 \\equiv 3\\). So \\(x \\equiv 8 \\pmod{15}\\)." },
+          { t: "ex", title: "Example 2", v: "Solve \\(x \\equiv 1 \\pmod 4\\), \\(x \\equiv 2 \\pmod 3\\).<br><br>First: \\(1, 5, 9, 13, \\ldots\\). \\(5 \\equiv 2 \\pmod 3\\). So \\(x \\equiv 5 \\pmod{12}\\)." }
+        ]
+      },
+      { h: "2. Systematic Method",
+        c: [
+          { t: "p", v: "Write \\(x = a_1 + m_1 t\\) and substitute into the next congruence, solving for \\(t\\). Repeat. This works even when moduli are not coprime, but the congruences must be consistent." },
+          { t: "ex", title: "Example 3", v: "Solve \\(x \\equiv 3 \\pmod 5\\), \\(x \\equiv 5 \\pmod 7\\).<br><br>\\(x = 3 + 5t\\). Need \\(3 + 5t \\equiv 5 \\pmod 7 \\Rightarrow 5t \\equiv 2 \\pmod 7\\). Inverse of 5 mod 7 is 3, so \\(t \\equiv 6 \\pmod 7\\). \\(x = 3 + 5(6) = 33\\). Answer: \\(x \\equiv 33 \\pmod{35}\\)." }
+        ]
+      },
+      { h: "3. Non-Coprime Moduli",
+        c: [
+          { t: "p", v: "For \\(x \\equiv a \\pmod m\\) and \\(x \\equiv b \\pmod n\\) with \\(\\gcd(m,n) = d\\): a solution exists iff \\(a \\equiv b \\pmod d\\). If so, the solution is unique modulo \\(\\operatorname{lcm}(m,n)\\)." },
+          { t: "ex", title: "Example 4", v: "Solve \\(x \\equiv 4 \\pmod 6\\), \\(x \\equiv 7 \\pmod{10}\\).<br><br>\\(\\gcd(6,10) = 2\\), and \\(4 \\equiv 7 \\equiv 1 \\pmod 2\\), consistent. \\(x = 4 + 6t\\): \\(4 + 6t \\equiv 7 \\pmod{10} \\Rightarrow 6t \\equiv 3 \\pmod{10}\\). \\(\\gcd(6,10) = 2 \\nmid 3\\)? Wait, 3 is odd and 6t is even \u2014 check: \\(6t \\equiv 3 \\pmod{10}\\) impossible since LHS is even mod 10? \\(6t\\) mod 10 is always even. Contradiction. Recheck: the consistency condition \\(a \\equiv b \\pmod 2\\): \\(4 \\equiv 0, 7 \\equiv 1 \\pmod 2\\). Not consistent! So no solution." },
+          { t: "ex", title: "Example 5", v: "Solve \\(x \\equiv 5 \\pmod 6\\), \\(x \\equiv 3 \\pmod 4\\).<br><br>\\(\\gcd(6,4) = 2\\). \\(5 \\equiv 1, 3 \\equiv 1 \\pmod 2\\) \u2014 consistent. \\(x = 5 + 6t\\): \\(5 + 6t \\equiv 3 \\pmod 4 \\Rightarrow 6t \\equiv -2 \\equiv 2 \\pmod 4 \\Rightarrow 2t \\equiv 2 \\pmod 4\\)... \\(6t \\equiv 2 \\pmod 4\\), divide by gcd 2: \\(3t \\equiv 1 \\pmod 2 \\Rightarrow t \\equiv 1 \\pmod 2\\). \\(x = 5 + 6(1) = 11\\). Solution \\(x \\equiv 11 \\pmod{12}\\)." }
+        ]
+      },
+      { h: "4. CRT in Contest Problems",
+        c: [
+          { t: "p", v: "CRT is used for: finding numbers with given remainders, 'n \u2261 0 mod 5 and n \u2261 2 mod 7' counting problems, and converting \\(x^{ab} \\pmod{pq}\\) computations using the factorization." },
+          { t: "ex", title: "Example 6", v: "A number leaves remainder 1 when divided by 3 and remainder 2 when divided by 5. Find the smallest positive such number.<br><br>From Example 2 method: \\(x \\equiv 1 \\pmod 3\\), \\(x \\equiv 2 \\pmod 5\\). \\(x = 1 + 3t\\), need \\(1 + 3t \\equiv 2 \\pmod 5 \\Rightarrow 3t \\equiv 1 \\pmod 5 \\Rightarrow t \\equiv 2\\). \\(x = 7\\)." }
+        ]
+      }
+    ]
+  },
+  {
+    id: "nt3-practice",
+    title: "Chinese Remainder Theorem \u2014 Practice",
+    sub: "12 CRT systems and applications",
+    type: "prac",
+    group: "Number Theory",
+    levels: [
+      {
+        n: "Level 1: Small Systems",
+        probs: [
+          [1, "Solve \\(x \\equiv 1 \\pmod 2\\), \\(x \\equiv 2 \\pmod 3\\).", "\\(x = 1 + 2t\\). \\(1 + 2t \\equiv 2 \\pmod 3 \\Rightarrow 2t \\equiv 1 \\Rightarrow t \\equiv 2\\). \\(x = 5\\). Mod 6.", "5"],
+          [2, "Solve \\(x \\equiv 0 \\pmod 3\\), \\(x \\equiv 2 \\pmod 4\\).", "\\(x = 3t\\), \\(3t \\equiv 2 \\pmod 4 \\Rightarrow t \\equiv 2\\) (\\(3^{-1} = 3\\), \\(3 \\cdot 2 = 6 \\equiv 2\\)). \\(x = 6\\). Mod 12.", "6"],
+          [3, "Solve \\(x \\equiv 1 \\pmod 3\\), \\(x \\equiv 1 \\pmod 5\\).", "Answer \\(x \\equiv 1 \\pmod{15}\\).", "1"],
+          [4, "Find the smallest positive integer \\(\\equiv 3 \\pmod 5\\) and \\(\\equiv 1 \\pmod 3\\).", "\\(x = 3 + 5t\\). \\(3 + 5t \\equiv 1 \\pmod 3 \\Rightarrow 2t \\equiv 1 \\pmod 3 \\Rightarrow t \\equiv 2\\). \\(x = 13\\).", "13"],
+          [5, "Solve \\(x \\equiv 2 \\pmod 5\\), \\(x \\equiv 3 \\pmod 7\\).", "\\(x = 2 + 5t\\). \\(2 + 5t \\equiv 3 \\pmod 7 \\Rightarrow 5t \\equiv 1 \\Rightarrow t \\equiv 3\\). \\(x = 17\\). Mod 35.", "17"],
+        ]
+      },
+      {
+        n: "Level 2: Three Congruences",
+        probs: [
+          [6, "Solve \\(x \\equiv 1 \\pmod 2\\), \\(x \\equiv 2 \\pmod 3\\), \\(x \\equiv 3 \\pmod 5\\).", "Combine first two: \\(x \\equiv 5 \\pmod 6\\). Then \\(5 + 6t \\equiv 3 \\pmod 5 \\Rightarrow t \\equiv 3 \\pmod 5\\). \\(x = 23\\). Mod 30.", "23"],
+          [7, "Solve \\(x \\equiv 1 \\pmod 4\\), \\(x \\equiv 2 \\pmod 3\\), \\(x \\equiv 4 \\pmod 5\\).", "First two: \\(x \\equiv 5 \\pmod{12}\\). \\(5 + 12t \\equiv 4 \\pmod 5 \\Rightarrow 2t \\equiv 4 \\Rightarrow t \\equiv 2\\). \\(x = 29\\). Mod 60.", "29"],
+          [8, "Find the smallest positive integer congruent to 1 mod 2, 2 mod 3, and 0 mod 7.", "First two: \\(x \\equiv 5 \\pmod 6\\). \\(5 + 6t \\equiv 0 \\pmod 7 \\Rightarrow 6t \\equiv 2 \\Rightarrow t \\equiv 5\\). \\(x = 35\\).", "35"],
+          [9, "Find the smallest positive integer \\(\\equiv 1 \\pmod 5\\), \\(\\equiv 2 \\pmod 7\\), \\(\\equiv 3 \\pmod 9\\).", "First two: \\(x \\equiv 16 \\pmod{35}\\) (\\(x = 1 + 5t\\), \\(1 + 5t \\equiv 2 \\pmod 7 \\Rightarrow 5t \\equiv 1 \\Rightarrow t \\equiv 3\\), \\(x = 16\\)). Then \\(16 + 35t \\equiv 3 \\pmod 9 \\Rightarrow 8t \\equiv -13 \\equiv 5 \\pmod 9\\). \\(8^{-1} \\equiv 8\\), \\(t \\equiv 40 \\equiv 4\\). \\(x = 156\\).", "156"],
+          [10, "Solve \\(x \\equiv 3 \\pmod 4\\), \\(x \\equiv 4 \\pmod 5\\), \\(x \\equiv 5 \\pmod 7\\).", "First two: \\(x \\equiv 19 \\pmod{20}\\). \\(19 + 20t \\equiv 5 \\pmod 7 \\Rightarrow 6t \\equiv -14 \\equiv 0 \\Rightarrow t \\equiv 0\\). \\(x = 19\\). Mod 140.", "19"],
+        ]
+      },
+      {
+        n: "Level 3: Non-coprime & Applications",
+        probs: [
+          [11, "Determine whether \\(x \\equiv 4 \\pmod 6\\) and \\(x \\equiv 5 \\pmod 8\\) has a solution.", "\\(\\gcd(6,8) = 2\\). \\(4 \\equiv 0, 5 \\equiv 1 \\pmod 2\\), inconsistent \u2014 no solution.", "no|none|no solution"],
+          [12, "Find all solutions (mod 12) to \\(x \\equiv 2 \\pmod 3\\), \\(x \\equiv 0 \\pmod 4\\).", "\\(x = 2 + 3t\\): \\(2 + 3t \\equiv 0 \\pmod 4 \\Rightarrow 3t \\equiv 2 \\Rightarrow t \\equiv 2\\). \\(x = 8\\). Mod 12.", "8"],
+        ]
+      }
+    ]
+  },
+  {
+    id: "nt4-lesson",
+    title: "Fermat's Little Theorem \u2014 Lesson",
+    sub: "FLT, modular exponentiation, Wilson's theorem",
+    type: "lesson",
+    group: "Number Theory",
+    sections: [
+      { h: "1. Fermat's Little Theorem",
+        c: [
+          { t: "p", v: "If \\(p\\) is prime and \\(p \\nmid a\\), then:" },
+          { t: "d", v: "a^{p-1} \\equiv 1 \\pmod p" },
+          { t: "p", v: "Equivalently \\(a^p \\equiv a \\pmod p\\) for all integers \\(a\\). It lets you reduce exponents mod \\(p-1\\) when working mod a prime." },
+          { t: "ex", title: "Example 1", v: "Compute \\(2^{100} \\pmod{101}\\).<br><br>\\(101\\) is prime and \\(2 \\not\\equiv 0\\), so \\(2^{100} \\equiv 1\\)." },
+          { t: "ex", title: "Example 2", v: "Find the remainder of \\(5^{2026}\\) divided by 7.<br><br>FLT: \\(5^6 \\equiv 1 \\pmod 7\\). \\(2026 \\equiv 4 \\pmod 6\\). \\(5^4 = 625 \\equiv 625 - 623 = 2 \\pmod 7\\). Remainder 2." }
+        ]
+      },
+      { h: "2. Modular Exponentiation (Binary Method)",
+        c: [
+          { t: "p", v: "Compute \\(a^b \\pmod m\\) by repeated squaring: square the base and reduce mod \\(m\\) at each step, multiplying selected powers according to the binary expansion of \\(b\\)." },
+          { t: "ex", title: "Example 3", v: "Compute \\(3^{13} \\pmod{10}\\) by repeated squaring.<br><br>\\(13 = 8 + 4 + 1\\). \\(3^1 = 3\\), \\(3^2 = 9\\), \\(3^4 \\equiv 9^2 = 81 \\equiv 1\\), \\(3^8 \\equiv 1^2 = 1\\). Product: \\(3^8 \\cdot 3^4 \\cdot 3^1 = 1 \\cdot 1 \\cdot 3 = 3\\)." },
+          { t: "ex", title: "Example 4", v: "Compute \\(7^{15} \\pmod{100}\\).<br><br>\\(7^2 = 49\\), \\(7^4 = 49^2 = 2401 \\equiv 1\\), \\(7^8 \\equiv 1^2 = 1\\). \\(15 = 8+4+2+1\\). \\(7^{15} = 7^8 \\cdot 7^4 \\cdot 7^2 \\cdot 7^1 \\equiv 1 \\cdot 1 \\cdot 49 \\cdot 7 = 343 \\equiv 43\\)." }
+        ]
+      },
+      { h: "3. Wilson's Theorem",
+        c: [
+          { t: "p", v: "For prime \\(p\\):" },
+          { t: "d", v: "(p-1)! \\equiv -1 \\pmod p" },
+          { t: "ex", title: "Example 5", v: "Verify Wilson for \\(p = 7\\).<br><br>\\(6! = 720\\). \\(720 \\bmod 7 = 720 - 102 \\cdot 7 = 720 - 714 = 6 \\equiv -1\\)." },
+          { t: "ex", title: "Example 6", v: "Find the remainder of \\(10!\\) divided by 11.<br><br>Wilson: \\(10! \\equiv -1 \\equiv 10 \\pmod{11}\\)." }
+        ]
+      },
+      { h: "4. Applications",
+        c: [
+          { t: "p", v: "FLT + Wilson handle many remainder and divisibility problems. For \\(a^{b^c} \\pmod p\\), reduce the top exponent \\(b^c\\) mod \\(p - 1\\), then apply FLT." },
+          { t: "ex", title: "Example 7", v: "Find the remainder of \\(3^{4^{5}}\\) divided by 11.<br><br>Reduce \\(4^5 \\bmod 10\\): \\(4^1 \\equiv 4, 4^2 \\equiv 6, 4^3 \\equiv 4, \\ldots\\) cycle of 2. \\(5\\) odd \\(\\Rightarrow 4^5 \\equiv 4 \\pmod{10}\\). By FLT, \\(3^{10} \\equiv 1\\), so \\(3^{4^5} \\equiv 3^4 = 81 \\equiv 4 \\pmod{11}\\)." }
+        ]
+      }
+    ]
+  },
+  {
+    id: "nt4-practice",
+    title: "Fermat's Little Theorem \u2014 Practice",
+    sub: "12 FLT and Wilson's theorem problems",
+    type: "prac",
+    group: "Number Theory",
+    levels: [
+      {
+        n: "Level 1: Direct FLT",
+        probs: [
+          [1, "Find \\(2^{10} \\pmod{11}\\).", "\\(11\\) prime, \\(2^{10} \\equiv 1\\).", "1"],
+          [2, "Find the remainder of \\(3^{12}\\) divided by 13.", "\\(3^{12} \\equiv 1\\).", "1"],
+          [3, "Find the remainder of \\(5^{100}\\) divided by 101.", "\\(5^{100} \\equiv 1\\) by FLT.", "1"],
+          [4, "Find \\(2^{11} \\pmod{11}\\).", "\\(2^{11} \\equiv 2 \\pmod{11}\\) by \\(a^p \\equiv a\\).", "2"],
+          [5, "Find the remainder of \\(7^{6}\\) divided by 7.", "\\(7 \\equiv 0\\), so remainder 0.", "0"],
+        ]
+      },
+      {
+        n: "Level 2: Reducing Exponents",
+        probs: [
+          [6, "Find the remainder of \\(2^{1000}\\) divided by 7.", "\\(2^6 \\equiv 1\\), \\(1000 \\equiv 4 \\pmod 6\\). \\(2^4 = 16 \\equiv 2\\).", "2"],
+          [7, "Find the remainder of \\(3^{31}\\) divided by 31.", "\\(3^{30} \\equiv 1\\), so \\(3^{31} \\equiv 3\\).", "3"],
+          [8, "Find the remainder of \\(2^{30} + 1\\) divided by 31.", "\\(2^{30} \\equiv 1\\), so \\(\\equiv 2\\).", "2"],
+          [9, "Find the remainder of \\(5^{2026}\\) divided by 13.", "\\(5^{12} \\equiv 1\\), \\(2026 \\equiv 10 \\pmod{12}\\). \\(5^2 = 25 \\equiv -1\\), so \\(5^{10} = (5^2)^5 \\equiv (-1)^5 = -1 \\equiv 12\\).", "12"],
+          [10, "Find the remainder of \\(6^{7}\\) divided by 7.", "\\(6 \\equiv -1\\), so \\((-1)^7 = -1 \\equiv 6\\).", "6"],
+        ]
+      },
+      {
+        n: "Level 3: Wilson & Applications",
+        probs: [
+          [11, "Find the remainder of \\(8!\\) divided by 13.", "Wilson: \\(12! \\equiv -1\\). Also \\(12! = 8! \\cdot 9 \\cdot 10 \\cdot 11 \\cdot 12\\). Mod 13: \\(9 \\cdot 10 \\cdot 11 \\cdot 12 \\equiv (-4)(-3)(-2)(-1) = 24 \\equiv 11\\). So \\(8! \\cdot 11 \\equiv -1 \\equiv 12\\). Inverse of 11 mod 13 is 6, so \\(8! \\equiv 12 \\cdot 6 = 72 \\equiv 7\\).", "7"],
+          [12, "Show that \\(n!\\) is not \\(\\equiv -1 \\pmod n\\) for composite \\(n > 4\\).", "If \\(n\\) composite, \\(n!\\) contains \\(n\\)'s prime factors in the product (with enough multiplicity for \\(n \\ne 4\\)), so \\(n \\mid n!\\), making \\(n! \\equiv 0 \\pmod n\\), never \\(-1\\).", "proven"],
+        ]
+      }
+    ]
+  },
+  {
+    id: "nt5-lesson",
+    title: "Euler's Totient \u2014 Lesson",
+    sub: "\u03c6(n), Euler's theorem, order of an element",
+    type: "lesson",
+    group: "Number Theory",
+    sections: [
+      { h: "1. Euler's Totient Function",
+        c: [
+          { t: "p", v: "\\(\\varphi(n)\\) counts the positive integers \\(\\le n\\) coprime to \\(n\\). For \\(n = p_1^{e_1} \\cdots p_k^{e_k}\\):" },
+          { t: "d", v: "\\varphi(n) = n \\prod_{p \\mid n} \\left(1 - \\frac{1}{p}\\right)" },
+          { t: "ex", title: "Example 1", v: "Compute \\(\\varphi(12)\\).<br><br>\\(12 = 2^2 \\cdot 3\\). \\(\\varphi(12) = 12(1 - \\frac12)(1 - \\frac13) = 12 \\cdot \\frac12 \\cdot \\frac23 = 4\\). (The numbers: 1, 5, 7, 11.)" },
+          { t: "ex", title: "Example 2", v: "Compute \\(\\varphi(360)\\).<br><br>\\(360 = 2^3 \\cdot 3^2 \\cdot 5\\). \\(\\varphi(360) = 360 \\cdot \\frac12 \\cdot \\frac23 \\cdot \\frac45 = 96\\)." }
+        ]
+      },
+      { h: "2. Euler's Theorem",
+        c: [
+          { t: "p", v: "If \\(\\gcd(a, n) = 1\\), then \\(a^{\\varphi(n)} \\equiv 1 \\pmod n\\). This generalizes Fermat's Little Theorem to composite moduli." },
+          { t: "ex", title: "Example 3", v: "Find the last digit of \\(3^{100}\\) using Euler's theorem.<br><br>Mod 10, \\(\\varphi(10) = 4\\). \\(3^{4} \\equiv 1\\), \\(100 \\equiv 0 \\pmod 4\\), so \\(3^{100} \\equiv 1\\)." },
+          { t: "ex", title: "Example 4", v: "Find the remainder of \\(7^{2026}\\) divided by 10.<br><br>\\(\\varphi(10) = 4\\). \\(2026 \\equiv 2 \\pmod 4\\). \\(7^2 = 49 \\equiv 9\\)." }
+        ]
+      },
+      { h: "3. Order of an Element",
+        c: [
+          { t: "p", v: "The <b>order</b> of \\(a\\) mod \\(n\\) (when \\(\\gcd(a,n) = 1\\)) is the smallest positive \\(k\\) with \\(a^k \\equiv 1 \\pmod n\\). By Euler's theorem \\(k \\mid \\varphi(n)\\)." },
+          { t: "ex", title: "Example 5", v: "Find the order of 2 mod 7.<br><br>\\(2^1=2, 2^2=4, 2^3=8 \\equiv 1\\). Order 3. Note \\(3 \\mid \\varphi(7) = 6\\)." },
+          { t: "ex", title: "Example 6", v: "Find the order of 3 mod 10.<br><br>\\(3^1 = 3, 3^2 = 9, 3^3 = 27 \\equiv 7, 3^4 = 81 \\equiv 1\\). Order 4 \\(= \\varphi(10)\\)." }
+        ]
+      },
+      { h: "4. Carmichael Numbers",
+        c: [
+          { t: "p", v: "A composite \\(n\\) satisfying \\(a^{n-1} \\equiv 1 \\pmod n\\) for every \\(a\\) coprime to \\(n\\) is a <b>Carmichael number</b> (e.g., 561 = 3\u00b711\u00b717). These are exceptions to the 'FLT = primality test' heuristic." },
+          { t: "ex", title: "Example 7", v: "Verify 561 is a Carmichael number \u2014 the key fact is it is squarefree and \\(p - 1 \\mid 560\\) for each prime factor \\(p\\).<br><br>\\(p - 1\\) for 3, 11, 17: \\(2, 10, 16\\), all dividing \\(560 = 2^4 \\cdot 5 \\cdot 7\\). Yes." }
+        ]
+      }
+    ]
+  },
+  {
+    id: "nt5-practice",
+    title: "Euler's Totient \u2014 Practice",
+    sub: "12 problems on \u03c6(n), Euler's theorem, order",
+    type: "prac",
+    group: "Number Theory",
+    levels: [
+      {
+        n: "Level 1: Computing \u03c6(n)",
+        probs: [
+          [1, "Compute \\(\\varphi(15)\\).", "\\(15 = 3 \\cdot 5\\). \\(\\varphi(15) = 15 \\cdot \\frac23 \\cdot \\frac45 = 8\\).", "8"],
+          [2, "Compute \\(\\varphi(25)\\).", "\\(25 = 5^2\\). \\(\\varphi(25) = 25 \\cdot \\frac45 = 20\\).", "20"],
+          [3, "Compute \\(\\varphi(7)\\).", "7 prime: \\(\\varphi(7) = 6\\).", "6"],
+          [4, "Compute \\(\\varphi(100)\\).", "\\(100 = 2^2 \\cdot 5^2\\). \\(\\varphi(100) = 100 \\cdot \\frac12 \\cdot \\frac45 = 40\\).", "40"],
+          [5, "Compute \\(\\varphi(8)\\).", "\\(8 = 2^3\\). \\(\\varphi(8) = 8 \\cdot \\frac12 = 4\\).", "4"],
+        ]
+      },
+      {
+        n: "Level 2: Euler's Theorem",
+        probs: [
+          [6, "Find the last digit of \\(3^{100}\\).", "\\(\\varphi(10) = 4\\), \\(3^4 \\equiv 1\\), \\(100 \\equiv 0 \\pmod 4\\), so \\(\\equiv 1\\).", "1"],
+          [7, "Find the last digit of \\(7^{2026}\\).", "\\(2026 \\equiv 2 \\pmod 4\\), \\(7^2 = 49 \\equiv 9\\).", "9"],
+          [8, "Find the remainder of \\(2^{100}\\) divided by 5.", "\\(\\varphi(5) = 4\\), \\(100 \\equiv 0 \\pmod 4\\), so \\(2^{100} \\equiv 1\\).", "1"],
+          [9, "Find the remainder of \\(11^{50}\\) divided by 100.", "\\(\\varphi(100) = 40\\). \\(11^{40} \\equiv 1\\), \\(11^{50} \\equiv 11^{10}\\). \\(11^2 = 121 \\equiv 21\\), \\(11^4 \\equiv 441 \\equiv 41\\), \\(11^8 \\equiv 1681 \\equiv 81\\), \\(11^{10} = 11^8 \\cdot 11^2 \\equiv 81 \\cdot 21 = 1701 \\equiv 1\\).", "1"],
+          [10, "Find the remainder of \\(3^{2026}\\) divided by 11.", "\\(\\varphi(11) = 10\\), \\(2026 \\equiv 6 \\pmod{10}\\). \\(3^5 = 243 \\equiv 1 \\pmod{11}\\) (since \\(3^5 = 243 = 22 \\cdot 11 + 1\\)). So \\(3^6 \\equiv 3\\).", "3"],
+        ]
+      },
+      {
+        n: "Level 3: Order",
+        probs: [
+          [11, "Find the order of 2 mod 9.", "\\(2^1=2, 2^2=4, 2^3=8, 2^4=7, 2^5=5, 2^6=1\\). Order 6.", "6"],
+          [12, "Find the order of 5 mod 12.", "\\(\\gcd(5,12) = 1\\). \\(5^1 = 5, 5^2 = 25 \\equiv 1\\). Order 2.", "2"],
+        ]
+      }
+    ]
+  },
+  {
+    id: "nt6-lesson",
+    title: "Diophantine Equations I \u2014 Lesson",
+    sub: "Linear equations, SFFT, nonnegative solutions",
+    type: "lesson",
+    group: "Number Theory",
+    sections: [
+      { h: "1. Linear Diophantine Equations",
+        c: [
+          { t: "p", v: "Equation \\(ax + by = c\\) has integer solutions iff \\(\\gcd(a, b) \\mid c\\). One solution \\((x_0, y_0)\\) from B\u00e9zout; the general solution is:" },
+          { t: "d", v: "x = x_0 + \\frac{b}{d} t, \\qquad y = y_0 - \\frac{a}{d} t, \\qquad d = \\gcd(a,b)" },
+          { t: "ex", title: "Example 1", v: "Solve \\(6x + 9y = 15\\) in integers.<br><br>\\(\\gcd(6,9) = 3 \\mid 15\\), so solutions exist. Divide by 3: \\(2x + 3y = 5\\). \\(x = 1, y = 1\\) works. General: \\(x = 1 + 3t, y = 1 - 2t\\)." },
+          { t: "ex", title: "Example 2", v: "Does \\(4x + 6y = 7\\) have integer solutions?<br><br>\\(\\gcd(4,6) = 2 \\nmid 7\\), so no." }
+        ]
+      },
+      { h: "2. Nonnegative Integer Solutions",
+        c: [
+          { t: "p", v: "After parametrizing, impose \\(x \\ge 0, y \\ge 0\\) to get a range for \\(t\\); count the integers in that range." },
+          { t: "ex", title: "Example 3", v: "How many nonnegative integer solutions does \\(2x + 3y = 12\\) have?<br><br>\\(y = \\frac{12 - 2x}{3}\\), so \\(12 - 2x\\) must be a nonnegative multiple of 3. \\(x \\in \\{0, 3, 6\\}\\) gives \\(y \\in \\{4, 2, 0\\}\\). Three solutions." },
+          { t: "ex", title: "Example 4", v: "How many positive integer solutions does \\(x + y = 10\\) have?<br><br>\\(x = 1 \\ldots 9\\), \\(y = 9 \\ldots 1\\). Nine solutions." }
+        ]
+      },
+      { h: "3. Simon's Favorite Factoring Trick",
+        c: [
+          { t: "p", v: "For equations like \\(xy + x + y = n\\), add a constant to factor:" },
+          { t: "d", v: "xy + x + y = (x+1)(y+1) - 1" },
+          { t: "p", v: "Similarly \\(xy + ax + by = n \\Rightarrow (x+b)(y+a) = n + ab\\). Then use divisors." },
+          { t: "ex", title: "Example 5", v: "Solve \\(xy + x + y = 20\\) in positive integers.<br><br>\\((x+1)(y+1) = 21\\). Factor pairs: \\(3 \\cdot 7\\) and \\(1 \\cdot 21\\), \\(7 \\cdot 3\\), \\(21 \\cdot 1\\). So \\((x,y) = (2,6),(6,2),(0,20),(20,0)\\). Positive: \\((2,6),(6,2)\\)." },
+          { t: "ex", title: "Example 6", v: "Solve \\(xy - 2x - 3y = 5\\) in integers.<br><br>\\((x - 3)(y - 2) = 11\\). Factor pairs of 11: \\(1, 11\\) and \\(-1, -11\\) and swapped. Solutions: \\((4, 13), (14, 3), (2, -9), (-8, 1)\\)." }
+        ]
+      },
+      { h: "4. Factoring Methods",
+        c: [
+          { t: "p", v: "Equations of the form \\(xy = n\\) reduce to divisor enumeration: \\((x, y)\\) are all ordered factor pairs of \\(n\\) (including negative ones)." },
+          { t: "ex", title: "Example 7", v: "Solve \\(xy = 12\\) in positive integers.<br><br>Factor pairs: \\((1,12),(2,6),(3,4),(4,3),(6,2),(12,1)\\). Six solutions." }
+        ]
+      }
+    ]
+  },
+  {
+    id: "nt6-practice",
+    title: "Diophantine Equations I \u2014 Practice",
+    sub: "15 linear Diophantine and SFFT problems",
+    type: "prac",
+    group: "Number Theory",
+    levels: [
+      {
+        n: "Level 1: Linear Equations",
+        probs: [
+          [1, "Does \\(3x + 5y = 7\\) have integer solutions?", "\\(\\gcd(3,5) = 1 \\mid 7\\), yes. \\((x,y) = (4, -1)\\) works.", "yes|Yes"],
+          [2, "Does \\(6x + 10y = 15\\) have integer solutions?", "\\(\\gcd(6,10) = 2 \\nmid 15\\), no.", "no|No"],
+          [3, "Find one integer solution to \\(3x + 4y = 1\\).", "\\(x = -1, y = 1\\) works: \\(-3 + 4 = 1\\).", "-1,1"],
+          [4, "Find all integer solutions to \\(2x + 3y = 8\\).", "\\(x = 1, y = 2\\) is a solution. General: \\(x = 1 + 3t, y = 2 - 2t\\).", "x=1+3t,y=2-2t"],
+          [5, "Find the number of positive integer solutions to \\(x + y = 5\\).", "\\(x = 1..4\\), \\(y = 4..1\\). Four solutions.", "4"],
+        ]
+      },
+      {
+        n: "Level 2: Nonnegative Solutions",
+        probs: [
+          [6, "How many nonnegative integer solutions does \\(x + y = 6\\) have?", "\\(x = 0..6\\), \\(y = 6..0\\). Seven solutions.", "7"],
+          [7, "How many nonnegative integer solutions does \\(2x + y = 8\\) have?", "\\(x = 0..4\\). Five solutions.", "5"],
+          [8, "How many nonnegative integer solutions does \\(2x + 3y = 18\\) have?", "\\(y\\) even so \\(x = \\frac{18-3y}{2} \\ge 0\\). \\(y \\in \\{0,2,4,6\\}\\) gives \\(x \\in \\{9,6,3,0\\}\\). Four solutions.", "4"],
+          [9, "Find the number of positive solutions to \\(x + 2y = 10\\).", "\\(y = 1..4\\) (with \\(x = 10 - 2y \\ge 1\\), so \\(y \\le 4\\)). \\(y \\in \\{1,2,3,4\\}\\), four solutions.", "4"],
+          [10, "In how many ways can you make 20 cents using only nickels (5\u00a2) and dimes (10\u00a2)?", "\\(5n + 10d = 20 \\Rightarrow n + 2d = 4\\). \\(d = 0,1,2\\). Three ways.", "3"],
+        ]
+      },
+      {
+        n: "Level 3: SFFT & Factoring",
+        probs: [
+          [11, "Find the number of positive integer solutions to \\(xy + x + y = 15\\).", "\\((x+1)(y+1) = 16\\). Positive factor pairs with both factors \\(\\ge 2\\): \\((2,8),(4,4),(8,2)\\). Three solutions.", "3"],
+          [12, "Solve \\(xy + 2x + 3y = 10\\) in integers.", "\\((x+3)(y+2) = 16\\). Integer factor pairs of 16. E.g. \\((1,16)\\): \\(x = -2, y = 14\\). Solutions include \\((-2,14), (13,0), (-5, -6), ...\\).", "-2,14"],
+          [13, "Find the number of positive integer solutions to \\(xy = 24\\).", "Factor pairs: 8 in total: \\((1,24),(2,12),(3,8),(4,6)\\) and swaps.", "8"],
+          [14, "Solve \\(\\frac{1}{x} + \\frac{1}{y} = \\frac{1}{3}\\) in positive integers.", "\\(xy - 3x - 3y = 0 \\Rightarrow (x-3)(y-3) = 9\\). Pairs: \\((4,12),(6,6),(12,4)\\). Three solutions.", "3"],
+          [15, "Solve \\(xy - x - y = 8\\) in positive integers.", "\\((x-1)(y-1) = 9\\). Pairs \\((2,10),(4,4),(10,2)\\). Three solutions.", "3"],
+        ]
+      }
+    ]
+  },
+  {
+    id: "nt7-lesson",
+    title: "Diophantine Equations II \u2014 Lesson",
+    sub: "Pythagorean triples, Pell's equation, infinite descent",
+    type: "lesson",
+    group: "Number Theory",
+    sections: [
+      { h: "1. Pythagorean Triples",
+        c: [
+          { t: "p", v: "Primitive triples \\((a,b,c)\\) with \\(a^2 + b^2 = c^2\\) and \\(\\gcd(a,b,c) = 1\\) are parameterized by integers \\(m > n > 0\\) (opposite parity, \\(\\gcd(m,n) = 1\\)):" },
+          { t: "d", v: "a = m^2 - n^2, \\quad b = 2mn, \\quad c = m^2 + n^2" },
+          { t: "ex", title: "Example 1", v: "Generate the triple from \\((m, n) = (2, 1)\\).<br><br>\\(a = 3, b = 4, c = 5\\) \u2014 the classic 3-4-5 triangle." },
+          { t: "ex", title: "Example 2", v: "Generate the triple from \\((m, n) = (3, 2)\\).<br><br>\\(a = 5, b = 12, c = 13\\)." }
+        ]
+      },
+      { h: "2. Pell's Equation",
+        c: [
+          { t: "p", v: "Equation \\(x^2 - Dy^2 = 1\\) (with \\(D\\) non-square) is <b>Pell's equation</b>. It has infinitely many solutions; if \\((x_1, y_1)\\) is the fundamental solution, all others come from powers:" },
+          { t: "d", v: "(x_1 + y_1\\sqrt{D})^k = x_k + y_k \\sqrt{D}" },
+          { t: "ex", title: "Example 3", v: "Find solutions to \\(x^2 - 2y^2 = 1\\) from \\(3 + 2\\sqrt{2}\\).<br><br>\\((3 + 2\\sqrt2)^1 = 3 + 2\\sqrt2\\): \\((3, 2)\\). Squaring: \\((3 + 2\\sqrt2)^2 = 17 + 12\\sqrt2\\): \\((17, 12)\\). Check \\(17^2 - 2 \\cdot 12^2 = 289 - 288 = 1\\)." }
+        ]
+      },
+      { h: "3. Infinite Descent",
+        c: [
+          { t: "p", v: "To prove no solutions exist, assume a solution and construct a smaller one, leading to infinite descent (impossible for positive integers)." },
+          { t: "ex", title: "Example 4", v: "Show \\(x^2 + y^2 = 3z^2\\) has no nonzero integer solutions.<br><br>Work mod 3: squares are 0 or 1. \\(x^2 + y^2 \\equiv 0 \\pmod 3\\) requires both \\(x, y \\equiv 0 \\pmod 3\\). Then \\(z^2 = (x^2 + y^2)/3\\) is divisible by 3, so \\(z \\equiv 0 \\pmod 3\\). All three divisible by 3 \u2014 divide and repeat, infinite descent. Contradiction." },
+          { t: "ex", title: "Example 5", v: "Show \\(x^4 + y^4 = z^2\\) has no nonzero solutions (FLT for exponent 4).<br><br>Assume primitive solution; \\(x^2, y^2, z\\) form a Pythagorean triple, force a smaller solution, infinite descent. This is the classic proof of FLT n = 4." }
+        ]
+      },
+      { h: "4. Quadratic Diophantine",
+        c: [
+          { t: "p", v: "Many quadratic equations are solved by: completing the square, discriminant analysis (\\(\\Delta\\) must be a perfect square), or bounding via inequalities." },
+          { t: "ex", title: "Example 6", v: "Find positive integer solutions to \\(x^2 - y^2 = 15\\).<br><br>\\((x-y)(x+y) = 15\\). Since \\(x + y > x - y > 0\\): pairs \\((1,15), (3,5)\\). Solve: \\(x=8, y=7\\) and \\(x=4, y=1\\)." }
+        ]
+      }
+    ]
+  },
+  {
+    id: "nt7-practice",
+    title: "Diophantine Equations II \u2014 Practice",
+    sub: "12 Pythagorean, Pell, descent, and quadratic problems",
+    type: "prac",
+    group: "Number Theory",
+    levels: [
+      {
+        n: "Level 1: Pythagorean Triples",
+        probs: [
+          [1, "Generate the primitive Pythagorean triple from \\((m,n) = (3,1)\\).", "\\(a = 8, b = 6, c = 10\\) \u2014 not primitive (gcd 2). Using opposite parity \\((m,n) = (3,2)\\): \\((5,12,13)\\). Note (3,1) gives (8,6,10).", "8,6,10"],
+          [2, "Find the hypotenuse of the primitive triple from \\((m, n) = (4, 3)\\).", "\\(c = m^2 + n^2 = 16 + 9 = 25\\).", "25"],
+          [3, "Find a Pythagorean triple with leg 24 (use \\(2mn = 24\\)).", "\\(mn = 12\\). \\((m,n) = (4,3)\\): triple \\((7, 24, 25)\\).", "7,24,25"],
+          [4, "Find a Pythagorean triple with leg 15 (use \\(m^2 - n^2 = 15\\)).", "\\((m-n)(m+n) = 15\\). \\((m,n) = (4,1)\\): \\((15, 8, 17)\\).", "15,8,17"],
+          [5, "What is the missing leg of the triple with hypotenuse 13 (other leg 5)?", "\\(12\\).", "12"],
+        ]
+      },
+      {
+        n: "Level 2: Pell & Quadratic",
+        probs: [
+          [6, "Verify that \\((3, 2)\\) solves \\(x^2 - 2y^2 = 1\\).", "\\(9 - 8 = 1\\). Yes.", "yes|Yes"],
+          [7, "Find the next solution to \\(x^2 - 2y^2 = 1\\) after \\((3, 2)\\).", "\\((3 + 2\\sqrt2)^2 = 17 + 12\\sqrt2\\), so \\((17, 12)\\).", "17,12"],
+          [8, "Find the positive integer solutions to \\((x-y)(x+y) = 9\\).", "Only \\((1, 9)\\): \\(x = 5, y = 4\\).", "5,4"],
+          [9, "Solve \\(x^2 - y^2 = 21\\) in positive integers.", "Pairs \\((1,21)\\): \\(x=11, y=10\\). \\((3,7)\\): \\(x=5, y=2\\).", "11,10|5,2"],
+          [10, "Show that \\(x^2 + y^2 = 4z + 3\\) has no integer solutions.", "Mod 4: squares are 0 or 1. \\(x^2 + y^2 \\in \\{0,1,2\\} \\pmod 4\\), never 3. No solutions.", "proven"],
+        ]
+      },
+      {
+        n: "Level 3: Descent & Challenge",
+        probs: [
+          [11, "Show that \\(x^2 + y^2 = 2z^2\\) has the nonzero solution \\((1,1,1)\\), but if a solution exists, what do you notice mod 2?", "\\((1,1,1)\\) works. Mod 2: if one of \\(x, y\\) is even and other odd, LHS \\(\\equiv 1\\), RHS \\(\\equiv 0\\) or 2; both even or both odd. Solutions exist, so descent does not apply.", "1,1,1"],
+          [12, "Find the smallest Pythagorean triple where both legs differ by 1 (consecutive legs).", "\\((3,4,5)\\).", "3,4,5"],
+        ]
+      }
+    ]
+  },
+  {
+    id: "nt8-lesson",
+    title: "Lifting The Exponent \u2014 Lesson",
+    sub: "LTE for odd primes and p = 2",
+    type: "lesson",
+    group: "Number Theory",
+    sections: [
+      { h: "1. LTE for Odd Primes",
+        c: [
+          { t: "p", v: "Let \\(p\\) be an odd prime with \\(p \\mid x + y\\) (or \\(p \\mid x - y\\)), \\(p \\nmid x, y\\), and \\(n \\ge 1\\). Then:" },
+          { t: "d", v: "v_p(x^n + y^n) = v_p(x + y) + v_p(n) \\\\ v_p(x^n - y^n) = v_p(x - y) + v_p(n)" },
+          { t: "p", v: "where \\(v_p(m)\\) is the exponent of \\(p\\) in \\(m\\). The \\(+\\) case requires \\(n\\) odd." },
+          { t: "ex", title: "Example 1", v: "Find the highest power of 3 dividing \\(2^{100} + 1\\).<br><br>\\(2 + 1 = 3\\), so \\(v_3(2^{100} + 1) = v_3(3) + v_3(100) = 1 + 0 = 1\\). So exactly one factor of 3." },
+          { t: "ex", title: "Example 2", v: "Find the exponent of 3 in \\(5^{9} - 2^{9}\\).<br><br>\\(5 - 2 = 3\\), so \\(v_3(5^9 - 2^9) = v_3(3) + v_3(9) = 1 + 2 = 3\\)." }
+        ]
+      },
+      { h: "2. LTE for p = 2",
+        c: [
+          { t: "p", v: "For even \\(x, y\\) (so \\(v_2(x - y) \\ge 1\\)) and even \\(n\\):" },
+          { t: "d", v: "v_2(x^n - y^n) = v_2(x - y) + v_2(x + y) + v_2(n) - 1" },
+          { t: "p", v: "There are special cases: if \\(n\\) is odd, \\(v_2(x^n - y^n) = v_2(x - y)\\). If \\(x, y\\) odd and \\(n\\) even, \\(v_2(x^n - y^n) = v_2(x - y) + v_2(x + y) + v_2(n) - 1\\)." },
+          { t: "ex", title: "Example 3", v: "Find \\(v_2(3^4 - 1)\\).<br><br>\\(x = 3, y = 1\\) odd, \\(n = 4\\) even. \\(v_2(3-1) + v_2(3+1) + v_2(4) - 1 = 1 + 2 + 2 - 1 = 4\\). Check: \\(3^4 - 1 = 80 = 2^4 \\cdot 5\\). Yes." },
+          { t: "ex", title: "Example 4", v: "Find \\(v_2(5^3 - 3^3)\\).<br><br>\\(5 - 3 = 2\\): \\(v_2 = 1\\), and \\(n = 3\\) odd, so \\(v_2(5^3 - 3^3) = v_2(5 - 3) = 1\\). (Indeed \\(125 - 27 = 98 = 2 \\cdot 49\\).)" }
+        ]
+      },
+      { h: "3. Hypotheses Checklist",
+        c: [
+          { t: "ul", v: [
+            "Check the prime \\(p\\) divides \\(x \\pm y\\) first.",
+            "Ensure \\(p \\nmid x\\) and \\(p \\nmid y\\).",
+            "For the sum case \\(x^n + y^n\\), \\(n\\) must be odd.",
+            "For \\(p = 2\\), remember the extra \\(-1\\) and \\(v_2(x + y)\\) term."
+          ]},
+          { t: "ex", title: "Example 5", v: "Find the largest \\(k\\) with \\(7^k \\mid 2^{21} + 1\\).<br><br>\\(2 + 1 = 3\\), not 7. So \\(p \\nmid x + y\\) \u2014 LTE does not apply directly. Indeed \\(2^{21} + 1 = 2097153 = 7 \\cdot 299593\\), so \\(v_7 = 1\\). Compute via: \\(2^3 = 8 \\equiv 1 \\pmod 7\\), \\(2^{21} \\equiv 1\\), \\(2^{21} + 1 \\equiv 2 \\not\\equiv 0\\). Actually check: \\(2^{21} = (2^3)^7 \\equiv 1^7 = 1 \\pmod 7\\), so \\(2^{21} + 1 \\equiv 2\\) \u2014 not divisible by 7. So \\(k = 0\\)." }
+        ]
+      },
+      { h: "4. Applications",
+        c: [
+          { t: "p", v: "LTE finds exact prime exponents in expressions like \\(a^n \\pm b^n\\), proving divisibility claims and solving exponent problems." },
+          { t: "ex", title: "Example 6", v: "Prove \\(3^{2n} - 1\\) is divisible by 8 for all \\(n \\ge 1\\).<br><br>\\(v_2(3^{2n} - 1) = v_2(3-1) + v_2(3+1) + v_2(2n) - 1 = 1 + 2 + v_2(2n) - 1 = 2 + v_2(2n) \\ge 3\\). So divisible by \\(2^3 = 8\\)." }
+        ]
+      }
+    ]
+  },
+  {
+    id: "nt8-practice",
+    title: "Lifting The Exponent \u2014 Practice",
+    sub: "10 LTE problems",
+    type: "prac",
+    group: "Number Theory",
+    levels: [
+      {
+        n: "Level 1: Odd Primes",
+        probs: [
+          [1, "Find \\(v_3(5^{10} - 2^{10})\\).", "\\(5 - 2 = 3\\). \\(v_3 = v_3(3) + v_3(10) = 1\\).", "1"],
+          [2, "Find the exponent of 5 in \\(2^{100} + 3^{100}\\).", "\\(2 + 3 = 5\\). \\(v_5 = v_5(5) + v_5(100) = 1 + 2 = 3\\).", "3"],
+          [3, "Find \\(v_7(2^{21} - 1)\\).", "\\(2 - 1 = 1\\), so \\(p \\nmid x - y\\)? \\(x - y = 1\\) not divisible by 7. So \\(v_7 = 0\\).", "0"],
+          [4, "Find the highest power of 3 dividing \\(4^{15} - 1\\).", "\\(4 - 1 = 3\\). \\(v_3(4^{15} - 1) = v_3(3) + v_3(15) = 1 + 1 = 2\\).", "2"],
+          [5, "Find \\(v_{11}(10^{11} + 1)\\).", "\\(10 + 1 = 11\\), \\(n = 11\\) odd. \\(v_{11} = v_{11}(11) + v_{11}(11) = 2\\).", "2"],
+        ]
+      },
+      {
+        n: "Level 2: p = 2",
+        probs: [
+          [6, "Find \\(v_2(3^2 - 1)\\).", "\\(x = 3, y = 1, n = 2\\): \\(v_2(2) + v_2(4) + v_2(2) - 1 = 1 + 2 + 1 - 1 = 3\\). (\\(3^2 - 1 = 8 = 2^3\\).)", "3"],
+          [7, "Find \\(v_2(5^4 - 1)\\).", "\\(v_2(4) + v_2(6) + v_2(4) - 1 = 2 + 1 + 2 - 1 = 4\\). (\\(624 = 2^4 \\cdot 39\\).)", "4"],
+          [8, "Find \\(v_2(7^2 - 1)\\).", "\\(v_2(6) + v_2(8) + v_2(2) - 1 = 1 + 3 + 1 - 1 = 4\\). (\\(48 = 2^4 \\cdot 3\\).)", "4"],
+          [9, "Find \\(v_2(3^5 - 1)\\).", "\\(n\\) odd: \\(v_2(3 - 1) = 1\\).", "1"],
+          [10, "Find \\(v_2(3^{2026} - 1)\\).", "\\(v_2(2) + v_2(4) + v_2(2026) - 1 = 1 + 2 + 1 - 1 = 3\\).", "3"],
+        ]
+      }
+    ]
+  },
+  {
+    id: "aime-nt",
+    title: "AIME Number Theory",
+    sub: "10 AIME-level number theory problems",
+    type: "prac",
+    group: "Number Theory",
+    levels: [
+      {
+        n: "AIME Problems",
+        probs: [
+          [1, "Find the number of positive integers \\(\\le 100\\) that are not divisible by 2, 3, or 5.", "\\(100(1-\\frac12)(1-\\frac13)(1-\\frac15) = 100 \\cdot \\frac{4}{15} = 26.67\\) \u2014 use inclusion-exclusion precisely: \\(100 - 50 - 33 - 20 + 16 + 10 + 6 - 3 = 26\\).", "26"],
+          [2, "Find the last two digits of \\(3^{100}\\).", "\\(3^{20} \\equiv 1 \\pmod{100}\\) (Euler \\(\\varphi(100) = 40\\), and \\(3^{20} = 3486784401\\) ends 01). \\(100 \\equiv 0 \\pmod{20}\\), so \\(\\equiv 1\\).", "1"],
+          [3, "Find the remainder of \\(2^{100}\\) divided by 9.", "\\(2^6 = 64 \\equiv 1 \\pmod 9\\). \\(100 \\equiv 4 \\pmod 6\\). \\(2^4 = 16 \\equiv 7\\).", "7"],
+          [4, "How many ordered pairs of positive integers \\((x, y)\\) satisfy \\(xy + x + y = 50\\)?", "\\((x+1)(y+1) = 51 = 3 \\cdot 17\\). Divisors: \\(1, 3, 17, 51\\). 4 factor pairs \u2192 4 ordered pairs.", "4"],
+          [5, "Find the smallest positive integer that leaves remainder 1 mod 2, 2 mod 3, and 3 mod 5.", "From earlier: \\(x \\equiv 23 \\pmod{30}\\). Smallest: 23.", "23"],
+          [6, "Compute the number of positive divisors of \\(12!\\) that are perfect squares.", "Prime factorization: \\(12! = 2^{10} 3^5 5^2 7^1 11^1\\). Square divisors: exponents even. \\((5+1)(2+1)(1+1) = 36\\) ... counts: for 2: \\(\\lfloor10/2\\rfloor + 1 = 6\\) choices (0,2,..,10); 3: 3; 5: 2; 7: 1; 11: 1. Total \\(6 \\cdot 3 \\cdot 2 = 36\\).", "36"],
+          [7, "Find the largest \\(n\\) such that \\(n!\\) divides \\(2026!\\) and \\(n\\) divides 2026.", "Trivial: any \\(n \\le 2026\\) has \\(n! \\mid 2026!\\). Largest \\(n \\mid 2026\\) near 2026: \\(2026 = 2 \\cdot 1013\\). Largest proper divisor: 1013.", "1013"],
+          [8, "For how many values of \\(n \\le 100\\) is \\(\\varphi(n) = 40\\)?", "\\(n = 41, 55, 75, 82, 88, 100\\) (known set). Count 6.", "6"],
+          [9, "Find the remainder of \\(7^{7^{7}}\\) divided by 11.", "By FLT mod 11, reduce \\(7^7 \\bmod 10\\): \\(7^1=7, 7^2=9, 7^3=3, 7^4=1\\), cycle 4. \\(7 \\equiv 3 \\pmod 4\\), \\(7^7 \\equiv 7^3 \\equiv 3 \\pmod{10}\\). So \\(7^{7^7} \\equiv 7^3 = 343 \\equiv 2 \\pmod{11}\\).", "2"],
+          [10, "Find the number of solutions to \\(x^2 \\equiv 1 \\pmod{105}\\).", "\\(105 = 3 \\cdot 5 \\cdot 7\\). \\(x^2 \\equiv 1\\) has 2 solutions mod each prime, so by CRT \\(2^3 = 8\\) solutions mod 105.", "8"],
+        ]
+      }
+    ]
+  },
+
 ];
 
 // State
