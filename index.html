@@ -1513,7 +1513,30 @@ const SECTIONS = [
           { t: "ex", title: "Example 5", v: "Solve \\(2^{x+1} = 16\\).<br><br>\\(16 = 2^4\\), so \\(x + 1 = 4\\), \\(x = 3\\)." }
         ]
       }
-    ]
+    ,
+      { h: "4. Logarithmic Inequalities",
+        c: [
+          { t: "p", v: "The logarithm \\(\\log_a x\\) is <b>increasing</b> when \\(a > 1\\) and <b>decreasing</b> when \\(0 < a < 1\\). So \\(\\log_a u < \\log_a v \\iff u < v\\) for \\(a > 1\\), but the inequality flips for \\(0 < a < 1\\). Always check the domain \\(u, v > 0\\) first." },
+          { t: "d", v: "a > 1: \\; \\log_a u < \\log_a v \\iff u < v \\qquad 0 < a < 1: \\; \\log_a u < \\log_a v \\iff u > v" },
+          { t: "ex", title: "Example 4", v: "Solve \\(\\log_2 (x+1) \\le 3\\).<br><br>Base \\(2 > 1\\), so \\(x + 1 \\le 8\\) and \\(x + 1 > 0\\). Answer: \\(-1 < x \\le 7\\)." },
+          { t: "ex", title: "Example 5", v: "Solve \\(\\log_{1/2} (x-1) \\ge 2\\).<br><br>Base \\(\\tfrac12 < 1\\), so \\(x - 1 \\le (\\tfrac12)^2 = \\tfrac14\\) and \\(x - 1 > 0\\). Answer: \\(1 < x \\le \\tfrac54\\)." }
+        ]
+      },
+      { h: "5. Change of Base and Telescoping",
+        c: [
+          { t: "p", v: "Change of base lets you evaluate products of logs by telescoping: \\(\\log_a b \\cdot \\log_b c = \\log_a c\\). Repeatedly, \\(\\log_a b \\cdot \\log_b c \\cdot \\log_c d \\cdots = \\log_a (\\text{last})\\)." },
+          { t: "d", v: "\\log_a b \\cdot \\log_b c = \\log_a c" },
+          { t: "ex", title: "Example 6", v: "Evaluate \\(\\log_2 3 \\cdot \\log_3 5 \\cdot \\log_5 8\\).<br><br>Telescopes to \\(\\log_2 8 = 3\\)." },
+          { t: "ex", title: "Example 7", v: "If \\(\\log_a b = 3\\), find \\(\\log_{a^2} b\\).<br><br>\\(\\log_{a^2} b = \\frac{\\log_a b}{\\log_a a^2} = \\frac{3}{2}\\)." }
+        ]
+      },
+      { h: "6. Systems and Nested Exponents",
+        c: [
+          { t: "p", v: "For systems mixing exponents and logs, introduce a substitution \\(u = a^x\\) (or \\(u = \\log_a x\\)), which reduces the system to linear or quadratic equations. Watch for the domain and discard extraneous roots." },
+          { t: "ex", title: "Example 8", v: "Solve \\(2^x - 2^{-x} = \\frac{3}{2}\\).<br><br>Let \\(u = 2^x\\): \\(u - \\frac{1}{u} = \\frac32\\), \\(2u^2 - 3u - 2 = 0\\), \\(u = 2\\) (positive root), so \\(x = 1\\)." },
+          { t: "ex", title: "Example 9", v: "Solve \\(\\log_2 x + \\log_4 y = 3\\), \\(\\log_2 y + \\log_4 x = 2\\).<br><br>Write \\(\\log_4 y = \\tfrac12 \\log_2 y\\), etc. Let \\(p = \\log_2 x, q = \\log_2 y\\): \\(p + q/2 = 3\\), \\(q + p/2 = 2\\). Solving: \\(p = 8/3, q = 2/3\\), so \\(x = 2^{8/3}, y = 2^{2/3}\\)." }
+        ]
+      }]
   },
   {
     id: "log-practice",
@@ -1579,7 +1602,29 @@ const SECTIONS = [
           { t: "ex", title: "Example 3", v: "Multiplication by \\(i\\) rotates a point by \\(90^\\circ\\). Verify: \\(i \\cdot (a + bi) = -b + ai\\).<br><br>Vector \\((a, b)\\) maps to \\((-b, a)\\), a 90\u00b0 counterclockwise rotation." }
         ]
       }
-    ]
+    ,
+      { h: "4. Conjugate and Modulus",
+        c: [
+          { t: "p", v: "The conjugate \\(\\bar z\\) flips the sign of the imaginary part; it is an automorphism of \\(\\mathbb C\\): \\(\\overline{z+w} = \\bar z + \\bar w\\), \\(\\overline{zw} = \\bar z \\bar w\\), \\(\\overline{z^n} = \\bar z^n\\). The modulus satisfies \\(z \\bar z = |z|^2\\) and the triangle inequality \\(|z+w| \\le |z| + |w|\\)." },
+          { t: "d", v: "|z|^2 = z \\bar z, \\qquad |z + w| \\le |z| + |w|" },
+          { t: "ex", title: "Example 4", v: "Prove that \\(\\left|\\frac{1+2i}{3-4i}\\right| = \\frac{\\sqrt5}{5}\\).<br><br>Use \\(|z/w| = |z|/|w|\\): \\(\\frac{\\sqrt{1+4}}{\\sqrt{9+16}} = \\frac{\\sqrt5}{5}\\)." }
+        ]
+      },
+      { h: "5. Roots of Unity",
+        c: [
+          { t: "p", v: "The \\(n\\)th roots of unity are \\(e^{2\\pi i k/n} = \\cos \\frac{2\\pi k}{n} + i \\sin \\frac{2\\pi k}{n}\\), \\(k = 0, \\ldots, n-1\\). They are the roots of \\(x^n - 1\\); their sum is \\(0\\) (for \\(n > 1\\)) and their product is \\((-1)^{n+1}\\). The <b>primitive</b> \\(n\\)th roots are those with \\(\\gcd(k,n) = 1\\)." },
+          { t: "d", v: "\\omega_k = e^{2\\pi i k / n}, \\qquad \\sum_{k=0}^{n-1} \\omega_k = 0" },
+          { t: "ex", title: "Example 5", v: "Compute \\(\\cos \\frac{2\\pi}{3} + \\cos \\frac{4\\pi}{3}\\).<br><br>The real parts of the non-real cube roots of unity; their sum is \\(-1\\) (since \\(1 + \\omega + \\omega^2 = 0\\) gives \\(2\\cos(2\\pi/3) = -1\\))." },
+          { t: "ex", title: "Example 6", v: "Factor \\(x^6 - 1\\) over the reals.<br><br>\\((x^3 - 1)(x^3 + 1) = (x-1)(x+1)(x^2+x+1)(x^2-x+1)\\)." }
+        ]
+      },
+      { h: "6. Complex Numbers in Olympiad Geometry",
+        c: [
+          { t: "p", v: "Multiplication by \\(i\\) rotates by \\(90^\\circ\\); multiplication by \\(e^{i\\theta}\\) rotates by \\(\\theta\\). On the unit circle, points \\(a, b, c, d\\) are concyclic iff \\(\\frac{(a-b)(c-d)}{(a-d)(c-b)} \\in \\mathbb R\\), and \\(AB \\perp CD\\) iff \\(\\frac{a-b}{c-d}\\) is purely imaginary." },
+          { t: "d", v: "AB \\perp CD \\iff \\frac{a-b}{c-d} \\in i\\mathbb R \\qquad A, B, C, D \\text{ concyclic } \\iff \\frac{(a-b)(c-d)}{(a-d)(c-b)} \\in \\mathbb R" },
+          { t: "ex", title: "Example 7", v: "Show the triangle with vertices \\(1, \\omega, \\omega^2\\) (cube roots of unity) is equilateral.<br><br>Each side length is \\(|\\omega - 1| = |\\omega^2 - \\omega| = |1 - \\omega^2| = \\sqrt3\\)." }
+        ]
+      }]
   },
   {
     id: "cx-practice",
@@ -1644,7 +1689,28 @@ const SECTIONS = [
           { t: "ex", title: "Example 3", v: "Using \\(\\Delta\\) on \\(1, 3, 5, 7\\): \\(\\Delta a_0 = 2\\), \\(\\Delta^2 a_0 = 0\\), so \\(a_n = 1 + 2n\\)." }
         ]
       }
-    ]
+    ,
+      { h: "4. Uniqueness of the Interpolation Polynomial",
+        c: [
+          { t: "p", v: "There is exactly one polynomial of degree at most \\(n\\) through \\(n+1\\) points \\((x_0, y_0), \\ldots, (x_n, y_n)\\) with distinct \\(x_i\\). Proof: if \\(P\\) and \\(Q\\) both fit, then \\(P - Q\\) has the \\(n+1\\) distinct roots \\(x_i\\), so \\(P - Q = 0\\)." },
+          { t: "d", v: "\\deg(P - Q) \\le n \\text{ with } n+1 \\text{ roots } \\implies P \\equiv Q" },
+          { t: "ex", title: "Example 4", v: "Show there is exactly one line through two distinct points.<br><br>Two points force degree \\(\\le 1\\); uniqueness gives a single line." }
+        ]
+      },
+      { h: "5. Applications of Interpolation",
+        c: [
+          { t: "p", v: "Interpolation proves identities by verifying them at enough points. For instance, to prove a polynomial identity \\(P(x) = Q(x)\\) of degree \\(\\le n\\), check \\(n+1\\) values. It also evaluates sums: the sum of squares \\(1^2 + 2^2 + \\cdots + n^2\\) is a cubic, determined by its values at \\(n = 0, 1, 2, 3\\)." },
+          { t: "ex", title: "Example 5", v: "Find the polynomial of degree \\(\\le 2\\) with \\(P(1) = 2, P(2) = 5, P(3) = 10\\), then \\(P(0)\\).<br><br>Values \\(2, 5, 10\\) are \\(n^2 + 1\\); \\(P(x) = x^2 + 1\\), so \\(P(0) = 1\\)." },
+          { t: "ex", title: "Example 6", v: "Find the cubic \\(S(n)\\) with \\(S(0)=0, S(1)=1, S(2)=5, S(3)=14\\).<br><br>These are the sums \\(0, 1, 1+4, 1+4+9\\); indeed \\(S(n) = \\frac{n(n+1)(2n+1)}{6}\\), the sum-of-squares formula." }
+        ]
+      },
+      { h: "6. Finite Differences in Depth",
+        c: [
+          { t: "p", v: "For a polynomial of degree \\(n\\), the \\(n\\)th finite difference is constant: \\(\\Delta^n P = n! \\cdot a_n\\) where \\(a_n\\) is the leading coefficient. The Newton forward formula reads \\(P(x) = \\sum_{k=0}^{n} \\Delta^k P(0) \\binom{x}{k}\\)." },
+          { t: "d", v: "\\Delta^n P = n!\\, a_n, \\qquad P(x) = \\sum_{k=0}^{n} \\Delta^k P(0) \\binom{x}{k}" },
+          { t: "ex", title: "Example 7", v: "Find the cubic \\(P\\) with \\(P(0)=0, P(1)=1, P(2)=8, P(3)=27\\).<br><br>Differences: \\(1, 7, 19\\), then \\(6, 12\\), then \\(6\\). Leading coefficient \\(a_3 = 6/3! = 1\\), and the values are cubes: \\(P(x) = x^3\\)." }
+        ]
+      }]
   },
   {
     id: "intp-practice",
@@ -2058,7 +2124,21 @@ const SECTIONS = [
           { t: "ex", title: "Example 2", v: "Cevians \\(AD, BE, CF\\) of \\(\\triangle ABC\\) concur at \\(G\\) with \\(BD/DC = 2\\) and \\(CE/EA = 1\\). Find \\(AF/FB\\).<br><br>Ceva: \\(2 \\cdot 1 \\cdot \\frac{AF}{FB} = 1\\), so \\(AF/FB = 1/2\\)." }
         ]
       }
-    ]
+    ,
+      { h: "4. Menelaus with Directed Lengths",
+        c: [
+          { t: "p", v: "Using directed lengths, Menelaus’ theorem states \\(\\frac{AF}{FB} \\cdot \\frac{BD}{DC} \\cdot \\frac{CE}{EA} = -1\\) for collinear \\(D, E, F\\). One or three of the points lie on extensions, which the negative sign captures. Always use signed ratios to avoid case analysis." },
+          { t: "d", v: "\\frac{AF}{FB} \\cdot \\frac{BD}{DC} \\cdot \\frac{CE}{EA} = -1" },
+          { t: "ex", title: "Example 4", v: "In \\(\\triangle ABC\\), \\(D\\) is the midpoint of \\(BC\\) and \\(E\\) divides \\(CA\\) with \\(CE : EA = 2 : 1\\). If line \\(DE\\) meets \\(AB\\) at \\(F\\), find \\(AF/FB\\).<br><br>Menelaus (with magnitudes): \\(\\frac{AF}{FB} \\cdot \\frac{BD}{DC} \\cdot \\frac{CE}{EA} = 1\\). Here \\(BD/DC = 1\\) and \\(CE/EA = 2\\), so \\(AF/FB = 1/2\\), and \\(F\\) lies on the extension of \\(AB\\)." }
+        ]
+      },
+      { h: "5. Trigonometric Menelaus",
+        c: [
+          { t: "p", v: "There is a trigonometric form: for points \\(D, E, F\\) on \\(BC, CA, AB\\) (extensions allowed), \\(\\frac{\\sin \\angle BAD}{\\sin \\angle DAC} \\cdot \\frac{\\sin \\angle CBE}{\\sin \\angle EBA} \\cdot \\frac{\\sin \\angle ACF}{\\sin \\angle FCB} = -1\\) iff they are collinear. This helps when angles are known but ratios are not." },
+          { t: "d", v: "\\prod \\frac{\\sin \\angle BAD}{\\sin \\angle DAC} = -1" },
+          { t: "ex", title: "Example 5", v: "If \\(D, E, F\\) are collinear and the sine ratios multiply to \\(-1\\), what can you conclude?<br><br>Exactly that they satisfy the trigonometric Menelaus identity, confirming collinearity — the converse direction." }
+        ]
+      }]
   },
   {
     id: "geo6-prac",
@@ -2110,7 +2190,20 @@ const SECTIONS = [
           { t: "ex", title: "Example 3", v: "In \\(\\triangle ABC\\), the midpoint triangle \\(A'B'C'\\) (joining side midpoints) is homothetic to \\(ABC\\) with center the centroid and ratio \\(-1/2\\). Verify \\(A'A : A\\text{centroid}\\) ratio.\u2014By medians, the centroid divides each median \\(2 : 1\\); the midpoint triangle is the image under ratio \\(-1/2\\)." }
         ]
       }
-    ]
+    ,
+      { h: "4. Centers of Similitude of Two Circles",
+        c: [
+          { t: "p", v: "Two noncongruent circles have an <b>internal</b> and an <b>external center of similitude</b> on the line of centers, dividing it in the ratio of the radii. They are the centers of the two homotheties mapping one circle to the other; all common tangents pass through these centers." },
+          { t: "d", v: "O_{\\text{ext}}: \\; \\frac{O_1 X}{O_2 X} = \\frac{r_1}{r_2}" },
+          { t: "ex", title: "Example 4", v: "Two circles of radii 3 and 5 are externally tangent. Find the external center of similitude.—On the line of centers outside the smaller circle, with \\(O_1X/O_2X = 3/5\\): if the centers are distance 8 apart, the external center is 12 units from the center of the radius-3 circle." }
+        ]
+      },
+      { h: "5. Homothety in Problem Solving",
+        c: [
+          { t: "p", v: "Use homothety to: (1) relate a triangle to its median or orthic triangle, (2) reduce tangency problems to line-of-centers computations, (3) prove collinearity by showing points lie on the same homothety ray. A homothety maps circles to circles and preserves tangency." },
+          { t: "ex", title: "Example 5", v: "The incircle of \\(\\triangle ABC\\) is tangent to sides at \\(D, E, F\\). The excircle opposite \\(A\\) is the image of the incircle under the homothety centered at \\(A\\) with ratio \\(\\frac{r_a}{r}\\) (signed).<br><br>Both circles are tangent to \\(AB\\) and \\(AC\\), so their homothety center is the vertex \\(A\\) where the common tangents meet." }
+        ]
+      }]
   },
   {
     id: "geo7-prac",
@@ -2163,7 +2256,20 @@ const SECTIONS = [
           { t: "ex", title: "Example 3", v: "In \\(\\triangle ABC\\), points \\(D, E\\) on \\(AB\\), \\(AC\\) with \\(AD = AE = 2\\). The spiral similarity centered at \\(A\\) sends \\(AB\\) to \\(AC\\) if and only if \\(AB = AC\\) (ratio 1).<br><br>Here \\(AD/AE = 1\\) but \\(AB/AC\\) need not equal 1, so the map is not a spiral similarity unless the triangle is isosceles." }
         ]
       }
-    ]
+    ,
+      { h: "4. Spiral Similarity of Two Segments",
+        c: [
+          { t: "p", v: "For any two segments \\(AB\\) and \\(CD\\), there is a unique spiral similarity sending \\(A \\to C\\) and \\(B \\to D\\). Its center is the intersection of the circles through the four points that make \\(\\angle AXC = \\angle BXD\\) and ratio \\(AX/CX = BX/DX\\). If \\(A, B, C, D\\) are concyclic, the center is one of the two Miquel-type points." },
+          { t: "ex", title: "Example 4", v: "If \\(ABCD\\) is a cyclic quadrilateral, the spiral similarities sending \\(AB \\to DC\\) and \\(AD \\to BC\\) share the same center.<br><br>Their center is the Miquel point of the complete quadrilateral, and the two maps have reciprocal ratios." }
+        ]
+      },
+      { h: "5. Compositions of Spiral Similarities",
+        c: [
+          { t: "p", v: "The composition of two spiral similarities with centers \\(O_1, O_2\\), angles \\(\\alpha_1, \\alpha_2\\), and ratios \\(r_1, r_2\\) is a spiral similarity with angle \\(\\alpha_1 + \\alpha_2\\) and ratio \\(r_1 r_2\\) (possibly a rotation or translation in degenerate cases). Compose maps to transfer points around a configuration." },
+          { t: "d", v: "S_2 \\circ S_1: \\; \\text{angle } \\alpha_1 + \\alpha_2, \\; \\text{ratio } r_1 r_2" },
+          { t: "ex", title: "Example 5", v: "Composing a rotation by \\(90^\\circ\\) with itself gives a half-turn (\\(180^\\circ\\)), and the ratio \\(1 \\cdot 1 = 1\\).<br><br>Special case of the composition rule with equal angles and unit ratios." }
+        ]
+      }]
   },
   {
     id: "geo8-prac",
@@ -2216,7 +2322,20 @@ const SECTIONS = [
           { t: "ex", title: "Example 2", v: "Invert the configuration of two tangent circles at their point of tangency \\(T\\): they become two parallel lines. Conclude any circle tangent to both at \\(T\\) becomes a line parallel to those, proving tangency becomes parallelism.\u2014A standard technique for tangency problems." }
         ]
       }
-    ]
+    ,
+      { h: "4. Choosing the Inversion",
+        c: [
+          { t: "p", v: "Pick the inversion center to simplify the configuration: invert about a point where many circles pass through (they become lines), or about the tangency point of two circles (they become parallel lines). The radius only affects scale, so choose \\(r = 1\\) unless a specific circle must be fixed." },
+          { t: "ex", title: "Example 4", v: "Invert about the tangency point of two tangent circles. They become two parallel lines, and any circle tangent to both becomes a circle between the lines.<br><br>Tangency is preserved, so the problem reduces to a strip problem." }
+        ]
+      },
+      { h: "5. Inversion and Ptolemy",
+        c: [
+          { t: "p", v: "Inversion gives a quick proof of <b>Ptolemy’s theorem</b>: for a cyclic quadrilateral, \\(AC \\cdot BD = AB \\cdot CD + AD \\cdot BC\\). Invert about \\(A\\) with any radius; the cyclic points map to collinear points, and the distance formula for inverse points yields the identity." },
+          { t: "d", v: "AC \\cdot BD = AB \\cdot CD + AD \\cdot BC" },
+          { t: "ex", title: "Example 5", v: "Inverting a line not through the center gives a circle through the center; what is its diameter?<br><br>If the line is distance \\(d\\) from the inversion center and radius is \\(r\\), the image circle has diameter \\(r^2/d\\)." }
+        ]
+      }]
   },
   {
     id: "geo9-prac",
@@ -2269,7 +2388,28 @@ const SECTIONS = [
           { t: "ex", title: "Example 3", v: "Show \\((0, 1), (1, 0), (0, -1)\\) are concyclic using the complex criterion.\u2014They all lie on the unit circle: \\(|z| = 1\\) is a circle." }
         ]
       }
-    ]
+    ,
+      { h: "4. Lines and Circles in Coordinates",
+        c: [
+          { t: "p", v: "Line forms: point-slope \\(y - y_1 = m(x - x_1)\\), two-point, and general \\(Ax + By + C = 0\\). The circle with center \\((h,k)\\) and radius \\(r\\) is \\((x-h)^2 + (y-k)^2 = r^2\\). Distance from point \\((x_0, y_0)\\) to line \\(Ax + By + C = 0\\) is \\(\\frac{|Ax_0 + By_0 + C|}{\\sqrt{A^2 + B^2}}\\)." },
+          { t: "d", v: "d = \\frac{|Ax_0 + By_0 + C|}{\\sqrt{A^2 + B^2}}" },
+          { t: "ex", title: "Example 4", v: "Find the circle through \\((0,0), (4,0), (0,3)\\).<br><br>Right triangle: hypotenuse from \\((4,0)\\) to \\((0,3)\\), midpoint \\((2, 3/2)\\), radius \\(5/2\\)." }
+        ]
+      },
+      { h: "5. Barycentric Coordinates in Depth",
+        c: [
+          { t: "p", v: "A point with barycentrics \\((x:y:z)\\), \\(x+y+z=1\\), equals \\(P = xA + yB + zC\\) as a vector. On cevian \\(A D\\) with \\(D\\) on \\(BC\\), \\(D = (0 : m : n)\\). The incenter is \\((a : b : c)\\) and the centroid \\((1:1:1)\\). Ratios along a cevian convert to mass points." },
+          { t: "d", v: "P = xA + yB + zC, \\qquad I = \\frac{aA + bB + cC}{a+b+c}" },
+          { t: "ex", title: "Example 5", v: "If \\(D\\) is the midpoint of \\(BC\\), find where the cevian \\(AD\\) meets \\(BG\\) (G the centroid).<br><br>In barycentrics \\(AD\\) is \\((t : u : u)\\) and the median from \\(B\\) is \\((s : v : s)\\); intersection solves \\(t = s, u = v\\), giving the centroid \\((1:1:1)\\) at \\(2:1\\) from the vertex." }
+        ]
+      },
+      { h: "6. Complex Bashing Toolkit",
+        c: [
+          { t: "p", v: "Place the circumcircle on the unit circle. Then: reflection of \\(H\\) over a side's midpoint, the nine-point center \\(\\frac{a+b+c}{2} + \\dots\\), and orthocenter \\(h = a + b + c\\) (for points on the unit circle) come from vector algebra. Angle-bisector and perpendicular criteria reduce to ratios of complex numbers being real or purely imaginary." },
+          { t: "d", v: "h = a + b + c \\; (a, b, c \\text{ on the unit circle})" },
+          { t: "ex", title: "Example 6", v: "For \\(a, b, c\\) on the unit circle, verify \\(h = a + b + c\\) makes \\(AH \\perp BC\\).<br><br>\\(\\frac{h-a}{b-c} = \\frac{b+c}{b-c}\\); with \\(\\bar b = 1/b\\), \\(\\bar b c = \\frac{c}{b}\\), and \\(\\overline{\\frac{b+c}{b-c}} = -\\frac{b+c}{b-c}\\), so it is purely imaginary: perpendicular. ✓" }
+        ]
+      }]
   },
   {
     id: "coord-practice",
@@ -2334,7 +2474,26 @@ const SECTIONS = [
           { t: "ex", title: "Example 3", v: "In a triangle with inradius \\(r = 3\\) and nine-point radius \\(5\\), the incircle is internally tangent: distance between centers \\(= 5 - 3 = 2\\).<br><br>Feuerbach: centers are 2 apart." }
         ]
       }
-    ]
+    ,
+      { h: "4. The Simson Line",
+        c: [
+          { t: "p", v: "<b>Simson's theorem:</b> for a point \\(P\\) on the circumcircle of \\(\\triangle ABC\\), the feet of the perpendiculars from \\(P\\) to the three sides \\(AB, BC, CA\\) are collinear. The line is the <b>Simson line</b> of \\(P\\)." },
+          { t: "ex", title: "Example 4", v: "When is the Simson line of \\(P\\) a side of the triangle?<br><br>When \\(P\\) is a vertex: two of the feet coincide at that vertex and the third is the foot from it, so the Simson line is the side opposite." }
+        ]
+      },
+      { h: "5. Euler's Formula and Inequality",
+        c: [
+          { t: "p", v: "For a triangle with circumcenter \\(O\\), incenter \\(I\\), circumradius \\(R\\), inradius \\(r\\), and distance \\(d = OI\\): <b>Euler's formula</b> \\(OI^2 = R^2 - 2Rr\\). Since \\(OI^2 \\ge 0\\), this gives <b>Euler's inequality</b> \\(R \\ge 2r\\), with equality iff equilateral." },
+          { t: "d", v: "OI^2 = R^2 - 2Rr \\;\\Longrightarrow\\; R \\ge 2r" },
+          { t: "ex", title: "Example 5", v: "A triangle has \\(R = 5\\) and \\(r = 2\\). Find \\(OI\\).<br><br>\\(OI^2 = 25 - 20 = 5\\), so \\(OI = \\sqrt5\\)." }
+        ]
+      },
+      { h: "6. The Butterfly Theorem",
+        c: [
+          { t: "p", v: "<b>Butterfly theorem:</b> let \\(M\\) be the midpoint of a chord \\(PQ\\) of a circle, and draw chords \\(AB\\) and \\(CD\\) through \\(M\\). If \\(AD\\) meets \\(PQ\\) at \\(X\\) and \\(BC\\) meets \\(PQ\\) at \\(Y\\), then \\(MX = MY\\)." },
+          { t: "ex", title: "Example 6", v: "In the butterfly configuration, why is the result independent of how \\(AB, CD\\) are drawn?<br><br>Power of a point plus similar triangles force \\(MX = MY\\) purely from \\(PM = MQ\\), so the choice of chords is irrelevant." }
+        ]
+      }]
   },
   {
     id: "lemma-practice",
@@ -2399,7 +2558,27 @@ const SECTIONS = [
           { t: "ex", title: "Example 3", v: "Find the radius of the sphere inscribed in a cube of side 6.<br><br>Diameter \\(= 6\\), so radius \\(= 3\\)." }
         ]
       }
-    ]
+    ,
+      { h: "4. Scaling and Similar Solids",
+        c: [
+          { t: "p", v: "Scaling a solid by factor \\(k\\) multiplies all lengths by \\(k\\), all surface areas by \\(k^2\\), and all volumes by \\(k^3\\). Use this to transfer problems between similar solids." },
+          { t: "d", v: "L \\mapsto kL, \\qquad A \\mapsto k^2 A, \\qquad V \\mapsto k^3 V" },
+          { t: "ex", title: "Example 4", v: "The surface area of a sphere is \\(36\\pi\\). Find its volume.<br><br>\\(4\\pi r^2 = 36\\pi \\Rightarrow r = 3\\), volume \\(\\frac43 \\pi \\cdot 27 = 36\\pi\\)." }
+        ]
+      },
+      { h: "5. Polyhedra and Euler's Formula",
+        c: [
+          { t: "p", v: "For a convex polyhedron, <b>Euler's formula</b>: \\(V - E + F = 2\\) (vertices minus edges plus faces). This lets you compute a missing count and classify regular polyhedra (tetrahedron \\(4,6,4\\), cube \\(8,12,6\\), octahedron \\(6,12,8\\), etc.)." },
+          { t: "d", v: "V - E + F = 2" },
+          { t: "ex", title: "Example 5", v: "A convex polyhedron has 12 vertices and 30 edges. How many faces?<br><br>\\(12 - 30 + F = 2 \\Rightarrow F = 20\\) (the dodecahedron)." }
+        ]
+      },
+      { h: "6. Composite Solids and Tangency",
+        c: [
+          { t: "p", v: "For a sphere tangent to a cone, pass a plane through the axis: the section is a triangle with an inscribed circle, so 2D geometry applies. Composite solids sum (or subtract) volumes; surface area must exclude glued faces." },
+          { t: "ex", title: "Example 6", v: "A right circular cone with radius 3 and slant height 5 has a sphere inscribed in it. Find the sphere's radius.<br><br>Axial section is a 6–8–10 triangle (inradius \\(r = \\frac{2A}{P} = \\frac{2 \\cdot 24}{24} = 2\\)); the sphere radius is 2." }
+        ]
+      }]
   },
   {
     id: "geo3d-practice",
@@ -3102,7 +3281,28 @@ const SECTIONS = [
           { t: "ex", title: "Example 3", v: "Determine whether 5 is a residue mod 7.<br><br>\\((5/7) = -(7/5)\\) (both \\(\\equiv 3 \\pmod 4\\)) \\(= -(2/5) = -(-1) = 1\\): yes, 5 is a residue mod 7 (\\(4^2 = 16 \\equiv 5\\))." }
         ]
       }
-    ]
+    ,
+      { h: "4. Symbol Arithmetic and Supplements",
+        c: [
+          { t: "p", v: "The Legendre symbol is multiplicative: \\((ab/p) = (a/p)(b/p)\\). The supplements are \\((-1/p) = (-1)^{(p-1)/2}\\) and \\((2/p) = (-1)^{(p^2-1)/8}\\). These let you evaluate symbols without listing squares." },
+          { t: "d", v: "\\left(\\frac{-1}{p}\\right) = (-1)^{(p-1)/2}, \\qquad \\left(\\frac{2}{p}\\right) = (-1)^{(p^2-1)/8}" },
+          { t: "ex", title: "Example 4", v: "Evaluate \\((18/7)\\).<br><br>\\(18 \\equiv 4\\), and \\(4 = 2^2\\) is a residue: \\((18/7) = 1\\)." }
+        ]
+      },
+      { h: "5. Gauss's Lemma",
+        c: [
+          { t: "p", v: "<b>Gauss's lemma:</b> for an odd prime \\(p\\), consider \\(a, 2a, \\ldots, \\frac{p-1}{2}a \\pmod p\\) reduced to the least residues of smallest absolute value. If exactly \\(\\mu\\) of them are negative, then \\((a/p) = (-1)^\\mu\\). This is a powerful way to compute symbols." },
+          { t: "d", v: "\\left(\\frac{a}{p}\\right) = (-1)^{\\mu}" },
+          { t: "ex", title: "Example 5", v: "Use Gauss's lemma to compute \\((3/7)\\).<br><br>Multiples: \\(3, 6 \\equiv -1, 9 \\equiv 2\\). As least absolute residues: \\(3, -1, 2\\); one negative, so \\((3/7) = -1\\)." }
+        ]
+      },
+      { h: "6. Solving Quadratic Congruences",
+        c: [
+          { t: "p", v: "If \\(a\\) is a residue mod \\(p\\), then \\(x^2 \\equiv a \\pmod p\\) has exactly two solutions \\(\\pm x_0\\). For \\(p \\equiv 3 \\pmod 4\\) a square root is \\(a^{(p+1)/4}\\). Systems across several moduli combine by the CRT." },
+          { t: "d", v: "p \\equiv 3 \\;(\\bmod 4): \\quad x \\equiv \\pm a^{(p+1)/4} \\;(\\bmod p)" },
+          { t: "ex", title: "Example 6", v: "Solve \\(x^2 \\equiv 5 \\pmod{11}\\).<br><br>Check \\(5^2 = 25 \\equiv 3, 4^2 = 16 \\equiv 5\\): solutions \\(x \\equiv \\pm 4 \\equiv 4, 7\\)." }
+        ]
+      }]
   },
   {
     id: "qr-practice",
@@ -3167,7 +3367,28 @@ const SECTIONS = [
           { t: "ex", title: "Example 3", v: "Solve \\(2^x \\equiv 3 \\pmod 7\\) using the powers of 2 (a primitive root mod 7).<br><br>\\(2^1=2, 2^2=4, 2^3=1, 2^4=2, 2^5=4, 2^6=1\\)... wait, 2 has order 3. Use primitive root 3: \\(3^1=3\\), so \\(x \\equiv 1\\)." }
         ]
       }
-    ]
+    ,
+      { h: "4. Properties of the Order",
+        c: [
+          { t: "p", v: "The order satisfies: \\(a^b \\equiv 1 \\pmod m \\iff \\operatorname{ord}_m(a) \\mid b\\), and \\(\\operatorname{ord}_m(a^k) = \\frac{\\operatorname{ord}_m(a)}{\\gcd(\\operatorname{ord}_m(a), k)}\\). The order always divides \\(\\varphi(m)\\)." },
+          { t: "d", v: "\\operatorname{ord}_m(a^k) = \\frac{\\operatorname{ord}_m(a)}{\\gcd(\\operatorname{ord}_m(a), k)}" },
+          { t: "ex", title: "Example 4", v: "Given \\(\\operatorname{ord}_7(3) = 6\\), find \\(\\operatorname{ord}_7(9)\\).<br><br>\\(9 = 3^2\\), so order \\(= 6/\\gcd(6,2) = 3\\)." }
+        ]
+      },
+      { h: "5. Computing Orders and Finding Generators",
+        c: [
+          { t: "p", v: "To find \\(\\operatorname{ord}_m(a)\\), it suffices to check the divisors of \\(\\varphi(m)\\). A number is a primitive root iff \\(a^{\\varphi(m)/q} \\not\\equiv 1\\) for every prime \\(q \\mid \\varphi(m)\\). This avoids testing every smaller power." },
+          { t: "d", v: "g \\text{ primitive root } \\iff g^{\\varphi(m)/q} \\not\\equiv 1 \\text{ for all primes } q \\mid \\varphi(m)" },
+          { t: "ex", title: "Example 5", v: "Show 2 is a primitive root mod 11.<br><br>\\(\\varphi(11) = 10\\), prime factors \\(2, 5\\). \\(2^5 = 32 \\equiv 10 \\neq 1\\), \\(2^2 = 4 \\neq 1\\): yes." }
+        ]
+      },
+      { h: "6. Subgroups and Discrete Logarithms",
+        c: [
+          { t: "p", v: "The units mod \\(m\\) form a group; if \\(g\\) is a primitive root, every unit is \\(g^x\\) for a unique \\(x \\in [0, \\varphi(m))\\): the <b>discrete logarithm</b>. There are \\(\\varphi(\\varphi(m))\\) primitive roots, namely \\(g^k\\) with \\(\\gcd(k, \\varphi(m)) = 1\\)." },
+          { t: "d", v: "\\#\\{\\text{primitive roots mod } m\\} = \\varphi(\\varphi(m))" },
+          { t: "ex", title: "Example 6", v: "Using \\(g = 2\\) as a primitive root mod 11, solve \\(2^x \\equiv 7\\).<br><br>Powers: \\(2^1=2, 2^2=4, 2^3=8, 2^4=5, 2^5=10, 2^6=9, 2^7=7\\), so \\(x \\equiv 7 \\pmod{10}\\)." }
+        ]
+      }]
   },
   {
     id: "order-practice",
@@ -3234,7 +3455,22 @@ const SECTIONS = [
           { t: "ex", title: "Example 4", v: "How many integers from 1 to 100 are divisible by 2 or 3?<br><br>\\(50 + 33 - 16 = 67\\)." }
         ]
       }
-    ]
+    ,
+      { h: "4. Casework and Complementary Counting",
+        c: [
+          { t: "p", v: "When a direct count is complicated, count the <b>complement</b> and subtract from the total: <b>complementary counting</b>. Otherwise split the problem into disjoint cases that cover everything exactly once. Always check the cases are disjoint and exhaustive." },
+          { t: "ex", title: "Example 4", v: "How many three-digit numbers contain at least one \\(7\\)?<br><br>Total \\(9 \\cdot 10 \\cdot 10 = 900\\). None contain 7: \\(8 \\cdot 9 \\cdot 9 = 648\\). Answer \\(900 - 648 = 252\\)." },
+          { t: "ex", title: "Example 5", v: "A committee of 3 from 10 people must include at least one of two specified members. Count by cases.<br><br>Both in: \\(\\binom82 = 28\\). Exactly one of the two in: \\(2 \\cdot \\binom82 = 56\\). Total \\(84\\)." }
+        ]
+      },
+      { h: "5. Circular Arrangements and Derangements",
+        c: [
+          { t: "p", v: "Arranging \\(n\\) distinct objects on a circle gives \\((n-1)!\\) arrangements (fix one object as a reference). A <b>derangement</b> is a permutation with no fixed point; the number is \\(D_n = n! \\sum_{k=0}^{n} \\frac{(-1)^k}{k!}\\), computed by inclusion–exclusion." },
+          { t: "d", v: "D_n = n! \\sum_{k=0}^{n} \\frac{(-1)^k}{k!}" },
+          { t: "ex", title: "Example 6", v: "In how many ways can 5 people sit at a round table?<br><br>\\((5-1)! = 24\\)." },
+          { t: "ex", title: "Example 7", v: "Find the number of derangements of 4 objects.<br><br>\\(D_4 = 24 - 24 + 12 - 4 + 1 = 9\\)." }
+        ]
+      }]
   },
   {
     id: "comb1-practice",
@@ -3288,7 +3524,21 @@ const SECTIONS = [
           { t: "ex", title: "Example 4", v: "How many integers from 1 to 100 must you pick to guarantee two with a difference of exactly 9?<br><br>Pair the numbers \\((1,10),(2,11),\\ldots,(91,100)\\) \u2014 there are 91 pairs\u2026 smaller pigeonhole: among 10 consecutive integers, groups of 10 contain pairs at distance 9 in 9 pairs plus leftovers. Actually pick 51: among 51 numbers from 1\u2013100, two differ by \\(\\le 1\\)? Standard result: 51 numbers guarantee two differ by 1.\u2014this is a known exercise; the answer 51 works." }
         ]
       }
-    ]
+    ,
+      { h: "4. Pigeonhole with Numbers",
+        c: [
+          { t: "p", v: "Residue classes and parity create pigeonholes. Write each number as \\(2^k \\cdot m\\) with \\(m\\) odd; among \\(n+1\\) integers \\(\\le 2n\\), two share an odd part, so one divides the other. Prefix sums give sum-difference results." },
+          { t: "ex", title: "Example 4", v: "Among any \\(n+1\\) integers from \\(1, \\ldots, 2n\\), one divides another.<br><br>Each number is \\(2^k \\cdot m\\) with \\(m\\) odd \\(\\le 2n\\); only \\(n\\) odd parts exist, so two share \\(m\\), and the smaller divides the larger." },
+          { t: "ex", title: "Example 5", v: "Among any 5 integers, two have a difference divisible by 4.<br><br>Four residue classes mod 4, five numbers: pigeonhole." }
+        ]
+      },
+      { h: "5. Geometric Pigeonhole",
+        c: [
+          { t: "p", v: "Partition a region into pieces smaller than the desired bound, then pigeonhole points into pieces. For example, dividing a \\(2 \\times 2\\) square into 4 unit squares forces two points within \\(\\sqrt2\\); sectors of a circle force two points within the chord length." },
+          { t: "ex", title: "Example 6", v: "Five points in a unit square: two are within \\(\\sqrt2/2\\).<br><br>Divide into four \\(1/2\\) squares; two points share one, whose diagonal is \\(\\sqrt2/2\\)." },
+          { t: "ex", title: "Example 7", v: "Seven points in a circle of radius 1: two within distance 1.<br><br>Six sectors of angle \\(60^\\circ\\); each sector fits inside an equilateral triangle of side 1, so two points land within distance \\(\\le 1\\)." }
+        ]
+      }]
   },
   {
     id: "comb2-practice",
@@ -3340,7 +3590,21 @@ const SECTIONS = [
           { t: "ex", title: "Example 3", v: "A pile has \\(n\\) stones. A move splits a pile into two unequal parts (or halves it exactly). Show that any legal sequence terminates.<br><br>Define the monovariant as the number of piles: it strictly increases each move and is bounded by \\(n\\), so the process stops." }
         ]
       }
-    ]
+    ,
+      { h: "4. Invariants in Games and Processes",
+        c: [
+          { t: "p", v: "Many problems ask whether a configuration is reachable. Find a quantity that every move leaves unchanged (an <b>invariant</b>) and show the target changes it. Common invariants: parity, alternating sums, sums of signs, and values modulo 2 or 3." },
+          { t: "ex", title: "Example 4", v: "A token moves among four corners of a square, each move going to an adjacent corner. Can it return to start in an odd number of moves?<br><br>The checkerboard color alternates each move, so after an odd number of moves it is on the opposite color: impossible." },
+          { t: "ex", title: "Example 5", v: "Numbers \\((a,b,c)\\) are replaced by \\((a+b, b+c, c+a)\\). The sum doubles each time, and \\((a+b+c)\\) never becomes \\((0,0,0)\\) unless it already was \\((0,0,0)\\).<br><br>Sum is a monovariant-like invariant scale: nonzero triples never reach zero." }
+        ]
+      },
+      { h: "5. Termination via Monovariants",
+        c: [
+          { t: "p", v: "A <b>monovariant</b> is a quantity that always increases (or always decreases). If it is bounded, the process must terminate. Pick a natural measure — sum, product, weighted sum, or number of inversions — that moves monotonically with each step." },
+          { t: "ex", title: "Example 6", v: "A process replaces \\((a, b)\\) with \\((a - b, 2b)\\) when \\(a > b\\). The sum \\(a + b\\) increases by \\(b > 0\\) but need not terminate; instead track a bounded monovariant like the ratio to prove termination conditions.<br><br>This is why bounds matter: monotonic alone is not enough." },
+          { t: "ex", title: "Example 7", v: "In a toppling game where each move moves one chip rightward among finitely many boxes, the weighted sum \\(\\sum \\text{box}\\, \\cdot \\text{chips}\\) strictly increases but is bounded above, so the game stops.<br><br>Bounded + monotone integer \\(\\Rightarrow\\) only finitely many values." }
+        ]
+      }]
   },
   {
     id: "comb3-practice",
@@ -3394,7 +3658,23 @@ const SECTIONS = [
           { t: "ex", title: "Example 3", v: "Prove \\(\\binom{n}{0} + \\binom{n}{1} + \\cdots + \\binom{n}{n} = 2^n\\) by double counting subsets by size. Summing over all \\(k\\) counts each subset once." }
         ]
       }
-    ]
+    ,
+      { h: "4. Binomial Identities by Counting",
+        c: [
+          { t: "p", v: "The binomial theorem \\((1+x)^n = \\sum \\binom{n}{k} x^k\\) yields identities by specialization: \\(\\sum_k \\binom{n}{k} = 2^n\\) (set \\(x = 1\\)), \\(\\sum_k (-1)^k \\binom{n}{k} = 0\\) (set \\(x = -1\\), \\(n > 0\\)), and \\(\\sum_k k\\binom{n}{k} = n 2^{n-1}\\) (differentiate)." },
+          { t: "d", v: "\\sum_{k} \\binom{n}{k} = 2^n, \\qquad \\sum_k k\\binom{n}{k} = n 2^{n-1}" },
+          { t: "ex", title: "Example 4", v: "Count subsets of an \\(n\\)-set two ways to prove \\(\\sum_k \\binom{n}{k} = 2^n\\).<br><br>Left: total subsets. Right: \\(\\binom{n}{k}\\) subsets of each size \\(k\\), summed." },
+          { t: "ex", title: "Example 5", v: "Prove \\(\\sum_k k\\binom{n}{k} = n 2^{n-1}\\) combinatorially.<br><br>Left: choose a subset and a distinguished element. Right: choose the distinguished element (\\(n\\) ways) then any subset of the rest (\\(2^{n-1}\\))." }
+        ]
+      },
+      { h: "5. Vandermonde and Related Identities",
+        c: [
+          { t: "p", v: "<b>Vandermonde's identity:</b> \\(\\sum_k \\binom{m}{k}\\binom{n}{r-k} = \\binom{m+n}{r}\\), proven by choosing \\(r\\) elements from a set split into parts of sizes \\(m\\) and \\(n\\). The hockey stick \\(\\sum_{k=r}^{n} \\binom{k}{r} = \\binom{n+1}{r+1}\\) sums along a column." },
+          { t: "d", v: "\\sum_k \\binom{m}{k}\\binom{n}{r-k} = \\binom{m+n}{r}" },
+          { t: "ex", title: "Example 6", v: "Evaluate \\(\\sum_k \\binom{n}{k}^2\\).<br><br>By Vandermonde with \\(m = n = r\\), it equals \\(\\binom{2n}{n}\\)." },
+          { t: "ex", title: "Example 7", v: "Prove \\(\\sum_{k=0}^{n} \\binom{k}{2} = \\binom{n+1}{3}\\).<br><br>Hockey stick: summing \\(\\binom{k}{2}\\) for \\(k = 2, \\ldots, n\\) gives \\(\\binom{n+1}{3}\\)." }
+        ]
+      }]
   },
   {
     id: "comb4-practice",
@@ -3447,7 +3727,22 @@ const SECTIONS = [
           { t: "ex", title: "Example 3", v: "Number of nonnegative solutions to \\(x_1 + x_2 + x_3 = 5\\): coefficient of \\(x^5\\) in \\((1-x)^{-3}\\), which is \\(\\binom{5+3-1}{2} = 21\\)." }
         ]
       }
-    ]
+    ,
+      { h: "4. Coefficient Extraction Techniques",
+        c: [
+          { t: "p", v: "To read a coefficient, expand or manipulate the generating function: factor and use geometric series, apply derivatives (multiplying by \\(k\\) or \\(k^2\\) shifts factors), or use partial fractions. For \\(\\frac{1}{1 - ax}\\), the coefficient of \\(x^n\\) is \\(a^n\\)." },
+          { t: "d", v: "[x^n] \\frac{1}{1 - ax} = a^n" },
+          { t: "ex", title: "Example 4", v: "Find the number of ways to distribute \\(n\\) identical balls into 3 boxes with box 1 empty.<br><br>GF: \\((1 + x + x^2 + \\cdots)^2 = \\frac{1}{(1-x)^2}\\), coefficient of \\(x^n\\) is \\(n+1\\)." },
+          { t: "ex", title: "Example 5", v: "Find the coefficient of \\(x^5\\) in \\(\\frac{1}{1-2x}\\).<br><br>\\(2^5 = 32\\)." }
+        ]
+      },
+      { h: "5. Generating Functions in Action",
+        c: [
+          { t: "p", v: "Represent each restriction by a factor. Dice sums: the number of ways two dice show total \\(n\\) is \\([x^n](x + x^2 + \\cdots + x^6)^2\\). Coin counts with value constraints: factor per denomination. Then extract the coefficient." },
+          { t: "ex", title: "Example 6", v: "Ways to roll a total of 7 with two standard dice?<br><br>\\([x^7](x + \\cdots + x^6)^2 = 6\\)." },
+          { t: "ex", title: "Example 7", v: "Ways to make change for 10 cents using pennies and nickels.<br><br>GF \\(\\frac{1}{(1-x)(1-x^5)}\\); the coefficient of \\(x^{10}\\) is 3 (0, 1, or 2 nickels)." }
+        ]
+      }]
   },
   {
     id: "comb5-practice",
@@ -3501,7 +3796,22 @@ const SECTIONS = [
           { t: "ex", title: "Example 3", v: "Solve \\(a_n = 2a_{n-1} + 1\\), \\(a_0 = 0\\).<br><br>\\(a_n + 1 = 2(a_{n-1}+1) = 2^n\\), so \\(a_n = 2^n - 1\\)." }
         ]
       }
-    ]
+    ,
+      { h: "4. Nonhomogeneous Recurrences",
+        c: [
+          { t: "p", v: "For \\(a_n = p a_{n-1} + q a_{n-2} + f(n)\\), solve the homogeneous part, then add a <b>particular solution</b> of the same form as \\(f(n)\\) (constant, linear, or exponential). The general solution is homogeneous + particular." },
+          { t: "ex", title: "Example 4", v: "Solve \\(a_n = 2a_{n-1} + 1\\), \\(a_0 = 0\\).<br><br>Particular constant \\(c\\): \\(c = 2c + 1 \\Rightarrow c = -1\\). Homogeneous \\(\\alpha 2^n\\). General \\(a_n = \\alpha 2^n - 1\\); \\(a_0 = 0 \\Rightarrow \\alpha = 1\\), so \\(a_n = 2^n - 1\\)." },
+          { t: "ex", title: "Example 5", v: "Solve \\(a_n = a_{n-1} + 2n\\), \\(a_0 = 0\\).<br><br>Particular \\(An^2 + Bn\\): \\(An^2 + Bn = A(n-1)^2 + B(n-1) + 2n\\). Match: \\(A = 1, B = 1\\). General \\(a_n = n^2 + n + \\alpha\\); \\(a_0 = 0 \\Rightarrow \\alpha = 0\\). So \\(a_n = n(n+1)\\)." }
+        ]
+      },
+      { h: "5. Generating Functions for Recurrences",
+        c: [
+          { t: "p", v: "Let \\(G(x) = \\sum_{n \\ge 0} a_n x^n\\). Convert the recurrence into an equation for \\(G\\), solve for \\(G\\) as a rational function, and read off coefficients with partial fractions. This automatically handles initial conditions." },
+          { t: "d", v: "G(x) = \\sum_{n \\ge 0} a_n x^n \\;\\Longrightarrow\\; \\text{algebraic equation for } G" },
+          { t: "ex", title: "Example 6", v: "Solve \\(a_n = a_{n-1} + 2\\), \\(a_0 = 1\\) with a generating function.<br><br>\\(G = 1 + xG + 2x/(1-x)\\). So \\(G(1-x) = 1 + 2x/(1-x)\\), giving \\(G = \\frac{1+x}{(1-x)^2}\\), coefficients \\(2n + 1\\): \\(a_n = 2n+1\\)." },
+          { t: "ex", title: "Example 7", v: "Show the Fibonacci recurrence yields \\(G = \\frac{x}{1 - x - x^2}\\) for \\(F_1 = F_2 = 1\\).<br><br>From \\(F_n = F_{n-1} + F_{n-2}\\) one derives exactly that rational form." }
+        ]
+      }]
   },
   {
     id: "comb6-practice",
