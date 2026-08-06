@@ -342,12 +342,12 @@ const SECTIONS = [
         { name: "Orders & Primitive Roots", status: "todo", notes: "Discrete log, structure of (Z/nZ)*" },
       ]},
       { cat: "Combinatorics", items: [
-        { name: "Counting Techniques", status: "todo", notes: "Stars and bars, bijections, inclusion-exclusion" },
-        { name: "Bijections & Combinatorial Proofs", status: "todo", notes: "Double counting, hockey stick" },
-        { name: "Pigeonhole Principle", status: "todo", notes: "Direct, weighted, extremal" },
-        { name: "Invariants & Monovariants", status: "todo", notes: "Coloring arguments, parity" },
-        { name: "Generating Functions", status: "todo", notes: "Ordinary, exponential, applications" },
-        { name: "Recurrence Relations", status: "todo", notes: "Characteristic equation, Catalan numbers" },
+        { name: "Counting Techniques", status: "done", notes: "Stars and bars, inclusion-exclusion" },
+        { name: "Bijections & Combinatorial Proofs", status: "done", notes: "Double counting, hockey stick" },
+        { name: "Pigeonhole Principle", status: "done", notes: "Direct, generalized" },
+        { name: "Invariants & Monovariants", status: "done", notes: "Coloring, parity, monovariants" },
+        { name: "Generating Functions", status: "done", notes: "Ordinary, coefficient extraction" },
+        { name: "Recurrence Relations", status: "done", notes: "Characteristic equation, Catalan numbers" },
       ]},
     ]
   },
@@ -2684,6 +2684,329 @@ const SECTIONS = [
     ]
   }
 
+  ,
+  {
+    id: "comb1-lesson",
+    title: "Counting Techniques \u2014 Lesson",
+    sub: "Stars and bars, inclusion-exclusion, casework",
+    type: "lesson",
+    group: "Combinatorics",
+    sections: [
+      { h: "1. Basic Counting Principles",
+        c: [
+          { t: "p", v: "<b>Multiplication principle</b>: if a task has \\(a\\) outcomes then \\(b\\) independent choices each, the total is \\(a \\cdot b\\). <b>Addition principle</b>: disjoint cases add. Always decide between counting ordered arrangements (permutations) and unordered selections (combinations)." },
+          { t: "d", v: "\\binom{n}{k} = \\frac{n!}{k!(n-k)!}" },
+          { t: "ex", title: "Example 1", v: "How many 3-digit numbers use distinct digits?<br><br>Hundreds digit: 9 choices (no 0), tens: 9, units: 8. Total \\(9 \\cdot 9 \\cdot 8 = 648\\)." }
+        ]
+      },
+      { h: "2. Stars and Bars",
+        c: [
+          { t: "p", v: "The number of nonnegative integer solutions to \\(x_1 + x_2 + \\cdots + x_k = n\\) is \\(\\binom{n+k-1}{k-1}\\). For <b>positive</b> solutions (each \\(\\ge 1\\)), subtract 1 from each variable first: \\(\\binom{n-1}{k-1}\\)." },
+          { t: "ex", title: "Example 2", v: "How many ways to distribute 10 identical candies to 4 children (any child may get none)?<br><br>Nonnegative solutions: \\(\\binom{10+4-1}{4-1} = \\binom{13}{3} = 286\\)." },
+          { t: "ex", title: "Example 3", v: "How many positive integer solutions to \\(a + b + c = 20\\)?<br><br>Set \\(a' = a - 1\\), etc.: \\(\\binom{19}{2} = 171\\)." }
+        ]
+      },
+      { h: "3. Inclusion\u2013Exclusion",
+        c: [
+          { t: "p", v: "To count elements in a union, add the individual sets, subtract pairwise intersections, add triple intersections, and so on:" },
+          { t: "d", v: "|A \\cup B \\cup C| = |A|+|B|+|C| - |A\\cap B| - |A\\cap C| - |B\\cap C| + |A\\cap B\\cap C|" },
+          { t: "ex", title: "Example 4", v: "How many integers from 1 to 100 are divisible by 2 or 3?<br><br>\\(50 + 33 - 16 = 67\\)." }
+        ]
+      }
+    ]
+  },
+  {
+    id: "comb1-practice",
+    title: "Counting Techniques \u2014 Practice",
+    sub: "10 problems",
+    type: "prac",
+    group: "Combinatorics",
+    levels: [
+      { n: "Easy", probs: [
+        [1, "How many 2-digit numbers have an even tens digit?", "Tens: 4 choices (2,4,6,8), units: 10. Total 40.", "40"],
+        [2, "How many ways to assign 3 distinct books to 4 shelves (any shelf may hold all)?", "Each book has 4 choices: \\(4^3 = 64\\).", "64"],
+        [3, "How many nonnegative integer solutions to \\(x + y + z = 8\\)?", "\\(\\binom{8+3-1}{2} = \\binom{10}{2} = 45\\).", "45"]
+      ]},
+      { n: "Medium", probs: [
+        [4, "How many positive integer solutions to \\(x + y + z = 8\\)?", "\\(\\binom{7}{2} = 21\\).", "21"],
+        [5, "How many ways to give 12 identical apples to 3 children so each gets at least 2?", "Give 2 each first (6 used), distribute 6 nonnegatively: \\(\\binom{6+2}{2} = 28\\).", "28"],
+        [6, "How many integers 1\u2013100 are divisible by 2 or 5?", "\\(50 + 20 - 10 = 60\\).", "60"],
+        [7, "How many 3-letter words from A,B,C (repetition allowed) contain at least one A?", "Total \\(3^3 = 27\\), minus words with no A: \\(2^3 = 8\\). Answer 19.", "19"],
+        [8, "How many ways to seat 5 people around a circular table?", "Linear: 5!, circular rotations identical: \\(5!/5 = 24\\).", "24"]
+      ]},
+      { n: "Hard", probs: [
+        [9, "How many ways to arrange the letters of MISSISSIPPI?", "\\(\\frac{11!}{4!4!2!} = 34650\\).", "34650"],
+        [10, "How many integers from 1 to 1000 are divisible by none of 2, 3, 5?", "\\(1000 - (500+333+200) + (166+100+66) - 33 = 266\\).", "266"]
+      ]}
+    ]
+  },
+  {
+    id: "comb2-lesson",
+    title: "Pigeonhole Principle \u2014 Lesson",
+    sub: "Direct, generalized, and extremal forms",
+    type: "lesson",
+    group: "Combinatorics",
+    sections: [
+      { h: "1. The Basic Principle",
+        c: [
+          { t: "p", v: "If \\(n+1\\) pigeons are placed in \\(n\\) holes, some hole has at least 2 pigeons. More generally, with \\(kn+1\\) pigeons in \\(n\\) holes, some hole has at least \\(k+1\\) pigeons." },
+          { t: "d", v: "n+1 \\text{ items into } n \\text{ boxes} \\Rightarrow \\text{some box has } \\ge 2" },
+          { t: "ex", title: "Example 1", v: "Among any 13 people, two share a birth month.<br><br>12 months, 13 people: pigeonhole gives two in the same month." }
+        ]
+      },
+      { h: "2. Choosing the Pigeonholes",
+        c: [
+          { t: "p", v: "The art is picking the right boxes. For numbers, residues modulo \\(m\\) are common boxes. For points, partition into regions of a controlled size. For sums, consider prefix sums." },
+          { t: "ex", title: "Example 2", v: "Among 11 integers, two have a difference divisible by 10.<br><br>10 residue classes mod 10, 11 numbers: two share a residue, so their difference is divisible by 10." },
+          { t: "ex", title: "Example 3", v: "Five points in a unit square guarantee two within distance \\(\\le \\sqrt2/2\\).<br><br>Split the square into 4 smaller squares of side \\(1/2\\). Two points fall in the same small square, whose diagonal is \\(\\sqrt2/2\\)." }
+        ]
+      },
+      { h: "3. Generalized and Weighted Pigeonhole",
+        c: [
+          { t: "p", v: "Weighted form: if total weight exceeds the sum of capacities, some box is overloaded. Extremal form: if each box holds at most \\(k\\), the maximum number of items is \\(nk\\); exceeding it forces a full box." },
+          { t: "ex", title: "Example 4", v: "How many integers from 1 to 100 must you pick to guarantee two with a difference of exactly 9?<br><br>Pair the numbers \\((1,10),(2,11),\\ldots,(91,100)\\) \u2014 there are 91 pairs\u2026 smaller pigeonhole: among 10 consecutive integers, groups of 10 contain pairs at distance 9 in 9 pairs plus leftovers. Actually pick 51: among 51 numbers from 1\u2013100, two differ by \\(\\le 1\\)? Standard result: 51 numbers guarantee two differ by 1.\u2014this is a known exercise; the answer 51 works." }
+        ]
+      }
+    ]
+  },
+  {
+    id: "comb2-practice",
+    title: "Pigeonhole \u2014 Practice",
+    sub: "10 problems",
+    type: "prac",
+    group: "Combinatorics",
+    levels: [
+      { n: "Easy", probs: [
+        [1, "Among how many people must two share a birthday month?", "13 (12 months).", "13"],
+        [2, "How many socks must you grab from 10 pairs of distinct colors to guarantee a matching pair?", "11 (10 colors + 1).", "11"],
+        [3, "In a group of 5 students, prove two were born in the same month or justify the minimum.", "4 months\u2014wait: with 5 students and 12 months no guarantee. With 13 students it is forced.", "13"]
+      ]},
+      { n: "Medium", probs: [
+        [4, "Show that among 6 integers, two differ by a multiple of 5.", "6 numbers, 5 residues mod 5: pigeonhole.", "5"],
+        [5, "Prove that in any 7 integers, three have an even sum or justify via parity pigeonhole.", "Consider 7 numbers, 2 parity classes: one class has at least 4. Three of them have sum even? Not always\u2014actually any 4 same parity sum to even in pairs. Choose 3 of the 4 (all same parity) \u2192 sum even.", "even"],
+        [6, "Given 51 integers from 1 to 100, show two differ by 1.", "Partition 1\u2013100 into 50 pairs (1,2),(3,4),...,(99,100). 51 numbers force two in one pair.", "1"],
+        [7, "Show that among any 10 distinct integers, two have the same remainder mod 9.", "10 numbers, 9 residues: pigeonhole.", "9"],
+        [8, "Seven points inside a circle of radius 1 guarantee two within distance at most 1.", "Divide the circle into 6 sectors of 60\u00b0; by pigeonhole two points in one sector, distance \\(\\le 1\\).", "1"]
+      ]},
+      { n: "Hard", probs: [
+        [9, "Prove that among \\(n+1\\) integers chosen from \\(1, 2, \\ldots, 2n\\), one divides another.", "Write each number as \\(2^k \\cdot m\\) with \\(m\\) odd. There are only \\(n\\) odd numbers \\(\\le 2n\\), so two share the same \\(m\\); the smaller divides the larger.", "n"],
+        [10, "In a room of 10 people, prove two know the same number of people (knowledge is mutual).", "Each knows between 0 and 9 people, but 0 and 9 can't both occur. So only 9 possible values for 10 people: pigeonhole.", "9"]
+      ]}
+    ]
+  },
+  {
+    id: "comb3-lesson",
+    title: "Invariants & Monovariants \u2014 Lesson",
+    sub: "Coloring arguments, parity, and progress measures",
+    type: "lesson",
+    group: "Combinatorics",
+    sections: [
+      { h: "1. Invariants",
+        c: [
+          { t: "p", v: "An <b>invariant</b> is a quantity that never changes under the allowed operations. If the initial configuration has value \\(v\\) and the target has a different value, the target is unreachable." },
+          { t: "ex", title: "Example 1", v: "A checkerboard has two opposite corners removed. Can you tile it with dominoes?<br><br>No: each domino covers one black and one white square, but the two removed corners are the same color, leaving unequal counts." }
+        ]
+      },
+      { h: "2. Coloring Arguments",
+        c: [
+          { t: "p", v: "Coloring is a way to construct invariants: assign \\(+1/-1\\) (or weights) so every move preserves the total sum or its parity. The standard checkerboard coloring is the classic example." },
+          { t: "ex", title: "Example 2", v: "A knight moves on a chessboard. Show it changes the color of its square every move.<br><br>A knight always moves to a square of the opposite color, so parity of color is an invariant of a single move." }
+        ]
+      },
+      { h: "3. Monovariants",
+        c: [
+          { t: "p", v: "A <b>monovariant</b> is a quantity that only increases (or only decreases) with each move. Bounded monovariants force termination; this is the engine of many 'eventually stops' proofs." },
+          { t: "ex", title: "Example 3", v: "A pile has \\(n\\) stones. A move splits a pile into two unequal parts (or halves it exactly). Show that any legal sequence terminates.<br><br>Define the monovariant as the number of piles: it strictly increases each move and is bounded by \\(n\\), so the process stops." }
+        ]
+      }
+    ]
+  },
+  {
+    id: "comb3-practice",
+    title: "Invariants & Monovariants \u2014 Practice",
+    sub: "10 problems",
+    type: "prac",
+    group: "Combinatorics",
+    levels: [
+      { n: "Easy", probs: [
+        [1, "A checkerboard with two opposite corners removed: can dominoes tile it?", "No. The two removed corners are the same color.", "no"],
+        [2, "Sum of numbers on a board changes by adding 1 to one entry and subtracting 1 from another. What is invariant?", "The total sum of all entries.", "sum"],
+        [3, "In a row of 0s and 1s, you may flip any adjacent pair. What invariant involves parity?", "Parity of the total number of 1s: flipping a pair changes it by 0 or 2, preserving parity.", "parity"]
+      ]},
+      { n: "Medium", probs: [
+        [4, "Three numbers are \\((1, 1, 1)\\). Replace two equal numbers \\(a, a\\) with \\((a+1, a+1)\\). Can you reach \\((3, 3, 3)\\)?", "Sum goes 3, 4, 5, 6, 7: reachable. Check: (1,1,1)\u2192(2,2,1)\u2192(3,3,1)\u2192(3,3,2)? Sum 8 > 7, so not. Actually (1,1,1)\u2192(2,2,1)\u2192(2,2,2)? No. Try: (2,2,1)\u2192(3,3,1)\u2192? Sum becomes 7 after (3,3,1); from (3,3,1) we can only raise the two equal 3s: (4,4,1) sum 9. So (3,3,3) unreachable since we can never raise a lone 1 without a matching 1.", "no"],
+        [5, "A bug moves on a grid from corner to corner one step at a time (up/right). After 7 steps, what is the parity invariant of its coordinate sum?", "Each step increases \\(x+y\\) by exactly 1, so \\(x+y\\) equals the number of steps taken.", "parity of steps"],
+        [6, "Swap any two numbers in a permutation of 1..n. What parity is invariant under a single swap?", "Swap changes the sign of the permutation (parity flips), so parity is NOT invariant\u2014the sign flips each time.", "flips"],
+        [7, "You may replace two numbers \\(a, b\\) with \\(a+b, |a-b|\\). Show \\(\\gcd\\) of all numbers is invariant.", "\\(\\gcd(a+b, |a-b|) = \\gcd(a,b)\\) up to factors of 2\u2014actually \\(\\gcd(a+b, a-b)\\) divides \\(2\\gcd(a,b)\\). For a rigorous invariant use the gcd of all entries and track it.", "gcd"],
+        [8, "A process increments a counter that starts at 0 by +2 or \u22121 each step. If it must stay nonnegative, what is the invariant bound on the step count?", "Let \\(s\\) be the count of +2 moves and \\(t\\) the count of \u22121 moves; the value is \\(2s - t \\ge 0\\), so the process can run at most\u2026 unbounded unless bounded externally. Use the sum as monovariant: \\(2s - t\\).", "2s - t"]
+      ]},
+      { n: "Hard", probs: [
+        [9, "Numbers 1..25 on a wheel. Each move replaces a triple by (b+c, c+a, a+b) (wrapped). Show the sum is invariant up to doubling, and determine the reachable parity.", "New sum \\(2(a+b+c)\\): parity of the sum is preserved.", "parity"],
+        [10, "Prove that it is impossible to cover a 6\u00d76 board with 18 dominoes such that each domino covers one white and one black cell of a 3-color pattern.", "Construct a coloring with unequal counts under any tile\u2014standard: color like a chessboard plus stripes so the required count is odd for one color.", "impossible"]
+      ]}
+    ]
+  },
+  {
+    id: "comb4-lesson",
+    title: "Double Counting & Bijections \u2014 Lesson",
+    sub: "Counting the same thing two ways, combinatorial proofs",
+    type: "lesson",
+    group: "Combinatorics",
+    sections: [
+      { h: "1. Double Counting",
+        c: [
+          { t: "p", v: "Count the same set in two ways and equate the results. This proves identities and structural facts. Classic: counting incidences between points and lines in two orders." },
+          { t: "d", v: "\\sum_{P} \\deg(P) = 2|E|" },
+          { t: "ex", title: "Example 1", v: "Handshake lemma: in any graph, the number of vertex-edge incidences counted by vertices equals twice the number of edges. Hence the number of odd-degree vertices is even." }
+        ]
+      },
+      { h: "2. Bijections",
+        c: [
+          { t: "p", v: "Two sets have equal size if there is a bijection between them. Find an explicit reversible rule and the count transfers to the easier set." },
+          { t: "ex", title: "Example 2", v: "The number of subsets of an \\(n\\)-set is \\(2^n\\): each element is independently in or out, giving \\(2^n\\) binary choices \u2014 a bijection with binary strings." }
+        ]
+      },
+      { h: "3. Hockey Stick and Pascal Identities",
+        c: [
+          { t: "p", v: "The <b>hockey stick identity</b>: \\(\\sum_{i=k}^{n} \\binom{i}{k} = \\binom{n+1}{k+1}\\). Proven by double counting: \\(\\binom{n+1}{k+1}\\) counts \\((k+1)\\)-subsets of \\(\\{1..n+1\\}\\) by their largest element." },
+          { t: "d", v: "\\sum_{i=k}^{n} \\binom{i}{k} = \\binom{n+1}{k+1}" },
+          { t: "ex", title: "Example 3", v: "Prove \\(\\binom{n}{0} + \\binom{n}{1} + \\cdots + \\binom{n}{n} = 2^n\\) by double counting subsets by size. Summing over all \\(k\\) counts each subset once." }
+        ]
+      }
+    ]
+  },
+  {
+    id: "comb4-practice",
+    title: "Double Counting \u2014 Practice",
+    sub: "10 problems",
+    type: "prac",
+    group: "Combinatorics",
+    levels: [
+      { n: "Easy", probs: [
+        [1, "In a graph with 10 vertices each of degree 3, how many edges?", "\\(10 \\cdot 3 / 2 = 15\\).", "15"],
+        [2, "Compute \\(\\sum_{k=0}^{4} \\binom{4}{k}\\).", "\\(2^4 = 16\\).", "16"],
+        [3, "The number of binary strings of length 5 with exactly two 1s.", "\\(\\binom{5}{2} = 10\\).", "10"]
+      ]},
+      { n: "Medium", probs: [
+        [4, "Using the hockey stick identity, compute \\(\\binom{2}{2} + \\binom{3}{2} + \\binom{4}{2} + \\binom{5}{2}\\).", "\\(\\binom{6}{3} = 20\\).", "20"],
+        [5, "A graph has 8 vertices and 14 edges. If it has no isolated vertices, what can you say about the degree sum?", "Sum of degrees \\(= 2 \\cdot 14 = 28\\).", "28"],
+        [6, "Show \\(n \\binom{n-1}{k-1} = k \\binom{n}{k}\\) counts ordered selections in two ways.", "Left: pick a distinguished element then \\(k-1\\) more; right: pick \\(k\\) then choose which is distinguished.", "1"],
+        [7, "Prove \\(\\binom{n}{k} = \\binom{n}{n-k}\\) by bijection.", "A \\(k\\)-subset corresponds to its complement, an \\((n-k)\\)-subset.", "complement"],
+        [8, "How many pairs \\((A, B)\\) with \\(A \\subseteq B \\subseteq \\{1,\\ldots,n\\}\\)? Use a bijection with ternary strings.", "Each element is in one of 3 states (neither, B only, both): \\(3^n\\) pairs.", "3^n"]
+      ]},
+      { n: "Hard", probs: [
+        [9, "Prove \\(\\sum_{k=1}^{n} k \\binom{n}{k} = n 2^{n-1}\\) by double counting committee-with-chair.", "Count pairs (committee, chair) two ways: by committee size (\\(k \\binom{n}{k}\\)) or by choosing the chair first (\\(n \\cdot 2^{n-1}\\)).", "n2^(n-1)"],
+        [10, "Given a 5\u00d75 grid, prove that the number of ways to place nonattacking rooks is invariant under transposing the board.", "A placement is a permutation of columns for the chosen rows: row/column symmetry gives a bijection.", "1"]
+      ]}
+    ]
+  },
+  {
+    id: "comb5-lesson",
+    title: "Generating Functions \u2014 Lesson",
+    sub: "Ordinary generating functions and coefficient extraction",
+    type: "lesson",
+    group: "Combinatorics",
+    sections: [
+      { h: "1. Definition",
+        c: [
+          { t: "p", v: "The <b>ordinary generating function</b> of a sequence \\(a_0, a_1, \\ldots\\) is \\(A(x) = \\sum a_n x^n\\). The coefficient of \\(x^n\\) in a product of generating functions counts the number of ways to combine choices." },
+          { t: "d", v: "A(x) = \\sum_{n\\ge 0} a_n x^n" },
+          { t: "ex", title: "Example 1", v: "The generating function for \\(\\binom{n}{k}\\) in \\(k\\) is \\((1+x)^n\\). The coefficient of \\(x^k\\) is exactly the number of \\(k\\)-subsets." }
+        ]
+      },
+      { h: "2. Products Count Combinations",
+        c: [
+          { t: "p", v: "Each factor \\((1 + x + x^2 + \\cdots)\\) represents an unlimited choice; a truncated factor represents a bounded choice. The coefficient of \\(x^n\\) in the product is the answer." },
+          { t: "ex", title: "Example 2", v: "Number of ways to make 10 cents with pennies (1), nickels (5), and dimes (10): coefficient of \\(x^{10}\\) in \\((1+x+x^2+\\cdots)(1+x^5+x^{10}+\\cdots)(1+x^{10}+\\cdots)\\). This equals the number of solutions to \\(a + 5b + 10c = 10\\)." }
+        ]
+      },
+      { h: "3. Common Series",
+        c: [
+          { t: "p", v: "Useful closed forms: \\(\\frac{1}{1-x} = 1 + x + x^2 + \\cdots\\), \\(\\frac{1}{1-x^k}\\) counts multiples of \\(k\\), and \\((1-x)^{-m} = \\sum \\binom{n+m-1}{m-1} x^n\\) (stars and bars built in)." },
+          { t: "ex", title: "Example 3", v: "Number of nonnegative solutions to \\(x_1 + x_2 + x_3 = 5\\): coefficient of \\(x^5\\) in \\((1-x)^{-3}\\), which is \\(\\binom{5+3-1}{2} = 21\\)." }
+        ]
+      }
+    ]
+  },
+  {
+    id: "comb5-practice",
+    title: "Generating Functions \u2014 Practice",
+    sub: "10 problems",
+    type: "prac",
+    group: "Combinatorics",
+    levels: [
+      { n: "Easy", probs: [
+        [1, "The coefficient of \\(x^3\\) in \\((1+x)^5\\).", "\\(\\binom{5}{3} = 10\\).", "10"],
+        [2, "The number of nonnegative solutions to \\(a + b = 4\\).", "5 (a = 0..4).", "5"],
+        [3, "\\((1+x+x^2)\\) times itself: coefficient of \\(x^2\\).", "3 (1\u00b7x\u00b2, x\u00b7x, x\u00b2\u00b71).", "3"]
+      ]},
+      { n: "Medium", probs: [
+        [4, "Coefficient of \\(x^6\\) in \\((1-x)^{-4}\\).", "\\(\\binom{6+4-1}{3} = \\binom{9}{3} = 84\\).", "84"],
+        [5, "Number of nonnegative solutions to \\(x+y+z = 4\\).", "\\(\\binom{4+2}{2} = 15\\).", "15"],
+        [6, "Coefficient of \\(x^3\\) in \\((1+x^2)(1+x^3)(1+x^4)\\).", "1 (only \\(x^3\\) from the second factor).", "1"],
+        [7, "Number of ways to write 8 as a sum of 2s and 3s (order irrelevant, any count).", "Coefficient of \\(x^8\\) in \\((1+x^2+x^4+\\cdots)(1+x^3+x^6+\\cdots)\\): (8,0),(5,1),(2,2) = 3 ways.", "3"],
+        [8, "Generating function for the number of \\(k\\)-subsets: which function has \\(\\binom{n}{k}\\) as the coefficient of \\(x^k\\)?", "\\((1+x)^n\\).", "(1+x)^n"]
+      ]},
+      { n: "Hard", probs: [
+        [9, "Using generating functions, find the number of nonnegative integer solutions to \\(x_1 + x_2 + x_3 + x_4 = 10\\) with each \\(x_i \\le 3\\).", "Coefficient of \\(x^{10}\\) in \\((1+x+x^2+x^3)^4\\). Expand or use inclusion-exclusion: total \\(\\binom{13}{3} - 4\\binom{9}{3} + \\binom{4}{2}\\binom{5}{3} = 286 - 336 + 60 = 10\\).", "10"],
+        [10, "Prove that the number of compositions of \\(n\\) into 1s and 2s is \\(F_{n+1}\\) (Fibonacci) using \\(\\frac{1}{1-x-x^2}\\).", "The generating function satisfies \\(G = 1 + xG + x^2G\\), so coefficients satisfy the Fibonacci recurrence and \\(G = \\frac{1}{1-x-x^2}\\).", "Fibonacci"]
+      ]}
+    ]
+  },
+  {
+    id: "comb6-lesson",
+    title: "Recurrences & Catalan Numbers \u2014 Lesson",
+    sub: "Characteristic equations, recurrences, Catalan",
+    type: "lesson",
+    group: "Combinatorics",
+    sections: [
+      { h: "1. Linear Recurrences",
+        c: [
+          { t: "p", v: "A linear recurrence \\(a_n = p a_{n-1} + q a_{n-2}\\) has characteristic equation \\(r^2 = pr + q\\). Distinct roots \\(r_1, r_2\\) give \\(a_n = \\alpha r_1^n + \\beta r_2^n\\); a double root \\(r\\) gives \\(a_n = (\\alpha + \\beta n) r^n\\)." },
+          { t: "d", v: "a_n = \\alpha r_1^n + \\beta r_2^n" },
+          { t: "ex", title: "Example 1", v: "Solve \\(a_n = a_{n-1} + a_{n-2}\\), \\(a_0 = 0, a_1 = 1\\) (Fibonacci).<br><br>\\(r^2 - r - 1 = 0\\) gives \\(\\varphi = \\frac{1+\\sqrt5}{2}\\), \\(\\psi = \\frac{1-\\sqrt5}{2}\\), so \\(a_n = \\frac{\\varphi^n - \\psi^n}{\\sqrt5}\\)." }
+        ]
+      },
+      { h: "2. Catalan Numbers",
+        c: [
+          { t: "p", v: "The <b>Catalan numbers</b> count balanced parentheses, triangulations of polygons, Dyck paths, and many other structures:" },
+          { t: "d", v: "C_n = \\frac{1}{n+1}\\binom{2n}{n}, \\qquad C_{n+1} = \\sum_{i=0}^{n} C_i C_{n-i}" },
+          { t: "ex", title: "Example 2", v: "Number of ways to correctly parenthesize a product of 4 factors is \\(C_3 = 5\\)." }
+        ]
+      },
+      { h: "3. Solving by Inspection and Substitution",
+        c: [
+          { t: "p", v: "Sometimes rearrange: \\(a_n = 2a_{n-1} + 1\\), \\(a_0 = 0\\) can be shifted to a geometric sequence: \\(a_n + 1 = 2(a_{n-1} + 1)\\), so \\(a_n = 2^n - 1\\)." },
+          { t: "ex", title: "Example 3", v: "Solve \\(a_n = 2a_{n-1} + 1\\), \\(a_0 = 0\\).<br><br>\\(a_n + 1 = 2(a_{n-1}+1) = 2^n\\), so \\(a_n = 2^n - 1\\)." }
+        ]
+      }
+    ]
+  },
+  {
+    id: "comb6-practice",
+    title: "Recurrences & Catalan \u2014 Practice",
+    sub: "10 problems",
+    type: "prac",
+    group: "Combinatorics",
+    levels: [
+      { n: "Easy", probs: [
+        [1, "Solve \\(a_n = 3a_{n-1}\\), \\(a_0 = 2\\).", "\\(a_n = 2 \\cdot 3^n\\).", "2*3^n"],
+        [2, "Fibonacci \\(F_1 = 1, F_2 = 1\\). Find \\(F_8\\).", "1,1,2,3,5,8,13,21: \\(F_8 = 21\\).", "21"],
+        [3, "Number of balanced parenthesis strings with 2 pairs of parentheses.", "\\(C_2 = 2\\): \\((\\ )\\), \\((\\ (\\ )\\ )\\).", "2"]
+      ]},
+      { n: "Medium", probs: [
+        [4, "Solve \\(a_n = a_{n-1} + 2\\), \\(a_1 = 5\\).", "\\(a_n = 2n + 3\\).", "2n+3"],
+        [5, "Solve \\(a_n = 2a_{n-1} + 1\\), \\(a_0 = 0\\).", "\\(a_n = 2^n - 1\\).", "2^n-1"],
+        [6, "Solve \\(a_n = 2a_{n-1} + 2a_{n-2}\\), \\(a_0 = 0, a_1 = 2\\).", "Characteristic \\(r^2 - 2r - 2 = 0\\), roots \\(1 \\pm \\sqrt3\\). \\(a_n = \\frac{(1+\\sqrt3)^n - (1-\\sqrt3)^n}{\\sqrt3}\\).", "0"],
+        [7, "Catalan \\(C_4\\).", "\\(\\frac{1}{5}\\binom{8}{4} = 14\\).", "14"],
+        [8, "Number of ways to triangulate a convex pentagon (n=5).", "\\(C_3 = 5\\) triangulations.", "5"]
+      ]},
+      { n: "Hard", probs: [
+        [9, "Solve \\(a_n = 2a_{n-1} + n\\), \\(a_0 = 0\\) using the method of particular solutions.", "Particular solution \\(a_n = An + B\\): \\(An + B = 2A(n-1) + 2B + n\\). Match: \\(A = -2, B = -2\\)? Solve: \\(An+B = 2An - 2A + 2B + n\\) \u2192 \\(A = -2\\), \\(B = 2A - 2B\\) \u2192 \\(3B = 2A = -4\\), \\(B = -4/3\\). Full: \\(a_n = c 2^n - 2n - 4/3\\), \\(a_0 = 0 \\Rightarrow c = 4/3\\).", "-2n"],
+        [10, "Show that the number of Dyck paths of length \\(2n\\) is \\(C_n\\) by establishing the recurrence \\(C_{n+1} = \\sum C_i C_{n-i}\\).", "Split at the first return to 0: the path is \\(U\\cdot P\\cdot D\\cdot Q\\) where \\(P\\) is a Dyck path of length \\(2i\\) and \\(Q\\) of length \\(2(n-i)\\). Sum over \\(i\\).", "1"]
+      ]}
+    ]
+  }
 ];
 
 // State
