@@ -5,28 +5,84 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Math Olympiad Study App</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
-<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js">
+function updateThemeBtn() {
+  const dark = document.documentElement.getAttribute("data-theme") === "midnight";
+  const b = document.getElementById("theme-btn"); if (b) b.textContent = dark ? "\u2600\ufe0f" : "\uD83C\uDF19";
+  const m = document.querySelector(".mobile-theme"); if (m) m.textContent = dark ? "\u2600\ufe0f" : "\uD83C\uDF19";
+}
+function toggleTheme() {
+  const dark = document.documentElement.getAttribute("data-theme") === "midnight";
+  if (dark) document.documentElement.removeAttribute("data-theme");
+  else document.documentElement.setAttribute("data-theme", "midnight");
+  let u = {};
+  try { u = JSON.parse(localStorage.getItem("math_ui") || "{}"); } catch (e) {}
+  u.theme = dark ? "light" : "midnight";
+  localStorage.setItem("math_ui", JSON.stringify(u));
+  updateThemeBtn();
+}
+
+</script>
+<script>
+(function(){try{var u=JSON.parse(localStorage.getItem("math_ui")||"{}");if(u&&u.theme==="midnight")document.documentElement.setAttribute("data-theme","midnight");}catch(e){}})();
+</script>
+
 <style>
 :root {
-  --bg: #f5f6fa;
-  --card: #fff;
-  --text: #1a1a2e;
-  --muted: #6c757d;
+  --bg: #f4f6fb;
+  --card: #ffffff;
+  --text: #171b2e;
+  --muted: #64718a;
   --blue: #4361ee;
+  --blue-strong: #3a56e4;
   --blue-bg: #eef0ff;
-  --green: #2d9f5e;
-  --green-bg: #e8f5e9;
-  --red: #e74c3c;
-  --red-bg: #fdecea;
-  --border: #e0e0e0;
-  --radius: 12px;
-  --shadow: 0 2px 12px rgba(0,0,0,0.06);
+  --green: #10b981;
+  --green-bg: #ecfdf5;
+  --red: #ef4444;
+  --red-bg: #fef2f2;
+  --border: #e5e7f0;
+  --radius: 14px;
+  --shadow: 0 1px 3px rgba(16,24,40,.06), 0 4px 16px rgba(16,24,40,.08);
+  --shadow-lg: 0 8px 30px rgba(16,24,40,.12);
+  --gold: #f9a825;
+  --gold-strong: #f57f17;
+  --gold-bg: #fff8e1;
+  --gold-bg-hover: #fff3c4;
+  --orange: #e67e22;
+  --purple: #8e44ad;
+  --danger: #e05252;
+  --toast-bg: #1a1a2e;
   --font: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+[data-theme="midnight"] {
+  --bg: #0b0e14;
+  --card: #131a26;
+  --text: #e6e9f0;
+  --muted: #8b94a7;
+  --blue: #6c8cff;
+  --blue-strong: #8aa4ff;
+  --blue-bg: #1c2740;
+  --green: #34d399;
+  --green-bg: #0f2419;
+  --red: #f87171;
+  --red-bg: #2a1414;
+  --border: #252e3f;
+  --shadow: 0 1px 3px rgba(0,0,0,.4), 0 4px 16px rgba(0,0,0,.35);
+  --shadow-lg: 0 8px 30px rgba(0,0,0,.55);
+  --gold: #fbbf24;
+  --gold-strong: #f59e0b;
+  --gold-bg: #2b2413;
+  --gold-bg-hover: #382d16;
+  --orange: #fb923c;
+  --purple: #a78bfa;
+  --danger: #f87171;
+  --toast-bg: #11151e;
 }
 * { box-sizing: border-box; margin: 0; padding: 0; }
 body {
   font-family: var(--font);
-  background: var(--bg);
+  background: radial-gradient(900px 500px at 85% -5%, color-mix(in srgb, var(--blue) 10%, transparent), transparent 70%), var(--bg);
+  background-attachment: fixed;
   color: var(--text);
   line-height: 1.6;
   display: flex;
@@ -43,9 +99,24 @@ body {
   z-index: 100;
 }
 .sidebar-header {
-  padding: 24px 20px 16px;
+  padding: 22px 18px 16px;
   border-bottom: 1px solid var(--border);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  background: linear-gradient(135deg, var(--blue-bg), transparent 70%);
 }
+.sidebar-header .titles { min-width: 0; }
+.theme-btn {
+  width: 34px; height: 34px; min-width: 34px;
+  border-radius: 10px; border: 1px solid var(--border);
+  background: var(--card); color: var(--text); cursor: pointer;
+  font-size: 16px; display: inline-flex; align-items: center; justify-content: center;
+  transition: .15s;
+}
+.theme-btn:hover { background: var(--blue-bg); border-color: var(--blue); }
+.mobile-theme { display: none; }
 .sidebar-header h1 { font-size: 18px; font-weight: 700; color: var(--blue); }
 .sidebar-header p { font-size: 12px; color: var(--muted); }
 .sidebar-actions { padding: 12px 20px; display: flex; gap: 6px; }
@@ -134,20 +205,20 @@ body {
 /* Answer input */
 .hints { padding: 0 20px 14px; }
 .hint-item {
-  background: #fff8e1; border-left: 3px solid #f9a825; padding: 10px 14px;
+  background: var(--gold-bg); border-left: 3px solid var(--gold); padding: 10px 14px;
   margin-bottom: 8px; border-radius: 0 8px 8px 0; font-size: 14px;
 }
 .hint-label {
   font-size: 11px; font-weight: 700; text-transform: uppercase;
-  letter-spacing: .05em; color: #f57f17; margin-bottom: 4px;
+  letter-spacing: .05em; color: var(--gold-strong); margin-bottom: 4px;
 }
 .hint-btn {
   font-family: var(--font); font-size: 12px; font-weight: 600;
-  padding: 5px 12px; border-radius: 6px; border: 1px solid #f9a825;
-  background: #fff8e1; color: #f57f17; cursor: pointer; transition: .15s;
+  padding: 5px 12px; border-radius: 6px; border: 1px solid var(--gold);
+  background: var(--gold-bg); color: var(--gold-strong); cursor: pointer; transition: .15s;
   margin: 0 20px 8px;
 }
-.hint-btn:hover { background: #fff3c4; }
+.hint-btn:hover { background: var(--gold-bg-hover); }
 .hint-btn:disabled { opacity: .4; cursor: default; }
 
 /* Solution textarea */
@@ -159,6 +230,7 @@ body {
 .sol-textarea {
   width: 100%; min-height: 100px; font-family: var(--font);
   font-size: 14px; padding: 10px 14px; border: 2px solid var(--border);
+  background: var(--card); color: var(--text);
   border-radius: 8px; outline: none; resize: vertical; line-height: 1.5;
   transition: .15s;
 }
@@ -192,6 +264,8 @@ body {
   border: 2px solid var(--border);
   border-radius: 8px;
   outline: none;
+  background: var(--card);
+  color: var(--text);
   flex: 1;
   min-width: 120px;
   transition: .15s;
@@ -282,14 +356,14 @@ body {
 .mot-seg { display: flex; align-items: center; gap: 8px; }
 .mot-icon { width: 22px; height: 22px; min-width: 22px; display: inline-flex; }
 .mot-icon svg { width: 100%; height: 100%; }
-.mot-icon-gold { color: #f9a825; }
-.mot-icon-fire { color: #e67e22; }
-.mot-icon-trophy { color: #8e44ad; }
+.mot-icon-gold { color: var(--gold); }
+.mot-icon-fire { color: var(--orange); }
+.mot-icon-trophy { color: var(--purple); }
 .mot-level-meta { display: flex; flex-direction: column; gap: 3px; }
 .mot-level-num { font-size: 12px; font-weight: 700; }
 .mot-xpbar { width: 110px; height: 6px; background: var(--border); border-radius: 3px; overflow: hidden; }
 .mot-xpfill {
-  height: 100%; background: linear-gradient(90deg, #f9a825, #e67e22);
+  height: 100%; background: linear-gradient(90deg, var(--gold), var(--orange));
   border-radius: 3px; transition: width .4s;
 }
 .mot-stat { font-size: 16px; font-weight: 800; }
@@ -311,7 +385,7 @@ body {
   z-index: 1000; pointer-events: none;
 }
 .toast {
-  background: #1a1a2e; color: #fff; padding: 10px 18px; border-radius: 20px;
+  background: var(--toast-bg); color: #fff; padding: 10px 18px; border-radius: 20px;
   font-size: 13px; font-weight: 600; box-shadow: 0 4px 16px rgba(0,0,0,.25);
   animation: toastIn .25s ease; white-space: nowrap;
 }
@@ -359,16 +433,16 @@ body {
 }
 
 /* ===== AIME Mock Exam ===== */
-.mock-hero { background: linear-gradient(135deg, var(--card), var(--blue-bg, #0e2a4a)); border: 1px solid var(--border); border-radius: var(--radius); padding: 22px; margin-bottom: 16px; }
+.mock-hero { background: linear-gradient(135deg, var(--card), var(--blue-bg)); border: 1px solid var(--border); border-radius: var(--radius); padding: 22px; margin-bottom: 16px; }
 .mock-hero h3 { margin: 0 0 6px; }
 .mock-hero p { margin: 4px 0; color: var(--muted); }
 .mock-row { display: flex; flex-wrap: wrap; gap: 12px; margin: 14px 0; align-items: center; }
 .mock-field label { font-size: 12px; font-weight: 700; color: var(--muted); display: block; margin-bottom: 3px; }
-.mock-field input { width: 110px; }
+.mock-field input { width: 110px; background: var(--bg); color: var(--text); border: 2px solid var(--border); border-radius: 8px; padding: 6px 10px; font: inherit; }
 .mock-timer { display: flex; align-items: center; gap: 10px; padding: 12px 16px; border-radius: 10px; background: var(--card); border: 1px solid var(--border); margin-bottom: 14px; font-size: 15px; }
 .mock-timer .t { font-size: 26px; font-weight: 800; font-variant-numeric: tabular-nums; font-family: ui-monospace, monospace; }
-.mock-timer.warn { border-color: #e05252; color: #e05252; }
-.mock-timer.warn .t { color: #e05252; }
+.mock-timer.warn { border-color: var(--danger); color: var(--danger); }
+.mock-timer.warn .t { color: var(--danger); }
 .mock-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 12px; }
 .mock-prob { background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 14px; }
 .mock-prob-head { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
@@ -378,7 +452,7 @@ body {
 .mock-ans { width: 100%; box-sizing: border-box; margin-top: 10px; }
 .mock-verdict { font-size: 18px; font-weight: 800; margin: 8px 0; }
 .mock-verdict.pass { color: var(--green); }
-.mock-verdict.fail { color: #e05252; }
+.mock-verdict.fail { color: var(--danger); }
 .mock-stat-grid { display: flex; gap: 12px; flex-wrap: wrap; margin: 14px 0; }
 .mock-stat { flex: 1; min-width: 120px; background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 12px; text-align: center; }
 .mock-stat .v { font-size: 24px; font-weight: 800; }
@@ -387,7 +461,29 @@ body {
 .mock-hist th, .mock-hist td { padding: 7px 10px; border-bottom: 1px solid var(--border); text-align: left; }
 .mock-hist th { color: var(--muted); font-size: 11px; text-transform: uppercase; }
 .mock-hist .pass { color: var(--green); font-weight: 700; }
-.mock-hist .fail { color: #e05252; font-weight: 700; }
+.mock-hist .fail { color: var(--danger); font-weight: 700; }
+
+
+/* ===== UI polish (v2.53) ===== */
+.card { transition: box-shadow .2s ease, transform .2s ease; }
+.card:hover { box-shadow: var(--shadow-lg); transform: translateY(-1px); }
+.progress-fill, .topic-progress-fill { background: linear-gradient(90deg, var(--green), color-mix(in srgb, var(--green) 60%, var(--bg))); }
+.btn-primary { background: linear-gradient(135deg, var(--blue), var(--blue-strong)); box-shadow: 0 2px 10px color-mix(in srgb, var(--blue) 35%, transparent); }
+.btn-primary:hover { opacity: .9; box-shadow: 0 4px 14px color-mix(in srgb, var(--blue) 45%, transparent); }
+.btn { transition: all .15s ease; }
+.main h2 { position: relative; padding-bottom: 10px; }
+.main h2::after { content: ""; position: absolute; left: 0; bottom: 0; width: 52px; height: 4px; border-radius: 2px; background: linear-gradient(90deg, var(--blue), var(--green)); }
+.lvl { border-left: 4px solid var(--blue); padding-left: 12px; }
+.num { box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--blue) 15%, transparent); }
+::selection { background: color-mix(in srgb, var(--blue) 25%, transparent); }
+:focus-visible { outline: 2px solid var(--blue); outline-offset: 2px; }
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-thumb { background: var(--border); border-radius: 6px; background-clip: padding-box; border: 2px solid transparent; }
+::-webkit-scrollbar-thumb:hover { background: var(--muted); background-clip: padding-box; border: 2px solid transparent; }
+::-webkit-scrollbar-track { background: transparent; }
+[data-theme="midnight"] input, [data-theme="midnight"] textarea, [data-theme="midnight"] select { color-scheme: dark; }
+[data-theme="midnight"] .katex, [data-theme="midnight"] .katex * { color: #e6e9f0 !important; }
+@media (max-width: 768px) { .mobile-theme { display: inline-flex; position: fixed; top: 12px; right: 12px; z-index: 300; box-shadow: var(--shadow); } }
 
 </style>
 </head>
@@ -395,6 +491,7 @@ body {
 
 <div class="sidebar" id="sidebar"></div>
 <div class="main" id="main"></div>
+<button class="theme-btn mobile-theme" onclick="toggleTheme()" title="Toggle theme" aria-label="Toggle theme">&#127769;</button>
 
 <script>
 const K = window.katex;
@@ -4809,7 +4906,7 @@ render();
 
 function render() {
   // Sidebar
-  let side = '<div class="sidebar-header"><h1>Math Olympiad</h1><p>Study App</p></div>';
+  let side = '<div class="sidebar-header"><div class="titles"><h1>Math Olympiad</h1><p>Study App</p></div><button class="theme-btn" id="theme-btn" onclick="toggleTheme()" title="Toggle light/dark theme">' + (document.documentElement.getAttribute("data-theme") === "midnight" ? "&#9728;&#65039;" : "&#127769;") + '</button></div>';
   side += '<div class="sidebar-actions"><button class="btn export-btn" onclick="exportProgress()">Export</button><button class="btn import-btn" onclick="document.getElementById(\'importFile\').click()">Import</button><input type="file" id="importFile" accept=".json" style="display:none" onchange="importProgress(this)"></div>';
   let lastGroup = "";
   let i = 0;
@@ -4853,6 +4950,7 @@ function render() {
   else if (sec.type === "mock") renderMock(main, sec);
   else renderPrac(main, sec);
   main.innerHTML = motBar() + main.innerHTML;
+  updateThemeBtn();
 }
 
 function renderPrac(main, sec) {
