@@ -10,6 +10,7 @@ const MIME = {
   '.css': 'text/css',
   '.js': 'application/javascript',
   '.json': 'application/json',
+  '.webmanifest': 'application/manifest+json',
   '.png': 'image/png',
   '.jpg': 'image/jpeg',
   '.svg': 'image/svg+xml',
@@ -69,7 +70,8 @@ const server = http.createServer((req, res) => {
     return;
   }
 
-  let filePath = req.url === '/' ? '/index.html' : req.url;
+  let filePath = new URL(req.url, 'http://x').pathname;
+  if (filePath === '/') filePath = '/index.html';
   serveFile(res, path.join(__dirname, filePath));
 });
 
