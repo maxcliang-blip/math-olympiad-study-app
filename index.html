@@ -1330,6 +1330,18 @@ const SECTIONS = [
           [15, "Roots of \\(x^2 - 4x + 1 = 0\\) are \\(\\alpha, \\beta\\). Find \\(\\alpha^3 + \\beta^3\\).", "\\((\\alpha+\\beta)^3 - 3\\alpha\\beta(\\alpha+\\beta) = 64 - 12 = 52\\).", "52"],
         ]
       }
+    ,
+      { n: "Level 4: AIME 10+", probs: [
+          [16, "If \\(r, s\\) are the roots of \\(x^2 - 6x + 3 = 0\\), find \\(r^3 + s^3\\).", "\\((r+s)^3 - 3rs(r+s) = 6^3 - 3 \\cdot 3 \\cdot 6 = 216 - 54 = 162\\).", "162"],
+          [17, "The roots of \\(x^2 - kx + k = 0\\) are \\(r, s\\) with \\(r^2 + s^2 = 5\\). Find the positive value of \\(k\\).", "\\(r^2+s^2 = (r+s)^2 - 2rs = k^2 - 2k = 5\\), so \\(k = 1 + \\sqrt6\\) (positive root).", "1+sqrt6|1+√6|1+1*sqrt6"],
+          [18, "If \\(r, s\\) are the roots of \\(x^2 - 4x + 1 = 0\\), find \\(\\frac{1}{r^3} + \\frac{1}{s^3}\\).", "\\(1/r + 1/s = 4\\), \\(1/(rs) = 1\\). Then \\((1/r+1/s)^3 - 3\\frac{1}{rs}(1/r+1/s) = 64 - 12 = 52\\).", "52"],
+          [19, "Roots of \\(x^3 - 7x^2 + 14x - 8 = 0\\) are \\(r, s, t\\). Find \\(\\frac{1}{r^2} + \\frac{1}{s^2} + \\frac{1}{t^2}\\).", "\\(1/r+1/s+1/t = \\frac{14}{8} = \\frac74\\), \\(1/(rs)+1/(st)+1/(tr) = \\frac{7}{8}\\). Square: \\(\\frac{49}{16} - 2\\cdot\\frac78 = \\frac{21}{16}\\).", "21/16"],
+          [20, "Roots of \\(x^2 - 3x + 1 = 0\\) are \\(r > s\\). Find \\(r^2 - s^2\\).", "\\((r+s)(r-s)\\). \\((r-s)^2 = 9 - 4 = 5\\), so \\(r^2-s^2 = 3\\sqrt5\\).", "3sqrt5|3√5|3*sqrt5"],
+          [21, "Roots of \\(x^3 + 2x^2 - 3x - 4 = 0\\) are \\(r, s, t\\). Find \\(r^2 + s^2 + t^2\\).", "\\((r+s+t)^2 - 2(rs+st+tr) = 4 - 2(-3) = 10\\).", "10"],
+          [22, "The roots of \\(x^2 - (k+1)x + (k+2) = 0\\) differ by 1. Find \\(k\\).", "\\((r-s)^2 = (k+1)^2 - 4(k+2) = k^2 - 2k - 7 = 1\\), so \\(k^2 - 2k - 8 = 0\\), \\(k = 4\\) or \\(-2\\).", "4|-2"],
+          [23, "Roots of \\(x^2 - 5x + 2 = 0\\) are \\(r, s\\). Find \\(r^4 + s^4\\).", "\\(r^2+s^2 = 21\\), so \\(r^4+s^4 = 21^2 - 2(rs)^2 = 441 - 8 = 433\\).", "433"]
+      ]
+      }
     ]
   },
   {
@@ -1658,17 +1670,15 @@ const SECTIONS = [
       ]}
     ,
       { n: "Challenge", probs: [
-        [11, "Evaluate \\(\\log_4 64\\).", "\\(4^3 = 64\\), so \\(3\\).", "3"],
-        [12, "Solve \\(\\log_2 x + \\log_4 x = 3\\).", "Rewrite: \\(\\log_4 x = \\tfrac12 \\log_2 x\\), so \\(\\tfrac32 \\log_2 x = 3\\), \\(\\log_2 x = 2\\), \\(x = 4\\).", "4"],
-        [13, "If \\(\\log_{10} 2 = a\\) and \\(\\log_{10} 3 = b\\), express \\(\\log_{10} 72\\).", "\\(72 = 2^3 \\cdot 3^2\\), so \\(3a + 2b\\).", "3a+2b"],
-        [14, "Solve \\(\\log_x 16 = 4\\).", "\\(x^4 = 16\\), so \\(x = 2\\) (positive base).", "2"],
-        [15, "Evaluate \\(\\log_2 3 \\cdot \\log_3 4 \\cdot \\log_4 5 \\cdot \\log_5 8\\).", "Change of base telescopes: \\(\\log_2 3 \\cdot \\log_3 4 = \\log_2 4\\), etc., leaving \\(\\log_2 8 = 3\\).", "3"],
-        [16, "Solve \\(2^{2x+1} = 8^{x-1}\\).", "\\(2^{2x+1} = 2^{3x-3}\\), so \\(2x+1 = 3x-3\\), \\(x = 4\\).", "4"],
-        [17, "Solve \\(\\log_2 x - \\log_2 (x-2) = 1\\).", "\\(\\log_2 \\frac{x}{x-2} = 1\\), so \\(\\frac{x}{x-2} = 2\\), \\(x = 2x - 4\\), \\(x = 4\\).", "4"],
-        [18, "Solve \\(\\log_2 (x+1) + \\log_2 (x-1) = 3\\).", "\\((x+1)(x-1) = 8\\), \\(x^2 - 1 = 8\\), \\(x^2 = 9\\), \\(x = 3\\) (need \\(x > 1\\)).", "3"],
-        [19, "Evaluate \\(\\log_{\\sqrt{2}} 8\\).", "\\((\\sqrt2)^6 = 8\\), so \\(6\\).", "6"],
-        [20, "Solve \\(4^x - 3 \\cdot 2^x - 4 = 0\\).", "Let \\(y = 2^x\\): \\(y^2 - 3y - 4 = 0\\), \\(y = 4\\) (positive), so \\(x = 2\\).", "2"]
-      ]}]
+          [17, "Solve \\(\\log_2(x+3) - \\log_2(x-1) = 2\\).", "\\(\\frac{x+3}{x-1} = 4\\), so \\(x + 3 = 4x - 4\\), \\(x = \\frac73\\).", "7/3"],
+          [18, "If \\(\\log_{10} 2 = a\\), express \\(\\log_{10} 50\\).", "\\(50 = 5\\cdot10 = \\frac{10^2}{2}\\), so \\(\\log_{10}50 = 2 - a\\).", "2-a"],
+          [19, "Evaluate \\(\\log_2 \\sqrt{8}\\).", "\\(\\sqrt8 = 2^{3/2}\\), so \\(\\frac32\\).", "3/2"],
+          [20, "Solve \\(\\log_3(x^2 - 4) = 2\\).", "\\(x^2 - 4 = 9\\), so \\(x = \\sqrt{13}\\) (positive).", "sqrt13|√13|sqrt13"],
+          [21, "If \\(\\log_a b = 2\\) and \\(\\log_b c = 3\\), find \\(\\log_a c\\).", "\\(\\log_a c = \\log_a b \\cdot \\log_b c = 2\\cdot3 = 6\\).", "6"],
+          [22, "Evaluate \\(\\log_2 \\frac{1}{32}\\).", "\\(\\frac{1}{32} = 2^{-5}\\), so \\(-5\\).", "-5"],
+          [23, "Solve \\(\\log_4 x + \\log_2 x = 6\\).", "\\(\\log_4 x = \\frac12\\log_2 x\\), so \\(\\frac32\\log_2 x = 6\\), \\(\\log_2 x = 4\\), \\(x = 16\\).", "16"],
+          [24, "Evaluate \\(\\log_3 5 \\cdot \\log_5 7 \\cdot \\log_7 9\\).", "Change of base telescopes: \\(\\log_3 9 = 2\\).", "2"]
+        ]}]
   },
   {
     id: "cx-lesson",
@@ -2005,16 +2015,14 @@ const SECTIONS = [
     ,
       { n: "Level 4: AIME 10+/USAJMO",
         probs: [
-          [13,"Cyclic quadrilateral \\(ABCD\\) has \\(\\angle A = 70^\\circ\\). Find \\(\\angle C\\).","Opposite angles of a cyclic quadrilateral are supplementary: \\(\\angle C = 110^\\circ\\).","110"],
-          [14,"In cyclic quadrilateral \\(ABCD\\), \\(AB = 3\\), \\(BC = 4\\), \\(CD = 5\\), \\(DA = 6\\). Find \\(AC \\cdot BD\\).","Ptolemy: \\(AC \\cdot BD = AB \\cdot CD + BC \\cdot DA = 15 + 24 = 39\\).","39"],
-          [15,"In cyclic quadrilateral \\(ABCD\\), \\(AB = 2\\), \\(BC = 3\\), \\(CD = 4\\), \\(DA = 5\\). Find \\(AC \\cdot BD\\).","Ptolemy: \\(2 \\cdot 4 + 3 \\cdot 5 = 8 + 15 = 23\\).","23"],
-          [16,"An inscribed angle subtends a diameter of its circle. Find its measure.","An angle inscribed in a semicircle is a right angle: \\(90^\\circ\\).","90"],
-          [17,"A cyclic quadrilateral has sides 5, 5, 6, 6 in order. Find its area.","Brahmagupta: \\(s = 11\\), area \\(= \\sqrt{(11-5)(11-5)(11-6)(11-6)} = \\sqrt{900} = 30\\).","30"],
-          [18,"A cyclic quadrilateral has perpendicular diagonals of lengths 10 and 24. Find its area.","Area \\(= \\tfrac12 d_1 d_2 = \\tfrac12 \\cdot 10 \\cdot 24 = 120\\).","120"],
-          [19,"A cyclic quadrilateral has sides 2, 2, 3, 3 in order. Find \\(AC \\cdot BD\\).","Ptolemy: \\(2 \\cdot 3 + 2 \\cdot 3 = 12\\).","12"],
-          [20,"Points \\(A, B, C, D\\) lie on a circle with \\(AB = 6\\), \\(BC = 8\\), \\(CD = 6\\), \\(DA = 8\\). Find the area.","Brahmagupta: \\(s = 14\\), area \\(= \\sqrt{8 \\cdot 6 \\cdot 8 \\cdot 6} = 48\\).","48"],
-          [21,"A cyclic quadrilateral has \\(\\angle A = 70^\\circ\\) and \\(\\angle B = 90^\\circ\\). Find \\(\\angle C + \\angle D\\).","\\(\\angle C = 180 - 70 = 110\\), \\(\\angle D = 180 - 90 = 90\\), so the sum is 200.","200"],
-          [22,"In cyclic quadrilateral \\(ABCD\\), \\(AB = 6\\), \\(BC = 8\\), \\(CD = 6\\), \\(DA = 8\\), and \\(AC\\) is a diameter. Find \\(AC\\).","\\(AC^2 = AB^2 + BC^2 = 36 + 64 = 100\\), so \\(AC = 10\\).","10"]
+          [23, "A cyclic quadrilateral has sides 3, 4, 5, 6. Find its maximum area.", "Brahmagupta: \\(s = 9\\), area \\(= \\sqrt{6\\cdot5\\cdot4\\cdot3} = \\sqrt{360} = 6\\sqrt{10}\\).", "6sqrt10|6√10|6*sqrt10"],
+          [24, "A cyclic quadrilateral has perpendicular diagonals of lengths 12 and 5. Find its area.", "\\(\\frac12 \\cdot 12 \\cdot 5 = 30\\).", "30"],
+          [25, "Chords \\(AC\\) and \\(BD\\) of a circle meet at \\(E\\) with \\(AE = 4, CE = 9, BE = 6\\). Find \\(DE\\).", "Intersecting chords: \\(AE\\cdot CE = BE\\cdot DE\\), so \\(4\\cdot9 = 6\\cdot DE\\), \\(DE = 6\\).", "6"],
+          [26, "A chord of length 8 subtends a central angle of \\(60^\\circ\\). Find the radius.", "Chord \\(= 2R\\sin(30^\\circ) = R = 8\\).", "8"],
+          [27, "A cyclic quadrilateral is a rhombus of side 2. Find its area.", "A cyclic rhombus is a square: area \\(2^2 = 4\\).", "4"],
+          [28, "Cyclic \\(ABCD\\) has sides 2, 3, 4, 5. Find \\(AC\\cdot BD\\).", "Ptolemy: \\(2\\cdot4 + 3\\cdot5 = 8 + 15 = 23\\).", "23"],
+          [29, "Cyclic \\(ABCD\\) has \\(\\angle A = 3x\\) and \\(\\angle C = x + 20^\\circ\\). Find \\(x\\).", "Opposite angles supplementary: \\(4x + 20 = 180\\), \\(x = 40\\).", "40"],
+          [30, "A circle of radius 5 has a chord of length 6. Find the distance from the center to the chord.", "\\(d^2 + 3^2 = 5^2\\), so \\(d = 4\\).", "4"]
         ]
       }]
   },
@@ -2973,16 +2981,14 @@ const SECTIONS = [
     ,
       { n: "Level 4: AIME 10+/USAJMO",
         probs: [
-          [16,"Find the last two digits of \\(7^{2024}\\).","\\(7^4 = 2401 \\equiv 1 \\pmod{100}\\). Since \\(2024 = 4 \\cdot 506\\), \\(7^{2024} \\equiv 1 \\pmod{100}\\).","01|1"],
-          [17,"Find the least positive residue of \\(3^{1000}\\) modulo 7.","By Fermat, \\(3^6 \\equiv 1 \\pmod 7\\). \\(1000 \\equiv 4 \\pmod 6\\), and \\(3^4 = 81 \\equiv 4 \\pmod 7\\).","4"],
-          [18,"Solve \\(5x \\equiv 3 \\pmod{14}\\) for the least positive \\(x\\).","\\(5^{-1} \\equiv 3 \\pmod{14}\\), so \\(x \\equiv 9 \\pmod{14}\\). Least positive: 9.","9"],
-          [19,"Find the units digit of \\(2024^{2024}\\).","Units digit of powers of 4 cycle as 4, 6. Since the exponent is even, the digit is 6.","6"],
-          [20,"How many solutions modulo 60 does \\(6x \\equiv 18 \\pmod{60}\\) have?","\\(\\gcd(6,60) = 6\\) divides 18, and the reduced congruence \\(x \\equiv 3 \\pmod{10}\\) gives 6 solutions modulo 60.","6"],
-          [21,"Find the smallest positive integer \\(x\\) with \\(x \\equiv 3 \\pmod 5\\) and \\(x \\equiv 4 \\pmod 7\\).","\\(x = 5k + 3\\); \\(5k \\equiv 1 \\pmod 7\\) gives \\(k \\equiv 3\\), so \\(x = 18\\).","18"],
-          [22,"Find the remainder when \\(2^{2024}\\) is divided by 17.","\\(2^8 = 256 \\equiv 1 \\pmod{17}\\). \\(2024 \\equiv 0 \\pmod 8\\), so the remainder is 1.","1"],
-          [23,"How many \\(x \\in \\{1,\\ldots,36\\}\\) satisfy \\(x^2 \\equiv 1 \\pmod{36}\\)?","Mod 9 and 4: \\(x \\equiv \\pm 1 \\pmod 9\\), \\(x\\) odd. The solutions are 1, 17, 19, 35: four values.","4"],
-          [24,"Find the sum of all positive integers \\(n \\le 100\\) for which \\(101 \\mid n^2 + 1\\).","\\(n^2 \\equiv -1 \\equiv 100 \\pmod{101}\\), so \\(n \\equiv \\pm 10\\), giving \\(n = 10, 91\\). Sum \\(= 101\\).","101"],
-          [25,"Find the remainder when \\(1! + 2! + \\cdots + 2024!\\) is divided by 12.","For \\(k \\ge 4\\), \\(k!\\) is divisible by 12. \\(1! + 2! + 3! = 1 + 2 + 6 = 9\\).","9"]
+          [22, "Find the last two digits of \\(7^{100}\\).", "\\(7^4 = 2401 \\equiv 1 \\pmod{100}\\); \\(100\\equiv 0 \\pmod 4\\), so \\(7^{100} \\equiv 1\\).", "1|01"],
+          [23, "Solve \\(3x \\equiv 7 \\pmod{11}\\).", "\\(3^{-1} \\equiv 4\\), so \\(x \\equiv 28 \\equiv 6\\).", "6"],
+          [24, "What is the units digit of \\(3^{2026}\\)?", "Powers of 3 cycle \\(3,9,7,1\\). \\(2026 \\equiv 2 \\pmod 4\\), so the digit is 9.", "9"],
+          [25, "Find the remainder of \\(2^{100}\\) divided by 7.", "\\(2^3 \\equiv 1\\), so \\(2^{99} \\equiv 1\\) and \\(2^{100} \\equiv 2\\).", "2"],
+          [26, "Find the smallest positive integer \\(x\\) with \\(x \\equiv 2 \\pmod 3\\) and \\(x \\equiv 3 \\pmod 4\\).", "\\(x = 3k + 2\\); \\(3k \\equiv 1 \\pmod 4\\) gives \\(k \\equiv 3\\), so \\(x = 11\\).", "11"],
+          [27, "How many solutions does \\(12x \\equiv 18 \\pmod{30}\\) have?", "\\(\\gcd(12,30) = 6\\mid 18\\), and the reduced congruence is \\(2x \\equiv 3 \\pmod 5\\), giving 6 solutions mod 30.", "6"],
+          [28, "Find the last two digits of \\(13^{13}\\).", "\\(13^2 \\equiv 69\\), \\(13^4 \\equiv 61\\), \\(13^8 \\equiv 21\\). Then \\(13^{13} = 13^8\\cdot13^4\\cdot13 \\equiv 21\\cdot61\\cdot13 \\equiv 53\\pmod{100}\\).", "53"],
+          [29, "Find the remainder of \\(6^{1000}\\) divided by 11.", "\\(6^{10} \\equiv 1 \\pmod{11}\\) (FLT); \\(1000 \\equiv 0 \\pmod{10}\\), so remainder 1.", "1"]
         ]
       }]
   },
@@ -3147,16 +3153,14 @@ const SECTIONS = [
     ,
       { n: "Level 4: AIME 10+/USAJMO",
         probs: [
-          [13,"Find the remainder when \\(2^{2024}\\) is divided by 13.","By Fermat, \\(2^{12} \\equiv 1\\). \\(2024 \\equiv 8 \\pmod{12}\\), and \\(2^8 = 256 \\equiv 9 \\pmod{13}\\).","9"],
-          [14,"Find the remainder when \\(5^{1234567}\\) is divided by 11.","Fermat: \\(5^{10} \\equiv 1\\). \\(1234567 \\equiv 7 \\pmod{10}\\). \\(5^5 \\equiv 1 \\pmod{11}\\), so \\(5^7 \\equiv 25 \\equiv 3\\).","3"],
-          [15,"Find the remainder when \\(2024!\\) is divided by the prime 2027.","Wilson: \\(2026! \\equiv -1\\). \\(2026! = 2024! \\cdot 2025 \\cdot 2026 \\equiv 2024! \\cdot 2 \\pmod{2027}\\). Hence \\(2024! \\equiv -1014 \\equiv 1013\\).","1013"],
-          [16,"Find the least positive residue of \\(3^{2024}\\) modulo 17.","Fermat: \\(3^{16} \\equiv 1\\). \\(2024 \\equiv 8 \\pmod{16}\\), and \\(3^8 = 6561 \\equiv 16 \\equiv -1 \\pmod{17}\\).","16"],
-          [17,"Find the remainder when \\(7^{2024}\\) is divided by 19.","Fermat: \\(7^{18} \\equiv 1\\). \\(2024 \\equiv 8 \\pmod{18}\\), and \\(7^8 \\equiv 11 \\pmod{19}\\).","11"],
-          [18,"How many integers \\(x\\) with \\(0 \\le x < 101\\) satisfy \\(x^{101} \\equiv x \\pmod{101}\\)?","By Fermat's little theorem, \\(x^{101} \\equiv x \\pmod{101}\\) for every \\(x\\), so all 101 values work.","101"],
-          [19,"Find the remainder when \\(2^{2024} + 2024\\) is divided by 11.","\\(2^{10} \\equiv 1\\), \\(2024 \\equiv 4 \\pmod{10}\\), so \\(2^{2024} \\equiv 2^4 = 16 \\equiv 5\\). And \\(2024 \\equiv 0 \\pmod{11}\\). Total: 5.","5"],
-          [20,"Find the remainder when \\(4444^{4444}\\) is divided by 9.","\\(4444 \\equiv 7 \\pmod 9\\). \\(7 \\equiv -2\\), and \\(2^6 \\equiv 1 \\pmod 9\\). \\(4444 \\equiv 4 \\pmod 6\\), so \\((-2)^4 = 16 \\equiv 7\\).","7"],
-          [21,"Find the remainder when \\(2^{2024}\\) is divided by 2025.","Mod 81: Euler gives \\(2^{2024} \\equiv 40\\) (since \\(\\varphi(81)=54\\), \\(2024 \\equiv 26\\), \\(2^{26} \\equiv 40\\)). Mod 25: \\(2^{20} \\equiv 1\\), so \\(2^{2024} \\equiv 2^4 = 16\\). Solve \\(x \\equiv 40 \\pmod{81}\\), \\(x \\equiv 16 \\pmod{25}\\): \\(x = 1741\\).","1741"],
-          [22,"Find the remainder when \\(100!\\) is divided by 101.","Since 101 is prime, Wilson gives \\(100! \\equiv -1 \\equiv 100 \\pmod{101}\\).","100"]
+          [17, "Find the remainder of \\(3^{2026}\\) divided by 7.", "\\(3^6 \\equiv 1\\); \\(2026 \\equiv 4 \\pmod 6\\), and \\(3^4 = 81 \\equiv 4\\).", "4"],
+          [18, "Find the remainder of \\(2^{2026}\\) divided by 17.", "\\(2^8 = 256 \\equiv 1 \\pmod{17}\\); \\(2026 \\equiv 2 \\pmod 8\\), so \\(2^{2026} \\equiv 4\\).", "4"],
+          [19, "Find the remainder of \\(5^{1000}\\) divided by 11.", "\\(5^5 = 3125 \\equiv 1 \\pmod{11}\\); \\(1000 \\equiv 0 \\pmod 5\\), so remainder 1.", "1"],
+          [20, "Find the smallest positive integer \\(n > 1\\) with \\(2^n \\equiv 1 \\pmod 5\\).", "\\(2^1=2, 2^2=4, 2^3=3, 2^4=1\\pmod 5\\), so the order is 4.", "4"],
+          [21, "Find the remainder of \\(2024^{2026}\\) divided by 13.", "\\(2024 \\equiv 9\\). \\(9^{12} \\equiv 1\\), \\(2026 \\equiv 10 \\pmod{12}\\); \\(9^{10} \\equiv 9\\pmod{13}\\).", "9"],
+          [22, "Find the remainder of \\(9!\\) divided by 11.", "Wilson: \\(10! \\equiv -1\\). \\(10! = 9!\\cdot 10 \\equiv 9! \\cdot (-1)\\), so \\(9! \\equiv 1\\).", "1"],
+          [23, "Find the remainder of \\(2^{2026}\\) divided by 29.", "\\(2^{28} \\equiv 1\\); \\(2026 \\equiv 10 \\pmod{28}\\), and \\(2^{10} = 1024 \\equiv 9\\pmod{29}\\).", "9"],
+          [24, "Find the remainder of \\(7^{2026}\\) divided by 13.", "\\(7^{12} \\equiv 1\\), \\(2026 \\equiv 10 \\pmod{12}\\); \\(7^2 \\equiv 10, 7^4 \\equiv 9, 7^8 \\equiv 3\\), so \\(7^{10} \\equiv 4\\).", "4"]
         ]
       }]
   },
@@ -3810,16 +3814,14 @@ const SECTIONS = [
     ,
       { n: "Level 4: AIME 10+/USAJMO",
         probs: [
-          [11,"How many distinct arrangements of the letters of MISSISSIPPI are there?","\\(\\dfrac{11!}{4!\\,4!\\,2!} = 34650\\).","34650"],
-          [12,"How many 5-digit positive integers contain at least one 0?","Total \\(9 \\cdot 10^4 = 90000\\). None use 0: \\(9^5 = 59049\\). Answer \\(90000 - 59049 = 30951\\).","30951"],
-          [13,"In how many ways can 5 distinct books be given to 3 distinct students so each gets at least one?","Inclusion-exclusion: \\(3^5 - 3 \\cdot 2^5 + 3 \\cdot 1^5 = 243 - 96 + 3 = 150\\).","150"],
-          [14,"Five men and five women sit around a circular table, alternating genders. How many arrangements?","Fix one man: arrange the other 4 men (\\(4!\\)) and place the women in the 5 gaps (\\(5!\\)): \\(24 \\cdot 120 = 2880\\).","2880"],
-          [15,"In how many ways can 5 distinct letters be mailed into mailboxes so that each letter goes to a different mailbox than its own address? (derangements)","\\(D_5 = 5! \\left(1 - \\tfrac11 + \\tfrac12 - \\tfrac16 + \\tfrac1{24} - \\tfrac1{120}\\right) = 44\\).","44"],
-          [16,"How many subsets of \\(\\{1,\\ldots,10\\}\\) contain 1 or 2?","Total \\(2^{10}\\); subsets with neither: \\(2^8\\). Answer \\(1024 - 256 = 768\\).","768"],
-          [17,"How many ordered triples \\((x,y,z)\\) of nonnegative integers satisfy \\(x+y+z \\le 10\\)?","Introduce slack \\(w \\ge 0\\) with \\(x+y+z+w = 10\\): \\(\\binom{13}{3} = 286\\).","286"],
-          [18,"How many ways to put 10 identical balls into 4 boxes, each box nonempty?","Stars and bars: \\(\\binom{10-1}{4-1} = \\binom{9}{3} = 84\\).","84"],
-          [19,"In how many ways can one climb a flight of 10 stairs taking steps of size 1 or 2?","Let \\(a_n\\) be ways up \\(n\\) stairs; \\(a_n = a_{n-1} + a_{n-2}\\), \\(a_1 = 1, a_2 = 2\\). Then \\(a_{10} = 89\\).","89"],
-          [20,"How many 3-element subsets of \\(\\{1,\\ldots,10\\}\\) contain no two consecutive integers?","\\(\\binom{10-3+1}{3} = \\binom{8}{3} = 56\\).","56"]
+          [21, "How many distinct arrangements of the letters of \\texttt{SUCCESS}?", "7 letters: 3 S, 2 C, 1 U, 1 E: \\(\\frac{7!}{3!2!} = 420\\).", "420"],
+          [22, "How many 4-digit positive integers have distinct digits and are even?", "Last digit 0: \\(9\\cdot8\\cdot7 = 504\\). Last digit \\(\\in\\{2,4,6,8\\}\\): \\(4\\cdot8\\cdot8\\cdot7 = 1792\\). Total \\(2296\\).", "2296"],
+          [23, "How many positive integer solutions does \\(x + y + z = 10\\) have?", "\\(\\binom{9}{2} = 36\\).", "36"],
+          [24, "In how many ways can 6 people be divided into 3 unordered pairs?", "Pair the first person with one of 5, etc.: \\(5\\cdot3\\cdot1 = 15\\).", "15"],
+          [25, "How many 3-element subsets of \\(\\{1,\\ldots,8\\}\\) have an odd sum?", "Odd sum needs 1 or 3 odd numbers. \\(4\\cdot\\binom42 + \\binom43 = 24 + 4 = 28\\).", "28"],
+          [26, "How many ways to color 4 distinct flags with 3 colors, using at least two colors?", "Total \\(3^4 = 81\\); all same: 3. Answer \\(81 - 3 = 78\\).", "78"],
+          [27, "How many onto functions \\(\\{1,2,3,4,5\\} \\to \\{1,2,3\\}\\)?", "Inclusion-exclusion: \\(3^5 - 3\\cdot2^5 + 3 = 243 - 96 + 3 = 150\\).", "150"],
+          [28, "How many binary strings of length 10 have no two adjacent 1s?", "Fibonacci: \\(F_{12} = 144\\).", "144"]
         ]
       }]
   },
