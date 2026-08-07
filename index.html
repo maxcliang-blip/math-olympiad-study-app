@@ -90,6 +90,11 @@ body {
   gap: 10px;
   background: linear-gradient(135deg, var(--blue-bg), transparent 70%);
 }
+.mock-note {
+  font-size: 12px; color: var(--muted); background: var(--gold-bg);
+  border: 1px solid var(--gold); border-radius: 8px;
+  padding: 8px 12px; margin-top: 12px; line-height: 1.5;
+}
 .sidebar-header .titles { min-width: 0; }
 .theme-btn {
   width: 34px; height: 34px; min-width: 34px;
@@ -641,7 +646,7 @@ const SECTIONS = [
         ]
       },
       {
-        n: "Level 5: Challenge",
+        n: "Level 5: Challenge (AIME 1-5)",
         probs: [
           [26, "Find all real pairs \\((x,y)\\): \\(x+y=6,\\; x^4+y^4=272\\).", "\\(S_4=(36-2p)^2-2p^2=272 \\Rightarrow p=8\\). \\(t^2-6t+8=0\\). Solutions: \\((2,4)\\) or \\((4,2)\\).", "(2,4)|(4,2)"],
           [27, "If \\(x+y=1,\\; x^2+y^2=2\\), find \\(x^7+y^7\\).", "\\(p=-\\frac12\\). Recurrence: \\(S_7=\\frac{71}{8}\\).", "71/8"],
@@ -651,7 +656,7 @@ const SECTIONS = [
         ]
       },
       {
-        n: "Level 6: Extra Challenge",
+        n: "Level 6: Challenge (AIME 3-8)",
         probs: [
           [31, "Given \\(x^2+y^2=7,\\; x^3+y^3=10\\), find \\(x+y\\) and \\(xy\\).", "Only \\(s=1,\\; p=-3\\) yields real solutions.", "1,-3|s=1,p=-3"],
           [32, "Given \\(x+y=3,\\; x^4+y^4=17\\), find \\(x^3+y^3\\).", "\\(p=2\\) (since \\(p=16\\) not real). \\(S_3 = 27-18 = 9\\).", "9"],
@@ -820,7 +825,7 @@ const SECTIONS = [
         ]
       }
     ,
-      {"n":"Level 5: AIME 10+/USAJMO","probs":[[21,"For positive reals \\(a, b, c\\), find the minimum of \\(\\dfrac{(a+b)(b+c)(c+a)}{abc}\\).","AM-GM gives \\((a+b)(b+c)(c+a) \\ge 2\\sqrt{ab}\\cdot 2\\sqrt{bc}\\cdot 2\\sqrt{ca} = 8abc\\), equality at \\(a=b=c\\).","8"],[22,"Let \\(x, y > 0\\) with \\(x + y = 2\\). Find the minimum of \\(\\dfrac{x}{y} + \\dfrac{y}{x}\\).","\\(\\frac{x}{y} + \\frac{y}{x} = \\frac{x^2+y^2}{xy} = \\frac{(x+y)^2-2xy}{xy} = \\frac{4}{xy}-2 \\ge 4-2 = 2\\) since \\(xy \\le 1\\).","2"],[23,"For positive \\(x, y, z\\) with \\(xyz = 1\\), find the minimum of \\(x + y + z\\).","AM-GM: \\(x+y+z \\ge 3\\sqrt[3]{xyz} = 3\\), equality at \\(x=y=z=1\\).","3"],[24,"Find the minimum of \\(\\dfrac{x^2+3x+1}{x}\\) for \\(x > 0\\).","\\(\\frac{x^2+3x+1}{x} = x + 3 + \\frac1x \\ge 3 + 2\\sqrt{x\\cdot\\frac1x} = 5\\).","5"],[25,"For positive \\(a, b\\) with \\(a + b = 1\\), find the minimum of \\(\\dfrac1a + \\dfrac1b\\).","By Cauchy, \\((\\frac1a+\\frac1b)(a+b) \\ge (1+1)^2\\), so \\(\\frac1a+\\frac1b \\ge 4\\), equality at \\(a=b=\\frac12\\).","4"],[26,"Find the maximum of \\(xy\\) given \\(x + y = 10\\) with \\(x, y \\ge 0\\).","AM-GM: \\(xy \\le (\\frac{x+y}{2})^2 = 25\\), equality at \\(x=y=5\\).","25"],[27,"For positive reals \\(x, y, z\\), find the minimum of \\((x+y+z)\\left(\\dfrac1x + \\dfrac1y + \\dfrac1z\\right)\\).","By Cauchy-Schwarz, \\((x+y+z)(\\frac1x+\\frac1y+\\frac1z) \\ge (1+1+1)^2 = 9\\).","9"],[28,"If \\(a, b, c > 0\\) and \\(a + b + c = 6\\), find the maximum of \\(abc\\).","AM-GM: \\(abc \\le (\\frac{a+b+c}{3})^3 = 8\\), equality at \\(a=b=c=2\\).","8"],[29,"Find the minimum of \\(x^2 + \\dfrac{1}{x^2}\\) for \\(x \\neq 0\\).","AM-GM: \\(x^2 + \\frac1{x^2} \\ge 2\\sqrt{x^2\\cdot\\frac1{x^2}} = 2\\), equality at \\(x=\\pm1\\).","2"],[30,"Find the minimum of \\(x + \\dfrac{4}{x}\\) for \\(x > 0\\).","AM-GM: \\(x + \\frac4x \\ge 2\\sqrt{x\\cdot\\frac4x} = 4\\), equality at \\(x=2\\).","4"]
+      {"n":"Level 5: Challenge (AIME 1-5)","probs":[[21,"For positive reals \\(a, b, c\\), find the minimum of \\(\\dfrac{(a+b)(b+c)(c+a)}{abc}\\).","AM-GM gives \\((a+b)(b+c)(c+a) \\ge 2\\sqrt{ab}\\cdot 2\\sqrt{bc}\\cdot 2\\sqrt{ca} = 8abc\\), equality at \\(a=b=c\\).","8"],[22,"Let \\(x, y > 0\\) with \\(x + y = 2\\). Find the minimum of \\(\\dfrac{x}{y} + \\dfrac{y}{x}\\).","\\(\\frac{x}{y} + \\frac{y}{x} = \\frac{x^2+y^2}{xy} = \\frac{(x+y)^2-2xy}{xy} = \\frac{4}{xy}-2 \\ge 4-2 = 2\\) since \\(xy \\le 1\\).","2"],[23,"For positive \\(x, y, z\\) with \\(xyz = 1\\), find the minimum of \\(x + y + z\\).","AM-GM: \\(x+y+z \\ge 3\\sqrt[3]{xyz} = 3\\), equality at \\(x=y=z=1\\).","3"],[24,"Find the minimum of \\(\\dfrac{x^2+3x+1}{x}\\) for \\(x > 0\\).","\\(\\frac{x^2+3x+1}{x} = x + 3 + \\frac1x \\ge 3 + 2\\sqrt{x\\cdot\\frac1x} = 5\\).","5"],[25,"For positive \\(a, b\\) with \\(a + b = 1\\), find the minimum of \\(\\dfrac1a + \\dfrac1b\\).","By Cauchy, \\((\\frac1a+\\frac1b)(a+b) \\ge (1+1)^2\\), so \\(\\frac1a+\\frac1b \\ge 4\\), equality at \\(a=b=\\frac12\\).","4"],[26,"Find the maximum of \\(xy\\) given \\(x + y = 10\\) with \\(x, y \\ge 0\\).","AM-GM: \\(xy \\le (\\frac{x+y}{2})^2 = 25\\), equality at \\(x=y=5\\).","25"],[27,"For positive reals \\(x, y, z\\), find the minimum of \\((x+y+z)\\left(\\dfrac1x + \\dfrac1y + \\dfrac1z\\right)\\).","By Cauchy-Schwarz, \\((x+y+z)(\\frac1x+\\frac1y+\\frac1z) \\ge (1+1+1)^2 = 9\\).","9"],[28,"If \\(a, b, c > 0\\) and \\(a + b + c = 6\\), find the maximum of \\(abc\\).","AM-GM: \\(abc \\le (\\frac{a+b+c}{3})^3 = 8\\), equality at \\(a=b=c=2\\).","8"],[29,"Find the minimum of \\(x^2 + \\dfrac{1}{x^2}\\) for \\(x \\neq 0\\).","AM-GM: \\(x^2 + \\frac1{x^2} \\ge 2\\sqrt{x^2\\cdot\\frac1{x^2}} = 2\\), equality at \\(x=\\pm1\\).","2"],[30,"Find the minimum of \\(x + \\dfrac{4}{x}\\) for \\(x > 0\\).","AM-GM: \\(x + \\frac4x \\ge 2\\sqrt{x\\cdot\\frac4x} = 4\\), equality at \\(x=2\\).","4"]
           ,
 [21, "For \\(x>0\\), find the minimum of \\(x+\\frac{9}{x}\\).", "AM-GM: \\(2\\sqrt9 = 6\\) at \\(x=3\\).", "6"],
           [22, "For positive \\(a,b,c\\) with \\(abc=27\\), find the minimum of \\(a+b+c\\).", "AM-GM: \\(3\\sqrt[3]{27} = 9\\) at \\(a=b=c=3\\).", "9"],
@@ -1124,7 +1129,7 @@ const SECTIONS = [
         ]
       }
     ,
-      {"n":"Level 6: AIME 10+/USAJMO","probs":[[21,"For nonnegative \\(a, b, c\\) with \\(a + b + c = 1\\), find the minimum of \\(a^3 + b^3 + c^3 + 3abc\\).","By Jensen on the convex \\(t^3\\) plus the \\(3abc\\) term, the minimum occurs at \\(a=b=c=\\frac13\\): \\(3\\cdot\\frac1{27} + 3\\cdot\\frac1{27} = \\frac{2}{9}\\). (At \\((1,0,0)\\) it is 1, at \\((\\frac12,\\frac12,0)\\) it is \\(\\frac14\\).)","2/9"],[22,"For real \\(x, y, z\\) with \\(x + y + z = 3\\), find the minimum of \\(x^2 + y^2 + z^2\\).","Jensen (convexity of \\(t^2\\)): \\(\\frac{x^2+y^2+z^2}{3} \\ge \\left(\\frac{x+y+z}{3}\\right)^2 = 1\\), so the sum is at least 3.","3"],[23,"For positive \\(x, y\\) with \\(x + y = 4\\), find the minimum of \\(\\sqrt{\\dfrac{x^2+y^2}{2}}\\).","Power mean (RMS \\(\\ge\\) AM): \\(\\sqrt{\\frac{x^2+y^2}{2}} \\ge \\frac{x+y}{2} = 2\\), equality at \\(x=y=2\\).","2"],[24,"For \\(a = 3, b = 4, c = 5\\), compute \\(a^2 + b^2 + c^2 - (ab + bc + ca)\\).","\\(50 - (12+20+15) = 50 - 47 = 3\\). (The SOS identity guarantees this is nonnegative.)","3"],[25,"For real \\(x, y, z\\) with \\(x + y + z = 6\\), find the minimum of \\(x^2 + y^2 + z^2\\).","Convexity: \\(x^2+y^2+z^2 \\ge \\frac{(x+y+z)^2}{3} = \\frac{36}{3} = 12\\), equality at \\(x=y=z=2\\).","12"],[26,"For \\(a, b, c \\ge 0\\) with \\(a + b + c = 12\\), find the maximum of \\(ab + bc + ca\\).","By symmetry the maximum occurs at \\(a=b=c=4\\): \\(3\\cdot 16 = 48\\). (Indeed \\(ab+bc+ca \\le \\frac{(a+b+c)^2}{3}\\).)","48"],[27,"For \\(a = 1, b = 2, c = 3\\), compute the difference \\(a^3+b^3+c^3+3abc - (a^2b+a^2c+b^2a+b^2c+c^2a+c^2b)\\).","LHS \\(= 1+8+27+18 = 54\\). RHS \\(= 2+3+4+12+9+18 = 48\\). Difference \\(= 6\\). (Schur guarantees \\(\\ge 0\\).)","6"],[28,"For positive \\(a, b, c\\) with \\(abc = 8\\), find the minimum of \\(a + b + c\\).","AM-GM: \\(a+b+c \\ge 3\\sqrt[3]{abc} = 3\\cdot 2 = 6\\), equality at \\(a=b=c=2\\).","6"],[29,"Find the minimum of \\(4x^2 + \\dfrac{1}{x}\\) for \\(x > 0\\).","AM-GM on \\(4x^2, \\frac{1}{2x}, \\frac{1}{2x}\\): \\(4x^2+\\frac1x \\ge 3\\sqrt[3]{4x^2\\cdot\\frac{1}{4x^2}} = 3\\), equality at \\(x=\\frac12\\).","3"],[30,"For positive \\(a, b, c\\), find the minimum of \\(\\dfrac{a}{b+c} + \\dfrac{b}{c+a} + \\dfrac{c}{a+b}\\).","Nesbitt's inequality: the sum is at least \\(\\frac32\\), with equality at \\(a=b=c\\).","3/2"]
+      {"n":"Level 6: Challenge (AIME 3-8)","probs":[[21,"For nonnegative \\(a, b, c\\) with \\(a + b + c = 1\\), find the minimum of \\(a^3 + b^3 + c^3 + 3abc\\).","By Jensen on the convex \\(t^3\\) plus the \\(3abc\\) term, the minimum occurs at \\(a=b=c=\\frac13\\): \\(3\\cdot\\frac1{27} + 3\\cdot\\frac1{27} = \\frac{2}{9}\\). (At \\((1,0,0)\\) it is 1, at \\((\\frac12,\\frac12,0)\\) it is \\(\\frac14\\).)","2/9"],[22,"For real \\(x, y, z\\) with \\(x + y + z = 3\\), find the minimum of \\(x^2 + y^2 + z^2\\).","Jensen (convexity of \\(t^2\\)): \\(\\frac{x^2+y^2+z^2}{3} \\ge \\left(\\frac{x+y+z}{3}\\right)^2 = 1\\), so the sum is at least 3.","3"],[23,"For positive \\(x, y\\) with \\(x + y = 4\\), find the minimum of \\(\\sqrt{\\dfrac{x^2+y^2}{2}}\\).","Power mean (RMS \\(\\ge\\) AM): \\(\\sqrt{\\frac{x^2+y^2}{2}} \\ge \\frac{x+y}{2} = 2\\), equality at \\(x=y=2\\).","2"],[24,"For \\(a = 3, b = 4, c = 5\\), compute \\(a^2 + b^2 + c^2 - (ab + bc + ca)\\).","\\(50 - (12+20+15) = 50 - 47 = 3\\). (The SOS identity guarantees this is nonnegative.)","3"],[25,"For real \\(x, y, z\\) with \\(x + y + z = 6\\), find the minimum of \\(x^2 + y^2 + z^2\\).","Convexity: \\(x^2+y^2+z^2 \\ge \\frac{(x+y+z)^2}{3} = \\frac{36}{3} = 12\\), equality at \\(x=y=z=2\\).","12"],[26,"For \\(a, b, c \\ge 0\\) with \\(a + b + c = 12\\), find the maximum of \\(ab + bc + ca\\).","By symmetry the maximum occurs at \\(a=b=c=4\\): \\(3\\cdot 16 = 48\\). (Indeed \\(ab+bc+ca \\le \\frac{(a+b+c)^2}{3}\\).)","48"],[27,"For \\(a = 1, b = 2, c = 3\\), compute the difference \\(a^3+b^3+c^3+3abc - (a^2b+a^2c+b^2a+b^2c+c^2a+c^2b)\\).","LHS \\(= 1+8+27+18 = 54\\). RHS \\(= 2+3+4+12+9+18 = 48\\). Difference \\(= 6\\). (Schur guarantees \\(\\ge 0\\).)","6"],[28,"For positive \\(a, b, c\\) with \\(abc = 8\\), find the minimum of \\(a + b + c\\).","AM-GM: \\(a+b+c \\ge 3\\sqrt[3]{abc} = 3\\cdot 2 = 6\\), equality at \\(a=b=c=2\\).","6"],[29,"Find the minimum of \\(4x^2 + \\dfrac{1}{x}\\) for \\(x > 0\\).","AM-GM on \\(4x^2, \\frac{1}{2x}, \\frac{1}{2x}\\): \\(4x^2+\\frac1x \\ge 3\\sqrt[3]{4x^2\\cdot\\frac{1}{4x^2}} = 3\\), equality at \\(x=\\frac12\\).","3"],[30,"For positive \\(a, b, c\\), find the minimum of \\(\\dfrac{a}{b+c} + \\dfrac{b}{c+a} + \\dfrac{c}{a+b}\\).","Nesbitt's inequality: the sum is at least \\(\\frac32\\), with equality at \\(a=b=c\\).","3/2"]
           ,
 [11, "For positive \\(x,y\\) with \\(x+y=6\\), find the minimum of \\(x^2+y^2\\).", "Power mean / QM-AM: \\(x^2+y^2\\ge 18\\), at \\(x=y=3\\).", "18"],
           [12, "For positive \\(a,b,c\\) with \\(a+b+c=9\\), find the maximum of \\(abc\\).", "AM-GM: \\(3^3 = 27\\).", "27"],
@@ -1326,7 +1331,7 @@ const SECTIONS = [
         ]
       }
     ,
-      {"n":"Level 5: AIME 10+/USAJMO","probs":[[21,"Let \\(F_1 = F_2 = 1\\) and \\(F_{n} = F_{n-1} + F_{n-2}\\). Find \\(F_1 + F_2 + \\cdots + F_{10}\\).","\\(F_1..F_{10} = 1,1,2,3,5,8,13,21,34,55\\); sum \\(= 143\\).","143"],[22,"Find the sum of the first 100 positive even integers.","The evens are \\(2,4,\\dots,200\\), an arithmetic sequence with 100 terms: \\(100\\cdot\\frac{2+200}{2} = 10100\\).","10100"],[23,"A sequence has \\(a_1 = 2\\) and \\(a_{n+1} = 3a_n + 1\\). Find \\(a_4\\).","\\(a_2 = 7, a_3 = 22, a_4 = 67\\).","67"],[24,"Find \\(1 + 2 + 4 + \\cdots + 2^9\\).","Geometric sum: \\(\\frac{2^{10}-1}{2-1} = 1023\\).","1023"],[25,"The sum of the first \\(n\\) terms of an arithmetic sequence is \\(n^2\\). Find its 100th term.","\\(a_n = S_n - S_{n-1} = n^2 - (n-1)^2 = 2n-1\\), so \\(a_{100} = 199\\).","199"],[26,"Find \\(\\dfrac{1}{1\\cdot 2} + \\dfrac{1}{2\\cdot 3} + \\cdots + \\dfrac{1}{99\\cdot 100}\\).","Telescoping: \\(\\frac1{k(k+1)} = \\frac1k - \\frac1{k+1}\\), so the sum is \\(1 - \\frac1{100} = \\frac{99}{100}\\).","99/100"],[27,"A sequence has \\(a_1 = 1\\) and \\(a_{n+1} = 2a_n + 3\\). Find \\(a_6\\).","\\(a_2=5, a_3=13, a_4=29, a_5=61, a_6=125\\).","125"],[28,"Find the sum of the infinite geometric series \\(3 + 1 + \\dfrac13 + \\dfrac19 + \\cdots\\).","First term 3, ratio \\(\\frac13\\): \\(\\frac{3}{1-1/3} = \\frac{9}{2}\\).","9/2"],[29,"A sequence has \\(a_1 = 0\\) and \\(a_{n+1} = a_n + 2n\\). Find \\(a_{10}\\).","\\(a_{10} = 2(1+2+\\cdots+9) = 2\\cdot 45 = 90\\).","90"],[30,"Find \\(1 + 2 + 3 + \\cdots + 200\\).","Arithmetic sum: \\(\\frac{200\\cdot 201}{2} = 20100\\).","20100"]
+      {"n":"Level 5: Challenge (AIME 1-5)","probs":[[21,"Let \\(F_1 = F_2 = 1\\) and \\(F_{n} = F_{n-1} + F_{n-2}\\). Find \\(F_1 + F_2 + \\cdots + F_{10}\\).","\\(F_1..F_{10} = 1,1,2,3,5,8,13,21,34,55\\); sum \\(= 143\\).","143"],[22,"Find the sum of the first 100 positive even integers.","The evens are \\(2,4,\\dots,200\\), an arithmetic sequence with 100 terms: \\(100\\cdot\\frac{2+200}{2} = 10100\\).","10100"],[23,"A sequence has \\(a_1 = 2\\) and \\(a_{n+1} = 3a_n + 1\\). Find \\(a_4\\).","\\(a_2 = 7, a_3 = 22, a_4 = 67\\).","67"],[24,"Find \\(1 + 2 + 4 + \\cdots + 2^9\\).","Geometric sum: \\(\\frac{2^{10}-1}{2-1} = 1023\\).","1023"],[25,"The sum of the first \\(n\\) terms of an arithmetic sequence is \\(n^2\\). Find its 100th term.","\\(a_n = S_n - S_{n-1} = n^2 - (n-1)^2 = 2n-1\\), so \\(a_{100} = 199\\).","199"],[26,"Find \\(\\dfrac{1}{1\\cdot 2} + \\dfrac{1}{2\\cdot 3} + \\cdots + \\dfrac{1}{99\\cdot 100}\\).","Telescoping: \\(\\frac1{k(k+1)} = \\frac1k - \\frac1{k+1}\\), so the sum is \\(1 - \\frac1{100} = \\frac{99}{100}\\).","99/100"],[27,"A sequence has \\(a_1 = 1\\) and \\(a_{n+1} = 2a_n + 3\\). Find \\(a_6\\).","\\(a_2=5, a_3=13, a_4=29, a_5=61, a_6=125\\).","125"],[28,"Find the sum of the infinite geometric series \\(3 + 1 + \\dfrac13 + \\dfrac19 + \\cdots\\).","First term 3, ratio \\(\\frac13\\): \\(\\frac{3}{1-1/3} = \\frac{9}{2}\\).","9/2"],[29,"A sequence has \\(a_1 = 0\\) and \\(a_{n+1} = a_n + 2n\\). Find \\(a_{10}\\).","\\(a_{10} = 2(1+2+\\cdots+9) = 2\\cdot 45 = 90\\).","90"],[30,"Find \\(1 + 2 + 3 + \\cdots + 200\\).","Arithmetic sum: \\(\\frac{200\\cdot 201}{2} = 20100\\).","20100"]
           ,
 [31, "A sequence has \\(a_1=1, a_2=3, a_{n+2}=2a_{n+1}-a_n\\). Find \\(a_{10}\\).", "Arithmetic with difference 2: \\(a_{10} = 1+2\\cdot9 = 19\\).", "19"],
           [32, "Compute \\(\\sum_{k=1}^{9} \\frac{1}{k(k+1)}\\).", "Telescoping: \\(1-\\frac{1}{10} = \\frac{9}{10}\\).", "9/10"],
@@ -1422,7 +1427,7 @@ const SECTIONS = [
         ]
       }
       ,
-      { n: "Level 4: AIME 10+", probs: [
+      { n: "Level 4: Challenge (AIME 1-5)", probs: [
           [16, "The roots of \\(x^3 - 3x^2 + 4x - 2 = 0\\) are \\(a, b, c\\). Find \\(\\frac{1}{a} + \\frac{1}{b} + \\frac{1}{c}\\).", "\\(\\frac{ab+bc+ca}{abc} = \\frac{4}{2} = 2\\).", "2"],
           [17, "How many distinct real roots does \\(x^4 - 5x^2 + 4 = 0\\) have?", "\\(x^2 = 1, 4\\), so \\(x = \\pm 1, \\pm 2\\): four distinct real roots.", "4"],
           [18, "Find the remainder when \\(x^{2024} + 1\\) is divided by \\(x^2 - 1\\).", "Remainder \\(ax+b\\) with \\(P(1) = 2, P(-1) = 2\\): \\(a+b=2, -a+b=2\\) gives \\(a=0, b=2\\).", "2"],
@@ -1519,7 +1524,7 @@ const SECTIONS = [
         ]
       }
     ,
-      { n: "Level 4: AIME 10+", probs: [
+      { n: "Level 4: Challenge (AIME 1-5)", probs: [
           [16, "If \\(r, s\\) are the roots of \\(x^2 - 6x + 3 = 0\\), find \\(r^3 + s^3\\).", "\\((r+s)^3 - 3rs(r+s) = 6^3 - 3 \\cdot 3 \\cdot 6 = 216 - 54 = 162\\).", "162"],
           [17, "The roots of \\(x^2 - kx + k = 0\\) are \\(r, s\\) with \\(r^2 + s^2 = 5\\). Find the positive value of \\(k\\).", "\\(r^2+s^2 = (r+s)^2 - 2rs = k^2 - 2k = 5\\), so \\(k = 1 + \\sqrt6\\) (positive root).", "1+sqrt6|1+√6|1+1*sqrt6"],
           [18, "If \\(r, s\\) are the roots of \\(x^2 - 4x + 1 = 0\\), find \\(\\frac{1}{r^3} + \\frac{1}{s^3}\\).", "\\(1/r + 1/s = 4\\), \\(1/(rs) = 1\\). Then \\((1/r+1/s)^3 - 3\\frac{1}{rs}(1/r+1/s) = 64 - 12 = 52\\).", "52"],
@@ -1802,7 +1807,7 @@ const SECTIONS = [
         ]
       }
       ,
-      { n: "Level 3: AIME 10+", probs: [
+      { n: "Level 3: Challenge (AIME 1-3)", probs: [
           [11, "\\(f(x+y) = f(x)f(y)\\) for all reals and \\(f(1) = 2\\). Find \\(f(5)\\).", "\\(f(5) = f(1)^5 = 32\\).", "32"],
           [12, "\\(f(2x) = 2f(x)\\) for all real \\(x\\) and \\(f(3) = 4\\). Find \\(f(24)\\).", "\\(24 = 3\\cdot 2^3\\), so \\(f(24) = 2^3\\cdot f(3) = 32\\).", "32"],
           [13, "\\(f(xy) = f(x)f(y)\\) for all reals, \\(f(2)=3, f(3)=5\\). Find \\(f(72)\\).", "\\(72 = 2^3\\cdot 3^2\\), so \\(f(72) = 3^3\\cdot 5^2 = 27\\cdot25 = 675\\).", "675"],
@@ -2166,7 +2171,7 @@ const SECTIONS = [
         ]
       }
     ,
-      { n: "Level 4: AIME 10+/USAJMO",
+      { n: "Level 4: Challenge (AIME 1-5)",
         probs: [
           [13,"In \\(\\triangle ABC\\), \\(D \\in AB\\) with \\(AD:DB = 2:1\\) and \\(E \\in AC\\) with \\(AE:EC = 3:1\\). If \\(BE\\) and \\(CD\\) meet at \\(X\\) and \\(AX\\) meets \\(BC\\) at \\(F\\), find \\(BF/FC\\).","Mass points: masses \\(m(A)=1, m(B)=2, m(C)=3\\). Then \\(BF:FC = m(C):m(B) = 3:2\\).","3/2"],
           [14,"A line parallel to \\(BC\\) meets \\(AB\\) at \\(D\\) and \\(AC\\) at \\(E\\), with \\(AD:DB = 1:2\\). What fraction of the area of \\(\\triangle ABC\\) is \\(\\triangle ADE\\)?","\\(AD/AB = 1/3\\), and similar triangles scale area by the square: \\(1/9\\).","1/9"],
@@ -2263,7 +2268,7 @@ const SECTIONS = [
         ]
       }
     ,
-      { n: "Level 4: AIME 10+/USAJMO",
+      { n: "Level 4: Challenge (AIME 1-5)",
         probs: [
           [23, "A cyclic quadrilateral has sides 3, 4, 5, 6. Find its maximum area.", "Brahmagupta: \\(s = 9\\), area \\(= \\sqrt{6\\cdot5\\cdot4\\cdot3} = \\sqrt{360} = 6\\sqrt{10}\\).", "6sqrt10|6√10|6*sqrt10"],
           [24, "A cyclic quadrilateral has perpendicular diagonals of lengths 12 and 5. Find its area.", "\\(\\frac12 \\cdot 12 \\cdot 5 = 30\\).", "30"],
@@ -2350,7 +2355,7 @@ const SECTIONS = [
         ]
       }
     ,
-      { n: "Level 4: AIME 10+/USAJMO",
+      { n: "Level 4: Challenge (AIME 1-5)",
         probs: [
           [13,"From point \\(P\\) outside a circle, the tangent \\(PA = 12\\). A secant through \\(P\\) cuts the circle at \\(B\\) (nearest) and \\(C\\) with \\(PB = 6\\). Find \\(PC\\).","Power: \\(PA^2 = PB \\cdot PC\\), so \\(144 = 6 PC\\) and \\(PC = 24\\).","24"],
           [14,"From \\(P\\), secants \\(PAB\\) and \\(PCD\\) meet the circle with \\(PA = 4\\), \\(AB = 5\\), \\(PC = 6\\). Find \\(PD\\).","\\(PA \\cdot PB = PC \\cdot PD\\): \\(4 \\cdot 9 = 6 \\cdot PD\\), so \\(PD = 6\\).","6"],
@@ -2436,7 +2441,7 @@ const SECTIONS = [
         ]
       }
     ,
-      { n: "Level 3: AIME 10+/USAJMO",
+      { n: "Level 3: Challenge (AIME 1-3)",
         probs: [
           [11,"Two circles have radii 6 and 8 and their centers are 12 apart. Find the distance from the radius-6 circle's center to the radical axis.","Radical axis is at \\(x = \\dfrac{6^2 - 8^2 + 12^2}{2 \\cdot 12} = \\dfrac{116}{24} = \\dfrac{29}{6}\\).","29/6"],
           [12,"Two congruent circles of radius 5 have centers 10 apart. Find the distance from either center to the radical axis.","The radical axis is the perpendicular bisector of the centers, at distance 5.","5"],
@@ -2525,7 +2530,7 @@ const SECTIONS = [
         ]
       }
     ,
-      { n: "Level 3: AIME 10+/USAJMO",
+      { n: "Level 3: Challenge (AIME 1-3)",
         probs: [
           [11,"In \\(\\triangle ABC\\), cevians \\(AD, BE, CF\\) are concurrent with \\(BD/DC = 2\\) and \\(CE/EA = 3\\). Find \\(AF/FB\\).","Ceva: \\(\\frac{AF}{FB} \\cdot 2 \\cdot 3 = 1\\), so \\(AF/FB = 1/6\\).","1/6"],
           [12,"In \\(\\triangle ABC\\), the three medians meet at the centroid. Find \\(AF/FB\\), where \\(F\\) is the midpoint of \\(AB\\).","A median hits the midpoint, so \\(AF/FB = 1\\).","1"],
@@ -2615,7 +2620,7 @@ const SECTIONS = [
         [10, "Show Menelaus and Ceva are algebraically dual by writing each as a product equal to 1 and \\(-1\\).", "Ceva: \\(\\frac{BD}{DC}\\frac{CE}{EA}\\frac{AF}{FB} = 1\\) (concurrency). Menelaus: same product with a sign flip \\(= -1\\) (collinearity). Interchanging 1 and \\(-1\\) swaps the two theorems.", "1"]
       ]}
     ,
-      {"n":"Level 4: AIME 10+/USAJMO","probs":[[11,"In \\(\\triangle ABC\\), \\(D \\in BC\\) with \\(BD:DC = 2:1\\), \\(E \\in CA\\) with \\(CE:EA = 3:1\\). Line \\(DE\\) meets \\(AB\\) at \\(F\\). Find \\(AF/FB\\).","Menelaus: \\(\\frac{AF}{FB} \\cdot \\frac{BD}{DC} \\cdot \\frac{CE}{EA} = 1\\) in magnitudes: \\(\\frac{AF}{FB} \\cdot 2 \\cdot 3 = 1\\), so \\(AF/FB = 1/6\\).","1/6"],[12,"In \\(\\triangle ABC\\), \\(D\\) is the midpoint of \\(BC\\) and \\(E \\in AC\\) with \\(AE:EC = 1:2\\). Line \\(DE\\) meets \\(AB\\) at \\(F\\). Find \\(AF/FB\\).","Menelaus: \\(\\frac{AF}{FB} \\cdot 1 \\cdot 2 = 1\\), so \\(AF/FB = 1/2\\) (with \\(F\\) on the extension of \\(AB\\)).","1/2"],[13,"Collinear points \\(D \\in BC, E \\in CA, F \\in AB\\) of \\(\\triangle ABC\\) have \\(BD/DC = 3\\) and \\(CE/EA = 4\\). Find \\(AF/FB\\).","Menelaus: \\(\\frac{AF}{FB} \\cdot 3 \\cdot 4 = 1\\), so \\(AF/FB = 1/12\\).","1/12"],[14,"In \\(\\triangle ABC\\), \\(BD:DC = 1:2\\) and \\(E\\) is the midpoint of \\(CA\\). If \\(D, E, F\\) are collinear with \\(F \\in AB\\), find \\(AF/FB\\).","Menelaus: \\(\\frac{AF}{FB} \\cdot \\frac{1}{2} \\cdot 1 = 1\\), so \\(AF/FB = 2\\).","2"],[15,"For \\(D \\in BC, E \\in CA, F \\in AB\\) to be collinear, with \\(AF/FB = 2\\) and \\(BD/DC = 3\\), find \\(CE/EA\\).","Menelaus: \\(2 \\cdot 3 \\cdot \\frac{CE}{EA} = 1\\), so \\(CE/EA = 1/6\\).","1/6"],[16,"Collinear \\(D \\in BC, E \\in CA, F \\in AB\\) with \\(AF/FB = 3/4\\) and \\(CE/EA = 2/5\\). Find \\(BD/DC\\).","Menelaus: \\(\\frac34 \\cdot \\frac{BD}{DC} \\cdot \\frac25 = 1\\), so \\(BD/DC = 10/3\\).","10/3"],[17,"In \\(\\triangle ABC\\), \\(D \\in BC\\), \\(E \\in CA\\), \\(F \\in AB\\) are collinear with \\(BD:DC = 4:1\\) and \\(CE:EA = 1:3\\). Find \\(AF:FB\\).","Menelaus: \\(\\frac{AF}{FB} \\cdot 4 \\cdot \\frac13 = 1\\), so \\(AF/FB = 3/4\\).","3/4"],[18,"The internal angle bisector of \\(\\angle A\\) meets \\(BC\\) at \\(D\\), with \\(AB = 5\\), \\(AC = 6\\). Find \\(BD/DC\\).","Angle bisector theorem: \\(BD/DC = AB/AC = 5/6\\).","5/6"],[19,"Collinear \\(D \\in BC, E \\in CA, F \\in AB\\) with \\(BD:DC = 2:3\\) and \\(CE:EA = 5:4\\). Find \\(AF:FB\\).","Menelaus: \\(\\frac{AF}{FB} \\cdot \\frac23 \\cdot \\frac54 = 1\\), so \\(AF/FB = 6/5\\).","6/5"],[20,"Triangle \\(ABC\\) has \\(AB = 5\\), \\(AC = 6\\), \\(BC = 7\\). The median from \\(A\\) meets \\(BC\\) at \\(M\\); through \\(M\\) a line parallel to \\(AB\\) meets \\(AC\\) at \\(E\\), and a line parallel to \\(AC\\) meets \\(AB\\) at \\(F\\). Find \\(EF\\).","\\(E\\) and \\(F\\) are midpoints of \\(AC\\) and \\(AB\\), so \\(EF = BC/2 = 7/2\\).","7/2"]
+      {"n":"Level 4: Challenge (AIME 1-5)","probs":[[11,"In \\(\\triangle ABC\\), \\(D \\in BC\\) with \\(BD:DC = 2:1\\), \\(E \\in CA\\) with \\(CE:EA = 3:1\\). Line \\(DE\\) meets \\(AB\\) at \\(F\\). Find \\(AF/FB\\).","Menelaus: \\(\\frac{AF}{FB} \\cdot \\frac{BD}{DC} \\cdot \\frac{CE}{EA} = 1\\) in magnitudes: \\(\\frac{AF}{FB} \\cdot 2 \\cdot 3 = 1\\), so \\(AF/FB = 1/6\\).","1/6"],[12,"In \\(\\triangle ABC\\), \\(D\\) is the midpoint of \\(BC\\) and \\(E \\in AC\\) with \\(AE:EC = 1:2\\). Line \\(DE\\) meets \\(AB\\) at \\(F\\). Find \\(AF/FB\\).","Menelaus: \\(\\frac{AF}{FB} \\cdot 1 \\cdot 2 = 1\\), so \\(AF/FB = 1/2\\) (with \\(F\\) on the extension of \\(AB\\)).","1/2"],[13,"Collinear points \\(D \\in BC, E \\in CA, F \\in AB\\) of \\(\\triangle ABC\\) have \\(BD/DC = 3\\) and \\(CE/EA = 4\\). Find \\(AF/FB\\).","Menelaus: \\(\\frac{AF}{FB} \\cdot 3 \\cdot 4 = 1\\), so \\(AF/FB = 1/12\\).","1/12"],[14,"In \\(\\triangle ABC\\), \\(BD:DC = 1:2\\) and \\(E\\) is the midpoint of \\(CA\\). If \\(D, E, F\\) are collinear with \\(F \\in AB\\), find \\(AF/FB\\).","Menelaus: \\(\\frac{AF}{FB} \\cdot \\frac{1}{2} \\cdot 1 = 1\\), so \\(AF/FB = 2\\).","2"],[15,"For \\(D \\in BC, E \\in CA, F \\in AB\\) to be collinear, with \\(AF/FB = 2\\) and \\(BD/DC = 3\\), find \\(CE/EA\\).","Menelaus: \\(2 \\cdot 3 \\cdot \\frac{CE}{EA} = 1\\), so \\(CE/EA = 1/6\\).","1/6"],[16,"Collinear \\(D \\in BC, E \\in CA, F \\in AB\\) with \\(AF/FB = 3/4\\) and \\(CE/EA = 2/5\\). Find \\(BD/DC\\).","Menelaus: \\(\\frac34 \\cdot \\frac{BD}{DC} \\cdot \\frac25 = 1\\), so \\(BD/DC = 10/3\\).","10/3"],[17,"In \\(\\triangle ABC\\), \\(D \\in BC\\), \\(E \\in CA\\), \\(F \\in AB\\) are collinear with \\(BD:DC = 4:1\\) and \\(CE:EA = 1:3\\). Find \\(AF:FB\\).","Menelaus: \\(\\frac{AF}{FB} \\cdot 4 \\cdot \\frac13 = 1\\), so \\(AF/FB = 3/4\\).","3/4"],[18,"The internal angle bisector of \\(\\angle A\\) meets \\(BC\\) at \\(D\\), with \\(AB = 5\\), \\(AC = 6\\). Find \\(BD/DC\\).","Angle bisector theorem: \\(BD/DC = AB/AC = 5/6\\).","5/6"],[19,"Collinear \\(D \\in BC, E \\in CA, F \\in AB\\) with \\(BD:DC = 2:3\\) and \\(CE:EA = 5:4\\). Find \\(AF:FB\\).","Menelaus: \\(\\frac{AF}{FB} \\cdot \\frac23 \\cdot \\frac54 = 1\\), so \\(AF/FB = 6/5\\).","6/5"],[20,"Triangle \\(ABC\\) has \\(AB = 5\\), \\(AC = 6\\), \\(BC = 7\\). The median from \\(A\\) meets \\(BC\\) at \\(M\\); through \\(M\\) a line parallel to \\(AB\\) meets \\(AC\\) at \\(E\\), and a line parallel to \\(AC\\) meets \\(AB\\) at \\(F\\). Find \\(EF\\).","\\(E\\) and \\(F\\) are midpoints of \\(AC\\) and \\(AB\\), so \\(EF = BC/2 = 7/2\\).","7/2"]
           ,
 [21, "In \\(\\triangle ABC\\), \\(D\\) on \\(AB\\) with \\(AD:DB=1:2\\), \\(E\\) on \\(BC\\) with \\(BE:EC=3:2\\). Line \\(DE\\) meets \\(AC\\) at \\(F\\). Find \\(CF:FA\\).", "Menelaus: \\(\\frac12\\cdot\\frac32\\cdot\\frac{CF}{FA}=1\\), so \\(CF:FA=4:3\\).", "4:3|4/3"],
           [22, "Cevians of \\(\\triangle ABC\\) concur with \\(BD:DC=2:3\\) and \\(CE:EA=1:2\\). Find \\(AF:FB\\).", "Ceva: \\(\\frac23\\cdot\\frac12\\cdot\\frac{AF}{FB}=1\\), so \\(AF:FB=3:1\\).", "3:1|3"],
@@ -2687,7 +2692,7 @@ const SECTIONS = [
         [10, "Let \\(O\\) be the circumcenter of \\(\\triangle ABC\\) and \\(A'B'C'\\) the orthic triangle. If the incircle of \\(\\triangle ABC\\) is the image of the excircle under a homothety centered at the incenter, find the ratio.", "The incircle and excircle are tangent to the same lines; the homothety center is their tangency-vertex and the ratio is \\(\\frac{r}{r_a}\\) (signed).", "r/r_a"]
       ]}
     ,
-      {"n":"Level 4: AIME 10+/USAJMO","probs":[[11,"A homothety with ratio 2 maps a triangle of area 5 to its image. Find the image area.","Areas scale by the square: \\(5 \\cdot 2^2 = 20\\).","20"],[12,"A homothety maps a circle of radius 7 to a circle of radius 21. Find the ratio.","Radii scale linearly: \\(21/7 = 3\\).","3"],[13,"Two circles of radii 2 and 6 are externally tangent. Find the distance from the radius-2 circle's center to the external homothety center.","The external center divides the centers' segment externally in the ratio of the radii: if \\(X\\) is distance \\(d\\) from the radius-2 center, \\(d/(d+8) = 2/6\\), so \\(d = 4\\).","4"],[14,"Two circles of radii 4 and 9 have external homothety center \\(X\\) with \\(XO_1 = 8\\), where \\(O_1\\) is the radius-4 center. Find the distance between the centers.","\\(8/(8+d) = 4/9\\), so \\(72 = 32 + 4d\\) and \\(d = 10\\).","10"],[15,"A homothety centered at \\(O\\) with ratio 2 maps \\(A\\) to \\(A'\\), with \\(OA = 5\\). Find \\(OA'\\).","\\(OA' = 2 \\cdot OA = 10\\).","10"],[16,"The incircle of \\(\\triangle ABC\\) has radius 3 and the excircle opposite \\(A\\) has radius 9; they are homothetic about \\(A\\). Find the ratio of the homothety (in magnitude).","The homothety about \\(A\\) sends the incircle to the excircle, with ratio \\(r_a/r = 9/3 = 3\\).","3"],[17,"Two circles of radii 3 and 5 are internally tangent. How far is the internal homothety center from the point of tangency?","Internally tangent circles have their homothety center at the tangency point: distance 0.","0"],[18,"A homothety maps \\(\\triangle ABC\\) to \\(\\triangle A'B'C'\\) with ratio 3. The sides of the image are each 3 times the originals. If the original perimeter is 20, find the image perimeter.","Perimeter scales by the ratio: 60.","60"],[19,"Two circles of radii 4 and 9 are externally tangent. Find the length of their common external tangent.","\\(\\sqrt{d^2 - (r_1 - r_2)^2} = \\sqrt{13^2 - 5^2} = 12\\).","12"],[20,"Two circles of radii 8 and 18 are externally tangent. Find the length of their common external tangent.","\\(\\sqrt{26^2 - (18-8)^2} = \\sqrt{676 - 100} = 24\\).","24"]
+      {"n":"Level 4: Challenge (AIME 1-5)","probs":[[11,"A homothety with ratio 2 maps a triangle of area 5 to its image. Find the image area.","Areas scale by the square: \\(5 \\cdot 2^2 = 20\\).","20"],[12,"A homothety maps a circle of radius 7 to a circle of radius 21. Find the ratio.","Radii scale linearly: \\(21/7 = 3\\).","3"],[13,"Two circles of radii 2 and 6 are externally tangent. Find the distance from the radius-2 circle's center to the external homothety center.","The external center divides the centers' segment externally in the ratio of the radii: if \\(X\\) is distance \\(d\\) from the radius-2 center, \\(d/(d+8) = 2/6\\), so \\(d = 4\\).","4"],[14,"Two circles of radii 4 and 9 have external homothety center \\(X\\) with \\(XO_1 = 8\\), where \\(O_1\\) is the radius-4 center. Find the distance between the centers.","\\(8/(8+d) = 4/9\\), so \\(72 = 32 + 4d\\) and \\(d = 10\\).","10"],[15,"A homothety centered at \\(O\\) with ratio 2 maps \\(A\\) to \\(A'\\), with \\(OA = 5\\). Find \\(OA'\\).","\\(OA' = 2 \\cdot OA = 10\\).","10"],[16,"The incircle of \\(\\triangle ABC\\) has radius 3 and the excircle opposite \\(A\\) has radius 9; they are homothetic about \\(A\\). Find the ratio of the homothety (in magnitude).","The homothety about \\(A\\) sends the incircle to the excircle, with ratio \\(r_a/r = 9/3 = 3\\).","3"],[17,"Two circles of radii 3 and 5 are internally tangent. How far is the internal homothety center from the point of tangency?","Internally tangent circles have their homothety center at the tangency point: distance 0.","0"],[18,"A homothety maps \\(\\triangle ABC\\) to \\(\\triangle A'B'C'\\) with ratio 3. The sides of the image are each 3 times the originals. If the original perimeter is 20, find the image perimeter.","Perimeter scales by the ratio: 60.","60"],[19,"Two circles of radii 4 and 9 are externally tangent. Find the length of their common external tangent.","\\(\\sqrt{d^2 - (r_1 - r_2)^2} = \\sqrt{13^2 - 5^2} = 12\\).","12"],[20,"Two circles of radii 8 and 18 are externally tangent. Find the length of their common external tangent.","\\(\\sqrt{26^2 - (18-8)^2} = \\sqrt{676 - 100} = 24\\).","24"]
           ,
 [21, "A homothety with ratio 3 maps a circle of radius 5. Find the image radius.", "Radii scale by 3: 15.", "15"],
           [22, "A homothety with ratio 2 maps a triangle of area 5. Find the image area.", "Areas scale by \\(2^2=4\\): 20.", "20"],
@@ -2760,7 +2765,7 @@ const SECTIONS = [
         [10, "Prove: if \\(A, B, C, D\\) are concyclic, then the spiral similarity centered at the Miquel point of \\(ABCD\\) sends \\(AB\\) to \\(CD\\) and \\(BC\\) to \\(DA\\) simultaneously.", "A cyclic quadrilateral has two spiral similarities centered at the intersection of the two circles through opposite pairs; the Miquel point is the common center of those two maps.", "1"]
       ]}
     ,
-      {"n":"Level 4: AIME 10+/USAJMO","probs":[[11,"A spiral similarity with center \\(O\\) maps \\(A\\) to \\(A'\\) and \\(B\\) to \\(B'\\). If \\(OA = 4\\) and \\(OA' = 6\\), find the ratio of the spiral similarity.","Every distance from the center scales by the same ratio: \\(6/4 = 3/2\\).","3/2"],[12,"A rotation by \\(90^\\circ\\) is composed with a homothety of ratio 2. The result is a spiral similarity; find its ratio.","The ratio is the product: 2.","2"],[13,"Segments \\(AB\\) and \\(CD\\) are parallel with \\(AB = 2\\) and \\(CD = 5\\). Find the ratio of the spiral similarity sending \\(AB\\) to \\(CD\\).","Parallel segments are mapped by a (degenerate) spiral similarity whose ratio is \\(CD/AB = 5/2\\).","5/2"],[14,"A spiral similarity about \\(O\\) with angle \\(45^\\circ\\) and ratio 2 maps \\(P\\) to \\(P'\\), with \\(OP = 4\\). Find \\(OP'\\).","The angle does not affect lengths: \\(OP' = 2 \\cdot 4 = 8\\).","8"],[15,"Two spiral similarities have ratios 3 and 4. Find the ratio of their composition.","Ratios multiply: \\(3 \\cdot 4 = 12\\).","12"],[16,"Two spiral similarities have angles \\(30^\\circ\\) and \\(50^\\circ\\). Find the angle of their composition.","Angles add: \\(80^\\circ\\).","80"],[17,"In cyclic quadrilateral \\(ABCD\\), the spiral similarity about the Miquel point sends \\(AB\\) to \\(DC\\). If \\(AB = 4\\) and \\(DC = 6\\), find the ratio.","The ratio is \\(DC/AB = 6/4 = 3/2\\).","3/2"],[18,"A homothety of ratio 3 maps a triangle with side lengths 5 and 7 to a similar triangle. Find the larger triangle's side corresponding to 7.","\\(3 \\cdot 7 = 21\\).","21"],[19,"A spiral similarity maps chord \\(AB\\) of a circle to chord \\(A'B'\\) of a concentric circle, with \\(AB = 6\\) and \\(A'B' = 15\\). Find the ratio.","\\(15/6 = 5/2\\).","5/2"],[20,"Two spiral similarities, one with angle \\(60^\\circ\\) and one with angle \\(-20^\\circ\\), are composed. Find the resulting angle.","Angles add: \\(60 - 20 = 40^\\circ\\).","40"]
+      {"n":"Level 4: Challenge (AIME 1-5)","probs":[[11,"A spiral similarity with center \\(O\\) maps \\(A\\) to \\(A'\\) and \\(B\\) to \\(B'\\). If \\(OA = 4\\) and \\(OA' = 6\\), find the ratio of the spiral similarity.","Every distance from the center scales by the same ratio: \\(6/4 = 3/2\\).","3/2"],[12,"A rotation by \\(90^\\circ\\) is composed with a homothety of ratio 2. The result is a spiral similarity; find its ratio.","The ratio is the product: 2.","2"],[13,"Segments \\(AB\\) and \\(CD\\) are parallel with \\(AB = 2\\) and \\(CD = 5\\). Find the ratio of the spiral similarity sending \\(AB\\) to \\(CD\\).","Parallel segments are mapped by a (degenerate) spiral similarity whose ratio is \\(CD/AB = 5/2\\).","5/2"],[14,"A spiral similarity about \\(O\\) with angle \\(45^\\circ\\) and ratio 2 maps \\(P\\) to \\(P'\\), with \\(OP = 4\\). Find \\(OP'\\).","The angle does not affect lengths: \\(OP' = 2 \\cdot 4 = 8\\).","8"],[15,"Two spiral similarities have ratios 3 and 4. Find the ratio of their composition.","Ratios multiply: \\(3 \\cdot 4 = 12\\).","12"],[16,"Two spiral similarities have angles \\(30^\\circ\\) and \\(50^\\circ\\). Find the angle of their composition.","Angles add: \\(80^\\circ\\).","80"],[17,"In cyclic quadrilateral \\(ABCD\\), the spiral similarity about the Miquel point sends \\(AB\\) to \\(DC\\). If \\(AB = 4\\) and \\(DC = 6\\), find the ratio.","The ratio is \\(DC/AB = 6/4 = 3/2\\).","3/2"],[18,"A homothety of ratio 3 maps a triangle with side lengths 5 and 7 to a similar triangle. Find the larger triangle's side corresponding to 7.","\\(3 \\cdot 7 = 21\\).","21"],[19,"A spiral similarity maps chord \\(AB\\) of a circle to chord \\(A'B'\\) of a concentric circle, with \\(AB = 6\\) and \\(A'B' = 15\\). Find the ratio.","\\(15/6 = 5/2\\).","5/2"],[20,"Two spiral similarities, one with angle \\(60^\\circ\\) and one with angle \\(-20^\\circ\\), are composed. Find the resulting angle.","Angles add: \\(60 - 20 = 40^\\circ\\).","40"]
           ,
 [21, "A spiral similarity sends a segment of length 4 to one of length 10. Find its ratio.", "10/4 = 5/2.", "5/2"],
           [22, "Two spiral similarities have ratios 2 and 3. Find the ratio of their composition.", "\\(2\\cdot3 = 6\\).", "6"],
@@ -2833,7 +2838,7 @@ const SECTIONS = [
         [10, "Use inversion to prove: if two circles are orthogonal, they intersect at right angles.", "Two orthogonal circles are fixed (as sets) under inversion in the other's circle. The tangent lines at an intersection are the images of each other, so the angle between tangents equals the angle between their images \u2014 90\u00b0.", "90"]
       ]}
     ,
-      {"n":"Level 4: AIME 10+/USAJMO","probs":[[11,"An inversion with radius 3 maps a point at distance 6 from the center to a point at distance \\(d\\). Find \\(d\\).","\\(OP \\cdot OP' = r^2\\), so \\(6d = 9\\) and \\(d = 3/2\\).","3/2"],[12,"Inversion of radius 2 sends the circle with diameter \\(OP\\) (where \\(OP = 8\\)) to a line. Find the distance from \\(O\\) to that line.","A circle through \\(O\\) with diameter \\(OP\\) maps to a line at distance \\(r^2/(2R) = 4/8 = 1/2\\).","1/2"],[13,"Inversion with radius 5 sends a line at distance 3 from the center to a circle. Find its radius.","\\(R = r^2/(2d) = 25/6\\).","25/6"],[14,"A point and its inverse lie at distances 4 and 9 from the center. Find the inversion radius.","\\(r^2 = 4 \\cdot 9 = 36\\), so \\(r = 6\\).","6"],[15,"Inversion with radius 7 sends a circle of radius 2 whose center is 5 from \\(O\\) to a circle. Find the image radius.","\\(R' = \\dfrac{r^2 R}{|d^2 - R^2|} = \\dfrac{49 \\cdot 2}{25 - 4} = \\dfrac{98}{21} = \\dfrac{14}{3}\\).","14/3"],[16,"Inversion with radius 2 sends a circle of radius 1 centered 3 from \\(O\\) to a circle. Find the image radius.","\\(R' = \\dfrac{4 \\cdot 1}{9 - 1} = \\dfrac{4}{8} = \\dfrac12\\).","1/2"],[17,"A circle with diameter 10 passes through the inversion center, and the inversion radius is 5. Find the distance from \\(O\\) to the image line.","\\(r^2/(2R) = 25/10 = 5/2\\).","5/2"],[18,"Inversion with radius 6 maps a point \\(P\\) at distance 9 to \\(P'\\). Find \\(OP \\cdot OP'\\).","\\(OP \\cdot OP' = r^2 = 36\\).","36"],[19,"Inverse points \\(P, P'\\) satisfy \\(OP = 2\\), \\(OP' = 8\\). Find the inversion radius.","\\(r^2 = 2 \\cdot 8 = 16\\), so \\(r = 4\\).","4"],[20,"Use inversion to derive Ptolemy. A cyclic quadrilateral has \\(AB = 3\\), \\(BC = 4\\), \\(CD = 5\\), \\(DA = 6\\). Find \\(AC \\cdot BD\\).","Ptolemy: \\(AC \\cdot BD = AB \\cdot CD + BC \\cdot DA = 15 + 24 = 39\\).","39"]
+      {"n":"Level 4: Challenge (AIME 1-5)","probs":[[11,"An inversion with radius 3 maps a point at distance 6 from the center to a point at distance \\(d\\). Find \\(d\\).","\\(OP \\cdot OP' = r^2\\), so \\(6d = 9\\) and \\(d = 3/2\\).","3/2"],[12,"Inversion of radius 2 sends the circle with diameter \\(OP\\) (where \\(OP = 8\\)) to a line. Find the distance from \\(O\\) to that line.","A circle through \\(O\\) with diameter \\(OP\\) maps to a line at distance \\(r^2/(2R) = 4/8 = 1/2\\).","1/2"],[13,"Inversion with radius 5 sends a line at distance 3 from the center to a circle. Find its radius.","\\(R = r^2/(2d) = 25/6\\).","25/6"],[14,"A point and its inverse lie at distances 4 and 9 from the center. Find the inversion radius.","\\(r^2 = 4 \\cdot 9 = 36\\), so \\(r = 6\\).","6"],[15,"Inversion with radius 7 sends a circle of radius 2 whose center is 5 from \\(O\\) to a circle. Find the image radius.","\\(R' = \\dfrac{r^2 R}{|d^2 - R^2|} = \\dfrac{49 \\cdot 2}{25 - 4} = \\dfrac{98}{21} = \\dfrac{14}{3}\\).","14/3"],[16,"Inversion with radius 2 sends a circle of radius 1 centered 3 from \\(O\\) to a circle. Find the image radius.","\\(R' = \\dfrac{4 \\cdot 1}{9 - 1} = \\dfrac{4}{8} = \\dfrac12\\).","1/2"],[17,"A circle with diameter 10 passes through the inversion center, and the inversion radius is 5. Find the distance from \\(O\\) to the image line.","\\(r^2/(2R) = 25/10 = 5/2\\).","5/2"],[18,"Inversion with radius 6 maps a point \\(P\\) at distance 9 to \\(P'\\). Find \\(OP \\cdot OP'\\).","\\(OP \\cdot OP' = r^2 = 36\\).","36"],[19,"Inverse points \\(P, P'\\) satisfy \\(OP = 2\\), \\(OP' = 8\\). Find the inversion radius.","\\(r^2 = 2 \\cdot 8 = 16\\), so \\(r = 4\\).","4"],[20,"Use inversion to derive Ptolemy. A cyclic quadrilateral has \\(AB = 3\\), \\(BC = 4\\), \\(CD = 5\\), \\(DA = 6\\). Find \\(AC \\cdot BD\\).","Ptolemy: \\(AC \\cdot BD = AB \\cdot CD + BC \\cdot DA = 15 + 24 = 39\\).","39"]
           ,
 [21, "Inversion of radius 2 sends a point 5 units from the center to a point at distance \\(\\underline{\\phantom{}}\\).", "\\(R^2/d = 4/5\\).", "4/5"],
           [22, "Inversion of radius 3 sends a point 6 units from the center to a point at distance \\(\\underline{\\phantom{}}\\).", "\\(9/6 = 3/2\\).", "3/2"],
@@ -2926,7 +2931,7 @@ const SECTIONS = [
         [19, "Find the perpendicular bisector of the segment from \\((0,0)\\) to \\((6,0)\\).", "Vertical line through the midpoint: \\(x = 3\\).", "x=3"],
         [20, "Using coordinates, find the centroid of \\((0,0), (6,0), (0,9)\\).", "Average of coordinates: \\((2, 3)\\).", "(2,3)"]
       ]},
-      {"n":"Level 5: AIME 10+/USAJMO","probs":[[21,"Find the distance between the points \\((3,5)\\) and \\((-1,2)\\).","\\(\\sqrt{(3+1)^2 + (5-2)^2} = \\sqrt{16 + 9} = 5\\).","5"],[22,"Find the area of the triangle with vertices \\((0,0), (6,0), (2,5)\\).","Base 6, height 5: area \\(= \\tfrac12 \\cdot 6 \\cdot 5 = 15\\).","15"],[23,"How many intersection points does the line \\(y = 3\\) have with the circle \\(x^2 + y^2 = 25\\)?","The line is distance 3 from the center, less than the radius 5: 2 intersections.","2"],[24,"Find the squared distance between the parallel lines \\(y = 3x + 2\\) and \\(y = 3x - 8\\).","Distance squared \\(= \\dfrac{(2 - (-8))^2}{3^2 + 1^2} = \\dfrac{100}{10} = 10\\).","10"],[25,"Find the x-coordinate of the midpoint of \\((2,3)\\) and \\((8,-1)\\).","\\((2+8)/2 = 5\\).","5"],[26,"Find the x-coordinate of the center of the circle through \\((0,0), (4,0), (0,6)\\).","The center is on the perpendicular bisector of \\((0,0)-(4,0)\\), so \\(x = 2\\).","2"],[27,"Find the slope of the line through \\((1,2)\\) and \\((4,11)\\).","\\((11-2)/(4-1) = 9/3 = 3\\).","3"],[28,"The distance between \\((2,4)\\) and \\((5,k)\\) is 5. Find the larger possible value of \\(k\\).","\\(9 + (k-4)^2 = 25\\), so \\((k-4)^2 = 16\\) and \\(k = 0\\) or 8; larger is 8.","8"],[29,"Find the area of the triangle with vertices \\((1,2), (4,6), (7,2)\\).","Base \\((1,2)-(7,2)\\) is 6, height is 4: area \\(= 12\\).","12"],[30,"Find the distance from the point \\((1,1)\\) to the line \\(3x + 4y = 10\\).","\\(\\dfrac{|3+4-10|}{\\sqrt{3^2+4^2}} = \\dfrac{3}{5}\\).","3/5"]
+      {"n":"Level 5: Challenge (AIME 1-5)","probs":[[21,"Find the distance between the points \\((3,5)\\) and \\((-1,2)\\).","\\(\\sqrt{(3+1)^2 + (5-2)^2} = \\sqrt{16 + 9} = 5\\).","5"],[22,"Find the area of the triangle with vertices \\((0,0), (6,0), (2,5)\\).","Base 6, height 5: area \\(= \\tfrac12 \\cdot 6 \\cdot 5 = 15\\).","15"],[23,"How many intersection points does the line \\(y = 3\\) have with the circle \\(x^2 + y^2 = 25\\)?","The line is distance 3 from the center, less than the radius 5: 2 intersections.","2"],[24,"Find the squared distance between the parallel lines \\(y = 3x + 2\\) and \\(y = 3x - 8\\).","Distance squared \\(= \\dfrac{(2 - (-8))^2}{3^2 + 1^2} = \\dfrac{100}{10} = 10\\).","10"],[25,"Find the x-coordinate of the midpoint of \\((2,3)\\) and \\((8,-1)\\).","\\((2+8)/2 = 5\\).","5"],[26,"Find the x-coordinate of the center of the circle through \\((0,0), (4,0), (0,6)\\).","The center is on the perpendicular bisector of \\((0,0)-(4,0)\\), so \\(x = 2\\).","2"],[27,"Find the slope of the line through \\((1,2)\\) and \\((4,11)\\).","\\((11-2)/(4-1) = 9/3 = 3\\).","3"],[28,"The distance between \\((2,4)\\) and \\((5,k)\\) is 5. Find the larger possible value of \\(k\\).","\\(9 + (k-4)^2 = 25\\), so \\((k-4)^2 = 16\\) and \\(k = 0\\) or 8; larger is 8.","8"],[29,"Find the area of the triangle with vertices \\((1,2), (4,6), (7,2)\\).","Base \\((1,2)-(7,2)\\) is 6, height is 4: area \\(= 12\\).","12"],[30,"Find the distance from the point \\((1,1)\\) to the line \\(3x + 4y = 10\\).","\\(\\dfrac{|3+4-10|}{\\sqrt{3^2+4^2}} = \\dfrac{3}{5}\\).","3/5"]
           ,
 [11, "Find the distance between (1,2) and (4,6).", "\\sqrt{3^2+4^2} = 5.", "5"],
           [12, "Find the midpoint of (0,0) and (6,8).", "\\((3,4)\\).", "(3,4)|3,4"],
@@ -3017,7 +3022,7 @@ const SECTIONS = [
         [19, "The feet of the three altitudes lie on the ____ circle.", "Nine-point circle.", "nine-point|nine point"],
         [20, "For an equilateral triangle, the nine-point circle and the incircle are ____ (Feuerbach's theorem in the degenerate case).", "They coincide: same center and equal radii \\(r = R/2\\).", "coincident|same circle|equal"]
       ]},
-      {"n":"Level 5: AIME 10+/USAJMO","probs":[[21,"In a coordinate system with circumcenter \\(O = (0,0)\\) and centroid \\(G = (1,2)\\), find the sum of the coordinates of the orthocenter \\(H\\).","On the Euler line, \\(H = 3G - 2O = (3,6)\\); sum \\(= 9\\).","9"],[22,"The nine-point circle of a triangle has radius 5. Find the circumradius.","The nine-point radius is half the circumradius: \\(R = 10\\).","10"],[23,"In a triangle with circumradius 5, the distance from the circumcenter to side \\(BC\\) is 3. Find the length of \\(BC\\).","Half of \\(BC\\) is \\(\\sqrt{25 - 9} = 4\\), so \\(BC = 8\\).","8"],[24,"Euler's formula gives \\(OI^2 = R^2 - 2Rr\\). If \\(R = 9\\) and \\(r = 4\\), find \\(OI\\).","\\(OI^2 = 81 - 72 = 9\\), so \\(OI = 3\\).","3"],[25,"The centroid \\(G\\) divides the Euler segment \\(OH\\) with \\(OG:GH = 1:2\\). If \\(O = (0,0)\\) and \\(G = (1,1)\\), find \\(H\\).","\\(H = 3G = (3,3)\\), so the sum of coordinates is 6.","6"],[26,"A triangle has circumradius 25 and inradius 12. Find \\(OI\\) by Euler's formula.","\\(OI^2 = 625 - 600 = 25\\), so \\(OI = 5\\).","5"],[27,"In \\(\\triangle ABC\\), \\(AB = 6\\), \\(AC = 8\\), \\(BC = 7\\), and cevian \\(AD\\) has \\(BD = 2\\), \\(DC = 5\\). Find \\(AD^2\\) by Stewart's theorem.","Stewart: \\(AC^2 \\cdot BD + AB^2 \\cdot DC = BC(AD^2 + BD \\cdot DC)\\). So \\(64 \\cdot 2 + 36 \\cdot 5 = 7(AD^2 + 10)\\), giving \\(308 = 7AD^2 + 70\\), \\(AD^2 = 34\\).","34"],[28,"In \\(\\triangle ABC\\), \\(AB = AC = 5\\) and \\(BC = 6\\). Find the length of the median from \\(A\\).","\\(m_a = \\tfrac12\\sqrt{2b^2 + 2c^2 - a^2} = \\tfrac12\\sqrt{50+50-36} = 4\\).","4"],[29,"Two chords \\(AB\\) and \\(CD\\) meet at the midpoint \\(M\\) of \\(AB\\). If \\(CM = 3\\) and \\(DM = 12\\), find \\(AM\\).","\\(AM^2 = CM \\cdot DM = 36\\), so \\(AM = 6\\).","6"],[30,"Chord \\(PQ\\) has midpoint \\(M\\); a chord through \\(M\\) has segments 4 and 9. Find the length of the chord through \\(M\\) perpendicular to \\(PQ\\).","\\(MP^2 = 4 \\cdot 9 = 36\\), so \\(MP = 6\\) and the full chord is 12.","12"]
+      {"n":"Level 5: Challenge (AIME 1-5)","probs":[[21,"In a coordinate system with circumcenter \\(O = (0,0)\\) and centroid \\(G = (1,2)\\), find the sum of the coordinates of the orthocenter \\(H\\).","On the Euler line, \\(H = 3G - 2O = (3,6)\\); sum \\(= 9\\).","9"],[22,"The nine-point circle of a triangle has radius 5. Find the circumradius.","The nine-point radius is half the circumradius: \\(R = 10\\).","10"],[23,"In a triangle with circumradius 5, the distance from the circumcenter to side \\(BC\\) is 3. Find the length of \\(BC\\).","Half of \\(BC\\) is \\(\\sqrt{25 - 9} = 4\\), so \\(BC = 8\\).","8"],[24,"Euler's formula gives \\(OI^2 = R^2 - 2Rr\\). If \\(R = 9\\) and \\(r = 4\\), find \\(OI\\).","\\(OI^2 = 81 - 72 = 9\\), so \\(OI = 3\\).","3"],[25,"The centroid \\(G\\) divides the Euler segment \\(OH\\) with \\(OG:GH = 1:2\\). If \\(O = (0,0)\\) and \\(G = (1,1)\\), find \\(H\\).","\\(H = 3G = (3,3)\\), so the sum of coordinates is 6.","6"],[26,"A triangle has circumradius 25 and inradius 12. Find \\(OI\\) by Euler's formula.","\\(OI^2 = 625 - 600 = 25\\), so \\(OI = 5\\).","5"],[27,"In \\(\\triangle ABC\\), \\(AB = 6\\), \\(AC = 8\\), \\(BC = 7\\), and cevian \\(AD\\) has \\(BD = 2\\), \\(DC = 5\\). Find \\(AD^2\\) by Stewart's theorem.","Stewart: \\(AC^2 \\cdot BD + AB^2 \\cdot DC = BC(AD^2 + BD \\cdot DC)\\). So \\(64 \\cdot 2 + 36 \\cdot 5 = 7(AD^2 + 10)\\), giving \\(308 = 7AD^2 + 70\\), \\(AD^2 = 34\\).","34"],[28,"In \\(\\triangle ABC\\), \\(AB = AC = 5\\) and \\(BC = 6\\). Find the length of the median from \\(A\\).","\\(m_a = \\tfrac12\\sqrt{2b^2 + 2c^2 - a^2} = \\tfrac12\\sqrt{50+50-36} = 4\\).","4"],[29,"Two chords \\(AB\\) and \\(CD\\) meet at the midpoint \\(M\\) of \\(AB\\). If \\(CM = 3\\) and \\(DM = 12\\), find \\(AM\\).","\\(AM^2 = CM \\cdot DM = 36\\), so \\(AM = 6\\).","6"],[30,"Chord \\(PQ\\) has midpoint \\(M\\); a chord through \\(M\\) has segments 4 and 9. Find the length of the chord through \\(M\\) perpendicular to \\(PQ\\).","\\(MP^2 = 4 \\cdot 9 = 36\\), so \\(MP = 6\\) and the full chord is 12.","12"]
           ,
 [11, "A cyclic quadrilateral has sides 2, 3, 4, 5 (in order). Find \\(AC\\cdot BD\\) (the product of diagonals).", "Ptolemy: \\(2\\cdot4+3\\cdot5 = 23\\).", "23"],
           [12, "An angle inscribed in a semicircle measures \\(\\underline{\\phantom{}}\\) degrees.", "90.", "90"],
@@ -3109,7 +3114,7 @@ const SECTIONS = [
         [19, "A plane through the center of a sphere cuts it in a circle called a ____ circle.", "Great circle.", "great"],
         [20, "Find the volume of a square pyramid with base side \\(3\\) and height \\(10\\).", "\\(\\frac13 \\cdot 9 \\cdot 10 = 30\\).", "30"]
       ]},
-      {"n":"Level 5: AIME 10+/USAJMO","probs":[[21,"A cube has space diagonal \\(6\\sqrt{3}\\). Find its volume.","The diagonal is \\(s\\sqrt{3}\\), so \\(s = 6\\) and volume \\(= 216\\).","216"],[22,"A sphere has surface area \\(144\\pi\\). Find its volume (in units of \\(\\pi\\)).","\\(4\\pi r^2 = 144\\pi\\) gives \\(r = 6\\), so \\(V = \\frac43 \\pi \\cdot 216 = 288\\pi\\).","288"],[23,"A right circular cylinder has height 10 and base radius 3. Find its volume (in units of \\(\\pi\\)).","\\(V = \\pi r^2 h = \\pi \\cdot 9 \\cdot 10 = 90\\pi\\).","90"],[24,"Find the volume of a cone with base radius 4 and height 9 (in units of \\(\\pi\\)).","\\(V = \\frac13 \\pi r^2 h = \\frac13 \\pi \\cdot 16 \\cdot 9 = 48\\pi\\).","48"],[25,"A rectangular box has edge lengths 3, 4, 12. Find its space diagonal.","\\(\\sqrt{9 + 16 + 144} = 13\\).","13"],[26,"Two cubes have volumes 8 and 27. Find the ratio of their surface areas.","Sides are 2 and 3, so surface areas ratio as the square: \\((2/3)^2 = 4/9\\).","4/9"],[27,"A sphere of radius 5 is inscribed in a cube. Find the cube's volume.","The cube's side is 10, so volume \\(= 1000\\).","1000"],[28,"A pyramid has a square base of side 6 and height 9. Find its volume.","\\(V = \\frac13 \\cdot 36 \\cdot 9 = 108\\).","108"],[29,"A regular tetrahedron has edge length \\(6\\sqrt{2}\\). Find its volume.","\\(V = \\dfrac{a^3}{6\\sqrt2} = \\dfrac{432\\sqrt2}{6\\sqrt2} = 72\\).","72"],[30,"For what radius is a sphere's volume numerically equal to its surface area?","\\(\\frac43\\pi r^3 = 4\\pi r^2\\) gives \\(r = 3\\).","3"]
+      {"n":"Level 5: Challenge (AIME 1-5)","probs":[[21,"A cube has space diagonal \\(6\\sqrt{3}\\). Find its volume.","The diagonal is \\(s\\sqrt{3}\\), so \\(s = 6\\) and volume \\(= 216\\).","216"],[22,"A sphere has surface area \\(144\\pi\\). Find its volume (in units of \\(\\pi\\)).","\\(4\\pi r^2 = 144\\pi\\) gives \\(r = 6\\), so \\(V = \\frac43 \\pi \\cdot 216 = 288\\pi\\).","288"],[23,"A right circular cylinder has height 10 and base radius 3. Find its volume (in units of \\(\\pi\\)).","\\(V = \\pi r^2 h = \\pi \\cdot 9 \\cdot 10 = 90\\pi\\).","90"],[24,"Find the volume of a cone with base radius 4 and height 9 (in units of \\(\\pi\\)).","\\(V = \\frac13 \\pi r^2 h = \\frac13 \\pi \\cdot 16 \\cdot 9 = 48\\pi\\).","48"],[25,"A rectangular box has edge lengths 3, 4, 12. Find its space diagonal.","\\(\\sqrt{9 + 16 + 144} = 13\\).","13"],[26,"Two cubes have volumes 8 and 27. Find the ratio of their surface areas.","Sides are 2 and 3, so surface areas ratio as the square: \\((2/3)^2 = 4/9\\).","4/9"],[27,"A sphere of radius 5 is inscribed in a cube. Find the cube's volume.","The cube's side is 10, so volume \\(= 1000\\).","1000"],[28,"A pyramid has a square base of side 6 and height 9. Find its volume.","\\(V = \\frac13 \\cdot 36 \\cdot 9 = 108\\).","108"],[29,"A regular tetrahedron has edge length \\(6\\sqrt{2}\\). Find its volume.","\\(V = \\dfrac{a^3}{6\\sqrt2} = \\dfrac{432\\sqrt2}{6\\sqrt2} = 72\\).","72"],[30,"For what radius is a sphere's volume numerically equal to its surface area?","\\(\\frac43\\pi r^3 = 4\\pi r^2\\) gives \\(r = 3\\).","3"]
           ,
 [11, "A cube has side 2. Find its space diagonal.", "\\(\\sqrt{2^2+2^2+2^2} = 2\\sqrt3\\).", "2sqrt3|2√3|2*sqrt3"],
           [12, "A sphere has radius 3. Find its volume (in units of \\(\\pi\\)).", "\\(\\frac43\\pi r^3 = 36\\pi\\).", "36"],
@@ -3208,7 +3213,7 @@ const SECTIONS = [
         ]
       }
     ,
-      { n: "Level 4: AIME 10+/USAJMO",
+      { n: "Level 4: Challenge (AIME 1-5)",
         probs: [
           [16,"Find the largest power of 2 that divides \\(2024!\\).","Count the exponent of 2 in \\(2024!\\): \\(\\lfloor 2024/2 \\rfloor + \\lfloor 2024/4 \\rfloor + \\cdots + \\lfloor 2024/1024 \\rfloor = 1012 + 506 + 253 + 126 + 63 + 31 + 15 + 7 + 3 + 1 = 2017\\).","2017"],
           [17,"How many positive integers at most 1000 are divisible by exactly one of 3 or 5?","Divisible by 3: 333; by 5: 200; by 15: 66. Exactly one: \\((333 - 66) + (200 - 66) = 267 + 134 = 401\\).","401"],
@@ -3304,7 +3309,7 @@ const SECTIONS = [
         ]
       }
     ,
-      { n: "Level 4: AIME 10+/USAJMO",
+      { n: "Level 4: Challenge (AIME 1-5)",
         probs: [
           [22, "Find the last two digits of \\(7^{100}\\).", "\\(7^4 = 2401 \\equiv 1 \\pmod{100}\\); \\(100\\equiv 0 \\pmod 4\\), so \\(7^{100} \\equiv 1\\).", "1|01"],
           [23, "Solve \\(3x \\equiv 7 \\pmod{11}\\).", "\\(3^{-1} \\equiv 4\\), so \\(x \\equiv 28 \\equiv 6\\).", "6"],
@@ -3392,7 +3397,7 @@ const SECTIONS = [
         ]
       }
     ,
-      { n: "Level 4: AIME 10+/USAJMO",
+      { n: "Level 4: Challenge (AIME 1-5)",
         probs: [
           [13,"Find the smallest positive integer that is 2 mod 3, 3 mod 5, and 2 mod 7.","\\(x = 3k+2 \\equiv 3 \\pmod 5\\) gives \\(k \\equiv 2\\), so \\(x = 15m + 8\\). Then \\(15m \\equiv 1 \\pmod 7\\) gives \\(m \\equiv 1\\), so \\(x \\equiv 23 \\pmod{105}\\).","23"],
           [14,"Find the smallest positive integer that is 1 mod 2, 2 mod 3, and 3 mod 5.","\\(x = 2k+1 \\equiv 2 \\pmod 3\\) gives \\(k \\equiv 2\\), so \\(x = 6m+5\\). \\(6m \\equiv 3 \\pmod 5\\) gives \\(m \\equiv 3\\), so \\(x = 23\\).","23"],
@@ -3487,7 +3492,7 @@ const SECTIONS = [
         ]
       }
     ,
-      { n: "Level 4: AIME 10+/USAJMO",
+      { n: "Level 4: Challenge (AIME 1-5)",
         probs: [
           [17, "Find the remainder of \\(3^{2026}\\) divided by 7.", "\\(3^6 \\equiv 1\\); \\(2026 \\equiv 4 \\pmod 6\\), and \\(3^4 = 81 \\equiv 4\\).", "4"],
           [18, "Find the remainder of \\(2^{2026}\\) divided by 17.", "\\(2^8 = 256 \\equiv 1 \\pmod{17}\\); \\(2026 \\equiv 2 \\pmod 8\\), so \\(2^{2026} \\equiv 4\\).", "4"],
@@ -3577,7 +3582,7 @@ const SECTIONS = [
         ]
       }
     ,
-      { n: "Level 4: AIME 10+/USAJMO",
+      { n: "Level 4: Challenge (AIME 1-5)",
         probs: [
           [13,"Find \\(\\varphi(2024)\\).","\\(2024 = 2^3 \\cdot 11 \\cdot 23\\), so \\(\\varphi(2024) = 2024 \\cdot \\tfrac12 \\cdot \\tfrac{10}{11} \\cdot \\tfrac{22}{23} = 880\\).","880"],
           [14,"Find the last two digits of \\(3^{2024}\\).","\\(3^{20} \\equiv 1 \\pmod{100}\\) (Euler, \\(\\varphi(100)=40\\) and \\(3^{20} \\equiv 1\\)). \\(2024 \\equiv 4 \\pmod{20}\\), so \\(3^{2024} \\equiv 3^4 = 81\\).","81"],
@@ -3674,7 +3679,7 @@ const SECTIONS = [
         ]
       }
     ,
-      { n: "Level 4: AIME 10+/USAJMO",
+      { n: "Level 4: Challenge (AIME 1-5)",
         probs: [
           [16,"Find the number of nonnegative integer solutions to \\(x + y + z = 30\\).","Stars and bars: \\(\\binom{30+3-1}{3-1} = \\binom{32}{2} = 496\\).","496"],
           [17,"Find the number of positive integer solutions to \\(x + y + z = 30\\).","Set \\(x' = x-1\\) etc.; \\(\\binom{29}{2} = 406\\).","406"],
@@ -3765,7 +3770,7 @@ const SECTIONS = [
         ]
       }
     ,
-      { n: "Level 4: AIME 10+/USAJMO",
+      { n: "Level 4: Challenge (AIME 1-5)",
         probs: [
           [13,"How many right triangles with integer side lengths have hypotenuse 65?","\\(a^2 + b^2 = 4225\\): triples \\((16,63),(25,60),(33,56),(39,52)\\), so 4 triangles.","4"],
           [14,"Find the smallest positive integer \\(x > 100\\) satisfying \\(x^2 - 2y^2 = 1\\).","Pell solutions \\((x,y)\\): \\((3,1),(17,12),(99,70),(577,408),\\ldots\\). First \\(x > 100\\) is 577.","577"],
@@ -3856,7 +3861,7 @@ const SECTIONS = [
         ]
       }
     ,
-      { n: "Level 3: AIME 10+/USAJMO",
+      { n: "Level 3: Challenge (AIME 1-3)",
         probs: [
           [11,"Find the exponent of 5 in the prime factorization of \\(2024!\\).","\\(\\lfloor 2024/5 \\rfloor + \\lfloor 2024/25 \\rfloor + \\lfloor 2024/125 \\rfloor + \\lfloor 2024/625 \\rfloor = 404 + 80 + 16 + 3 = 503\\).","503"],
           [12,"Find the largest \\(n\\) such that \\(2^n\\) divides \\(3^{2024} - 1\\).","LTE: \\(v_2(3^{2024}-1) = v_2(3^2-1) + v_2(2024) - 1 = 3 + 3 - 1 = 5\\).","5"],
@@ -3992,7 +3997,7 @@ const SECTIONS = [
         [19, "Use Euler's criterion to decide whether \\(3\\) is a residue mod \\(17\\).", "\\(3^8 \\equiv 81^2 \\equiv (-4)^2 \\equiv 16 \\equiv -1\\), so it is a non-residue.", "-1|no|nonresidue|non-residue"],
         [20, "For \\(p \\equiv 3 \\pmod 4\\), \\(a^{(p+1)/4}\\) is a square root of a residue \\(a\\). Find a square root of \\(2\\) mod \\(7\\).", "\\(2^{(7+1)/4} = 2^2 = 4\\), and \\(4^2 \\equiv 2\\).", "4|3"]
       ]},
-      { n: "Level 5: AIME 10+/USAJMO",
+      { n: "Level 5: Challenge (AIME 1-5)",
         probs: [
           [21,"How many nonzero quadratic residues are there modulo 7?","The nonzero squares mod 7 are \\(1, 2, 4\\), so there are 3.","3"],
           [22,"How many solutions does \\(x^2 \\equiv 4 \\pmod 7\\) have?","\\(x \\equiv \\pm 2\\), i.e. \\(x = 2, 5\\): 2 solutions.","2"],
@@ -4096,7 +4101,7 @@ const SECTIONS = [
         [19, "Solve \\(2^x \\equiv 8 \\pmod{11}\\).", "\\(2^3 = 8\\), so \\(x \\equiv 3 \\pmod{10}\\).", "3"],
         [20, "A primitive root mod \\(p\\) has order ____.", "\\(p-1 = \\varphi(p)\\).", "p-1|φ(p)|phi(p)"]
       ]},
-      { n: "Level 5: AIME 10+/USAJMO",
+      { n: "Level 5: Challenge (AIME 1-5)",
         probs: [
           [21,"Find the multiplicative order of 2 modulo 7.","\\(2^1 = 2,\\; 2^2 = 4,\\; 2^3 = 8 \\equiv 1\\), so the order is 3.","3"],
           [22,"Find the multiplicative order of 3 modulo 7.","\\(3^6 \\equiv 1\\) and no smaller positive power equals 1, so the order is 6.","6"],
@@ -4184,7 +4189,7 @@ const SECTIONS = [
         [10, "How many integers from 1 to 1000 are divisible by none of 2, 3, 5?", "\\(1000 - (500+333+200) + (166+100+66) - 33 = 266\\).", "266"]
       ]}
     ,
-      { n: "Level 4: AIME 10+/USAJMO",
+      { n: "Level 4: Challenge (AIME 1-5)",
         probs: [
           [21, "How many distinct arrangements of the letters of \\texttt{SUCCESS}?", "7 letters: 3 S, 2 C, 1 U, 1 E: \\(\\frac{7!}{3!2!} = 420\\).", "420"],
           [22, "How many 4-digit positive integers have distinct digits and are even?", "Last digit 0: \\(9\\cdot8\\cdot7 = 504\\). Last digit \\(\\in\\{2,4,6,8\\}\\): \\(4\\cdot8\\cdot8\\cdot7 = 1792\\). Total \\(2296\\).", "2296"],
@@ -4269,7 +4274,7 @@ const SECTIONS = [
         [10, "In a room of 10 people, prove two know the same number of people (knowledge is mutual).", "Each knows between 0 and 9 people, but 0 and 9 can't both occur. So only 9 possible values for 10 people: pigeonhole.", "9"]
       ]}
     ,
-      { n: "Level 4: AIME 10+/USAJMO",
+      { n: "Level 4: Challenge (AIME 1-5)",
         probs: [
           [11,"What is the minimum number of people needed to guarantee that two share a birthday?","366 possible birthdays; by pigeonhole, 367 people suffice.","367"],
           [12,"What is the minimum number of integers from \\(0,\\ldots,9\\) one must pick to guarantee two share a last digit?","10 possible last digits, so 11 integers suffice.","11"],
@@ -4354,7 +4359,7 @@ const SECTIONS = [
         [10, "Prove that it is impossible to cover a 6\u00d76 board with 18 dominoes such that each domino covers one white and one black cell of a 3-color pattern.", "Construct a coloring with unequal counts under any tile\u2014standard: color like a chessboard plus stripes so the required count is odd for one color.", "impossible"]
       ]}
     ,
-      { n: "Level 4: AIME 10+/USAJMO",
+      { n: "Level 4: Challenge (AIME 1-5)",
         probs: [
           [11,"An 8×8 checkerboard has two opposite corner squares removed. In how many ways can the rest be tiled by 1×2 dominoes?","Removed corners have the same color, leaving unequal color counts; a domino covers one of each. Impossible: 0 ways.","0"],
           [12,"The numbers \\(1,\\ldots,10\\) are written around a circle. Prove two adjacent numbers sum to at least 11; give that minimum bound.","The 10 adjacent sums add to \\(2(1+\\cdots+10) = 110\\), so the largest is at least 11.","11"],
@@ -4443,7 +4448,7 @@ const SECTIONS = [
         [10, "Given a 5\u00d75 grid, prove that the number of ways to place nonattacking rooks is invariant under transposing the board.", "A placement is a permutation of columns for the chosen rows: row/column symmetry gives a bijection.", "1"]
       ]}
     ,
-      { n: "Level 4: AIME 10+/USAJMO",
+      { n: "Level 4: Challenge (AIME 1-5)",
         probs: [
           [11,"How many subsets of \\(\\{1,\\ldots,10\\}\\) have an odd number of elements?","Exactly half of the \\(2^{10}\\) subsets, by pairing each subset with its complement: \\(512\\).","512"],
           [12,"Evaluate \\(\\sum_{k=0}^{10} \\binom{10}{k}\\).","By the binomial theorem with \\(x = 1\\): \\(2^{10} = 1024\\).","1024"],
@@ -4530,7 +4535,7 @@ const SECTIONS = [
         [10, "Prove that the number of compositions of \\(n\\) into 1s and 2s is \\(F_{n+1}\\) (Fibonacci) using \\(\\frac{1}{1-x-x^2}\\).", "The generating function satisfies \\(G = 1 + xG + x^2G\\), so coefficients satisfy the Fibonacci recurrence and \\(G = \\frac{1}{1-x-x^2}\\).", "Fibonacci"]
       ]}
     ,
-      { n: "Level 4: AIME 10+/USAJMO",
+      { n: "Level 4: Challenge (AIME 1-5)",
         probs: [
           [11,"How many nonnegative integer solutions does \\(x + 2y + 3z = 8\\) have?","For \\(z = 0,1,2\\), \\(x+2y = 8,5,2\\) gives \\(5 + 3 + 2 = 10\\) solutions.","10"],
           [12,"Two standard dice are rolled. In how many ways can the total be 12?","Only \\((6,6)\\): 1 way.","1"],
@@ -4618,7 +4623,7 @@ const SECTIONS = [
         [10, "Show that the number of Dyck paths of length \\(2n\\) is \\(C_n\\) by establishing the recurrence \\(C_{n+1} = \\sum C_i C_{n-i}\\).", "Split at the first return to 0: the path is \\(U\\cdot P\\cdot D\\cdot Q\\) where \\(P\\) is a Dyck path of length \\(2i\\) and \\(Q\\) of length \\(2(n-i)\\). Sum over \\(i\\).", "1"]
       ]}
     ,
-      { n: "Level 4: AIME 10+/USAJMO",
+      { n: "Level 4: Challenge (AIME 1-5)",
         probs: [
           [11,"With \\(F_1 = F_2 = 1\\), find \\(F_{20}\\).","The Fibonacci numbers are \\(1,1,2,3,5,8,13,21,34,55,89,144,233,377,610,987,1597,2584,4181,6765\\), so \\(F_{20} = 6765\\).","6765"],
           [12,"How many ways can a \\(1\\times10\\) board be tiled with \\(1\\times1\\) and \\(1\\times2\\) tiles?","With \\(a_1 = 1, a_2 = 2\\), \\(a_n = a_{n-1} + a_{n-2}\\) gives \\(a_{10} = 89\\).","89"],
@@ -4642,7 +4647,7 @@ const SECTIONS = [
   {
     id: "aime-mock",
     title: "AIME Mock Exam",
-    sub: "15 problems, 3 hours — projected USAJMO index",
+    sub: "15 problems, 3 hours — pool calibrated to ~AIME 1-5 (projection optimistic)",
     type: "mock",
     group: "Mock Exam"
   }
@@ -5236,7 +5241,7 @@ function mockPool() {
     if (sec.type !== "prac") continue;
     for (const l of sec.levels || []) {
       const nm = l.n || "";
-      if (!/AIME|USAJMO|Challenge/.test(nm)) continue;
+      if (!/AIME/.test(nm)) continue; // pool = AIME-labeled tiers only (labels were inflated; honest now)
       for (const p of l.probs || []) { if (!p) continue; pool.push({ sid: sec.id, pid: p[0], prompt: p[1], sol: p[2], ans: p[3] }); }
     }
   }
@@ -5305,7 +5310,7 @@ function renderMock(main, sec) {
   if (!mock.active) {
     html += '<div class="mock-hero"><h3>Take a timed AIME</h3>';
     html += '<p>15 problems drawn from the AIME tiers across all topics. 3-hour countdown, auto-submit at zero.</p>';
-    html += '<p>Projected USAJMO index = AMC 10 score + 20 &times; AIME score. The cutoff varies by year — adjust it to the current cycle.</p></div>';
+    html += '<p>Projected USAJMO index = AMC 10 score + 20 &times; AIME score. The cutoff varies by year — adjust it to the current cycle.</p><p class="mock-note">Difficulty note: this pool is calibrated to roughly AIME #1-5, not the full AIME 10-15 range — treat the projection as optimistic and use it as a progress floor, not a ceiling.</p></div>';
     html += '<div class="mock-row">';
     html += '<div class="mock-field"><label>Your AMC 10 score (0-150)</label><input id="mock-amc" type="number" min="0" max="150" value="' + mock.amc + '"></div>';
     html += '<div class="mock-field"><label>USAJMO cutoff</label><input id="mock-cutoff" type="number" min="0" max="450" value="' + mock.cutoff + '"></div>';
