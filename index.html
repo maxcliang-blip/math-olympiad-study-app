@@ -106,36 +106,55 @@ body {
 .sidebar-actions .btn { flex: 1; font-size: 11px; padding: 6px 4px; text-align: center; }
 .export-btn { background: var(--green-bg); color: var(--green); border-color: var(--green); }
 .import-btn { background: var(--blue-bg); color: var(--blue); border-color: var(--blue); }
-.nav-group { padding: 12px 0; border-bottom: 1px solid var(--border); }
+.nav-group { padding: 8px 0; border-bottom: 1px solid var(--border); }
 .nav-label {
-  display: flex; align-items: center; gap: 8px; width: 100%;
-  padding: 7px 14px; margin: 2px 6px; border-radius: 8px;
+  display: flex; align-items: center; gap: 8px; width: calc(100% - 12px);
+  padding: 8px 10px; margin: 0 6px; border-radius: 10px;
   font-size: 11px; font-weight: 700; text-transform: uppercase;
   letter-spacing: .05em; color: var(--muted);
   background: none; border: none; cursor: pointer; text-align: left;
   font-family: var(--font); transition: .15s;
 }
 .nav-label:hover { color: var(--blue); background: var(--blue-bg); }
-.nav-label-icon { font-size: 14px; width: 18px; text-align: center; color: var(--blue); }
+.nav-label:active { transform: scale(.98); }
+.nav-group:not(.collapsed) .nav-label {
+  color: var(--text);
+  background: color-mix(in srgb, var(--blue) 7%, transparent);
+}
+.nav-group:not(.collapsed) .nav-label .nav-label-icon { transform: scale(1.1); }
+.nav-label-icon { font-size: 14px; width: 18px; text-align: center; color: var(--blue); transition: transform .2s; }
 .nav-label-count { margin-left: auto; font-weight: 700; font-size: 10px; opacity: .8; }
-.nav-chev { font-size: 9px; transition: transform .2s; opacity: .6; }
+.nav-chev { font-size: 9px; transition: transform .25s ease; opacity: .6; }
 .nav-group.collapsed .nav-chev { transform: rotate(-90deg); }
-.nav-group.collapsed .nav-body { display: none; }
+/* Animated dropdown body: grid-rows 0fr->1fr gives smooth height transition */
+.nav-body {
+  display: grid; grid-template-rows: 1fr;
+  transition: grid-template-rows .28s ease;
+}
+.nav-group.collapsed .nav-body { grid-template-rows: 0fr; }
+.nav-inner {
+  overflow: hidden; min-height: 0;
+  margin: 4px 8px 8px;
+  background: color-mix(in srgb, var(--blue) 4%, transparent);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 4px;
+}
 .nav-item {
   display: flex; align-items: center; justify-content: space-between;
-  width: 100%; padding: 10px 20px; font-size: 14px;
+  width: 100%; padding: 9px 12px; font-size: 14px;
   background: none; border: none; text-align: left; cursor: pointer;
   color: var(--text); transition: .15s; border-left: 3px solid transparent;
-  font-family: var(--font);
+  border-radius: 8px; font-family: var(--font);
 }
-.nav-item:hover { background: var(--blue-bg); }
+.nav-item:hover { background: color-mix(in srgb, var(--blue) 12%, transparent); }
 .nav-item.active { background: var(--blue-bg); border-left-color: var(--blue); color: var(--blue); font-weight: 600; }
 .nav-item .count { font-size: 12px; color: var(--muted); font-weight: 400; }
-.nav-item.sub { padding-left: 38px; font-size: 13px; }
+.nav-item.sub { padding-left: 30px; font-size: 13px; }
 .nav-item.sub::before { content: "▸ "; color: var(--muted); font-size: 10px; }
 .nav-sublabel {
   font-size: 10px; font-weight: 700; text-transform: uppercase;
-  letter-spacing: .08em; color: var(--green); padding: 10px 20px 2px;
+  letter-spacing: .08em; color: var(--green); padding: 10px 14px 2px;
 }
 .main {
   margin-left: 260px;
@@ -4906,14 +4925,14 @@ function render() {
   while (i < SECTIONS.length) {
     const sec = SECTIONS[i];
     if (sec.group !== lastGroup) {
-      if (lastGroup) side += '</div></div>';
+      if (lastGroup) side += '</div></div></div>';
       const gname = sec.group;
       const collapsed = isGroupCollapsed(gname);
       let gd = 0, gt = 0;
       SECTIONS.forEach(sx => { if (sx.group === gname && sx.type === "prac") sx.levels.forEach(l => l.probs.forEach(p => { gt++; if (done(sx.id, p[0])) gd++; })); });
       side += '<div class="nav-group' + (collapsed ? ' collapsed' : '') + '">';
       side += '<button class="nav-label" onclick="toggleGroup(\'' + gname + '\')"><span class="nav-label-icon">' + (GRP_ICONS[gname] || "\u2022") + '</span><span class="nav-label-text">' + gname + '</span><span class="nav-label-count">' + gd + '/' + gt + '</span><span class="nav-chev">&#9662;</span></button>';
-      side += '<div class="nav-body">';
+      side += '<div class="nav-body"><div class="nav-inner">';
       lastGroup = gname;
     }
     // Pair a lesson with the practice section that follows it.
@@ -4939,7 +4958,7 @@ function render() {
     side += '</div>';
     i += 1;
   }
-  side += '</div></div>';
+  side += '</div></div></div>';
   document.getElementById("sidebar").innerHTML = side;
 
   const sec = SECTIONS.find(s => s.id === cur);
