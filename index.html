@@ -4971,7 +4971,7 @@ function cycleGoal() {
   render();
 }
 
-const API_BASE = location.pathname.startsWith('/math') ? '/math' : '';
+const API_BASE = location.hostname === 'hub.laxmiang.work.gd' ? '/math' : 'https://hub.laxmiang.work.gd/math';
 
 // Try to load progress from server
 async function syncLoad() {
@@ -4979,13 +4979,22 @@ async function syncLoad() {
     const r = await fetch(API_BASE + '/api/load', { signal: AbortSignal.timeout(5000) });
     if (!r.ok) return;
     const data = await r.json();
-    if (data.sols) { sols = data.sols; localStorage.setItem("msol", JSON.stringify(sols)); }
-    if (data.checkStates) { checkStates = data.checkStates; localStorage.setItem("mcheck", JSON.stringify(checkStates)); }
-    if (data.userSolutions) { userSolutions = data.userSolutions; localStorage.setItem("msolutions", JSON.stringify(userSolutions)); }
-    if (data.mot) { mot = Object.assign({}, DEFAULT_MOT, data.mot); localStorage.setItem("mmot", JSON.stringify(mot)); }
+    if (data.sols) { sols = Object.assign({}, data.sols, sols); localStorage.setItem("msol", JSON.stringify(sols)); }
+    if (data.checkStates) { checkStates = Object.assign({}, data.checkStates, checkStates); localStorage.setItem("mcheck", JSON.stringify(checkStates)); }
+    if (data.userSolutions) { userSolutions = Object.assign({}, data.userSolutions, userSolutions); localStorage.setItem("msolutions", JSON.stringify(userSolutions)); }
+    if (data.mot) {
+      const srv = Object.assign({}, DEFAULT_MOT, data.mot);
+      const loc = Object.assign({}, DEFAULT_MOT, mot);
+      const numKeys = ['xp','streak','bestStreak','bestDay','todaySolved','totalSolved'];
+      for (const k of numKeys) loc[k] = Math.max(loc[k] || 0, srv[k] || 0);
+      loc.byDay = Object.assign({}, srv.byDay, loc.byDay);
+      mot = loc;
+      localStorage.setItem("mmot", JSON.stringify(mot));
+    }
     refreshDay();
     maybeBadges(false);
     render();
+    syncSave(); // push merged union back so both origins stay in sync
   } catch(e) { /* server not available, use local */ }
 }
 
