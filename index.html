@@ -1242,6 +1242,15 @@ const SECTIONS = [
           [15, "Determine \\(a\\) so that \\(x - 3\\) is a factor of \\(x^4 - ax^3 + 9x^2 + 3x - 9\\).", "\\(P(3) = 81 - 27a + 81 + 9 - 9 = 0 \\Rightarrow 162 - 27a = 0 \\Rightarrow a = 6\\).", "6"],
         ]
       }
+      ,
+      { n: "Level 4: AIME 10+", probs: [
+          [16, "The roots of \\(x^3 - 3x^2 + 4x - 2 = 0\\) are \\(a, b, c\\). Find \\(\\frac{1}{a} + \\frac{1}{b} + \\frac{1}{c}\\).", "\\(\\frac{ab+bc+ca}{abc} = \\frac{4}{2} = 2\\).", "2"],
+          [17, "How many distinct real roots does \\(x^4 - 5x^2 + 4 = 0\\) have?", "\\(x^2 = 1, 4\\), so \\(x = \\pm 1, \\pm 2\\): four distinct real roots.", "4"],
+          [18, "Find the remainder when \\(x^{2024} + 1\\) is divided by \\(x^2 - 1\\).", "Remainder \\(ax+b\\) with \\(P(1) = 2, P(-1) = 2\\): \\(a+b=2, -a+b=2\\) gives \\(a=0, b=2\\).", "2"],
+          [19, "The product of the roots of \\(2x^3 - 4x^2 + 6x - 8 = 0\\) is \\(\\underline{\\phantom{}}\\).", "For \\(ax^3 + bx^2 + cx + d\\), product \\(= -d/a = 8/2 = 4\\).", "4"],
+          [20, "A cubic \\(P\\) satisfies \\(P(1)=P(2)=P(3)=0\\) and \\(P(0)=6\\). Find \\(P(4)\\).", "\\(P(x)=k(x-1)(x-2)(x-3)\\), \\(P(0)=-6k=6\\) so \\(k=-1\\). \\(P(4)=-1\\cdot3\\cdot2\\cdot1=-6\\).", "-6"],
+          [21, "The roots of \\(x^3 - 7x^2 + 14x - 8 = 0\\) are in geometric progression. Find the middle root.", "Roots \\(1, 2, 4\\): GP with middle root 2.", "2"],
+        ]}
     ]
   },
   {
@@ -1598,6 +1607,15 @@ const SECTIONS = [
           [10, "Find \\(f\\) given \\(f(x + y) + f(x - y) = 2f(x) + 2f(y)\\) for all reals (continuous).", "This is Jensen's equation for quadratics: \\(f(x) = ax^2\\). Check: \\(a(x+y)^2 + a(x-y)^2 = 2ax^2 + 2ay^2\\). Yes.", "ax^2|a x^2"],
         ]
       }
+      ,
+      { n: "Level 3: AIME 10+", probs: [
+          [11, "\\(f(x+y) = f(x)f(y)\\) for all reals and \\(f(1) = 2\\). Find \\(f(5)\\).", "\\(f(5) = f(1)^5 = 32\\).", "32"],
+          [12, "\\(f(2x) = 2f(x)\\) for all real \\(x\\) and \\(f(3) = 4\\). Find \\(f(24)\\).", "\\(24 = 3\\cdot 2^3\\), so \\(f(24) = 2^3\\cdot f(3) = 32\\).", "32"],
+          [13, "\\(f(xy) = f(x)f(y)\\) for all reals, \\(f(2)=3, f(3)=5\\). Find \\(f(72)\\).", "\\(72 = 2^3\\cdot 3^2\\), so \\(f(72) = 3^3\\cdot 5^2 = 27\\cdot25 = 675\\).", "675"],
+          [14, "\\(f(x+1) = f(x) + 2x + 1\\) for integers \\(x\\ge 0\\), \\(f(0) = 0\\). Find \\(f(4)\\).", "\\(f(1)=1, f(2)=4, f(3)=9, f(4)=16\\): the squares.", "16"],
+          [15, "\\(f(f(x)) = x\\) for all \\(x\\) and \\(f(2) = 5\\). Find \\(f(5)\\).", "Since \\(f(f(5))=5\\) and \\(f(2)=5\\), applying \\(f\\) to both sides of \\(f(2)=5\\) gives \\(2 = f(5)\\).", "2"],
+          [16, "\\(f(x) + f(1-x) = 1\\) for all reals and \\(f(x) = x\\) on \\([0,1]\\). Find \\(f(0.7)\\).", "\\(0.7 \\in [0,1]\\), so \\(f(0.7) = 0.7\\) directly.", "0.7"],
+        ]}
     ]
   },
   {
