@@ -5340,6 +5340,7 @@ render();
 ensureShell();
 refreshDay();
 maybeBadges(false);
+syncLoad().then(() => render());
 
 // ===== AIME Mock Exam engine =====
 const MOCK_LEN = 15;
