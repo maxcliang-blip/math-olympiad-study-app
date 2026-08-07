@@ -67,6 +67,12 @@ body {
 .nav-item:hover { background: var(--blue-bg); }
 .nav-item.active { background: var(--blue-bg); border-left-color: var(--blue); color: var(--blue); font-weight: 600; }
 .nav-item .count { font-size: 12px; color: var(--muted); font-weight: 400; }
+.nav-item.sub { padding-left: 38px; font-size: 13px; }
+.nav-item.sub::before { content: "▸ "; color: var(--muted); font-size: 10px; }
+.nav-sublabel {
+  font-size: 10px; font-weight: 700; text-transform: uppercase;
+  letter-spacing: .08em; color: var(--green); padding: 10px 20px 2px;
+}
 .main {
   margin-left: 260px;
   flex: 1;
@@ -4507,11 +4513,27 @@ function render() {
   let side = '<div class="sidebar-header"><h1>Math Olympiad</h1><p>Study App</p></div>';
   side += '<div class="sidebar-actions"><button class="btn export-btn" onclick="exportProgress()">Export</button><button class="btn import-btn" onclick="document.getElementById(\'importFile\').click()">Import</button><input type="file" id="importFile" accept=".json" style="display:none" onchange="importProgress(this)"></div>';
   let lastGroup = "";
-  SECTIONS.forEach(sec => {
+  let i = 0;
+  while (i < SECTIONS.length) {
+    const sec = SECTIONS[i];
     if (sec.group !== lastGroup) {
       if (lastGroup) side += '</div>';
       side += '<div class="nav-group"><div class="nav-label">' + sec.group + '</div>';
       lastGroup = sec.group;
+    }
+    // Pair a lesson with the practice section that follows it.
+    const next = SECTIONS[i + 1];
+    if (sec.type === "lesson" && next && next.type === "prac") {
+      side += '<div class="nav-item' + (cur === sec.id ? " active" : "") + '" onclick="go(\'' + sec.id + '\')">' + sec.title + '</div>';
+      let t = 0, d = 0;
+      next.levels.forEach(l => l.probs.forEach(p => { t++; if (done(next.id, p[0])) d++; }));
+      side += '<div class="nav-item sub' + (cur === next.id ? " active" : "") + '" onclick="go(\'' + next.id + '\')">Practice <span class="count">' + d + '/' + t + '</span></div>';
+      i += 2;
+      continue;
+    }
+    // Standalone AIME practice sections get their own sublabel.
+    if (sec.type === "prac" && sec.id.indexOf("aime-") === 0) {
+      side += '<div class="nav-sublabel">AIME</div>';
     }
     side += '<div class="nav-item' + (cur === sec.id ? " active" : "") + '" onclick="go(\'' + sec.id + '\')">' + sec.title;
     if (sec.type === "prac") {
@@ -4520,7 +4542,8 @@ function render() {
       side += ' <span class="count">' + d + '/' + t + '</span>';
     }
     side += '</div>';
-  });
+    i += 1;
+  }
   side += '</div>';
   document.getElementById("sidebar").innerHTML = side;
 
