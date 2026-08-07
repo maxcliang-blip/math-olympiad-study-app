@@ -5194,7 +5194,12 @@ function toggleGroup(name) {
   if (navCollapsed[name]) delete navCollapsed[name];
   else navCollapsed[name] = true;
   localStorage.setItem("math_nav", JSON.stringify(navCollapsed));
-  render();
+  // Toggle the class in place so the grid-rows transition actually animates
+  // (render() would rebuild the DOM and snap instead of transitioning).
+  const group = [].slice.call(document.querySelectorAll(".nav-group")).find(g => {
+    const t = g.querySelector(".nav-label-text"); return t && t.textContent === name;
+  });
+  if (group) group.classList.toggle("collapsed", !!navCollapsed[name]);
 }
 
 render();
