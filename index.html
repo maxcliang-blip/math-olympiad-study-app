@@ -5,24 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Math Olympiad Study App</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
-<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js">
-function updateThemeBtn() {
-  const dark = document.documentElement.getAttribute("data-theme") === "midnight";
-  const b = document.getElementById("theme-btn"); if (b) b.textContent = dark ? "\u2600\ufe0f" : "\uD83C\uDF19";
-  const m = document.querySelector(".mobile-theme"); if (m) m.textContent = dark ? "\u2600\ufe0f" : "\uD83C\uDF19";
-}
-function toggleTheme() {
-  const dark = document.documentElement.getAttribute("data-theme") === "midnight";
-  if (dark) document.documentElement.removeAttribute("data-theme");
-  else document.documentElement.setAttribute("data-theme", "midnight");
-  let u = {};
-  try { u = JSON.parse(localStorage.getItem("math_ui") || "{}"); } catch (e) {}
-  u.theme = dark ? "light" : "midnight";
-  localStorage.setItem("math_ui", JSON.stringify(u));
-  updateThemeBtn();
-}
-
-</script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
 <script>
 (function(){try{var u=JSON.parse(localStorage.getItem("math_ui")||"{}");if(u&&u.theme==="midnight")document.documentElement.setAttribute("data-theme","midnight");}catch(e){}})();
 </script>
@@ -5328,6 +5311,22 @@ setInterval(() => {
     if (mockRemaining() <= 0) submitMock(true);
   }
 }, 1000);
+
+function updateThemeBtn() {
+  const dark = document.documentElement.getAttribute("data-theme") === "midnight";
+  const b = document.getElementById("theme-btn"); if (b) b.textContent = dark ? "\u2600\ufe0f" : "\uD83C\uDF19";
+  const m = document.querySelector(".mobile-theme"); if (m) m.textContent = dark ? "\u2600\ufe0f" : "\uD83C\uDF19";
+}
+function toggleTheme() {
+  const dark = document.documentElement.getAttribute("data-theme") === "midnight";
+  if (dark) document.documentElement.removeAttribute("data-theme");
+  else document.documentElement.setAttribute("data-theme", "midnight");
+  let u = {};
+  try { u = JSON.parse(localStorage.getItem("math_ui") || "{}"); } catch (e) {}
+  u.theme = dark ? "light" : "midnight";
+  localStorage.setItem("math_ui", JSON.stringify(u));
+  updateThemeBtn();
+}
 
 </script>
 </body>
