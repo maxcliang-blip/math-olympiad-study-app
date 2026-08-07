@@ -1964,7 +1964,12 @@ const SECTIONS = [
           [20,"A right triangle has legs 9 and 12. The altitude to the hypotenuse divides it into two segments; find the longer segment.","Hypotenuse is 15. The segments are \\(9^2/15 = 27/5\\) and \\(12^2/15 = 48/5\\); the longer is \\(48/5\\).","48/5"],
           [21,"In \\(\\triangle ABC\\), the angle bisector of \\(\\angle A\\) meets \\(BC\\) at \\(D\\). If \\(AB = 6\\), \\(AC = 8\\), and \\(BD = 3\\), find \\(BC\\).","Angle bisector theorem: \\(BD/DC = 6/8 = 3/4\\), so \\(DC = 4\\) and \\(BC = 7\\).","7"],
           [22,"A square of side 2 sits inside \\(\\triangle ABC\\) with one side on \\(BC\\) and its top two vertices on \\(AB, AC\\). The altitude from \\(A\\) to \\(BC\\) is 6. Find \\(BC\\).","The small triangle above the square is similar to \\(ABC\\) with height ratio \\(4/6 = 2/3\\), so its base \\(2\\) satisfies \\(2/BC = 2/3\\), giving \\(BC = 3\\).","3"]
-        ]
+        
+          [23, "In \\(\\triangle ABC\\), \\(DE \\parallel BC\\) with \\(AD=2, DB=3\\). If \\([ADE]=8\\), find \\([ABC]\\).", "Similar with ratio \\(2:5\\), areas \\(4:25\\), so \\([ABC] = 8\\cdot\\frac{25}{4} = 50\\).", "50"],
+          [24, "A right triangle has legs 6 and 8. Find the altitude to the hypotenuse.", "Hypotenuse 10; altitude \\(= \\frac{6\\cdot8}{10} = \\frac{24}{5}\\).", "24/5"],
+          [25, "In \\(\\triangle ABC\\), the angle bisector from \\(A\\) meets \\(BC\\) at \\(D\\) with \\(AB=5, AC=7, BC=9\\). Find \\(BD\\).", "\\frac{BD}{DC} = \\frac{5}{7}, BD+DC=9, so BD = \\frac{5}{12}\\cdot9 = \\frac{15}{4}.", "15/4"],
+          [26, "Two similar triangles have side lengths 3,4,5 and 6,8,10. The smaller has area 6. Find the larger area.", "Scale factor 2, areas scale by 4: \\(6\\cdot4=24\\).", "24"],
+          [27, "A 6-foot person casts a 4-foot shadow; a building casts a 30-foot shadow at the same time. Find its height.", "Similar triangles: height \\(= 6\\cdot\\frac{30}{4} = 45\\).", "45"],]
       }]
   },
   {
@@ -2133,7 +2138,11 @@ const SECTIONS = [
           [20,"A point \\(P\\) is inside a circle of radius 5 with \\(OP = 3\\). For any chord through \\(P\\), find the product of the two segment lengths.","Power \\(= r^2 - OP^2 = 25 - 9 = 16\\).","16"],
           [21,"From external point \\(P\\), \\(PA\\) is tangent to a circle of radius 5 at \\(A\\), and \\(OP = 13\\). Find \\(PA\\).","\\(PA^2 = OP^2 - OA^2 = 169 - 25 = 144\\), so \\(PA = 12\\).","12"],
           [22,"Chord \\(AB\\) of a circle is extended past \\(B\\) to \\(P\\), with \\(PB = 8\\). The tangent from \\(P\\) touches the circle at \\(T\\) with \\(PT = 12\\). Find \\(AB\\).","\\(PT^2 = PB \\cdot PA\\): \\(144 = 8 \\cdot PA\\), so \\(PA = 18\\) and \\(AB = 18 - 8 = 10\\).","10"]
-        ]
+        
+          [23, "From a point \\(P\\) outside a circle, a secant meets the circle at \\(A, B\\) with \\(PA=2, PB=8\\). Another secant through \\(P\\) meets it at \\(C, D\\) with \\(PC=4\\). Find \\(PD\\).", "Power: \\(2\\cdot8 = 4\\cdot PD\\), so \\(PD=4\\).", "4"],
+          [24, "A tangent from \\(P\\) is 6 long; a secant through \\(P\\) has external segment 4. Find the whole secant length.", "\\(6^2 = 4\\cdot\\text{whole}\\), so whole \\(= 36/4 = 9\\).", "9"],
+          [25, "Chords \\(AB\\) and \\(CD\\) of a circle meet at \\(P\\) inside with \\(PA=3, PB=5, PC=4\\). Find \\(PD\\).", "\\(3\\cdot5 = 4\\cdot PD\\), so \\(PD = 15/4\\).", "15/4"],
+          [26, "A tangent from \\(P\\) is 12 long; a secant has external part 8. Find its internal part.", "Whole \\(= 144/8 = 18\\), internal \\(= 18-8 = 10\\).", "10"],]
       }]
   },
   {
@@ -2294,7 +2303,11 @@ const SECTIONS = [
           [18,"Two of three concurrent cevians of \\(\\triangle ABC\\) are angle bisectors. Find \\(\\sin \\angle ACF / \\sin \\angle FCB\\).","If two concurrent cevians are angle bisectors, the third is too, so \\(\\angle ACF = \\angle FCB\\) and the sine ratio is 1.","1"],
           [19,"In \\(\\triangle ABC\\), \\(D\\) is the midpoint of \\(BC\\), \\(E \\in AC\\) with \\(CE:EA = 2:1\\). If \\(AD\\) and \\(BE\\) meet at \\(X\\) and \\(CX\\) meets \\(AB\\) at \\(F\\), find \\(AF/FB\\).","By Ceva on the concurrent cevians: \\(\\frac{AF}{FB} \\cdot 1 \\cdot 2 = 1\\), so \\(AF/FB = 1/2\\).","1/2"],
           [20,"In \\(\\triangle ABC\\), the angle bisector of \\(\\angle A\\) meets \\(BC\\) at \\(D\\), with \\(AB = 5\\), \\(AC = 6\\), \\(BC = 7\\). Find \\(BD\\).","\\(BD/DC = 5/6\\) and \\(BD + DC = 7\\), so \\(BD = \\frac{5}{11} \\cdot 7 = 35/11\\).","35/11"]
-        ]
+        
+          [21, "Cevians \\(AD, BE, CF\\) of \\(\\triangle ABC\\) are concurrent with \\(BD:DC=3:2\\) and \\(CE:EA=2:1\\). Find \\(AF:FB\\).", "Ceva: \\(\\frac32\\cdot\\frac21\\cdot\\frac{AF}{FB}=1\\), so \\(AF:FB = 1:3\\).", "1:3"],
+          [22, "The angle bisector of \\(\\angle A\\) meets \\(BC\\) at \\(D\\) with \\(AB=6, AC=8, BC=7\\). Find \\(BD\\).", "\\frac{BD}{DC} = \\frac{6}{8} = \\frac34, BD+DC=7, so BD = \\frac{3}{7}\\cdot7 = 3.", "3"],
+          [23, "In \\(\\triangle ABC\\), medians \\(AD\\) and \\(BE\\) meet at \\(G\\), and line \\(CG\\) meets \\(AB\\) at \\(F\\). Find \\(AF:FB\\).", "Medians concur at centroid; the third cevian is the median, so \\(AF=FB\\), ratio 1:1.", "1:1"],
+          [24, "Cevians concurrent with \\(BD:DC = 1:4\\) and \\(AF:FB = 3:2\\). Find \\(CE:EA\\).", "Ceva: \\(\\frac14\\cdot\\frac{CE}{EA}\\cdot\\frac32 = 1\\), so \\(CE:EA = 8:3\\).", "8:3"],]
       }]
   },
   {
@@ -2926,7 +2939,12 @@ const SECTIONS = [
           [23,"Find the smallest positive integer with exactly 12 divisors.","Exponent patterns: \\(p^{11}\\), \\(p^5 q\\), \\(p^3 q^2\\), \\(p^2 q r\\). Smallest: \\(2^{11}=2048\\), \\(2^5\\cdot 3 = 96\\), \\(2^3\\cdot 3^2 = 72\\), \\(2^2 \\cdot 3 \\cdot 5 = 60\\). Minimum is 60.","60"],
           [24,"Find the remainder when \\(2^{2024}\\) is divided by 1000.","Mod 125: \\(2^{100} \\equiv 1\\), \\(2024 \\equiv 24 \\pmod{100}\\), and \\(2^{24} \\equiv 91 \\pmod{125}\\). Mod 8: \\(2^{2024} \\equiv 0\\). Solve \\(x \\equiv 91 \\pmod{125},\\; x \\equiv 0 \\pmod 8\\): \\(x = 216\\).","216"],
           [25,"How many integers from 1 to 1000 are divisible by none of 2, 3, 5?","Inclusion-exclusion: \\(500 + 333 + 200 - 166 - 100 - 66 + 33 = 734\\) are divisible by at least one, so \\(1000 - 734 = 266\\).","266"]
-        ]
+        
+          [26, "How many positive divisors does 720 have?", "\\(720 = 2^4\\cdot3^2\\cdot5\\), so \\((4+1)(2+1)(1+1) = 30\\).", "30"],
+          [27, "Find the sum of the positive divisors of 12.", "\\(1+2+3+4+6+12 = 28\\).", "28"],
+          [28, "Find \\(\\gcd(48, 72)\\).", "\\(48 = 2^4\\cdot3, 72 = 2^3\\cdot3^2\\), gcd \\(= 2^3\\cdot3 = 24\\).", "24"],
+          [29, "What is the largest prime factor of 2024?", "\\(2024 = 8\\cdot253 = 2^3\\cdot11\\cdot23\\), largest prime 23.", "23"],
+          [30, "How many positive integers \\(\\le 100\\) are relatively prime to 100?", "\\(\\varphi(100) = 100\\cdot\\frac12\\cdot\\frac45 = 40\\).", "40"],]
       }]
   },
   {
@@ -3015,7 +3033,12 @@ const SECTIONS = [
           [27, "How many solutions does \\(12x \\equiv 18 \\pmod{30}\\) have?", "\\(\\gcd(12,30) = 6\\mid 18\\), and the reduced congruence is \\(2x \\equiv 3 \\pmod 5\\), giving 6 solutions mod 30.", "6"],
           [28, "Find the last two digits of \\(13^{13}\\).", "\\(13^2 \\equiv 69\\), \\(13^4 \\equiv 61\\), \\(13^8 \\equiv 21\\). Then \\(13^{13} = 13^8\\cdot13^4\\cdot13 \\equiv 21\\cdot61\\cdot13 \\equiv 53\\pmod{100}\\).", "53"],
           [29, "Find the remainder of \\(6^{1000}\\) divided by 11.", "\\(6^{10} \\equiv 1 \\pmod{11}\\) (FLT); \\(1000 \\equiv 0 \\pmod{10}\\), so remainder 1.", "1"]
-        ]
+        
+          [30, "Find the last two digits of \\(7^{2026}\\).", "\\(7^4 = 2401 \\equiv 1\\pmod{100}\\), and \\(2026 \\equiv 2\\pmod 4\\), so \\(7^{2026} \\equiv 7^2 = 49\\).", "49"],
+          [31, "How many solutions does \\(x^2 \\equiv 1\\pmod 8\\) have?", "Squares mod 8 are \\(0,1,4\\). \\(x \\equiv 1,3,5,7\\pmod 8\\) all square to 1: 4 solutions.", "4"],
+          [32, "Find the remainder of \\(5^{2024}\\) divided by 13.", "\\(5^2 = 25 \\equiv -1\\), so \\(5^4 \\equiv 1\\); \\(2024 \\equiv 0\\pmod 4\\), remainder 1.", "1"],
+          [33, "Find the remainder of \\(3^{2026}\\) divided by 17.", "\\(3^{16}\\equiv 1\\), \\(2026 \\equiv 10\\pmod{16}\\); \\(3^{10} \\equiv 8\\pmod{17}\\).", "8"],
+          [34, "Solve \\(11x \\equiv 3\\pmod 7\\).", "\\(11 \\equiv 4\\), \\(4^{-1} \\equiv 2\\), so \\(x \\equiv 6\\).", "6"],]
       }]
   },
   {
@@ -3099,9 +3122,15 @@ const SECTIONS = [
           [19,"Find the smallest positive integer that leaves remainder 1 mod 2, 2 mod 3, 3 mod 4, 4 mod 5, and 5 mod 6.","Each condition says \\(n+1\\) is divisible by 2, 3, 4, 5, 6, hence by \\(\\operatorname{lcm}(2,3,4,5,6) = 60\\). So \\(n = 59\\).","59"],
           [20,"Find the remainder when \\(2024^{2024}\\) is divided by 77.","Mod 7: \\(2024 \\equiv 1\\), so \\(1^{2024} = 1\\). Mod 11: \\(2024 \\equiv 0\\), so 0. Solving \\(x \\equiv 1 \\pmod 7\\), \\(x \\equiv 0 \\pmod{11}\\) gives \\(x = 22\\).","22"],
           [21,"Find the smallest positive integer that is 7 mod 9, 5 mod 8, and 3 mod 7.","Each leaves remainder \\(-2\\), so \\(n + 2\\) is divisible by \\(\\operatorname{lcm}(9,8,7) = 504\\). Smallest: \\(n = 502\\).","502"],
-          [22,"Find the largest integer below 1000 that is 1 mod 3, 2 mod 4, and 3 mod 5.","\\(n+2\\) is divisible by \\(\\operatorname{lcm}(3,4,5) = 60\\), so \\(n \\equiv 58 \\pmod{60}\\). Largest below 1000: \\(58 + 900 = 958\\).","958"]
+          [22,"Find the largest integer below 1000 that is 1 mod 3, 2 mod 4, and 3 mod 5.","\\(n+2\\) is divisible by \\(\\operatorname{lcm}(3,4,5) = 60\\), so \\(n \\equiv 58 \\pmod{60}\\). Largest below 1000: \\(58 + 900 = 958\\).","958"],
+        
+          [23, "Solve \\(x \\equiv 2\\pmod 3, x \\equiv 3\\pmod 5, x \\equiv 2\\pmod 7\\).", "\\(x=23\\pmod{105}\\).", "23"],
+          [24, "Find the smallest positive \\(x\\) with \\(x\\equiv1\\pmod2, x\\equiv2\\pmod3, x\\equiv3\\pmod5, x\\equiv4\\pmod7\\).", "\\(x = 53\\).", "53"],
+          [25, "How many solutions does \\(x^2 \\equiv 1\\pmod{15}\\) have?", "\\(x\\equiv 1,4,11,14\\pmod{15}\\): 4 solutions.", "4"],
+          [26, "A number is \\\\(\\\\equiv 1\\\\pmod 4\\\\) and \\\\(\\\\equiv 1\\\\pmod 6\\\\). What is it congruent to mod 12?", "\\\\equiv 1\\\\pmod{12}.", "1"]
         ]
-      }]
+      }
+    ]
   },
   {
     id: "nt4-lesson",
@@ -3274,7 +3303,12 @@ const SECTIONS = [
           [20,"How many positive integers at most 1000 are relatively prime to 1000?","\\(1000 = 2^3 \\cdot 5^3\\), so \\(\\varphi(1000) = 1000 \\cdot \\tfrac12 \\cdot \\tfrac45 = 400\\).","400"],
           [21,"Find the remainder when \\(5^{2024}\\) is divided by 72.","Mod 8: \\(5^{2024} \\equiv 1\\). Mod 9: \\(\\varphi(9)=6\\), \\(2024 \\equiv 2\\), \\(5^2 = 25 \\equiv 7\\). Solve \\(x \\equiv 1 \\pmod 8\\), \\(x \\equiv 7 \\pmod 9\\): \\(x = 25\\).","25"],
           [22,"Find the smallest positive integer \\(n\\) with \\(\\varphi(n) = 12\\).","Candidates: \\(n = 13, 21, 26, 28, 36, 42\\). The smallest is \\(n = 13\\).","13"]
-        ]
+        
+          [23, "Find \\(\\varphi(2024)\\).", "\\(2024 = 2^3\\cdot11\\cdot23\\), so \\(\\varphi = 2024\\cdot\\frac12\\cdot\\frac{10}{11}\\cdot\\frac{22}{23} = 880\\).", "880"],
+          [24, "Find \\(\\varphi(360)\\).", "\\(360 = 2^3\\cdot3^2\\cdot5\\), so \\(\\varphi = 360\\cdot\\frac12\\cdot\\frac23\\cdot\\frac45 = 96\\).", "96"],
+          [25, "Find the smallest \\(n\\) with \\(\\varphi(n) = 4\\).", "\\(n = 5\\): \\(\\varphi(5)=4\\).", "5"],
+          [26, "Find the remainder of \\(7^{100}\\) divided by 10.", "\\(7^4 \\equiv 1\\pmod{10}\\), \\(100\\equiv0\\pmod4\\), so remainder 1.", "1"],
+          [27, "How many primitive roots does \\(\\mathbb{Z}/5\\mathbb{Z}\\) have?", "\\varphi(4) = 2.", "2"],]
       }]
   },
   {
@@ -3366,7 +3400,11 @@ const SECTIONS = [
           [23,"How many pairs of positive integers \\((x,y)\\) satisfy \\(x^2 - y^2 = 96\\)?","\\((x-y)(x+y) = 96\\). Pairs \\((a,b)\\) both even with \\(a<b\\): \\((2,48),(4,24),(6,16),(8,12)\\), giving 4 solutions.","4"],
           [24,"Find the number of positive integer solutions to \\(2x + y + z = 50\\).","\\(z = 50 - 2x - y \\ge 1\\), so \\(2x + y \\le 49\\). For \\(x = 1,\\ldots,24\\), \\(y\\) takes \\(49 - 2x\\) values. Sum \\(= 24 \\cdot 49 - 2 \\cdot 300 = 576\\).","576"],
           [25,"How many integer solutions does \\(x^2 + y^2 = 100\\) have?","Pairs \\((\\pm6,\\pm8)\\) and \\((\\pm8,\\pm6)\\): 8 solutions, plus \\((\\pm10,0),(0,\\pm10)\\): 4 more. Total 12.","12"]
-        ]
+        
+          [26, "How many positive integer solutions does \\(7x + 3y = 100\\) have?", "\\x = 1,4,7,10,13\ gives \\(y = 31,24,17,10,3\\): 5 solutions.", "5"],
+          [27, "Find all positive integer solutions to \\(xy - x - y = 10\\).", "\\((x-1)(y-1) = 11\\), so \\(x-1=1,y-1=11\\) or vice versa: (2,12),(12,2).", "2"],
+          [28, "How many pairs of positive integers satisfy \\(\\frac1x + \\frac1y = \\frac15\\)?", "\\((x-5)(y-5)=25\\): (6,30),(10,10),(30,6) — unordered: (6,30) and (10,10): 2.", "2"],
+          [29, "How many positive integer solutions does \\(x^2 - y^2 = 45\\) have?", "\\((x-y)(x+y)=45\\): \\((1,45),(3,15),(5,9)\\) give \\((23,22),(9,6),(7,2)\\): 3 solutions.", "3"],]
       }]
   },
   {
@@ -3453,7 +3491,11 @@ const SECTIONS = [
           [20,"Find the sum of all positive integers \\(x\\) for which \\(x^2 - 30x + 221\\) is prime.","\\(x^2 - 30x + 221 = (x-13)(x-17)\\). Prime only at \\(x = 12\\) (giving 5) and \\(x = 18\\) (giving 5). Sum \\(= 30\\).","30"],
           [21,"How many positive integer solutions to \\(3x + 5y = 2024\\) have \\(x > y\\)?","\\(x \\equiv 3 \\pmod 5\\), \\(x \\le 674\\). Also \\(x > y\\) gives \\(8x > 2024\\), i.e. \\(x > 253\\). The values \\(258, 263, \\ldots, 673\\) number \\((673-258)/5 + 1 = 84\\).","84"],
           [22,"How many integer solutions does \\(x^2 - 4y^2 = 100\\) have?","\\((x-2y)(x+2y) = 100\\) with factors congruent mod 4: \\((2,50),(10,10)\\) and sign variants, giving 6 solutions.","6"]
-        ]
+        
+          [23, "Find the smallest positive integer solution to \\(x^2 - 2y^2 = 1\\).", "\\((x,y) = (3,2)\\).", "3"],
+          [24, "Find a positive integer solution to \\(x^2 - 2y^2 = -1\\).", "\\((x,y) = (1,1)\\).", "1"],
+          [25, "Find the smallest positive solution to \\(x^2 - 3y^2 = 1\\).", "\\((x,y) = (2,1)\\).", "2"],
+          [26, "Find the smallest positive solution to \\(x^2 - 5y^2 = 1\\).", "\\((x,y) = (9,4)\\).", "9"],]
       }]
   },
   {
@@ -3666,7 +3708,11 @@ const SECTIONS = [
           [28,"How many solutions does \\(x^2 \\equiv -1 \\pmod{17}\\) have?","\\(4^2 = 16 \\equiv -1\\), so \\(x = 4, 13\\): 2 solutions.","2"],
           [29,"How many solutions does \\(x^2 \\equiv 9 \\pmod{15}\\) have?","Mod 3: \\(x \\equiv 0\\) (1 solution). Mod 5: \\(x \\equiv \\pm 2\\) (2 solutions). Total \\(1 \\cdot 2 = 2\\).","2"],
           [30,"For how many primes \\(p < 20\\) is \\(-1\\) a quadratic residue mod \\(p\\)?","\\(-1\\) is a residue iff \\(p \\equiv 1 \\pmod 4\\). Primes \\(< 20\\): 5, 13, 17 work: 3 primes.","3"]
-        ]
+        
+          [31, "Which of 2, 3, 5, 6 is NOT a quadratic residue mod 7?", "Squares mod 7: \\{0,1,2,4\\}. 3 is not a residue.", "3"],
+          [32, "How many nonzero quadratic residues are there mod 17?", "\\((17-1)/2 = 8\\).", "8"],
+          [33, "Is 2 a quadratic residue mod 5?", "Squares mod 5: \\{0,1,4\\}. No.", "no"],
+          [34, "Is 5 a quadratic residue mod 11?", "Squares mod 11: \\{0,1,3,4,5,9\\}. Yes.", "yes"],]
       }]
   },
   {
@@ -3766,7 +3812,11 @@ const SECTIONS = [
           [28,"How many primitive roots are there modulo 2024?","Primitive roots exist only modulo \\(2, 4, p^k, 2p^k\\). Since \\(2024 = 8 \\cdot 253\\), there are 0.","0"],
           [29,"Find the multiplicative order of 2 modulo 2025.","Order mod 25 is 20 and order mod 81 is 54, so the order is \\(\\operatorname{lcm}(20,54) = 540\\).","540"],
           [30,"Find the multiplicative order of 5 modulo 24.","\\(5^2 = 25 \\equiv 1 \\pmod{24}\\), so the order is 2.","2"]
-        ]
+        
+          [31, "Find the order of 2 modulo 9.", "\\(2^6 = 64 \\equiv 1\\), and no smaller exponent works: order 6.", "6"],
+          [32, "Find the order of 3 modulo 7.", "\\(3^6 \\equiv 1\\), \\(3^3 = 27 \\equiv 6\\ne 1\\), so order 6.", "6"],
+          [33, "Find the order of 5 modulo 12.", "\\(5^2 = 25 \\equiv 1\\), so order 2.", "2"],
+          [34, "Which numbers are primitive roots mod 7: 2, 3, 5?", "\\Orders: ord(2)=3, ord(3)=6, ord(5)=6. So 3 and 5.", "3,5|5,3|3and5|35|53"],]
       }]
   },
   {
@@ -3848,7 +3898,12 @@ const SECTIONS = [
           [26, "How many ways to color 4 distinct flags with 3 colors, using at least two colors?", "Total \\(3^4 = 81\\); all same: 3. Answer \\(81 - 3 = 78\\).", "78"],
           [27, "How many onto functions \\(\\{1,2,3,4,5\\} \\to \\{1,2,3\\}\\)?", "Inclusion-exclusion: \\(3^5 - 3\\cdot2^5 + 3 = 243 - 96 + 3 = 150\\).", "150"],
           [28, "How many binary strings of length 10 have no two adjacent 1s?", "Fibonacci: \\(F_{12} = 144\\).", "144"]
-        ]
+        
+          [29, "How many distinct arrangements of the letters A, A, A, B, B, C?", "\\frac{6!}{3!\\,2!} = 60.", "60"],
+          [30, "How many onto functions \\(f: \\{1,2,3,4\\} \\to \\{1,2,3\\}\\) are there?", "Inclusion-exclusion: \\(3^4 - 3\\cdot2^4 + 3\\cdot1^4 = 81 - 48 + 3 = 36\\).", "36"],
+          [31, "In how many ways can 10 students be split into two teams of 5 (teams unlabeled)?", "\\frac{\\binom{10}{5}}{2} = 126.", "126"],
+          [32, "How many 4-letter strings over \\{A,B,C\\} contain at least two A's?", "\\binom42\\cdot2^2 + \\binom43\\cdot2 + \\binom44 = 24 + 8 + 1 = 33.", "33"],
+          [33, "In how many ways can 7 distinct books be arranged on a shelf so two specific books are adjacent?", "Treat the pair as one block: \\(6!\\cdot2! = 1440\\).", "1440"],]
       }]
   },
   {
