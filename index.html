@@ -108,9 +108,19 @@ body {
 .import-btn { background: var(--blue-bg); color: var(--blue); border-color: var(--blue); }
 .nav-group { padding: 12px 0; border-bottom: 1px solid var(--border); }
 .nav-label {
+  display: flex; align-items: center; gap: 8px; width: 100%;
+  padding: 7px 14px; margin: 2px 6px; border-radius: 8px;
   font-size: 11px; font-weight: 700; text-transform: uppercase;
-  letter-spacing: .05em; color: var(--muted); padding: 0 20px 8px;
+  letter-spacing: .05em; color: var(--muted);
+  background: none; border: none; cursor: pointer; text-align: left;
+  font-family: var(--font); transition: .15s;
 }
+.nav-label:hover { color: var(--blue); background: var(--blue-bg); }
+.nav-label-icon { font-size: 14px; width: 18px; text-align: center; color: var(--blue); }
+.nav-label-count { margin-left: auto; font-weight: 700; font-size: 10px; opacity: .8; }
+.nav-chev { font-size: 9px; transition: transform .2s; opacity: .6; }
+.nav-group.collapsed .nav-chev { transform: rotate(-90deg); }
+.nav-group.collapsed .nav-body { display: none; }
 .nav-item {
   display: flex; align-items: center; justify-content: space-between;
   width: 100%; padding: 10px 20px; font-size: 14px;
@@ -4896,9 +4906,15 @@ function render() {
   while (i < SECTIONS.length) {
     const sec = SECTIONS[i];
     if (sec.group !== lastGroup) {
-      if (lastGroup) side += '</div>';
-      side += '<div class="nav-group"><div class="nav-label">' + sec.group + '</div>';
-      lastGroup = sec.group;
+      if (lastGroup) side += '</div></div>';
+      const gname = sec.group;
+      const collapsed = isGroupCollapsed(gname);
+      let gd = 0, gt = 0;
+      SECTIONS.forEach(sx => { if (sx.group === gname && sx.type === "prac") sx.levels.forEach(l => l.probs.forEach(p => { gt++; if (done(sx.id, p[0])) gd++; })); });
+      side += '<div class="nav-group' + (collapsed ? ' collapsed' : '') + '">';
+      side += '<button class="nav-label" onclick="toggleGroup(\'' + gname + '\')"><span class="nav-label-icon">' + (GRP_ICONS[gname] || "\u2022") + '</span><span class="nav-label-text">' + gname + '</span><span class="nav-label-count">' + gd + '/' + gt + '</span><span class="nav-chev">&#9662;</span></button>';
+      side += '<div class="nav-body">';
+      lastGroup = gname;
     }
     // Pair a lesson with the practice section that follows it.
     const next = SECTIONS[i + 1];
@@ -4923,7 +4939,7 @@ function render() {
     side += '</div>';
     i += 1;
   }
-  side += '</div>';
+  side += '</div></div>';
   document.getElementById("sidebar").innerHTML = side;
 
   const sec = SECTIONS.find(s => s.id === cur);
@@ -5326,6 +5342,22 @@ function toggleTheme() {
   u.theme = dark ? "light" : "midnight";
   localStorage.setItem("math_ui", JSON.stringify(u));
   updateThemeBtn();
+}
+
+
+// ===== Sidebar groups =====
+const GRP_ICONS = { "Roadmap": "\uD83D\uDDFA\uFE0F", "Algebra": "\u2211", "Number Theory": "\uD83D\uDD22", "Combinatorics": "\uD83C\uDFB2", "Geometry": "\uD83D\uDCD0", "Mock Exam": "\u23F1\uFE0F" };
+let navCollapsed = {};
+try { navCollapsed = JSON.parse(localStorage.getItem("math_nav") || "{}"); } catch (e) {}
+function isGroupCollapsed(name) {
+  if (SECTIONS.some(sx => sx.group === name && sx.id === cur)) return false;
+  return !!navCollapsed[name];
+}
+function toggleGroup(name) {
+  if (navCollapsed[name]) delete navCollapsed[name];
+  else navCollapsed[name] = true;
+  localStorage.setItem("math_nav", JSON.stringify(navCollapsed));
+  render();
 }
 
 </script>
