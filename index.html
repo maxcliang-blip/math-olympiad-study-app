@@ -152,8 +152,8 @@ body {
 .nav-item .count { font-size: 11px; color: var(--muted); font-weight: 600; background: color-mix(in srgb, var(--blue) 8%, transparent); border-radius: 999px; padding: 1px 8px; margin-left: 6px; }
 .nav-item .count.done { background: var(--green-bg); color: var(--green); }
 .nav-ico { font-size: 13px; width: 18px; text-align: center; flex-shrink: 0; opacity: .85; }
-.nav-ico.lesson { color: var(--blue); }
-.nav-ico.practice { color: var(--green); }
+.nav-ico.ico-book { color: var(--blue); }
+.nav-ico.ico-pen { color: var(--green); }
 .nav-item .nav-label-text-wrap { display: flex; align-items: center; min-width: 0; }
 .nav-item.sub { padding-left: 30px; font-size: 13px; }
 .nav-sublabel {
@@ -4943,11 +4943,11 @@ function render() {
     const next = SECTIONS[i + 1];
     if (sec.type === "lesson" && next && next.type === "prac") {
       const ltitle = sec.title.replace(/ — Lesson$/i, "");
-      side += '<div class="nav-item' + (cur === sec.id ? " active" : "") + '" onclick="go(\'' + sec.id + '\')"><span class="nav-ico lesson">\uD83D\uDCD6</span>' + ltitle + '</div>';
+      side += '<div class="nav-item' + (cur === sec.id ? " active" : "") + '" onclick="go(\'' + sec.id + '\')"><span class="nav-ico ico-book">\uD83D\uDCD6</span>' + ltitle + '</div>';
       let t = 0, d = 0;
       next.levels.forEach(l => l.probs.forEach(p => { t++; if (done(next.id, p[0])) d++; }));
       const pcls = d === t && t > 0 ? " done" : "";
-      side += '<div class="nav-item sub' + (cur === next.id ? " active" : "") + '" onclick="go(\'' + next.id + '\')"><span class="nav-ico practice">\u270F\uFE0F</span>Practice <span class="count' + pcls + '">' + d + '/' + t + '</span></div>';
+      side += '<div class="nav-item sub' + (cur === next.id ? " active" : "") + '" onclick="go(\'' + next.id + '\')"><span class="nav-ico ico-pen">\u270F\uFE0F</span>Practice <span class="count' + pcls + '">' + d + '/' + t + '</span></div>';
       i += 2;
       continue;
     }
@@ -4958,10 +4958,10 @@ function render() {
     let ptitle = sec.title;
     if (sec.type === "prac") ptitle = sec.title.replace(/ — Practice$/i, "");
     side += '<div class="nav-item' + (cur === sec.id ? " active" : "") + '" onclick="go(\'' + sec.id + '\')">';
-    if (sec.type === "lesson") side += '<span class="nav-ico lesson">\uD83D\uDCD6</span>';
-    else if (sec.type === "prac") side += '<span class="nav-ico practice">\u270F\uFE0F</span>';
+    if (sec.type === "lesson") side += '<span class="nav-ico ico-book">\uD83D\uDCD6</span>';
+    else if (sec.type === "prac") side += '<span class="nav-ico ico-pen">\u270F\uFE0F</span>';
     else if (sec.type === "topics") side += '<span class="nav-ico">\uD83D\uDDFA\uFE0F</span>';
-    else if (sec.type === "mock") side += '<span class="nav-ico practice">\u23F1\uFE0F</span>';
+    else if (sec.type === "mock") side += '<span class="nav-ico ico-pen">\u23F1\uFE0F</span>';
     side += ptitle;
     if (sec.type === "prac") {
       let t = 0, d = 0;
