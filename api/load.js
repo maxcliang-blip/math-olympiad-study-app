@@ -16,7 +16,7 @@ export default async function handler(req, res) {
 
   try {
     const data = await redis.get('progress');
-    return res.status(200).json(data || { sols: {}, checkStates: {} });
+    return res.status(200).json(data || { sols: {}, checkStates: {}, userSolutions: {}, mot: null });
   } catch (err) {
     console.error('Load error:', err);
     return res.status(500).json({ error: 'Failed to load' });

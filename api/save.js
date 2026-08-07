@@ -19,8 +19,8 @@ export default async function handler(req, res) {
   }
 
   try {
-    const { sols, checkStates } = req.body;
-    await redis.set('progress', { sols, checkStates });
+    const { sols, checkStates, userSolutions, mot } = req.body;
+    await redis.set('progress', { sols, checkStates, userSolutions, mot });
     return res.status(200).json({ ok: true });
   } catch (err) {
     console.error('Save error:', err);
