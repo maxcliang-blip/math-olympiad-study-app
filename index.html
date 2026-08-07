@@ -546,6 +546,7 @@ function norm(s) {
     .replace(/\s+/g, '')
     .replace(/\\sqrt\{(\w+)\}/g, 'sqrt$1')
     .replace(/√(\w*)/g, (_, x) => 'sqrt' + x)
+    .replace(/sqrt\(([^)]*)\)/g, 'sqrt$1')
     .replace(/\\frac\{(\w+)\}\{(\w+)\}/g, '$1/$2')
     .replace(/\\cdot/g, '*')
     .replace(/\\/g, '')
