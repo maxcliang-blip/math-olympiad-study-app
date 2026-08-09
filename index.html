@@ -5241,6 +5241,7 @@ render();
 }
 
 function render() {
+  deriveTopicProgress(); // fresh roadmap statuses for sidebar group counts + main
   // Sidebar
   let side = '<div class="sidebar-header"><div class="titles"><h1>Math Olympiad</h1><p>Study App</p></div><button class="theme-btn" id="theme-btn" onclick="toggleTheme()" title="Toggle light/dark theme">' + (document.documentElement.getAttribute("data-theme") === "midnight" ? "&#9728;&#65039;" : "&#127769;") + '</button></div>';
   side += '<div class="sidebar-actions"><button class="btn export-btn" onclick="exportProgress()">Export</button><button class="btn import-btn" onclick="document.getElementById(\'importFile\').click()">Import</button><input type="file" id="importFile" accept=".json" style="display:none" onchange="importProgress(this)"></div>';
@@ -5253,7 +5254,11 @@ function render() {
       const gname = sec.group;
       const collapsed = isGroupCollapsed(gname);
       let gd = 0, gt = 0;
-      SECTIONS.forEach(sx => { if (sx.group === gname && sx.type === "prac") sx.levels.forEach(l => l.probs.forEach(p => { gt++; if (done(sx.id, p[0])) gd++; })); });
+      SECTIONS.forEach(sx => {
+        if (sx.group !== gname) return;
+        if (sx.type === "prac") sx.levels.forEach(l => l.probs.forEach(p => { gt++; if (done(sx.id, p[0])) gd++; }));
+        else if (sx.type === "topics") sx.topics.forEach(c => c.items.forEach(it => { gt++; if (it.status === "done") gd++; }));
+      });
       side += '<div class="nav-group' + (collapsed ? ' collapsed' : '') + '">';
       side += '<button class="nav-label" onclick="toggleGroup(\'' + gname + '\')"><span class="nav-label-icon">' + (GRP_ICONS[gname] || "\u2022") + '</span><span class="nav-label-text">' + gname + '</span><span class="nav-label-count">' + gd + '/' + gt + '</span><span class="nav-chev">&#9662;</span></button>';
       side += '<div class="nav-body"><div class="nav-inner">';
