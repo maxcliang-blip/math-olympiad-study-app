@@ -72,7 +72,13 @@ const server = http.createServer((req, res) => {
 
   let filePath = new URL(req.url, 'http://x').pathname;
   if (filePath === '/') filePath = '/index.html';
-  serveFile(res, path.join(__dirname, filePath));
+  const resolved = path.normalize(path.join(__dirname, filePath));
+  if (!resolved.startsWith(path.join(__dirname, path.sep))) {
+    res.writeHead(403);
+    res.end('Forbidden');
+    return;
+  }
+  serveFile(res, resolved);
 });
 
 server.listen(PORT, '0.0.0.0', () => {

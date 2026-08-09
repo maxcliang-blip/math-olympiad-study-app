@@ -112,6 +112,8 @@ body {
 }
 .theme-btn:hover { background: var(--blue-bg); border-color: var(--blue); }
 .mobile-theme { display: none; }
+.nav-toggle { display: none; }
+.nav-overlay { display: none; }
 .sidebar-header h1 { font-size: 18px; font-weight: 700; color: var(--blue); }
 .sidebar-header p { font-size: 12px; color: var(--muted); }
 .sidebar-actions { padding: 12px 20px; display: flex; gap: 6px; }
@@ -397,7 +399,24 @@ body {
 .topic-progress-fill { height: 100%; background: var(--green); border-radius: 4px; transition: width .4s; }
 .topic-summary { font-size: 14px; color: var(--muted); margin-top: 8px; }
 @media (max-width: 768px) {
-  .sidebar { display: none; }
+  .sidebar {
+    transform: translateX(-100%);
+    transition: transform .28s ease;
+    box-shadow: var(--shadow-lg);
+  }
+  .sidebar.nav-open { transform: translateX(0); }
+  .nav-toggle {
+    display: inline-flex; position: fixed; top: 12px; left: 12px; z-index: 300;
+    width: 38px; height: 38px; align-items: center; justify-content: center;
+    font-size: 18px; border-radius: 10px; border: 1px solid var(--border);
+    background: var(--card); color: var(--text); cursor: pointer; box-shadow: var(--shadow);
+  }
+  .nav-toggle:hover { background: var(--blue-bg); border-color: var(--blue); }
+  .nav-overlay {
+    position: fixed; inset: 0; background: rgba(0,0,0,.45); z-index: 90;
+    opacity: 0; pointer-events: none; transition: opacity .25s;
+  }
+  .nav-overlay.show { opacity: 1; pointer-events: auto; }
   .main { margin-left: 0; padding: 20px 16px; }
   .ans-row { flex-direction: column; align-items: stretch; }
 }
@@ -547,6 +566,8 @@ body {
 
 <div class="sidebar" id="sidebar"></div>
 <div class="main" id="main"></div>
+<button class="nav-toggle" onclick="toggleNav()" aria-label="Open menu" title="Menu">&#9776;</button>
+<div class="nav-overlay" onclick="toggleNav()"></div>
 <button class="theme-btn mobile-theme" onclick="toggleTheme()" title="Toggle theme" aria-label="Toggle theme">&#127769;</button>
 
 <script>
@@ -576,6 +597,7 @@ function norm(s) {
     .replace(/≤/g, '<=')
     .replace(/≥/g, '>=')
     .replace(/[−–]/g, '-')
+    .replace(/[⁰¹²³⁴⁵⁶⁷⁸⁹]/g, m => '^' + '⁰¹²³⁴⁵⁶⁷⁸⁹'.indexOf(m))
     .replace(/\\/g, '')
     .replace(/[{}\\]/g, '')
     .replace(/sqrt\(([0-9a-z]+)\)/g, 'sqrt$1')
@@ -700,10 +722,17 @@ function parseNum(str) {
 
 function matchAns(userAns, storedAns) {
   const u = norm(userAns);
+  // Fallback variant for caretless powers ("s2-2p" -> "s^2-2p", "ps2" -> "ps^2").
+  // sqrt/cbrt names are shielded with placeholders first so "sqrt5"/"cbrt3"
+  // are never rewritten. Unicode superscripts (s²) are already canonicalized
+  // to s^2 inside norm().
+  const u2 = u.replace(/sqrt/g, '\u0001').replace(/cbrt/g, '\u0002')
+              .replace(/([a-z])(\d)/g, '$1^$2')
+              .replace(/\u0001/g, 'sqrt').replace(/\u0002/g, 'cbrt');
   const alts = storedAns.split('|');
   for (let a of alts) {
     const n = norm(a);
-    if (u === n) return true;
+    if (u === n || u2 === n) return true;
     // Numeric equivalence: accept any mathematically-equal form (fractions,
     // radicals, pi, decimals, exponents, implicit multiplication). Tolerance
     // scales with how precisely the user typed a decimal (2dp => ±0.005).
@@ -5461,7 +5490,25 @@ function renderPreview(s, p) {
   prev.innerHTML = R(text);
 }
 
-function go(id) { cur = id; openSols = {}; render(); }
+function go(id) { cur = id; openSols = {}; closeNav(); render(); }
+
+// Mobile drawer: slide the sidebar in/out with a dimming overlay.
+function toggleNav() {
+  const sb = document.getElementById('sidebar');
+  const ov = document.querySelector('.nav-overlay');
+  if (!sb || !ov) return;
+  const open = sb.classList.toggle('nav-open');
+  ov.classList.toggle('show', open);
+  const btn = document.querySelector('.nav-toggle');
+  if (btn) btn.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+}
+function closeNav() {
+  const sb = document.getElementById('sidebar');
+  const ov = document.querySelector('.nav-overlay');
+  if (!sb || !ov) return;
+  if (sb.classList.contains('nav-open')) sb.classList.remove('nav-open');
+  if (ov.classList.contains('show')) ov.classList.remove('show');
+}
 
 function exportProgress() {
   const data = { sols: sols, checkStates: checkStates, userSolutions: userSolutions, mot: mot };
