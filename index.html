@@ -398,6 +398,9 @@ body {
 .topic-progress-bar { height: 8px; background: var(--border); border-radius: 4px; overflow: hidden; margin-top: 8px; }
 .topic-progress-fill { height: 100%; background: var(--green); border-radius: 4px; transition: width .4s; }
 .topic-summary { font-size: 14px; color: var(--muted); margin-top: 8px; }
+.topic-minibar { height: 4px; background: var(--border); border-radius: 2px; overflow: hidden; margin-top: 6px; max-width: 320px; }
+.topic-minibar-fill { height: 100%; background: var(--blue); border-radius: 2px; transition: width .4s; }
+.topic-num { font-size: 11px; color: var(--muted); margin-top: 3px; }
 @media (max-width: 768px) {
   .sidebar {
     transform: translateX(-100%);
@@ -756,39 +759,39 @@ const SECTIONS = [
     group: "Roadmap",
     topics: [
       { cat: "Algebra", items: [
-        { name: "Polynomials & Vieta's Formulas", status: "done", notes: "Mastered in Symmetric Polynomials" },
-        { name: "Symmetric Polynomials", status: "done", notes: "40 practice problems + AIME" },
-        { name: "Inequalities I (AM-GM, Cauchy, Engel)", status: "done", notes: "Lesson + 20 practice + AIME" },
-        { name: "Inequalities II (Schur, Jensen, SOS, uvw)", status: "done", notes: "Lesson + 20 practice" },
-        { name: "Sequences & Series", status: "done", notes: "Arithmetic, geometric, telescoping, recurrence" },
-        { name: "Functional Equations", status: "done", notes: "Cauchy-type, injective/surjective, P(x,y)" },
-        { name: "Logarithms & Exponents", status: "done", notes: "Properties, inequalities, equations" },
-        { name: "Complex Numbers", status: "done", notes: "Roots of unity, De Moivre, geometric interpretation" },
-        { name: "Polynomial Interpolation", status: "done", notes: "Lagrange, finite differences" },
+        { name: "Polynomials & Vieta's Formulas", status: "todo", notes: "Polynomial Foundations + Vieta's + AIME", sets: ["poly-practice", "vieta-practice", "aime-vieta"] },
+        { name: "Symmetric Polynomials", status: "todo", notes: "40 practice problems + AIME", sets: ["sym-practice", "aime-sym"] },
+        { name: "Inequalities I (AM-GM, Cauchy, Engel)", status: "todo", notes: "Lesson + 20 practice + AIME", sets: ["ineq-practice", "aime-ineq"] },
+        { name: "Inequalities II (Schur, Jensen, SOS, uvw)", status: "todo", notes: "Lesson + 20 practice", sets: ["ineq2-practice"] },
+        { name: "Sequences & Series", status: "todo", notes: "Arithmetic, geometric, telescoping, recurrence", sets: ["seq-practice"] },
+        { name: "Functional Equations", status: "todo", notes: "Cauchy-type, injective/surjective, P(x,y)", sets: ["fe-practice", "fe2-practice"] },
+        { name: "Logarithms & Exponents", status: "todo", notes: "Properties, inequalities, equations", sets: ["log-practice"] },
+        { name: "Complex Numbers", status: "todo", notes: "Roots of unity, De Moivre, geometric interpretation", sets: ["cx-practice"] },
+        { name: "Polynomial Interpolation", status: "todo", notes: "Lagrange, finite differences", sets: ["intp-practice"] },
       ]},
       { cat: "Geometry", items: [
-        { name: "Triangle Geometry", status: "done", notes: "Similarity, Ceva, Menelaus" },
-        { name: "Circle Geometry", status: "done", notes: "Cyclic quadrilaterals, power, radical axis" },
-        { name: "Coordinate/Bashing", status: "done", notes: "Barycentric, complex, Cartesian" },
-        { name: "Transformations", status: "done", notes: "Homothety, spiral similarity, inversion" },
-        { name: "Lemmas", status: "done", notes: "Euler line, Sawayama, Feuerbach" },
-        { name: "3D Geometry", status: "done", notes: "Cross sections, sphere problems" },
+        { name: "Triangle Geometry", status: "todo", notes: "Similarity, Ceva, Menelaus", sets: ["geo1-practice", "geo5-practice", "geo6-prac"] },
+        { name: "Circle Geometry", status: "todo", notes: "Cyclic quadrilaterals, power, radical axis", sets: ["geo2-practice", "geo3-practice", "geo4-practice"] },
+        { name: "Coordinate/Bashing", status: "todo", notes: "Barycentric, complex, Cartesian", sets: ["coord-practice"] },
+        { name: "Transformations", status: "todo", notes: "Homothety, spiral similarity, inversion", sets: ["geo7-prac", "geo8-prac"] },
+        { name: "Lemmas", status: "todo", notes: "Euler line, Sawayama, Feuerbach", sets: ["lemma-practice"] },
+        { name: "3D Geometry", status: "todo", notes: "Cross sections, sphere problems", sets: ["geo3d-practice"] },
       ]},
       { cat: "Number Theory", items: [
-        { name: "Divisibility & Primes", status: "done", notes: "GCD, LCM, prime factorization" },
-        { name: "Modular Arithmetic", status: "done", notes: "CRT, Fermat's Little, Euler's theorem" },
-        { name: "Diophantine Equations", status: "done", notes: "Linear, Pythagorean" },
-        { name: "Quadratic Residues", status: "done", notes: "Legendre symbol, law of quadratic reciprocity" },
-        { name: "p-adic Valuations", status: "done", notes: "LTE, valuations" },
-        { name: "Orders & Primitive Roots", status: "done", notes: "Discrete log, structure of (Z/nZ)*" },
+        { name: "Divisibility & Primes", status: "todo", notes: "GCD, LCM, prime factorization", sets: ["nt1-practice"] },
+        { name: "Modular Arithmetic", status: "todo", notes: "CRT, Fermat's Little, Euler's theorem", sets: ["nt2-practice", "nt3-practice", "nt4-practice", "nt5-practice", "aime-nt"] },
+        { name: "Diophantine Equations", status: "todo", notes: "Linear, Pythagorean", sets: ["nt6-practice", "nt7-practice"] },
+        { name: "Quadratic Residues", status: "todo", notes: "Legendre symbol, law of quadratic reciprocity", sets: ["qr-practice"] },
+        { name: "p-adic Valuations", status: "todo", notes: "LTE, valuations", sets: ["nt8-practice"] },
+        { name: "Orders & Primitive Roots", status: "todo", notes: "Discrete log, structure of (Z/nZ)*", sets: ["order-practice"] },
       ]},
       { cat: "Combinatorics", items: [
-        { name: "Counting Techniques", status: "done", notes: "Stars and bars, inclusion-exclusion" },
-        { name: "Bijections & Combinatorial Proofs", status: "done", notes: "Double counting, hockey stick" },
-        { name: "Pigeonhole Principle", status: "done", notes: "Direct, generalized" },
-        { name: "Invariants & Monovariants", status: "done", notes: "Coloring, parity, monovariants" },
-        { name: "Generating Functions", status: "done", notes: "Ordinary, coefficient extraction" },
-        { name: "Recurrence Relations", status: "done", notes: "Characteristic equation, Catalan numbers" },
+        { name: "Counting Techniques", status: "todo", notes: "Stars and bars, inclusion-exclusion", sets: ["comb1-practice"] },
+        { name: "Bijections & Combinatorial Proofs", status: "todo", notes: "Double counting, hockey stick", sets: ["comb4-practice"] },
+        { name: "Pigeonhole Principle", status: "todo", notes: "Direct, generalized", sets: ["comb2-practice"] },
+        { name: "Invariants & Monovariants", status: "todo", notes: "Coloring, parity, monovariants", sets: ["comb3-practice"] },
+        { name: "Generating Functions", status: "todo", notes: "Ordinary, coefficient extraction", sets: ["comb5-practice"] },
+        { name: "Recurrence Relations", status: "todo", notes: "Characteristic equation, Catalan numbers", sets: ["comb6-practice"] },
       ]},
     ]
   },
@@ -4846,7 +4849,7 @@ const SECTIONS = [
   {
     id: "aime-mock",
     title: "AIME Mock Exam",
-    sub: "15 problems, 3 hours — pool calibrated to ~AIME 1-5 (projection optimistic)",
+    sub: "15 problems, 3 hours — full AIME range, easy → mid → hard, real AIME problems included",
     type: "mock",
     group: "Mock Exam"
   }
@@ -5399,7 +5402,39 @@ function renderLesson(main, sec) {
   main.innerHTML = html;
 }
 
+function topicSolved(sets) {
+  let solved = 0, total = 0;
+  for (const sid of sets || []) {
+    const sec = SECTIONS.find(x => x.id === sid);
+    if (!sec || sec.type !== "prac") continue;
+    for (const l of sec.levels || []) {
+      for (const p of l.probs || []) {
+        if (!p) continue;
+        total++;
+        if (sols[key(sid, p[0])]) solved++;
+      }
+    }
+  }
+  return { solved, total };
+}
+
+// Derive roadmap status from real solve progress. Items the user has manually
+// toggled (item.override) keep their manual status; everything else reflects
+// the actual solved/total across the topic's linked practice sets.
+function deriveTopicProgress() {
+  SECTIONS.filter(s => s.type === "topics").forEach(sec => {
+    sec.topics.forEach(cat => cat.items.forEach(item => {
+      const st = topicSolved(item.sets);
+      item._solved = st.solved; item._total = st.total;
+      if (item.override) return;
+      item.status = st.total > 0 && st.solved >= st.total ? "done"
+                  : st.solved > 0 ? "progress" : "todo";
+    }));
+  });
+}
+
 function renderTopics(main, sec) {
+  deriveTopicProgress();
   let total = 0, doneCount = 0;
   sec.topics.forEach(cat => cat.items.forEach(item => {
     total++;
@@ -5407,15 +5442,21 @@ function renderTopics(main, sec) {
   }));
   let html = '<h2>' + sec.title + '</h2><p class="subtitle">' + sec.sub + '</p>';
   html += '<div class="topic-progress"><div class="topic-progress-bar"><div class="topic-progress-fill" style="width:' + (total ? (doneCount/total*100) : 0) + '%"></div></div>';
-  html += '<div class="topic-summary">' + doneCount + ' / ' + total + ' topics completed (' + Math.round(doneCount/total*100) + '%)</div></div>';
+  html += '<div class="topic-summary">' + doneCount + ' / ' + total + ' topics completed (' + Math.round(doneCount/total*100) + '%) — status follows your solved problems</div></div>';
   sec.topics.forEach(cat => {
     html += '<div class="topic-cat">' + cat.cat + '</div>';
     cat.items.forEach((item, i) => {
       const isDone = item.status === "done";
+      const pct = item._total ? Math.round(item._solved / item._total * 100) : 0;
       html += '<div class="topic-item">';
-      html += '<div class="topic-check' + (isDone ? ' done' : '') + '" onclick="toggleTopic(\'' + sec.id + '\',' + sec.topics.indexOf(cat) + ',' + i + ')">' + (isDone ? '&#10003;' : '') + '</div>';
+      html += '<div class="topic-check' + (isDone ? ' done' : '') + '" onclick="toggleTopic(\'' + sec.id + '\',' + sec.topics.indexOf(cat) + ',' + i + ')" title="' + (item.override ? 'Manual status — click to change' : 'Auto from solves — click to override') + '">' + (isDone ? '&#10003;' : '') + '</div>';
       html += '<div class="topic-body"><div class="topic-name' + (isDone ? ' done' : '') + '">' + item.name + '</div>';
-      html += '<div class="topic-notes">' + item.notes + '</div></div></div>';
+      html += '<div class="topic-notes">' + item.notes + '</div>';
+      if (item._total > 0) {
+        html += '<div class="topic-minibar"><div class="topic-minibar-fill" style="width:' + pct + '%"></div></div>';
+        html += '<div class="topic-num">' + item._solved + '/' + item._total + ' solved' + (item.override ? ' (manual)' : '') + '</div>';
+      }
+      html += '</div></div>';
     });
   });
   main.innerHTML = html;
@@ -5424,7 +5465,11 @@ function renderTopics(main, sec) {
 function toggleTopic(secId, catIdx, itemIdx) {
   const sec = SECTIONS.find(s => s.id === secId);
   const item = sec.topics[catIdx].items[itemIdx];
-  item.status = item.status === "done" ? "todo" : "done";
+  // Manual override: flips the EFFECTIVE status; stored so derived progress
+  // doesn't fight the user's own assessment.
+  const cur = item.status === "done" ? "todo" : "done";
+  item.status = cur;
+  item.override = true;
   localStorage.setItem("mtopics", JSON.stringify(getTopicStates()));
   render();
 }
@@ -5443,7 +5488,10 @@ function loadTopicStates() {
     if (saved[sec.id]) {
       sec.topics.forEach((cat, ci) => {
         cat.items.forEach((item, ii) => {
-          if (saved[sec.id][ci] && saved[sec.id][ci][ii]) item.status = saved[sec.id][ci][ii];
+          if (saved[sec.id][ci] && saved[sec.id][ci][ii]) {
+            item.status = saved[sec.id][ci][ii];
+            item.override = true; // manual choice beats derived progress
+          }
         });
       });
     }
@@ -5595,14 +5643,31 @@ if (!mock.cutoff) mock.cutoff = 216;
 if (!mock.history) mock.history = [];
 let mockSolOpen = {};
 function mockSave() { localStorage.setItem("mmock", JSON.stringify(mock)); }
+function mockBand(nm, prompt) {
+  // Difficulty bands mirroring a real AIME: 1 = #1-5 (easy), 2 = #6-10 (mid), 3 = #11-15 (hard)
+  if (/AIME 1-3|AIME 1-5/.test(nm)) return 1;
+  if (/AIME 3-8/.test(nm)) return 2;
+  if (/AIME-Style/.test(nm)) return 2;
+  if (/AIME 10|USAJMO/.test(nm)) return 3;
+  if (/Challenge/.test(nm)) return 2;
+  // Real AIME problems (aime-* sets): use the problem number when it's in the prompt
+  const m = prompt.match(/#\s*(\d+)/);
+  if (m) { const n = +m[1]; return n <= 5 ? 1 : n <= 10 ? 2 : 3; }
+  return 2; // unmarked real AIME problems sit mid-exam on average
+}
 function mockPool() {
-  const pool = [];
+  const pool = { 1: [], 2: [], 3: [] };
   for (const sec of SECTIONS) {
     if (sec.type !== "prac") continue;
+    const real = sec.id.indexOf("aime-") === 0;
     for (const l of sec.levels || []) {
       const nm = l.n || "";
-      if (!/AIME/.test(nm)) continue; // pool = AIME-labeled tiers only (labels were inflated; honest now)
-      for (const p of l.probs || []) { if (!p) continue; pool.push({ sid: sec.id, pid: p[0], prompt: p[1], sol: p[2], ans: p[3] }); }
+      if (!real && !/AIME|Challenge/.test(nm)) continue; // AIME tiers + real AIME sets only
+      for (const p of l.probs || []) {
+        if (!p) continue;
+        const b = mockBand(nm, p[1]);
+        if (b) pool[b].push({ sid: sec.id, pid: p[0], prompt: p[1], sol: p[2], ans: p[3], band: b });
+      }
     }
   }
   return pool;
@@ -5616,7 +5681,38 @@ function mockShuffle(a) {
 }
 function startMock() {
   const pool = mockPool();
-  const probs = mockShuffle(pool.slice()).slice(0, MOCK_LEN).map(p => Object.assign({}, p));
+  // Stratified draw: 5 easy (#1-5) + 5 mid (#6-10) + 5 hard (#11-15), like the real exam.
+  // If the hard band is thin, top it up from the mid band so the exam is always 15.
+  const bands = [pool[1], pool[2], pool[3]];
+  const picked = [];
+  for (let bi = 0; bi < 3; bi++) {
+    if (bi < 2 || bands[2].length >= 5) {
+      picked.push.apply(picked, mockShuffle(bands[bi].slice()).slice(0, 5));
+    } else {
+      // Hard band is thin: take ALL hard problems first, then top up the
+      // remaining slots from the mid band (never lets the shuffle drop them).
+      picked.push.apply(picked, bands[2].slice());
+      picked.push.apply(picked, mockShuffle(bands[1].slice()).slice(0, 5 - bands[2].length));
+    }
+  }
+  const seen = {}, probs = [];
+  for (const p of picked) {
+    const k = p.sid + "|" + p.pid;
+    if (seen[k]) continue;
+    seen[k] = 1;
+    probs.push(Object.assign({}, p));
+    if (probs.length === MOCK_LEN) break;
+  }
+  // Rare collision in the fill slots (same problem drawn twice across bands):
+  // top up from the mid band until the exam is complete.
+  for (const p of mockShuffle(bands[1].slice())) {
+    if (probs.length === MOCK_LEN) break;
+    const k = p.sid + "|" + p.pid;
+    if (seen[k]) continue;
+    seen[k] = 1;
+    probs.push(Object.assign({}, p, { band: 2 }));
+  }
+  probs.sort((x, y) => x.band - y.band); // difficulty ramp: easy → mid → hard
   mock.active = { start: Date.now(), probs, answers: {}, submitted: false, score: null };
   mockSolOpen = {};
   mockSave();
@@ -5670,7 +5766,7 @@ function renderMock(main, sec) {
   if (!mock.active) {
     html += '<div class="mock-hero"><h3>Take a timed AIME</h3>';
     html += '<p>15 problems drawn from the AIME tiers across all topics. 3-hour countdown, auto-submit at zero.</p>';
-    html += '<p>Projected USAJMO index = AMC 10 score + 20 &times; AIME score. The cutoff varies by year — adjust it to the current cycle.</p><p class="mock-note">Difficulty note: this pool is calibrated to roughly AIME #1-5, not the full AIME 10-15 range — treat the projection as optimistic and use it as a progress floor, not a ceiling.</p></div>';
+    html += '<p>Projected USAJMO index = AMC 10 score + 20 &times; AIME score. The cutoff varies by year — adjust it to the current cycle.</p><p class="mock-note">Full-range exam: 5 easy (AIME #1-5), 5 mid (#6-10), 5 hard (#11-15) — drawn from the AIME tiers across all topics plus real AIME problems, presented in increasing difficulty like the real test. The hard band draws from real AIME problems (e.g. 2016 AIME II #15) and tops up from the mid band when thin.</p></div>';
     html += '<div class="mock-row">';
     html += '<div class="mock-field"><label>Your AMC 10 score (0-150)</label><input id="mock-amc" type="number" min="0" max="150" value="' + mock.amc + '"></div>';
     html += '<div class="mock-field"><label>USAJMO cutoff</label><input id="mock-cutoff" type="number" min="0" max="450" value="' + mock.cutoff + '"></div>';
