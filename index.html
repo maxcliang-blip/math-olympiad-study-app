@@ -615,6 +615,37 @@ body.compact .hints, body.compact .sol-write { padding: 0 14px 8px; }
 body.compact .sol-textarea { min-height: 70px; }
 body.compact .lesson { padding: 16px 22px; margin-bottom: 14px; }
 body.compact .mot-bar { padding: 8px 14px; margin-bottom: 14px; gap: 12px; }
+/* AI Tutor chat (v2.57) */
+.chat-box {
+  background: var(--card); border: 1px solid var(--border); border-radius: var(--radius);
+  box-shadow: var(--shadow); padding: 16px; max-height: 55vh; overflow-y: auto; margin-bottom: 12px;
+}
+.chat-empty { color: var(--muted); font-size: 14px; padding: 18px 8px; text-align: center; }
+.chat-msg { display: flex; margin-bottom: 10px; }
+.chat-msg.user { justify-content: flex-end; }
+.chat-msg.assistant { justify-content: flex-start; }
+.chat-bubble {
+  max-width: 84%; padding: 10px 14px; border-radius: 14px;
+  font-size: 14px; line-height: 1.55; overflow-wrap: break-word;
+}
+.chat-msg.user .chat-bubble { background: var(--blue); color: #fff; border-bottom-right-radius: 4px; }
+.chat-msg.assistant .chat-bubble { background: var(--bg); border: 1px solid var(--border); border-bottom-left-radius: 4px; }
+.chat-bubble .katex { font-size: 1em; }
+.chat-cursor { display: inline-block; margin-left: 2px; animation: chat-blink 1s steps(1) infinite; font-size: 11px; }
+@keyframes chat-blink { 50% { opacity: 0; } }
+.chat-input-row { display: flex; gap: 8px; align-items: flex-end; flex-wrap: wrap; }
+.chat-input-row textarea {
+  flex: 1; min-width: 220px; font-family: var(--font); font-size: 14px; line-height: 1.5;
+  padding: 10px 14px; border: 2px solid var(--border); border-radius: 10px;
+  background: var(--card); color: var(--text); outline: none; resize: vertical; transition: .15s;
+}
+.chat-input-row textarea:focus { border-color: var(--blue); }
+.chat-model {
+  font-family: var(--font); font-size: 13px; font-weight: 600; padding: 8px 10px;
+  border: 1px solid var(--border); border-radius: 8px; background: var(--card); color: var(--text); cursor: pointer;
+}
+body.compact .chat-box { max-height: 62vh; padding: 10px; }
+body.compact .chat-msg { margin-bottom: 6px; }
 @media (max-width: 768px) {
   .mobile-cur {
     display: block; font-size: 13px; font-weight: 600; color: var(--muted);
@@ -5026,7 +5057,15 @@ const SECTIONS = [
         ]
       },
     ]
-  },
+  }
+,
+  {
+    id: "ai-tutor",
+    title: "AI Tutor",
+    sub: "Ask anything — hints, explanations, strategies for AMC 10/12, AIME, USAJMO. Powered by OmniRoute.",
+    type: "chat",
+    group: "AI Tutor"
+  }
 ];
 
 // State
@@ -5359,6 +5398,7 @@ function render() {
     else if (sec.type === "prac") side += '<span class="nav-ico ico-pen">\u270F\uFE0F</span>';
     else if (sec.type === "topics") side += '<span class="nav-ico">\uD83D\uDDFA\uFE0F</span>';
     else if (sec.type === "mock" || sec.type === "mockamc") side += '<span class="nav-ico ico-pen">\u23F1\uFE0F</span>';
+    else if (sec.type === "chat") side += '<span class="nav-ico">\uD83D\uDCAC</span>';
     side += ptitle;
     if (sec.type === "prac") {
       let t = 0, d = 0;
@@ -5378,6 +5418,7 @@ function render() {
   else if (sec.type === "topics") renderTopics(main, sec);
   else if (sec.type === "mock") renderMock(main, sec);
   else if (sec.type === "mockamc") renderMockAMC(main, sec);
+  else if (sec.type === "chat") renderChat(main, sec);
   else renderPrac(main, sec);
   main.innerHTML = motBar() + main.innerHTML;
   updateThemeBtn();
@@ -6162,6 +6203,133 @@ function renderMockAMC(main, sec) {
     html += '</div></div></div>';
   });
   main.innerHTML = html;
+}
+// ===== AI Tutor chat (OmniRoute gateway) =====
+const CHAT_API = "https://hub.laxmiang.work.gd/omniroute/v1/chat/completions";
+const CHAT_MODELS = [
+  ["auto/best-reasoning", "Smartest (reasoning)"],
+  ["auto/best-fast", "Fast"],
+  ["auto/cheap", "Cheap"]
+];
+const CHAT_SYSTEM = "You are a patient math tutor helping a student prepare for AMC 10, AMC 12, AIME, and USAJMO (their qualification index is AMC 10 score + 20 x AIME score, cutoff ~216). Explain step by step. Use LaTeX math with \\( ... \\) for inline and \\[ ... \\] for display math. Prefer progressive hints and leading questions over full solutions unless explicitly asked for the solution. Keep answers focused and not overly long.";
+let chat = { msgs: [], model: "auto/best-reasoning" };
+try { chat = JSON.parse(localStorage.getItem("mchat") || "{}"); } catch (e) {}
+if (!chat.msgs) chat.msgs = [];
+if (!chat.model) chat.model = "auto/best-reasoning";
+let chatBusy = false;
+let chatAbort = null;
+function chatSave() {
+  localStorage.setItem("mchat", JSON.stringify({ msgs: chat.msgs.slice(-60), model: chat.model }));
+}
+function chatR(s) {
+  try { return R(s); } catch (e) { return esc(s); }
+}
+function esc(s) {
+  return String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+}
+function renderChat(main, sec) {
+  let html = '<h2>' + sec.title + '</h2><p class="subtitle">' + sec.sub + '</p>';
+  html += '<div class="chat-box" id="chat-box">';
+  if (!chat.msgs.length) {
+    html += '<div class="chat-empty">Ask for a hint, an explanation, or a strategy. Try: "Walk me through AM-GM for this problem: find the minimum of x + 1/x for x &gt; 0."</div>';
+  } else {
+    chat.msgs.forEach(m => {
+      html += '<div class="chat-msg ' + m.role + '"><div class="chat-bubble">' + (m.role === "user" ? esc(m.content) : chatR(m.content)) + '</div></div>';
+    });
+  }
+  html += '<div id="chat-stream"></div>';
+  html += '</div>';
+  html += '<div class="chat-input-row">';
+  html += '<textarea id="chat-in" rows="2" placeholder="Ask the AI tutor..." onkeydown="if(event.key===\'Enter\'&&!event.shiftKey){event.preventDefault();sendChat()}"></textarea>';
+  html += '<button class="btn btn-primary" id="chat-send" onclick="sendChat()">Send</button>';
+  html += '<button class="btn" onclick="clearChat()">Clear</button>';
+  html += '<select id="chat-model" class="chat-model" onchange="chat.model=this.value;chatSave()">';
+  CHAT_MODELS.forEach(cm => {
+    html += '<option value="' + cm[0] + '"' + (chat.model === cm[0] ? ' selected' : '') + '>' + cm[1] + '</option>';
+  });
+  html += '</select>';
+  html += '</div>';
+  main.innerHTML = html;
+  const box = document.getElementById("chat-box");
+  if (box) box.scrollTop = box.scrollHeight;
+}
+function clearChat() {
+  chat.msgs = [];
+  chatSave();
+  render();
+}
+async function sendChat() {
+  const inp = document.getElementById("chat-in");
+  const q = (inp.value || "").trim();
+  if (!q || chatBusy) return;
+  inp.value = "";
+  chat.msgs.push({ role: "user", content: q });
+  chatSave();
+  render();
+  const streamEl = document.getElementById("chat-stream");
+  if (!streamEl) return;
+  streamEl.innerHTML = '<div class="chat-msg assistant"><div class="chat-bubble"><span class="chat-cursor">&#9632;</span></div></div>';
+  const bubble = streamEl.querySelector(".chat-bubble");
+  let acc = "";
+  chatBusy = true;
+  chatAbort = new AbortController();
+  const sendBtn = document.getElementById("chat-send");
+  if (sendBtn) { sendBtn.disabled = true; sendBtn.textContent = "Stop"; }
+  const history = chat.msgs.slice(0, -1).map(m => ({ role: m.role, content: m.content }));
+  try {
+    const resp = await fetch(CHAT_API, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        model: chat.model,
+        messages: [{ role: "system", content: CHAT_SYSTEM }].concat(history, [{ role: "user", content: q }]),
+        stream: true
+      }),
+      signal: chatAbort.signal
+    });
+    if (!resp.ok || !resp.body) throw new Error("HTTP " + resp.status);
+    const reader = resp.body.getReader();
+    const dec = new TextDecoder();
+    let buf = "";
+    while (true) {
+      const { done, value } = await reader.read();
+      if (done) break;
+      buf += dec.decode(value, { stream: true });
+      const lines = buf.split("\n");
+      buf = lines.pop();
+      for (const line of lines) {
+        const t = line.trim();
+        if (!t.startsWith("data:")) continue;
+        const payload = t.slice(5).trim();
+        if (payload === "[DONE]") continue;
+        try {
+          const j = JSON.parse(payload);
+          const delta = j.choices && j.choices[0] && j.choices[0].delta;
+          if (delta && delta.content) acc += delta.content;
+        } catch (e) {}
+      }
+      bubble.innerHTML = chatR(acc) + '<span class="chat-cursor">&#9632;</span>';
+      const box = document.getElementById("chat-box");
+      if (box) box.scrollTop = box.scrollHeight;
+    }
+  } catch (e) {
+    if (e.name !== "AbortError") {
+      acc = acc || "\u26A0 Error: " + (e.message || "request failed") + " \u2014 is the OmniRoute gateway reachable?";
+    }
+  }
+  bubble.innerHTML = acc ? chatR(acc) : "";
+  if (acc) {
+    chat.msgs.push({ role: "assistant", content: acc });
+    chatSave();
+  }
+  chatBusy = false;
+  chatAbort = null;
+  if (sendBtn) { sendBtn.disabled = false; sendBtn.textContent = "Send"; }
+  const box = document.getElementById("chat-box");
+  if (box) box.scrollTop = box.scrollHeight;
+}
+function stopChat() {
+  if (chatAbort) { chatAbort.abort(); chatAbort = null; }
 }
 // timer tick
 setInterval(() => {
