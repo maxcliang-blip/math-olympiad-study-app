@@ -6207,15 +6207,15 @@ function renderMockAMC(main, sec) {
 // ===== AI Tutor chat (OmniRoute gateway) =====
 const CHAT_API = "https://hub.laxmiang.work.gd/omniroute/v1/chat/completions";
 const CHAT_MODELS = [
-  ["auto/best-reasoning", "Smartest (reasoning)"],
-  ["auto/best-fast", "Fast"],
-  ["auto/cheap", "Cheap"]
+  ["auto/best-free", "Free (best)"],
+  ["auto/coding:free", "Free (coding)"],
+  ["auto/best-reasoning", "Paid (smartest)"]
 ];
 const CHAT_SYSTEM = "You are a patient math tutor helping a student prepare for AMC 10, AMC 12, AIME, and USAJMO (their qualification index is AMC 10 score + 20 x AIME score, cutoff ~216). Explain step by step. Use LaTeX math with \\( ... \\) for inline and \\[ ... \\] for display math. Prefer progressive hints and leading questions over full solutions unless explicitly asked for the solution. Keep answers focused and not overly long.";
-let chat = { msgs: [], model: "auto/best-reasoning" };
+let chat = { msgs: [], model: "auto/best-free" };
 try { chat = JSON.parse(localStorage.getItem("mchat") || "{}"); } catch (e) {}
 if (!chat.msgs) chat.msgs = [];
-if (!chat.model) chat.model = "auto/best-reasoning";
+if (!chat.model || chat.model === "auto/best-reasoning") chat.model = "auto/best-free"; // default: free model
 let chatBusy = false;
 let chatAbort = null;
 function chatSave() {
