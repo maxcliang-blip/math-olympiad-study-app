@@ -661,6 +661,11 @@ body.compact .mot-bar { padding: 8px 14px; margin-bottom: 14px; gap: 12px; }
 .chat-ctx-x { background: none; border: none; color: var(--muted); cursor: pointer; font-size: 12px; padding: 0 4px; }
 .chat-ctx-x:hover { color: var(--danger); }
 .chat-nudge { display: block; margin-top: 8px; font-size: 12.5px; font-weight: 600; color: var(--gold-strong); }
+.mock-discard {
+  background: none; border: none; color: var(--muted); cursor: pointer;
+  font-size: 12px; padding: 2px 6px; border-radius: 4px; opacity: .55;
+}
+.mock-discard:hover { opacity: 1; color: var(--danger); background: rgba(239, 68, 68, .1); }
 /* Home dashboard (v2.58) */
 .home-hero {
   display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap;
@@ -6002,8 +6007,8 @@ function renderMock(main, sec) {
     html += '</div>';
     if (mock.history.length) {
       html += '<h3 style="margin-top:18px">History</h3><table class="mock-hist"><tr><th>Date</th><th>Score</th><th>AMC</th><th>Cutoff</th><th>Index</th><th>Result</th></tr>';
-      mock.history.forEach(h => {
-        html += '<tr><td>' + h.date + ' ' + h.time + (h.auto ? ' (auto)' : '') + '</td><td>' + h.score + '/15</td><td>' + h.amc + '</td><td>' + h.cutoff + '</td><td>' + h.index + '</td><td class="' + (h.pass ? 'pass' : 'fail') + '">' + (h.pass ? 'Qualify' : 'Missed') + '</td></tr>';
+      mock.history.forEach((h, hi) => {
+        html += '<tr><td>' + h.date + ' ' + h.time + (h.auto ? ' (auto)' : '') + '</td><td>' + h.score + '/15</td><td>' + h.amc + '</td><td>' + h.cutoff + '</td><td>' + h.index + '</td><td class="' + (h.pass ? 'pass' : 'fail') + '">' + (h.pass ? 'Qualify' : 'Missed') + '</td><td><button class="mock-discard" onclick="if(confirm(\'Discard this attempt?\')){mock.history.splice(' + hi + ',1);mockSave();render();}" title="Discard this attempt">&#10005;</button></td></tr>';
       });
       html += '</table>';
     }
@@ -6214,8 +6219,8 @@ function renderMockAMC(main, sec) {
     html += '</div>';
     if (amc.history.length) {
       html += '<div class="mock-hist"><div class="mock-hist-row h"><span>DATE</span><span>R/W/BLANK</span><span>AMC</span><span>AIME</span><span>INDEX</span><span>RESULT</span></div>';
-      amc.history.forEach(h => {
-        html += '<div class="mock-hist-row' + (h.pass ? ' pass' : ' fail') + '"><span>' + h.date + ' ' + h.time + '</span><span>' + h.right + '/' + h.wrong + '/' + h.blank + '</span><span>' + h.score + '</span><span>' + h.aime + '</span><span>' + h.index + '</span><span>' + (h.pass ? 'PASS' : 'miss') + (h.auto ? ' (auto)' : '') + '</span></div>';
+      amc.history.forEach((h, hi) => {
+        html += '<div class="mock-hist-row' + (h.pass ? ' pass' : ' fail') + '"><span>' + h.date + ' ' + h.time + '</span><span>' + h.right + '/' + h.wrong + '/' + h.blank + '</span><span>' + h.score + '</span><span>' + h.aime + '</span><span>' + h.index + '</span><span>' + (h.pass ? 'PASS' : 'miss') + (h.auto ? ' (auto)' : '') + '</span><button class="mock-discard" onclick="if(confirm(\'Discard this attempt?\')){amc.history.splice(' + hi + ',1);amcSave();render();}" title="Discard this attempt">&#10005;</button></div>';
       });
       html += '</div>';
     }
@@ -6298,6 +6303,12 @@ function renderHome(main, sec) {
     const pass = index >= cutoff;
     html += '<div class="home-proj"><span class="home-proj-v">' + index + '</span><span class="home-proj-k">index = AMC ' + bestAMC + ' + 20&times;AIME ' + bestAIME + ' (best mocks) vs cutoff ' + cutoff + '</span></div>';
     html += '<div class="mock-verdict ' + (pass ? 'pass' : 'fail') + '">' + (pass ? '&#10003; On pace for USAJMO' : '&#10007; ' + (cutoff - index) + ' points to go — AIME is the lever (20 pts each)') + '</div>';
+  } else if (bestAMC != null) {
+    html += '<div class="home-proj"><span class="home-proj-v">' + bestAMC + '</span><span class="home-proj-k">best AMC mock — needs a real AIME score to project</span></div>';
+    html += '<div class="mock-verdict fail">&#10007; No qualifying AIME mock yet — each AIME point is worth 20 index points, take one for real</div>';
+  } else if (bestAIME != null) {
+    html += '<div class="home-proj"><span class="home-proj-v">' + bestAIME + '</span><span class="home-proj-k">best AIME mock (/15) — needs an AMC score to project</span></div>';
+    html += '<div class="mock-verdict fail">&#10007; No AMC mock yet — take one to complete the projection</div>';
   } else {
     html += '<p class="home-muted">No mock scores yet — take a timed exam to see where you stand.</p>';
   }
