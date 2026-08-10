@@ -6219,6 +6219,7 @@ function renderMockAMC(main, sec) {
     html += '<div class="mock-stat"><div class="v">' + (bestAime || '&mdash;') + '/15</div><div class="k">best AIME mock</div></div>';
     html += '<div class="mock-stat"><div class="v">' + amc.cutoff + '</div><div class="k">cutoff</div></div>';
     html += '</div>';
+    html += '<div class="home-actions"><button class="btn btn-ai" onclick="aiEstimate()">&#129302; AI Score Estimate</button></div>';
     if (amc.history.length) {
       html += '<div class="mock-hist"><div class="mock-hist-row h"><span>DATE</span><span>R/W/BLANK</span><span>AMC</span><span>AIME</span><span>INDEX</span><span>RESULT</span></div>';
       amc.history.forEach((h, hi) => {
@@ -6314,7 +6315,7 @@ function renderHome(main, sec) {
   } else {
     html += '<p class="home-muted">No mock scores yet — take a timed exam to see where you stand.</p>';
   }
-  html += '<div class="home-actions"><button class="btn" onclick="go(\'amc-mock\')">AMC 10/12 Mock</button><button class="btn" onclick="go(\'aime-mock\')">AIME Mock</button></div></div>';
+  html += '<div class="home-actions"><button class="btn" onclick="go(\'amc-mock\')">AMC 10/12 Mock</button><button class="btn" onclick="go(\'aime-mock\')">AIME Mock</button><button class="btn btn-ai" onclick="aiEstimate()">&#129302; AI Estimate</button></div></div>';
   deriveTopicProgress();
   const todos = [];
   SECTIONS.filter(s => s.type === "topics").forEach(s => s.topics.forEach(cat => cat.items.forEach(item => {
@@ -6418,6 +6419,30 @@ function aiHelp(sid, pid) {
   }
   aiCtx = { sid, pid, title: sec.title.replace(/ — (Lesson|Practice)$/i, ""), prompt, ans };
   go("ai-tutor");
+}
+function aiEstimate() {
+  // Ask the AI tutor to estimate AMC/AIME/USAJMO scores from real practice stats.
+  let correct = 0, wrong = 0;
+  Object.keys(checkStates).forEach(k => { if (checkStates[k] === "correct") correct++; else wrong++; });
+  const acc = (correct + wrong) ? Math.round(correct / (correct + wrong) * 100) : null;
+  const bestAMC = amc.history.length ? Math.max.apply(null, amc.history.map(h => h.score)) : null;
+  const bestAIME = mock.history.length ? Math.max.apply(null, mock.history.map(h => h.score)) : null;
+  deriveTopicProgress();
+  let topicsDone = 0, topicsTotal = 0;
+  SECTIONS.filter(s => s.type === "topics").forEach(s => s.topics.forEach(cat => cat.items.forEach(item => { topicsTotal++; if (item.status === "done") topicsDone++; })));
+  let compSolved = 0;
+  SECTIONS.filter(s => s.type === "prac").forEach(s => (s.levels || []).forEach(l => (l.probs || []).forEach(p => { if (sols[s.id + "-" + p[0]]) compSolved++; })));
+  const stats = [
+    "Practice: " + Object.keys(sols).length + " problems solved (" + compSolved + " from practice sections), first-try accuracy " + (acc == null ? "n/a" : acc + "%") + " (" + correct + " correct / " + wrong + " wrong recorded)",
+    "Level " + levelInfo(mot.xp).level + " (" + mot.xp + " XP), " + mot.streak + "-day streak, best day " + mot.bestDay,
+    "Mocks: AMC " + (bestAMC == null ? "none" : bestAMC + " best of " + amc.history.length) + ", AIME " + (bestAIME == null ? "none" : bestAIME + "/15 best of " + mock.history.length),
+    "USAJMO roadmap: " + topicsDone + "/" + topicsTotal + " topics complete"
+  ].join(". ");
+  const q = "Estimate my scores from these stats: " + stats + ". Give realistic ranges for (1) AMC 10/12 score out of 150, (2) AIME score out of 15, (3) USAJMO index = AMC + 20 x AIME vs the ~340 cutoff — say how far from qualifying I am. Then list the 2-3 biggest levers to close the gap. Be honest, not encouraging.";
+  go("ai-tutor");
+  const inp = document.getElementById("chat-in");
+  if (inp) inp.value = q;
+  setTimeout(() => sendChat(), 100);
 }
 async function sendChat() {
   const inp = document.getElementById("chat-in");
