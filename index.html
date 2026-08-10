@@ -661,6 +661,46 @@ body.compact .mot-bar { padding: 8px 14px; margin-bottom: 14px; gap: 12px; }
 .chat-ctx-x { background: none; border: none; color: var(--muted); cursor: pointer; font-size: 12px; padding: 0 4px; }
 .chat-ctx-x:hover { color: var(--danger); }
 .chat-nudge { display: block; margin-top: 8px; font-size: 12.5px; font-weight: 600; color: var(--gold-strong); }
+/* Home dashboard (v2.58) */
+.home-hero {
+  display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap;
+  background: var(--card); border: 1px solid var(--border); border-radius: var(--radius);
+  box-shadow: var(--shadow); padding: 20px 24px; margin-bottom: 14px;
+}
+.home-hello { font-size: 22px; font-weight: 800; }
+.home-date { color: var(--muted); font-size: 14px; margin-top: 2px; }
+.home-stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 10px; margin-bottom: 14px; }
+.home-stat {
+  background: var(--card); border: 1px solid var(--border); border-radius: var(--radius);
+  box-shadow: var(--shadow); padding: 14px 16px;
+}
+.home-stat-v { font-size: 24px; font-weight: 800; }
+.home-stat-k { font-size: 12px; color: var(--muted); margin-top: 2px; }
+.home-xp { font-weight: 600; color: var(--text); }
+.home-bar { height: 6px; background: var(--border); border-radius: 4px; margin-top: 8px; overflow: hidden; }
+.home-fill { height: 100%; background: var(--blue); border-radius: 4px; transition: width .3s; }
+.home-fill.green { background: var(--green); }
+.home-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 14px; }
+.home-card {
+  background: var(--card); border: 1px solid var(--border); border-radius: var(--radius);
+  box-shadow: var(--shadow); padding: 16px 18px; margin-bottom: 12px;
+}
+.home-card-t { font-weight: 700; font-size: 15px; margin-bottom: 10px; }
+.home-card-n { color: var(--muted); font-weight: 600; font-size: 12.5px; }
+.home-proj { display: flex; align-items: baseline; gap: 10px; margin-bottom: 8px; flex-wrap: wrap; }
+.home-proj-v { font-size: 30px; font-weight: 800; }
+.home-proj-k { color: var(--muted); font-size: 12.5px; }
+.home-muted { color: var(--muted); font-size: 13.5px; margin: 6px 0 10px; }
+.home-actions { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 10px; }
+.home-topic { margin-bottom: 8px; }
+.home-topic-meta { display: flex; justify-content: space-between; font-size: 13px; margin-bottom: 3px; }
+.home-topic-n { font-weight: 600; }
+.home-topic-p { color: var(--muted); }
+body.compact .home-hero { padding: 14px 18px; }
+body.compact .home-stat { padding: 10px 12px; }
+@media (max-width: 768px) {
+  .home-cols { grid-template-columns: 1fr; }
+  .home-hero { flex-direction: column; align-items: flex-start; }
 body.compact .chat-box { max-height: 62vh; padding: 10px; }
 body.compact .chat-msg { margin-bottom: 6px; }
 @media (max-width: 768px) {
@@ -861,6 +901,14 @@ function matchAns(userAns, storedAns) {
 }
 
 const SECTIONS = [
+  {
+    id: "home",
+    title: "Home",
+    sub: "Your practice dashboard — progress, next steps, and mock projections",
+    type: "home",
+    group: "Home"
+  }
+,
   {
     id: "roadmap",
     title: "USAJMO Roadmap",
@@ -5086,7 +5134,7 @@ const SECTIONS = [
 ];
 
 // State
-let cur = "sym-practice";
+let cur = "home";
 let sols = JSON.parse(localStorage.getItem("msol") || "{}");
 let openSols = {};
 let hintStates = {};
@@ -5416,6 +5464,7 @@ function render() {
     else if (sec.type === "topics") side += '<span class="nav-ico">\uD83D\uDDFA\uFE0F</span>';
     else if (sec.type === "mock" || sec.type === "mockamc") side += '<span class="nav-ico ico-pen">\u23F1\uFE0F</span>';
     else if (sec.type === "chat") side += '<span class="nav-ico">\uD83D\uDCAC</span>';
+    else if (sec.type === "home") side += '<span class="nav-ico">\uD83C\uDFE0</span>';
     side += ptitle;
     if (sec.type === "prac") {
       let t = 0, d = 0;
@@ -5436,6 +5485,7 @@ function render() {
   else if (sec.type === "mock") renderMock(main, sec);
   else if (sec.type === "mockamc") renderMockAMC(main, sec);
   else if (sec.type === "chat") renderChat(main, sec);
+  else if (sec.type === "home") renderHome(main, sec);
   else renderPrac(main, sec);
   main.innerHTML = motBar() + main.innerHTML;
   updateThemeBtn();
@@ -5687,7 +5737,7 @@ function renderPreview(s, p) {
   prev.innerHTML = R(text);
 }
 
-function go(id) { cur = id; openSols = {}; closeNav(); render(); }
+function go(id) { cur = id; openSols = {}; closeNav(); if (id !== "home") { try { localStorage.setItem("math_last", id); } catch (e) {} } render(); }
 
 // Mobile drawer: slide the sidebar in/out with a dimming overlay.
 function toggleNav() {
@@ -5799,13 +5849,6 @@ function applyCompact() {
   try { ui = JSON.parse(localStorage.getItem("math_ui") || "{}"); } catch (e) {}
   if (ui.compact) document.body.classList.add("compact");
 }
-
-applyCompact();
-render();
-ensureShell();
-refreshDay();
-maybeBadges(false);
-syncLoad().then(() => render());
 
 // ===== AIME Mock Exam engine =====
 const MOCK_LEN = 15;
@@ -6222,6 +6265,75 @@ function renderMockAMC(main, sec) {
   });
   main.innerHTML = html;
 }
+// ===== Home dashboard =====
+function renderHome(main, sec) {
+  refreshDay();
+  const li = levelInfo(mot.xp);
+  const pct = Math.min(100, Math.round(li.cur / li.next * 100));
+  const gpct = Math.min(100, Math.round(mot.todaySolved / mot.goal * 100));
+  const totalSolved = Object.keys(sols).length;
+  let html = '<h2>' + sec.title + '</h2><p class="subtitle">' + sec.sub + '</p>';
+  let last = null;
+  try { last = localStorage.getItem("math_last"); } catch (e) {}
+  const lastSec = last ? SECTIONS.find(x => x.id === last) : null;
+  const d = new Date();
+  const dateLine = d.toLocaleDateString([], { weekday: "long", month: "long", day: "numeric" });
+  html += '<div class="home-hero"><div><div class="home-hello">Welcome back</div><div class="home-date">' + dateLine + (mot.streak > 1 ? ' &mdash; ' + mot.streak + '-day streak &#128293;' : '') + '</div></div>';
+  html += '<div class="home-hero-cta">' + (lastSec ? '<button class="btn btn-primary" onclick="go(\'' + lastSec.id + '\')">Continue: ' + esc(lastSec.title) + '</button>' : '<button class="btn btn-primary" onclick="go(\'roadmap\')">Start the Roadmap</button>') + '</div></div>';
+  html += '<div class="home-stats">';
+  html += '<div class="home-stat"><div class="home-stat-v">' + totalSolved + '</div><div class="home-stat-k">problems solved</div></div>';
+  html += '<div class="home-stat"><div class="home-stat-v">' + li.level + '</div><div class="home-stat-k">level &middot; <span class="home-xp">' + li.cur + '/' + li.next + ' XP</span></div><div class="home-bar"><div class="home-fill" style="width:' + pct + '%"></div></div></div>';
+  html += '<div class="home-stat"><div class="home-stat-v">' + mot.streak + '</div><div class="home-stat-k">day streak (best ' + mot.bestStreak + ')</div></div>';
+  html += '<div class="home-stat"><div class="home-stat-v">' + mot.todaySolved + '/' + mot.goal + '</div><div class="home-stat-k">today &middot; click goal to change</div><div class="home-bar"><div class="home-fill green" style="width:' + gpct + '%"></div></div></div>';
+  html += '<div class="home-stat"><div class="home-stat-v">' + mot.badges.length + '/' + BADGES.length + '</div><div class="home-stat-k">badges</div></div>';
+  html += '<div class="home-stat"><div class="home-stat-v">' + mot.bestDay + '</div><div class="home-stat-k">best day</div></div>';
+  html += '</div>';
+  const bestAMC = amc.history.length ? Math.max.apply(null, amc.history.map(h => h.score)) : null;
+  const bestAIME = mock.history.length ? Math.max.apply(null, mock.history.map(h => h.score)) : null;
+  const cutoff = mock.cutoff || 216;
+  html += '<div class="home-cols">';
+  html += '<div class="home-card"><div class="home-card-t">USAJMO projection</div>';
+  if (bestAMC != null && bestAIME != null) {
+    const index = bestAMC + 20 * bestAIME;
+    const pass = index >= cutoff;
+    html += '<div class="home-proj"><span class="home-proj-v">' + index + '</span><span class="home-proj-k">index = AMC ' + bestAMC + ' + 20&times;AIME ' + bestAIME + ' (best mocks) vs cutoff ' + cutoff + '</span></div>';
+    html += '<div class="mock-verdict ' + (pass ? 'pass' : 'fail') + '">' + (pass ? '&#10003; On pace for USAJMO' : '&#10007; ' + (cutoff - index) + ' points to go — AIME is the lever (20 pts each)') + '</div>';
+  } else {
+    html += '<p class="home-muted">No mock scores yet — take a timed exam to see where you stand.</p>';
+  }
+  html += '<div class="home-actions"><button class="btn" onclick="go(\'amc-mock\')">AMC 10/12 Mock</button><button class="btn" onclick="go(\'aime-mock\')">AIME Mock</button></div></div>';
+  deriveTopicProgress();
+  const todos = [];
+  SECTIONS.filter(s => s.type === "topics").forEach(s => s.topics.forEach(cat => cat.items.forEach(item => {
+    if (item.status !== "done") todos.push(item);
+  })));
+  html += '<div class="home-card"><div class="home-card-t">Next up' + (todos.length ? ' <span class="home-card-n">' + todos.length + ' topics to go</span>' : '') + '</div>';
+  if (!todos.length) {
+    html += '<p class="home-muted">&#10003; Roadmap complete — amazing. Keep sharpening with practice sets and mocks.</p>';
+  } else {
+    todos.slice(0, 3).forEach(item => {
+      const p = item._total ? Math.round(item._solved / item._total * 100) : 0;
+      html += '<div class="home-topic"><div class="home-topic-meta"><span class="home-topic-n">' + esc(item.name) + '</span><span class="home-topic-p">' + item._solved + '/' + item._total + '</span></div><div class="home-bar"><div class="home-fill" style="width:' + p + '%"></div></div></div>';
+    });
+    html += '<div class="home-actions"><button class="btn" onclick="go(\'roadmap\')">Open Roadmap</button></div>';
+  }
+  html += '</div></div>';
+  let jump = null, jumpLeft = 0;
+  for (const s of SECTIONS) {
+    if (s.type !== "prac") continue;
+    let u = 0;
+    (s.levels || []).forEach(l => (l.probs || []).forEach(p => { if (!done(s.id, p[0])) u++; }));
+    if (u > 0) { jump = s; jumpLeft = u; break; }
+  }
+  html += '<div class="home-card"><div class="home-card-t">Jump back in</div>';
+  html += '<div class="home-actions">';
+  if (jump) html += '<button class="btn btn-primary" onclick="go(\'' + jump.id + '\')">' + esc(jump.title) + ' &mdash; ' + jumpLeft + ' left</button>';
+  html += '<button class="btn" onclick="go(\'ai-tutor\')">Ask the AI Tutor</button>';
+  html += '<button class="btn" onclick="go(\'comp\')">Competition Problems</button>';
+  html += '</div></div>';
+  main.innerHTML = html;
+}
+
 // ===== AI Tutor chat (OmniRoute gateway) =====
 const CHAT_API = "https://hub.laxmiang.work.gd/omniroute/v1/chat/completions";
 const CHAT_MODELS = [
@@ -6372,6 +6484,15 @@ async function sendChat() {
 function stopChat() {
   if (chatAbort) { chatAbort.abort(); chatAbort = null; }
 }
+
+// ===== Boot (after all state declarations) =====
+applyCompact();
+render();
+ensureShell();
+refreshDay();
+maybeBadges(false);
+syncLoad().then(() => render());
+
 // timer tick
 setInterval(() => {
   if (mock.active && !mock.active.submitted) {
