@@ -701,6 +701,13 @@ body.compact .mot-bar { padding: 8px 14px; margin-bottom: 14px; gap: 12px; }
 .home-topic-meta { display: flex; justify-content: space-between; font-size: 13px; margin-bottom: 3px; }
 .home-topic-n { font-weight: 600; }
 .home-topic-p { color: var(--muted); }
+.home-levers { display: flex; flex-direction: column; gap: 4px; margin: 2px 0 6px; }
+.home-lever { font-size: 13px; display: flex; gap: 8px; align-items: baseline; }
+.home-lever-n {
+  flex: none; width: 18px; height: 18px; border-radius: 50%; font-size: 11px; font-weight: 700;
+  background: rgba(139, 92, 246, .15); color: #8b5cf6; display: inline-flex; align-items: center; justify-content: center;
+  transform: translateY(2px);
+}
 body.compact .home-hero { padding: 14px 18px; }
 body.compact .home-stat { padding: 10px 12px; }
 @media (max-width: 768px) {
@@ -6332,6 +6339,30 @@ function renderHome(main, sec) {
     html += '<div class="home-actions"><button class="btn" onclick="go(\'roadmap\')">Open Roadmap</button></div>';
   }
   html += '</div></div>';
+  // Pinned AI estimate card
+  if (mest.history.length) {
+    const e = mest.history[0];
+    const prev = mest.history[1];
+    const c = mock.cutoff || 340;
+    const mid = e.index[0] + (e.index[1] - e.index[0]) / 2;
+    let trend = "";
+    if (prev) {
+      const pm = prev.index[0] + (prev.index[1] - prev.index[0]) / 2;
+      trend = mid > pm ? ' <span style="color:var(--green)">&#9650;</span>' : mid < pm ? ' <span style="color:var(--danger)">&#9660;</span>' : '';
+    }
+    html += '<div class="home-card"><div class="home-card-t">AI score estimate <span class="home-card-n">' + e.date + (mest.history.length > 1 ? ' &middot; ' + mest.history.length + ' estimates' : '') + '</span></div>';
+    html += '<div class="home-stats" style="margin-bottom:8px">';
+    html += '<div class="home-stat"><div class="home-stat-v" style="font-size:20px">' + e.amc[0] + '&ndash;' + e.amc[1] + '</div><div class="home-stat-k">AMC 10/12' + (e.amc_central != null ? ' &middot; central ' + e.amc_central : '') + '</div></div>';
+    html += '<div class="home-stat"><div class="home-stat-v" style="font-size:20px">' + e.aime[0] + '&ndash;' + e.aime[1] + '</div><div class="home-stat-k">AIME' + (e.aime_central != null ? ' &middot; central ' + e.aime_central : '') + '</div></div>';
+    html += '<div class="home-stat"><div class="home-stat-v" style="font-size:20px">' + e.index[0] + '&ndash;' + e.index[1] + ' <span style="font-size:13px;color:var(--muted)">vs ' + c + '</span>' + trend + '</div><div class="home-stat-k">USAJMO index</div></div>';
+    html += '</div>';
+    if (e.levers.length) {
+      html += '<div class="home-levers">';
+      e.levers.forEach((l, i) => { html += '<div class="home-lever"><span class="home-lever-n">' + (i + 1) + '</span> ' + esc(l) + '</div>'; });
+      html += '</div>';
+    }
+    html += '<div class="home-actions"><button class="btn btn-ai" onclick="aiEstimate()">&#8635; Re-run estimate</button></div></div>';
+  }
   let jump = null, jumpLeft = 0;
   for (const s of SECTIONS) {
     if (s.type !== "prac") continue;
@@ -6432,17 +6463,71 @@ function aiEstimate() {
   SECTIONS.filter(s => s.type === "topics").forEach(s => s.topics.forEach(cat => cat.items.forEach(item => { topicsTotal++; if (item.status === "done") topicsDone++; })));
   let compSolved = 0;
   SECTIONS.filter(s => s.type === "prac").forEach(s => (s.levels || []).forEach(l => (l.probs || []).forEach(p => { if (sols[s.id + "-" + p[0]]) compSolved++; })));
+  // Difficulty bands: easy <5, mid 5-7, hard 7+ (uses problem difficulty p[6] where rated)
+  const diffMap = {};
+  SECTIONS.filter(s => s.type === "prac").forEach(s => (s.levels || []).forEach(l => (l.probs || []).forEach(p => { diffMap[s.id + "-" + p[0]] = p[6]; })));
+  const bands = { easy: [0, 0], mid: [0, 0], hard: [0, 0] };
+  Object.keys(checkStates).forEach(k => {
+    const d = diffMap[k];
+    if (d == null) return;
+    const b = d < 5 ? "easy" : d < 7 ? "mid" : "hard";
+    bands[b][1]++;
+    if (checkStates[k] === "correct") bands[b][0]++;
+  });
+  const diffLine = Object.keys(bands).filter(b => bands[b][1] > 0).map(b => b + "(<5)" + bands[b][0] + "/" + bands[b][1]).join(", ");
+  // Topic accuracy by section group
+  const grpAcc = {};
+  SECTIONS.filter(s => s.type === "prac").forEach(s => {
+    const g = s.group || "Other";
+    (s.levels || []).forEach(l => (l.probs || []).forEach(p => {
+      const ck = checkStates[s.id + "-" + p[0]];
+      if (!ck) return;
+      if (!grpAcc[g]) grpAcc[g] = [0, 0];
+      grpAcc[g][1]++;
+      if (ck === "correct") grpAcc[g][0]++;
+    }));
+  });
+  const grpLine = Object.keys(grpAcc).filter(g => grpAcc[g][1] >= 2).map(g => g + " " + grpAcc[g][0] + "/" + grpAcc[g][1]).join(", ");
   const stats = [
     "Practice: " + Object.keys(sols).length + " problems solved (" + compSolved + " from practice sections), first-try accuracy " + (acc == null ? "n/a" : acc + "%") + " (" + correct + " correct / " + wrong + " wrong recorded)",
+    "Difficulty bands: " + (diffLine || "no rated attempts") + " (easy = rated <5, mid = 5-7, hard = 7+)",
+    "Topic accuracy: " + (grpLine || "n/a"),
     "Level " + levelInfo(mot.xp).level + " (" + mot.xp + " XP), " + mot.streak + "-day streak, best day " + mot.bestDay,
     "Mocks: AMC " + (bestAMC == null ? "none" : bestAMC + " best of " + amc.history.length) + ", AIME " + (bestAIME == null ? "none" : bestAIME + "/15 best of " + mock.history.length),
     "USAJMO roadmap: " + topicsDone + "/" + topicsTotal + " topics complete"
   ].join(". ");
-  const q = "Estimate my scores from these stats: " + stats + ". Give realistic ranges for (1) AMC 10/12 score out of 150, (2) AIME score out of 15, (3) USAJMO index = AMC + 20 x AIME vs the ~340 cutoff — say how far from qualifying I am. Then list the 2-3 biggest levers to close the gap. Be honest, not encouraging.";
+  const q = "Estimate my scores from these stats: " + stats + ". Give realistic ranges for (1) AMC 10/12 score out of 150, (2) AIME score out of 15, (3) USAJMO index = AMC + 20 x AIME vs the ~340 cutoff — say how far from qualifying I am. Then list the 2-3 biggest levers to close the gap. Be honest, not encouraging. End your reply with a single line: ESTIMATE_JSON followed by exactly this shape and nothing after it: {\"amc\":[low,high],\"amc_central\":50,\"aime\":[low,high],\"aime_central\":1,\"index\":[low,high],\"levers\":[\"lever 1\",\"lever 2\",\"lever 3\"]}";
+  aiEstRequested = true;
   go("ai-tutor");
   const inp = document.getElementById("chat-in");
   if (inp) inp.value = q;
   setTimeout(() => sendChat(), 100);
+}
+let mest = { history: [] };
+try { mest = JSON.parse(localStorage.getItem("mest") || "{}"); } catch (e) {}
+if (!mest.history) mest.history = [];
+let aiEstRequested = false;
+function parseEstimate(reply) {
+  let m = reply.match(/ESTIMATE_JSON\s*(\{[\s\S]*?\})/);
+  if (!m) m = reply.match(/\{[\s\S]*\}/);
+  if (!m) return null;
+  try {
+    const j = JSON.parse(m[1] || m[0]);
+    const num = a => Array.isArray(a) && a.length === 2 && a.every(x => typeof x === "number");
+    if (!num(j.amc) || !num(j.aime) || !num(j.index) || !Array.isArray(j.levers)) return null;
+    return {
+      amc: j.amc, amc_central: typeof j.amc_central === "number" ? j.amc_central : null,
+      aime: j.aime, aime_central: typeof j.aime_central === "number" ? j.aime_central : null,
+      index: j.index, levers: j.levers.slice(0, 3).map(String),
+      date: todayStr()
+    };
+  } catch (e) { return null; }
+}
+function saveEstimate(est) {
+  if (!est) return;
+  mest.history.unshift(est);
+  mest.history = mest.history.slice(0, 20);
+  localStorage.setItem("mest", JSON.stringify(mest));
 }
 async function sendChat() {
   const inp = document.getElementById("chat-in");
@@ -6507,6 +6592,15 @@ async function sendChat() {
   // Slip guard: if the tutor leaked the exact answer to the loaded problem, nudge the student.
   if (acc && aiCtx && aiCtx.ans && aiCtx.ans.length >= 3 && acc.indexOf(aiCtx.ans) !== -1) {
     acc += '<span class="chat-nudge">&#9888; The answer slipped out — try to reach it yourself! Ask for the next hint instead.</span>';
+  }
+  // Pinned estimate: if this reply came from aiEstimate and carries ESTIMATE_JSON, save + notify.
+  if (acc && aiEstRequested) {
+    const est = parseEstimate(acc);
+    if (est) {
+      aiEstRequested = false;
+      saveEstimate(est);
+      toast("Estimate pinned on Home", "xp");
+    }
   }
   bubble.innerHTML = acc ? chatR(acc) : "";
   if (acc) {
