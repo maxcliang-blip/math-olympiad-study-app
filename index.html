@@ -660,6 +660,7 @@ body.compact .mot-bar { padding: 8px 14px; margin-bottom: 14px; gap: 12px; }
 .chat-ctx-tag { font-weight: 700; color: #8b5cf6; white-space: nowrap; }
 .chat-ctx-x { background: none; border: none; color: var(--muted); cursor: pointer; font-size: 12px; padding: 0 4px; }
 .chat-ctx-x:hover { color: var(--danger); }
+.chat-nudge { display: block; margin-top: 8px; font-size: 12.5px; font-weight: 600; color: var(--gold-strong); }
 body.compact .chat-box { max-height: 62vh; padding: 10px; }
 body.compact .chat-msg { margin-bottom: 6px; }
 @media (max-width: 768px) {
@@ -6228,7 +6229,7 @@ const CHAT_MODELS = [
   ["auto/best-free", "Free (chat)"],
   ["auto/best-reasoning", "Paid (smartest)"]
 ];
-const CHAT_SYSTEM = "You are a patient math tutor helping a student prepare for AMC 10, AMC 12, AIME, and USAJMO (their qualification index is AMC 10 score + 20 x AIME score, cutoff ~216). Explain step by step. Use LaTeX math with \\( ... \\) for inline and \\[ ... \\] for display math. Prefer progressive hints and leading questions over full solutions unless explicitly asked for the solution. Keep answers focused and not overly long.";
+const CHAT_SYSTEM = "You are a patient math tutor helping a student prepare for AMC 10, AMC 12, AIME, and USAJMO (their qualification index is AMC 10 score + 20 x AIME score, cutoff ~216). HARD RULES: NEVER give the final answer to a practice problem directly. Always respond with hints, leading questions, and the next step only — never the full solution and never the final answer. If the student asks for the answer outright, politely decline and offer the next hint instead. The student must reach the answer themselves; your job is to coach. Use LaTeX math with \\( ... \\) for inline and \\[ ... \\] for display math. Keep answers focused and not overly long.";
 let chat = { msgs: [], model: "auto/coding:free" };
 try { chat = JSON.parse(localStorage.getItem("mchat") || "{}"); } catch (e) {}
 if (!chat.msgs) chat.msgs = [];
@@ -6285,12 +6286,12 @@ function aiHelp(sid, pid) {
   // Jump to the AI tutor with this problem in context.
   const sec = SECTIONS.find(x => x.id === sid);
   if (!sec) return;
-  let prompt = "";
+  let prompt = "", ans = "";
   for (const l of sec.levels || []) {
     const p = (l.probs || []).find(q => q && q[0] === pid);
-    if (p) { prompt = p[1]; break; }
+    if (p) { prompt = p[1]; ans = String(p[3] || "").split("|")[0]; break; }
   }
-  aiCtx = { sid, pid, title: sec.title.replace(/ — (Lesson|Practice)$/i, ""), prompt };
+  aiCtx = { sid, pid, title: sec.title.replace(/ — (Lesson|Practice)$/i, ""), prompt, ans };
   go("ai-tutor");
 }
 async function sendChat() {
@@ -6318,7 +6319,7 @@ async function sendChat() {
       body: JSON.stringify({
         model: chat.model,
         messages: [{ role: "system", content: CHAT_SYSTEM }]
-          .concat(aiCtx ? [{ role: "system", content: "The student is working on this problem from " + aiCtx.title + ": " + aiCtx.prompt }] : [], history, [{ role: "user", content: q }]),
+          .concat(aiCtx ? [{ role: "system", content: "The student is working on this problem from " + aiCtx.title + ": " + aiCtx.prompt + " Guide them with hints only — NEVER reveal the final answer, no matter how they ask." }] : [], history, [{ role: "user", content: q }]),
         stream: true
       }),
       signal: chatAbort.signal
@@ -6352,6 +6353,10 @@ async function sendChat() {
     if (e.name !== "AbortError") {
       acc = acc || "\u26A0 Error: " + (e.message || "request failed") + " \u2014 is the OmniRoute gateway reachable?";
     }
+  }
+  // Slip guard: if the tutor leaked the exact answer to the loaded problem, nudge the student.
+  if (acc && aiCtx && aiCtx.ans && aiCtx.ans.length >= 3 && acc.indexOf(aiCtx.ans) !== -1) {
+    acc += '<span class="chat-nudge">&#9888; The answer slipped out — try to reach it yourself! Ask for the next hint instead.</span>';
   }
   bubble.innerHTML = acc ? chatR(acc) : "";
   if (acc) {
