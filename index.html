@@ -4917,6 +4917,14 @@ const SECTIONS = [
   }
 ,
   {
+    id: "amc-mock",
+    title: "AMC 10/12 Mock Exam",
+    sub: "25 problems, 75 minutes — real AMC scoring (6 right / 1.5 blank / 0 wrong), estimated score + USAJMO index projection",
+    type: "mockamc",
+    group: "Mock Exam"
+  }
+,
+  {
     id: "comp",
     title: "Competition Problems",
     sub: "Genuine competition problems — HMMT, PUMaC, SMT — grouped by topic, easier first (all answers verified)",
@@ -5350,7 +5358,7 @@ function render() {
     if (sec.type === "lesson") side += '<span class="nav-ico ico-book">\uD83D\uDCD6</span>';
     else if (sec.type === "prac") side += '<span class="nav-ico ico-pen">\u270F\uFE0F</span>';
     else if (sec.type === "topics") side += '<span class="nav-ico">\uD83D\uDDFA\uFE0F</span>';
-    else if (sec.type === "mock") side += '<span class="nav-ico ico-pen">\u23F1\uFE0F</span>';
+    else if (sec.type === "mock" || sec.type === "mockamc") side += '<span class="nav-ico ico-pen">\u23F1\uFE0F</span>';
     side += ptitle;
     if (sec.type === "prac") {
       let t = 0, d = 0;
@@ -5369,6 +5377,7 @@ function render() {
   if (sec.type === "lesson") renderLesson(main, sec);
   else if (sec.type === "topics") renderTopics(main, sec);
   else if (sec.type === "mock") renderMock(main, sec);
+  else if (sec.type === "mockamc") renderMockAMC(main, sec);
   else renderPrac(main, sec);
   main.innerHTML = motBar() + main.innerHTML;
   updateThemeBtn();
@@ -5869,6 +5878,10 @@ function abandonMock() {
 function renderMock(main, sec) {
   let html = '<h2>' + sec.title + '</h2><p class="subtitle">' + sec.sub + '</p>';
   if (!mock.active) {
+    // Adopt the best AMC mock score if the AMC input is still the untouched default.
+    if (mock.amc === 110 && amc.history && amc.history.length) {
+      mock.amc = Math.max.apply(null, amc.history.map(h => h.score));
+    }
     html += '<div class="mock-hero"><h3>Take a timed AIME</h3>';
     html += '<p>15 problems drawn from the AIME tiers across all topics. 3-hour countdown, auto-submit at zero.</p>';
     html += '<p>Projected USAJMO index = AMC 10 score + 20 &times; AIME score. The cutoff varies by year — adjust it to the current cycle.</p><p class="mock-note">Full-range exam: 5 easy (AIME #1-5), 5 mid (#6-10), 5 hard (#11-15) — drawn from the AIME tiers across all topics plus real AIME problems, presented in increasing difficulty like the real test. The hard band draws from real AIME problems (e.g. 2016 AIME II #15) and tops up from the mid band when thin.</p></div>';
@@ -5939,12 +5952,228 @@ function renderMock(main, sec) {
   });
   main.innerHTML = html;
 }
+// ===== AMC 10/12 Mock Exam engine =====
+const AMC_LEN = 25;
+const AMC_MS = 75 * 60 * 1000; // 75 minutes
+let amc = JSON.parse(localStorage.getItem("mamc") || "{}");
+if (!amc.cutoff) amc.cutoff = 216;
+if (!amc.history) amc.history = [];
+let amcSolOpen = {};
+function amcSave() { localStorage.setItem("mamc", JSON.stringify(amc)); }
+function amcBestAime() {
+  // best AIME mock score from the AIME mock history, for the index projection
+  let best = 0;
+  (mock.history || []).forEach(h => { if (h.score > best) best = h.score; });
+  return best;
+}
+function amcBand(nm) {
+  // AMC bands: #1-10 easy, #11-18 mid, #19-25 hard
+  if (/Level 1[:\s]|Level 2[:\s]/.test(nm)) return 1;
+  if (/Level 3[:\s]|Level 4[:\s]|AIME-Style/.test(nm)) return 2;
+  if (/Level 5|Level 6|Challenge|AIME|USAJMO/.test(nm)) return 3;
+  return null;
+}
+function amcPool() {
+  const pool = { 1: [], 2: [], 3: [] };
+  for (const sec of SECTIONS) {
+    if (sec.type !== "prac" || sec.id === "comp") continue; // comp = HMMT/PUMaC (no AMC-style tier names)
+    const real = sec.id.indexOf("aime-") === 0;
+    for (const l of sec.levels || []) {
+      const nm = l.n || "";
+      let b = amcBand(nm);
+      if (b === null && real) b = 3; // real AIME problems → AMC hard band
+      if (!b) continue;
+      for (const p of l.probs || []) {
+        if (!p) continue;
+        pool[b].push({ sid: sec.id, pid: p[0], prompt: p[1], sol: p[2], ans: p[3], band: b });
+      }
+    }
+  }
+  return pool;
+}
+function amcShuffle(a) {
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
+}
+function startMockAMC() {
+  const pool = amcPool();
+  // 10 easy + 8 mid + 7 hard, like a real AMC 10/12
+  const want = [10, 8, 7];
+  const picked = [];
+  for (let bi = 0; bi < 3; bi++) {
+    if (pool[bi + 1].length >= want[bi]) {
+      picked.push.apply(picked, amcShuffle(pool[bi + 1].slice()).slice(0, want[bi]));
+    } else {
+      picked.push.apply(picked, pool[bi + 1].slice()); // thin band: take all of it
+    }
+  }
+  const seen = {}, probs = [];
+  for (const p of picked) {
+    const k = p.sid + "|" + p.pid;
+    if (seen[k]) continue;
+    seen[k] = 1;
+    probs.push(Object.assign({}, p));
+    if (probs.length === AMC_LEN) break;
+  }
+  for (const p of amcShuffle(pool[2].slice())) { // top up from mid band
+    if (probs.length === AMC_LEN) break;
+    const k = p.sid + "|" + p.pid;
+    if (seen[k]) continue;
+    seen[k] = 1;
+    probs.push(Object.assign({}, p, { band: 2 }));
+  }
+  probs.sort((x, y) => x.band - y.band); // difficulty ramp
+  amc.active = { start: Date.now(), probs, answers: {}, submitted: false, score: null, right: 0, wrong: 0, blank: 0 };
+  amcSolOpen = {};
+  amcSave();
+  render();
+}
+function amcRemaining() {
+  if (!amc.active) return 0;
+  return Math.max(0, AMC_MS - (Date.now() - amc.active.start));
+}
+function amcAns(i, val) {
+  if (!amc.active || amc.active.submitted) return;
+  amc.active.answers[i] = val;
+  amcSave();
+  const el = document.getElementById("amc-status-" + i);
+  if (el) el.textContent = val.trim() ? "Answered" : "Blank";
+  if (el) el.className = "mock-status" + (val.trim() ? " answered" : "");
+}
+function submitMockAMC(auto) {
+  if (!amc.active || amc.active.submitted) return;
+  const a = amc.active;
+  let right = 0, wrong = 0, blank = 0;
+  a.probs.forEach((p, i) => {
+    const u = a.answers[i] || "";
+    if (!u.trim()) { blank++; return; }
+    if (matchAns(u, p.ans)) right++; else wrong++;
+  });
+  a.submitted = true;
+  a.right = right; a.wrong = wrong; a.blank = blank;
+  a.score = 6 * right + 1.5 * blank; // AMC scoring: 6 right / 1.5 blank / 0 wrong
+  if (!amc.aime) amc.aime = amcBestAime() || 0;
+  const index = a.score + 20 * amc.aime;
+  amc.history.unshift({
+    date: new Date().toISOString().slice(0, 10),
+    time: new Date().toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" }),
+    right, wrong, blank, score: a.score, aime: amc.aime, cutoff: amc.cutoff, index, pass: index >= amc.cutoff, auto: !!auto
+  });
+  amc.history = amc.history.slice(0, 40);
+  amcSave();
+  render();
+}
+function abandonMockAMC() {
+  if (amc.active && !amc.active.submitted && !confirm("Abandon this mock exam? Progress will be lost.")) return;
+  delete amc.active;
+  amcSave();
+  render();
+}
+function amcCalcScore() {
+  const r = Math.min(25, Math.max(0, +document.getElementById("cal-r").value || 0));
+  const b = Math.min(25, Math.max(0, +document.getElementById("cal-b").value || 0));
+  const w = Math.min(25, Math.max(0, +document.getElementById("cal-w").value || 0));
+  const score = 6 * r + 1.5 * b;
+  document.getElementById("cal-score").textContent = score;
+  const idx = score + 20 * (amc.aime || amcBestAime());
+  document.getElementById("cal-idx").textContent = idx;
+}
+function renderMockAMC(main, sec) {
+  let html = '<h2>' + sec.title + '</h2><p class="subtitle">' + sec.sub + '</p>';
+  if (!amc.active) {
+    const bestAime = amcBestAime();
+    if (!amc.aime && bestAime) amc.aime = bestAime;
+    html += '<div class="mock-hero"><h3>Take a timed AMC 10/12</h3>';
+    html += '<p>25 problems, 75-minute countdown, auto-submit at zero. Scoring: +6 correct, +1.5 blank, +0 wrong (max 150).</p>';
+    html += '<p>Projected USAJMO index = AMC score + 20 &times; AIME score. AIME is taken from your best AIME mock below — adjust it if you took the real thing.</p></div>';
+    html += '<div class="mock-row">';
+    html += '<div class="mock-field"><label>Your AIME score (0-15)</label><input id="amc-aime" type="number" min="0" max="15" step="1" value="' + (amc.aime || 0) + '"></div>';
+    html += '<div class="mock-field"><label>USAJMO cutoff</label><input id="amc-cutoff" type="number" min="0" max="450" value="' + amc.cutoff + '"></div>';
+    html += '</div>';
+    html += '<button class="btn btn-primary" onclick="amc.aime=Math.min(15,Math.max(0,+document.getElementById(\'amc-aime\').value||0));amc.cutoff=Math.min(450,Math.max(0,+document.getElementById(\'amc-cutoff\').value||0));amcSave();startMockAMC()">Start Mock Exam</button> ';
+    html += '<button class="btn" onclick="amc.aime=Math.min(15,Math.max(0,+document.getElementById(\'amc-aime\').value||0));amc.cutoff=Math.min(450,Math.max(0,+document.getElementById(\'amc-cutoff\').value||0));amcSave();render()">Save Settings</button>';
+    html += '<div class="mock-hero" style="margin-top:18px"><h3>Quick estimate</h3><p>No timer needed — plug in how you think you did.</p>';
+    html += '<div class="mock-row">';
+    html += '<div class="mock-field"><label>Correct</label><input id="cal-r" type="number" min="0" max="25" oninput="amcCalcScore()"></div>';
+    html += '<div class="mock-field"><label>Blank</label><input id="cal-b" type="number" min="0" max="25" oninput="amcCalcScore()"></div>';
+    html += '<div class="mock-field"><label>Wrong</label><input id="cal-w" type="number" min="0" max="25" oninput="amcCalcScore()"></div>';
+    html += '</div>';
+    html += '<div class="mock-stat-grid"><div class="mock-stat"><div class="v" id="cal-score">&mdash;</div><div class="k">estimated AMC score</div></div>';
+    html += '<div class="mock-stat"><div class="v" id="cal-idx">&mdash;</div><div class="k">projected index (AMC + 20&times;AIME)</div></div></div></div>';
+    const best = amc.history.length ? Math.max.apply(null, amc.history.map(h => h.score)) : null;
+    html += '<div class="mock-stat-grid">';
+    html += '<div class="mock-stat"><div class="v">' + amc.history.length + '</div><div class="k">mocks taken</div></div>';
+    html += '<div class="mock-stat"><div class="v">' + (best != null ? best : '&mdash;') + '</div><div class="k">best AMC score</div></div>';
+    html += '<div class="mock-stat"><div class="v">' + (bestAime || '&mdash;') + '/15</div><div class="k">best AIME mock</div></div>';
+    html += '<div class="mock-stat"><div class="v">' + amc.cutoff + '</div><div class="k">cutoff</div></div>';
+    html += '</div>';
+    if (amc.history.length) {
+      html += '<div class="mock-hist"><div class="mock-hist-row h"><span>DATE</span><span>R/W/BLANK</span><span>AMC</span><span>AIME</span><span>INDEX</span><span>RESULT</span></div>';
+      amc.history.forEach(h => {
+        html += '<div class="mock-hist-row' + (h.pass ? ' pass' : ' fail') + '"><span>' + h.date + ' ' + h.time + '</span><span>' + h.right + '/' + h.wrong + '/' + h.blank + '</span><span>' + h.score + '</span><span>' + h.aime + '</span><span>' + h.index + '</span><span>' + (h.pass ? 'PASS' : 'miss') + (h.auto ? ' (auto)' : '') + '</span></div>';
+      });
+      html += '</div>';
+    }
+    main.innerHTML = html;
+    return;
+  }
+  const a = amc.active;
+  if (!a.submitted) {
+    const rem = amcRemaining();
+    const warn = rem < 15 * 60 * 1000;
+    html += '<div class="mock-timer' + (warn ? ' warn' : '') + '"><span>Time left</span><span class="t" id="amc-t">' + fmtTime(rem) + '</span><span style="flex:1"></span>';
+    html += '<button class="btn btn-primary" onclick="submitMockAMC(false)">Submit Exam</button>';
+    html += '<button class="btn" onclick="abandonMockAMC()">Abandon</button></div>';
+    html += '<div class="mock-grid">';
+    a.probs.forEach((p, i) => {
+      const ans = a.answers[i] || "";
+      html += '<div class="mock-prob"><div class="mock-prob-head"><span class="mock-num">' + (i + 1) + '.</span><span class="mock-status' + (ans ? ' answered' : '') + '" id="amc-status-' + i + '">' + (ans ? 'Answered' : 'Blank') + '</span></div>';
+      html += '<p style="margin:0 0 6px">' + R(p.prompt) + '</p>';
+      html += '<input class="ans-input mock-ans" type="text" placeholder="Answer" value="' + ans + '" oninput="amcAns(' + i + ',this.value)">';
+      html += '</div>';
+    });
+    html += '</div><p style="margin-top:14px"><button class="btn btn-primary" onclick="submitMockAMC(false)">Submit Exam</button></p>';
+    main.innerHTML = html;
+    return;
+  }
+  // Results
+  const aimeUsed = amc.aime || 0;
+  const pass = a.score + 20 * aimeUsed >= amc.cutoff;
+  html += '<div class="mock-stat-grid">';
+  html += '<div class="mock-stat"><div class="v">' + a.score + '/150</div><div class="k">AMC score (6r + 1.5b)</div></div>';
+  html += '<div class="mock-stat"><div class="v">' + a.right + ' / ' + a.wrong + ' / ' + a.blank + '</div><div class="k">right / wrong / blank</div></div>';
+  html += '<div class="mock-stat"><div class="v">' + aimeUsed + '/15</div><div class="k">AIME used</div></div>';
+  html += '<div class="mock-stat"><div class="v">' + (a.score + 20 * aimeUsed) + '</div><div class="k">projected index</div></div>';
+  html += '</div>';
+  html += '<div class="mock-verdict ' + (pass ? 'pass' : 'fail') + '">' + (pass ? '&#10003; On pace to qualify for USAJMO' : '&#10007; Need ' + Math.max(0, amc.cutoff - (a.score + 20 * aimeUsed)) + ' more points — AIME is the lever (20 pts each)') + '</div>';
+  html += '<div class="mock-row"><button class="btn btn-primary" onclick="startMockAMC()">New Mock</button><button class="btn" onclick="delete amc.active;amcSave();render()">Back to Home</button></div>';
+  a.probs.forEach((p, i) => {
+    const u = a.answers[i] || "";
+    const ok = u && matchAns(u, p.ans);
+    html += '<div class="card" style="margin-top:10px"><div class="card-top">';
+    html += '<div class="num' + (ok ? ' done' : '') + '">' + (ok ? '&#10003;' : '&#10007;') + '</div>';
+    html += '<div class="card-body"><p>' + R(p.prompt) + '</p>';
+    html += '<p style="color:var(--muted);font-size:13px">Your answer: <b>' + (u || '&mdash; blank') + '</b> &nbsp;|&nbsp; Expected: <b>' + R(p.ans.split('|')[0]) + '</b></p>';
+    html += '<button class="btn" onclick="amcSolOpen[' + i + ']=!amcSolOpen[' + i + '];renderMockAMC(document.getElementById(\'main\'),SECTIONS.find(x=>x.id===\'amc-mock\'))">' + (amcSolOpen[i] ? 'Hide' : 'Show') + ' Solution</button>';
+    if (amcSolOpen[i]) html += '<div class="sol" style="padding:12px 0 0;border:none">' + R(p.sol) + '</div>';
+    html += '</div></div></div>';
+  });
+  main.innerHTML = html;
+}
 // timer tick
 setInterval(() => {
   if (mock.active && !mock.active.submitted) {
     const el = document.getElementById("mock-t");
     if (el) el.textContent = fmtTime(mockRemaining());
     if (mockRemaining() <= 0) submitMock(true);
+  }
+  if (amc.active && !amc.active.submitted) {
+    const el = document.getElementById("amc-t");
+    if (el) el.textContent = fmtTime(amcRemaining());
+    if (amcRemaining() <= 0) submitMockAMC(true);
   }
 }, 1000);
 
