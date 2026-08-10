@@ -5860,7 +5860,8 @@ const MOCK_LEN = 15;
 const MOCK_MS = 3 * 60 * 60 * 1000; // 3 hours
 let mock = JSON.parse(localStorage.getItem("mmock") || "{}");
 if (!mock.amc) mock.amc = 110;
-if (!mock.cutoff) mock.cutoff = 216;
+if (!mock.cutoff) mock.cutoff = 340;
+if (mock.cutoff === 216) mock.cutoff = 340; // v2.58: correct cutoff (was 216)
 if (!mock.history) mock.history = [];
 let mockSolOpen = {};
 function mockSave() { localStorage.setItem("mmock", JSON.stringify(mock)); }
@@ -6063,7 +6064,8 @@ function renderMock(main, sec) {
 const AMC_LEN = 25;
 const AMC_MS = 75 * 60 * 1000; // 75 minutes
 let amc = JSON.parse(localStorage.getItem("mamc") || "{}");
-if (!amc.cutoff) amc.cutoff = 216;
+if (!amc.cutoff) amc.cutoff = 340;
+if (amc.cutoff === 216) amc.cutoff = 340; // v2.58: correct cutoff (was 216)
 if (!amc.history) amc.history = [];
 let amcSolOpen = {};
 function amcSave() { localStorage.setItem("mamc", JSON.stringify(amc)); }
@@ -6295,7 +6297,7 @@ function renderHome(main, sec) {
   html += '</div>';
   const bestAMC = amc.history.length ? Math.max.apply(null, amc.history.map(h => h.score)) : null;
   const bestAIME = mock.history.length ? Math.max.apply(null, mock.history.map(h => h.score)) : null;
-  const cutoff = mock.cutoff || 216;
+  const cutoff = mock.cutoff || 340;
   html += '<div class="home-cols">';
   html += '<div class="home-card"><div class="home-card-t">USAJMO projection</div>';
   if (bestAMC != null && bestAIME != null) {
@@ -6352,7 +6354,7 @@ const CHAT_MODELS = [
   ["auto/best-free", "Free (chat)"],
   ["auto/best-reasoning", "Paid (smartest)"]
 ];
-const CHAT_SYSTEM = "You are a patient math tutor helping a student prepare for AMC 10, AMC 12, AIME, and USAJMO (their qualification index is AMC 10 score + 20 x AIME score, cutoff ~216). HARD RULES: NEVER give the final answer to a practice problem directly. Always respond with hints, leading questions, and the next step only — never the full solution and never the final answer. If the student asks for the answer outright, politely decline and offer the next hint instead. The student must reach the answer themselves; your job is to coach. Use LaTeX math with \\( ... \\) for inline and \\[ ... \\] for display math. Keep answers focused and not overly long.";
+const CHAT_SYSTEM = "You are a patient math tutor helping a student prepare for AMC 10, AMC 12, AIME, and USAJMO (their qualification index is AMC 10 score + 20 x AIME score, cutoff ~340). HARD RULES: NEVER give the final answer to a practice problem directly. Always respond with hints, leading questions, and the next step only — never the full solution and never the final answer. If the student asks for the answer outright, politely decline and offer the next hint instead. The student must reach the answer themselves; your job is to coach. Use LaTeX math with \\( ... \\) for inline and \\[ ... \\] for display math. Keep answers focused and not overly long.";
 let chat = { msgs: [], model: "auto/coding:free" };
 try { chat = JSON.parse(localStorage.getItem("mchat") || "{}"); } catch (e) {}
 if (!chat.msgs) chat.msgs = [];
