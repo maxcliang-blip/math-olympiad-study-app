@@ -6474,7 +6474,8 @@ function aiEstimate() {
     bands[b][1]++;
     if (checkStates[k] === "correct") bands[b][0]++;
   });
-  const diffLine = Object.keys(bands).filter(b => bands[b][1] > 0).map(b => b + "(<5)" + bands[b][0] + "/" + bands[b][1]).join(", ");
+  const diffLabel = { easy: "(<5)", mid: "(5-7)", hard: "(7+)" };
+  const diffLine = Object.keys(bands).filter(b => bands[b][1] > 0).map(b => b + diffLabel[b] + " " + bands[b][0] + "/" + bands[b][1]).join(", ");
   // Topic accuracy by section group
   const grpAcc = {};
   SECTIONS.filter(s => s.type === "prac").forEach(s => {
