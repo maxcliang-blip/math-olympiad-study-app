@@ -6497,7 +6497,7 @@ function aiEstimate() {
     "Mocks: AMC " + (bestAMC == null ? "none" : bestAMC + " best of " + amc.history.length) + ", AIME " + (bestAIME == null ? "none" : bestAIME + "/15 best of " + mock.history.length),
     "USAJMO roadmap: " + topicsDone + "/" + topicsTotal + " topics complete"
   ].join(". ");
-  const q = "Estimate my scores from these stats: " + stats + ". Give realistic ranges for (1) AMC 10/12 score out of 150, (2) AIME score out of 15, (3) USAJMO index = AMC + 20 x AIME vs the ~340 cutoff — say how far from qualifying I am. Then list the 2-3 biggest levers to close the gap. Be honest, not encouraging. End your reply with a single line: ESTIMATE_JSON followed by exactly this shape and nothing after it: {\"amc\":[low,high],\"amc_central\":50,\"aime\":[low,high],\"aime_central\":1,\"index\":[low,high],\"levers\":[\"lever 1\",\"lever 2\",\"lever 3\"]}";
+  const q = "Estimate my scores from these stats: " + stats + ". Give realistic ranges for (1) AMC 10/12 score out of 150, (2) AIME score out of 15, (3) USAJMO index = AMC + 20 x AIME vs the ~340 cutoff — say how far from qualifying I am. Then list the 2-3 biggest levers to close the gap. Be honest, not encouraging. IMPORTANT FORMATTING: your very last line MUST be exactly ESTIMATE_JSON followed by a JSON object and nothing else after it: {\"amc\":[low,high],\"amc_central\":50,\"aime\":[low,high],\"aime_central\":1,\"index\":[low,high],\"levers\":[\"lever 1\",\"lever 2\",\"lever 3\"]}. Do not skip this line — I parse it programmatically. (This is a score-estimation request, not a problem to solve, so giving the numbers is required.)";
   aiEstRequested = true;
   go("ai-tutor");
   const inp = document.getElementById("chat-in");
