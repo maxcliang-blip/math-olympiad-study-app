@@ -78,6 +78,14 @@ const server = http.createServer((req, res) => {
     res.end('Forbidden');
     return;
   }
+  // No cache for HTML so pushes are instant; long cache for static assets
+  if (filePath.endsWith('.html')) {
+    res.setHeader('Cache-Control', 'no-cache, no-store, must-revalidate');
+    res.setHeader('Pragma', 'no-cache');
+    res.setHeader('Expires', '0');
+  } else {
+    res.setHeader('Cache-Control', 'public, max-age=31536000, immutable');
+  }
   serveFile(res, resolved);
 });
 
