@@ -744,6 +744,9 @@ const display = tex => K.renderToString(tex, Object.assign({}, opts, { displayMo
 function R(s) {
   s = s.replace(/\\\[(.*?)\\\]/gs, (_, t) => display(t));
   s = s.replace(/\\\((.*?)\\\)/g, (_, t) => inline(t));
+  // MATH-dataset delimiters: $$...$$ display first, then $...$ inline
+  s = s.replace(/\$\$(.*?)\$\$/gs, (_, t) => display(t));
+  s = s.replace(/\$(.*?)\$/g, (_, t) => inline(t));
   return s;
 }
 
