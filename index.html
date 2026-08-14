@@ -5666,13 +5666,13 @@ function render() {
   if (prog) {
     const sec = SECTIONS.find(s => s.id === cur);
     if (sec && sec.type === 'prac') {
-      let done = 0, total = 0;
-      sec.levels.forEach(l => l.probs.forEach(p => { total++; if (done(sec.id, p[0])) done++; }));
-      prog.textContent = done + '/' + total;
+      let dn = 0, total = 0;
+      sec.levels.forEach(l => l.probs.forEach(p => { total++; if (done(sec.id, p[0])) dn++; }));
+      prog.textContent = dn + '/' + total;
     } else if (sec && sec.type === 'topics') {
-      let done = 0, total = 0;
-      sec.topics.forEach(c => c.items.forEach(it => { total++; if (it.status === 'done') done++; }));
-      prog.textContent = done + '/' + total;
+      let dn = 0, total = 0;
+      sec.topics.forEach(c => c.items.forEach(it => { total++; if (it.status === 'done') dn++; }));
+      prog.textContent = dn + '/' + total;
     } else {
       prog.textContent = '';
     }
