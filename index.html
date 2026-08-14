@@ -774,6 +774,33 @@ body.compact .chat-msg { margin-bottom: 6px; }
   .mobile-theme { display: none; }
 }
 
+
+/* Hub grid */
+.hub-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 16px;
+  margin-top: 16px;
+}
+.hub-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 16px;
+  cursor: pointer;
+  transition: all 0.15s;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  text-align: left;
+}
+.hub-card:hover { border-color: var(--blue); box-shadow: var(--shadow); }
+.hub-card-t { font-weight: 600; font-size: 15px; color: var(--text); }
+.hub-card-sub { font-size: 12px; color: var(--muted); }
+.hub-card-prog { height: 6px; background: var(--blue-bg); border-radius: 3px; overflow: hidden; }
+.hub-card-fill { height: 100%; background: var(--blue); transition: width 0.3s; }
+.hub-card-meta { font-size: 11px; color: var(--muted); }
+
 </style>
 </head>
 <body>
@@ -788,8 +815,10 @@ body.compact .chat-msg { margin-bottom: 6px; }
   <nav class="topbar-nav" id="topbar-nav">
     <a href="#" class="topbar-link" onclick="go('home'); return false;" data-section="home">Home</a>
     <a href="#" class="topbar-link" onclick="go('roadmap'); return false;" data-section="roadmap">Roadmap</a>
-    <a href="#" class="topbar-link" onclick="go('prac'); return false;" data-section="prac">Practice</a>
-    <a href="#" class="topbar-link" onclick="go('comp'); return false;" data-section="comp">Competition</a>
+    <a href="#" class="topbar-link" onclick="go('alg'); return false;" data-section="alg">Algebra</a>
+    <a href="#" class="topbar-link" onclick="go('geo'); return false;" data-section="geo">Geometry</a>
+    <a href="#" class="topbar-link" onclick="go('nt'); return false;" data-section="nt">Number Theory</a>
+    <a href="#" class="topbar-link" onclick="go('comb'); return false;" data-section="comb">Combinatorics</a>
     <a href="#" class="topbar-link" onclick="go('mockamc'); return false;" data-section="mockamc">Mock Exam</a>
     <a href="#" class="topbar-link" onclick="go('ai-tutor'); return false;" data-section="ai-tutor">AI Tutor</a>
   </nav>
@@ -994,7 +1023,12 @@ const SECTIONS = [
     sub: "Your practice dashboard — progress, next steps, and mock projections",
     type: "home",
     group: "Home"
-  }
+  },
+  {"id": "alg", "title": "Algebra", "sub": "All Algebra practice sets", "type": "hub", "group": "Algebra Hub", "hub": ["sym-practice", "aime-sym", "ineq-practice", "aime-ineq", "ineq2-practice", "seq-practice", "fe-practice", "fe2-practice", "log-practice", "cx-practice", "intp-practice", "poly-practice", "vieta-practice", "aime-vieta", "algebra-level-1", "algebra-level-2", "algebra-level-3", "algebra-level-4", "algebra-level-5"]},
+  {"id": "geo", "title": "Geometry", "sub": "All Geometry practice sets", "type": "hub", "group": "Geometry Hub", "hub": ["angle-practice", "tri-practice", "circ-practice", "trig-practice", "coord-practice", "geom-ineq-practice", "trans-practice", "complex-practice", "mass-practice", "geo-aime-practice", "aime-geo", "geometry-level-1", "geometry-level-2", "geometry-level-3", "geometry-level-4", "geometry-level-5"]},
+  {"id": "nt", "title": "Number Theory", "sub": "All Number Theory practice sets", "type": "hub", "group": "NT Hub", "hub": ["div-practice", "mod-practice", "crt-practice", "prime-practice", "dioph-practice", "order-practice", "nt-aime-practice", "aime-nt", "number-theory-level-1", "number-theory-level-2", "number-theory-level-3", "number-theory-level-4", "number-theory-level-5"]},
+  {"id": "comb", "title": "Combinatorics", "sub": "All Combinatorics practice sets", "type": "hub", "group": "Comb Hub", "hub": ["count-practice", "prob-practice", "pigeon-practice", "gen-practice", "recur-practice", "graph-practice", "comb-aime-practice", "aime-comb", "combinatorics-level-1", "combinatorics-level-2", "combinatorics-level-3", "combinatorics-level-4", "combinatorics-level-5"]}
+
 ,
   {
     id: "roadmap",
@@ -5633,9 +5667,31 @@ function render() {
   else if (sec.type === "mockamc") renderMockAMC(main, sec);
   else if (sec.type === "chat") renderChat(main, sec);
   else if (sec.type === "home") renderHome(main, sec);
+  else if (sec.type === "hub") renderHub(main, sec);
   else renderPrac(main, sec);
   main.innerHTML = motBar() + main.innerHTML;
   updateThemeBtn();
+}
+
+function renderHub(main, sec) {
+  let html = '<h2>' + sec.title + ' Hub</h2><p class="subtitle">' + (sec.sub || '') + '</p>';
+  html += '<div class="hub-grid">';
+  sec.hub.forEach(id => {
+    const sx = SECTIONS.find(s => s.id === id);
+    if (!sx) return;
+    let total = 0, doneN = 0;
+    if (sx.type === 'prac') { sx.levels.forEach(l => l.probs.forEach(p => { total++; if (done(sx.id, p[0])) doneN++; })); }
+    else if (sx.type === 'topics') { sx.topics.forEach(c => c.items.forEach(it => { total++; if (it.status === 'done') doneN++; })); }
+    const pct = total ? Math.round(doneN/total*100) : 0;
+    html += '<button class="hub-card" onclick="go(\'' + sx.id + '\')">';
+    html += '<div class="hub-card-t">' + sx.title + '</div>';
+    html += '<div class="hub-card-sub">' + (sx.sub || '') + '</div>';
+    html += '<div class="hub-card-prog"><div class="hub-card-fill" style="width:' + pct + '%"></div></div>';
+    html += '<div class="hub-card-meta">' + doneN + '/' + total + ' done</div>';
+    html += '</button>';
+  });
+  html += '</div>';
+  main.innerHTML = html;
 }
 
 function renderPrac(main, sec) {
