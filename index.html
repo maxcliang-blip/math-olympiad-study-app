@@ -5636,10 +5636,30 @@ function render() {
   document.getElementById("sidebar").innerHTML = side;
 
   // Topbar: active link + progress
+  const TOPBAR_PARENT = {
+    // Algebra hub children
+    'sym-practice': 'alg', 'aime-sym': 'alg', 'ineq-practice': 'alg', 'aime-ineq': 'alg', 'ineq2-practice': 'alg',
+    'seq-practice': 'alg', 'fe-practice': 'alg', 'fe2-practice': 'alg', 'log-practice': 'alg', 'cx-practice': 'alg',
+    'intp-practice': 'alg', 'poly-practice': 'alg', 'vieta-practice': 'alg', 'aime-vieta': 'alg',
+    'algebra-level-1': 'alg', 'algebra-level-2': 'alg', 'algebra-level-3': 'alg', 'algebra-level-4': 'alg', 'algebra-level-5': 'alg',
+    // Geometry hub children
+    'geo1-practice': 'geo', 'geo2-practice': 'geo', 'geo3-practice': 'geo', 'geo4-practice': 'geo', 'geo5-practice': 'geo',
+    'geo6-prac': 'geo', 'geo7-prac': 'geo', 'geo8-prac': 'geo', 'geo9-prac': 'geo', 'coord-practice': 'geo',
+    'lemma-practice': 'geo', 'geo3d-practice': 'geo', 'geometry-level-1': 'geo', 'geometry-level-2': 'geo',
+    'geometry-level-3': 'geo', 'geometry-level-4': 'geo', 'geometry-level-5': 'geo',
+    // NT hub children
+    'nt1-practice': 'nt', 'nt2-practice': 'nt', 'nt3-practice': 'nt', 'nt4-practice': 'nt', 'nt5-practice': 'nt',
+    'nt6-practice': 'nt', 'nt7-practice': 'nt', 'nt8-practice': 'nt', 'order-practice': 'nt', 'aime-nt': 'nt',
+    'number-theory-level-1': 'nt', 'number-theory-level-2': 'nt', 'number-theory-level-3': 'nt', 'number-theory-level-4': 'nt', 'number-theory-level-5': 'nt',
+    // Comb hub children
+    'comb1-practice': 'comb', 'comb2-practice': 'comb', 'comb3-practice': 'comb', 'comb4-practice': 'comb', 'comb5-practice': 'comb', 'comb6-practice': 'comb',
+    'counting-and-probability-level-1': 'comb', 'counting-and-probability-level-2': 'comb', 'counting-and-probability-level-3': 'comb', 'counting-and-probability-level-4': 'comb', 'counting-and-probability-level-5': 'comb',
+  };
   const nav = document.getElementById('topbar-nav');
   if (nav) {
+    const activeSection = TOPBAR_PARENT[cur] || cur;
     nav.querySelectorAll('.topbar-link').forEach(a => {
-      a.classList.toggle('active', a.dataset.section === cur);
+      a.classList.toggle('active', a.dataset.section === activeSection);
     });
   }
   const prog = document.getElementById('topbar-progress');
