@@ -725,13 +725,85 @@ body.compact .chat-msg { margin-bottom: 6px; }
 }
 @media (max-width: 768px) { .mobile-theme { display: inline-flex; position: fixed; top: 12px; right: 12px; z-index: 300; box-shadow: var(--shadow); } }
 
+
+/* Topbar */
+.topbar {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  height: 52px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 0 20px;
+  background: var(--card);
+  border-bottom: 1px solid var(--border);
+  box-shadow: var(--shadow-sm);
+  z-index: 100;
+}
+.topbar-left { display: flex; align-items: center; gap: 10px; }
+.nav-toggle { display: none; }
+.brand { display: flex; align-items: center; gap: 8px; text-decoration: none; color: var(--text); font-weight: 600; font-size: 15px; }
+.brand-icon { font-size: 18px; }
+.brand-text { white-space: nowrap; }
+.topbar-nav { display: flex; align-items: center; gap: 4px; margin-left: 8px; }
+.topbar-link { padding: 8px 12px; border-radius: 6px; text-decoration: none; color: var(--muted); font-size: 13px; font-weight: 500; transition: all 0.15s; white-space: nowrap; }
+.topbar-link:hover { color: var(--text); background: var(--blue-bg); }
+.topbar-link.active { color: var(--blue); background: var(--blue-bg); }
+.topbar-right { display: flex; align-items: center; gap: 10px; }
+.topbar-progress { font-size: 11px; color: var(--muted); font-weight: 500; padding: 4px 10px; background: var(--blue-bg); border-radius: 12px; min-width: 80px; text-align: center; }
+
+/* Theme icon switching */
+[data-theme="midnight"] .theme-icon-dark { display: none; }
+[data-theme="midnight"] .theme-icon-light { display: inline; }
+:root:not([data-theme="midnight"]) .theme-icon-dark { display: inline; }
+:root:not([data-theme="midnight"]) .theme-icon-light { display: none; }
+
+/* Push main/sidebar down */
+.sidebar { top: 52px; height: calc(100vh - 52px); }
+.main { top: 52px; height: calc(100vh - 52px); padding-top: 8px; }
+
+/* Mobile topbar */
+@media (max-width: 768px) {
+  .nav-toggle { display: flex !important; }
+  .topbar-nav { display: none; }
+  .brand-text { display: none; }
+  .topbar { padding: 0 12px; height: 48px; }
+  .sidebar { top: 48px; height: calc(100vh - 48px); }
+  .main { top: 48px; height: calc(100vh - 48px); }
+  .mobile-theme { display: none; }
+}
+
 </style>
 </head>
 <body>
-
+<header class="topbar" id="topbar">
+  <div class="topbar-left">
+    <button class="nav-toggle" onclick="toggleNav()" aria-label="Open menu" title="Menu">&#9776;</button>
+    <a href="#" class="brand" onclick="go('home'); return false;" aria-label="Home">
+      <span class="brand-icon">&#x1F4D0;</span>
+      <span class="brand-text">Math Olympiad</span>
+    </a>
+  </div>
+  <nav class="topbar-nav" id="topbar-nav">
+    <a href="#" class="topbar-link" onclick="go('home'); return false;" data-section="home">Home</a>
+    <a href="#" class="topbar-link" onclick="go('roadmap'); return false;" data-section="roadmap">Roadmap</a>
+    <a href="#" class="topbar-link" onclick="go('prac'); return false;" data-section="prac">Practice</a>
+    <a href="#" class="topbar-link" onclick="go('comp'); return false;" data-section="comp">Competition</a>
+    <a href="#" class="topbar-link" onclick="go('mockamc'); return false;" data-section="mockamc">Mock Exam</a>
+    <a href="#" class="topbar-link" onclick="go('ai-tutor'); return false;" data-section="ai-tutor">AI Tutor</a>
+  </nav>
+  <div class="topbar-right">
+    <button class="theme-btn" onclick="toggleCompact()" title="Toggle compact mode">&#10530;</button>
+    <button class="theme-btn" id="theme-btn" onclick="toggleTheme()" title="Toggle light/dark theme" aria-label="Toggle theme">
+      <span class="theme-icon-dark">&#9728;&#65039;</span>
+      <span class="theme-icon-light">&#127769;</span>
+    </button>
+    <div class="topbar-progress" id="topbar-progress"></div>
+  </div>
+</header>
 <div class="sidebar" id="sidebar"></div>
 <div class="main" id="main"></div>
-<button class="nav-toggle" onclick="toggleNav()" aria-label="Open menu" title="Menu">&#9776;</button>
 <div class="nav-overlay" onclick="toggleNav()"></div>
 <button class="theme-btn mobile-theme" onclick="toggleTheme()" title="Toggle theme" aria-label="Toggle theme">&#127769;</button>
 
@@ -5528,6 +5600,30 @@ function render() {
   }
   side += '</div></div></div>';
   document.getElementById("sidebar").innerHTML = side;
+
+  // Topbar: active link + progress
+  const nav = document.getElementById('topbar-nav');
+  if (nav) {
+    nav.querySelectorAll('.topbar-link').forEach(a => {
+      a.classList.toggle('active', a.dataset.section === cur);
+    });
+  }
+  const prog = document.getElementById('topbar-progress');
+  if (prog) {
+    const sec = SECTIONS.find(s => s.id === cur);
+    if (sec && sec.type === 'prac') {
+      let done = 0, total = 0;
+      sec.levels.forEach(l => l.probs.forEach(p => { total++; if (done(sec.id, p[0])) done++; }));
+      prog.textContent = done + '/' + total;
+    } else if (sec && sec.type === 'topics') {
+      let done = 0, total = 0;
+      sec.topics.forEach(c => c.items.forEach(it => { total++; if (it.status === 'done') done++; }));
+      prog.textContent = done + '/' + total;
+    } else {
+      prog.textContent = '';
+    }
+  }
+
 
   const sec = SECTIONS.find(s => s.id === cur);
   const main = document.getElementById("main");
