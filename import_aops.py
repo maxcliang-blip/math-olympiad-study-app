@@ -3,10 +3,14 @@
 Import scraped AoPS AIME data into index.html as new practice sections.
 
 Usage:
-  python3 import_aops.py aops_2024.json           # import one file
-  python3 import_aops.py aops_2024.json aops_2023.json  # import multiple
+  python3 import_aops.py aops_2024.json aops_2023.json
 
-Adds sections like "aops-2024-i" and "aops-2024-ii" with all 15 problems.
+Adds sections like "aops-2024-i" with problems split into 3 difficulty levels:
+- Level 1 (Problems 1-5): Easy
+- Level 2 (Problems 6-10): Medium  
+- Level 3 (Problems 11-15): Hard
+
+Each problem gets: num, prompt, solution, answer, hints, source, topic, difficulty
 """
 import json
 import re
@@ -15,7 +19,6 @@ import sys
 TOPICS = ["Algebra", "Geometry", "Number Theory", "Combinatorics", "Prealgebra", "Precalculus", "Intermediate Algebra"]
 
 def load_scraped(paths):
-    """Load scraped JSON files, returning {year_id: [problems]}."""
     data = {}
     for p in paths:
         d = json.load(open(p))
@@ -23,65 +26,86 @@ def load_scraped(paths):
             data[k] = v
     return data
 
-def make_section(year_id, problems):
-    """Build a section object matching the app's format."""
-    # year_id like "2024_AIME_I" -> title "2024 AIME I"
+def detect_topic(prompt):
+    prompt_lower = prompt.lower()
+    if any(kw in prompt_lower for kw in ["circle", "triangle", "angle", "polygon", "geometry", "area", "volume", "coordinate", "trig"]):
+        return "Geometry"
+    elif any(kw in prompt_lower for kw in ["probability", "ways", "arrange", "choose", "count", "combination", "permutation", "pigeonhole"]):
+        return "Combinatorics"
+    elif any(kw in prompt_lower for kw in ["prime", "divisible", "mod", "gcd", "lcm", "integer", "factor", "divisor", "remainder"]):
+        return "Number Theory"
+    else:
+        return "Algebra"
+
+def difficulty_from_num(num):
+    """AIME problems 1-15: 1-5 Easy, 6-10 Medium, 11-15 Hard"""
+    if num <= 5:
+        return 1  # Easy
+    elif num <= 10:
+        return 2  # Medium
+    else:
+        return 3  # Hard
+
+def make_sections(year_id, problems):
+    """Build section objects matching the app's format, split by difficulty."""
     title = year_id.replace("_", " ")
-    sec_id = "aops-" + year_id.lower().replace("_", "-")
-    # Group by year
     year = year_id.split("_")[0]
     group = f"AoPS AIME {year}"
     
-    # Build problems array: [[num, prompt, solution, answer, hints, source, topic]]
-    probs = []
+    # Group problems by difficulty
+    by_diff = {1: [], 2: [], 3: []}
     for p in problems:
         num = p.get("num", 0)
+        diff = difficulty_from_num(num)
+        
         prompt = p.get("problem", "").strip()
         solutions = p.get("solutions", [])
         solution_text = "\n\n---\n\n".join(solutions) if solutions else ""
         answer = str(p.get("answer", ""))
-        # Topic detection (simple heuristic)
-        topic = "Algebra"
-        if any(kw in prompt.lower() for kw in ["circle", "triangle", "angle", "polygon", "geometry", "area", "volume"]):
-            topic = "Geometry"
-        elif any(kw in prompt.lower() for kw in ["probability", "ways", "arrange", "choose", "count"]):
-            topic = "Combinatorics"
-        elif any(kw in prompt.lower() for kw in ["prime", "divisible", "mod", "gcd", "lcm", "integer"]):
-            topic = "Number Theory"
+        topic = detect_topic(prompt)
         
-        probs.append([num, prompt, solution_text, answer, [], f"AoPS {title}", topic])
+        prob_entry = [num, prompt, solution_text, answer, [], f"AoPS {title}", topic]
+        by_diff[diff].append(prob_entry)
     
-    return {
-        "id": sec_id,
-        "title": title,
-        "sub": f"AoPS Wiki {title} — {len(probs)} problems",
-        "type": "prac",
-        "group": group,
-        "levels": [{"n": f"{title}", "probs": probs}]
-    }
+    # Create one section per difficulty level
+    sections = []
+    diff_names = {1: "Level 1 (Easy)", 2: "Level 2 (Medium)", 3: "Level 3 (Hard)"}
+    
+    for diff in [1, 2, 3]:
+        probs = by_diff[diff]
+        if not probs:
+            continue
+            
+        sec_id = f"aops-{year_id.lower().replace('_', '-')}-diff{diff}"
+        sections.append({
+            "id": sec_id,
+            "title": f"{title} {diff_names[diff]}",
+            "sub": f"AoPS Wiki {title} {diff_names[diff]} — {len(probs)} problems",
+            "type": "prac",
+            "group": group,
+            "levels": [{"n": diff_names[diff], "probs": probs}]
+        })
+    
+    return sections
 
-def insert_section(html, section):
-    """Insert section into SECTIONS array before '];' near // State."""
+def insert_sections(html, sections):
     arr_start = html.index("const SECTIONS = [")
     state_idx = html.index("// State")
     arr_end = html.rfind("];", arr_start, state_idx) + 2
-    arr = html[arr_start:arr_end]
     
-    # Check if already inserted
-    if section["id"] in arr:
-        print(f"  Section {section['id']} already present, skipping")
-        return html
+    for section in sections:
+        if section["id"] in html[arr_start:arr_end]:
+            print(f"  Section {section['id']} already present, skipping")
+            continue
+        
+        insert_pos = arr_end - 2
+        pre = html[insert_pos-3:insert_pos]
+        comma = ",\n" if not pre.rstrip().endswith(",") else "\n"
+        
+        section_json = json.dumps(section, ensure_ascii=False, separators=(',', ':'))
+        html = html[:insert_pos] + comma + "  " + section_json + "\n" + html[insert_pos:]
+        arr_end = html.rfind("];", arr_start, state_idx) + 2  # update arr_end
     
-    # Find the last section object end (before the final ];)
-    # Insert before the last '];' that closes the array
-    insert_pos = arr_end - 2  # before '];'
-    # Ensure we have a comma if needed
-    pre = html[insert_pos-3:insert_pos]
-    comma = ",\n" if not pre.rstrip().endswith(",") else "\n"
-    
-    section_json = json.dumps(section, ensure_ascii=False, indent=2)
-    # Convert to JS object literal (JSON is valid JS)
-    html = html[:insert_pos] + comma + "  " + section_json + "\n" + html[insert_pos:]
     return html
 
 def main():
@@ -94,13 +118,18 @@ def main():
     
     html = open("index.html", encoding="utf-8").read()
     
+    all_sections = []
     for year_id, problems in scraped.items():
-        print(f"Adding {year_id} ({len(problems)} problems)...")
-        section = make_section(year_id, problems)
-        html = insert_section(html, section)
+        print(f"Processing {year_id} ({len(problems)} problems)...")
+        sections = make_sections(year_id, problems)
+        all_sections.extend(sections)
+        for s in sections:
+            print(f"  {s['id']}: {len(s['levels'][0]['probs'])} problems")
+    
+    html = insert_sections(html, all_sections)
     
     open("index.html", "w", encoding="utf-8").write(html)
-    print("Done. index.html updated.")
+    print(f"\nDone. Added {len(all_sections)} difficulty-split sections.")
 
 if __name__ == "__main__":
     main()
